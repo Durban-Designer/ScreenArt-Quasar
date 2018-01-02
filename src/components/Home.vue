@@ -9,17 +9,19 @@
 <script>
 export default {
   name: 'home',
+  created () {
+    let vue = this
+    function toggleShow () {
+      vue.show = !vue.show
+    }
+    setInterval(toggleShow, 1000)
+  },
   data () {
     return {
       show: true
     }
   }
 }
-function toggleShow () {
-  this.show = !this.show
-  console.log(this.show)
-}
-setInterval(toggleShow, 6000)
 </script>
 
 <style scoped lang='less'>
