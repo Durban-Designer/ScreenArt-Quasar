@@ -1,5 +1,6 @@
 <template>
   <div class="main">
+    <work v-if="showWork"></work>
     <div class="slidebox">
       <transition name="slide"><img class="slide1" v-if="show === 0" src="../assets/Seasons.jpg"></transition>
       <transition name="slide"><img class="slide2" v-if="show === 1" src="../assets/birds.jpg"></transition>
@@ -15,7 +16,7 @@
       <button class="Team">Team</button>
       <button class="Quotes">Quotes</button>
     </div>
-    <work v-if="showWork"></work>
+
   </div>
 </template>
 
@@ -63,7 +64,7 @@ export default {
 @base-font:'Montserrat', sans-serif;
 
 .main {
-  height: 3000px;
+  height: 1000px;
 }
 .navbar {
   width: 100%;
@@ -97,6 +98,7 @@ export default {
   -webkit-transform:scale(1.3,1.3);
   -moz-transform:scale(1.3,1.3);
 }
+
 .Work {
   background-color: transparent;
   border: none;
