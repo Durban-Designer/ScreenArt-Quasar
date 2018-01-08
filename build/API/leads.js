@@ -4,47 +4,63 @@ var _ = require("lodash");
 var app = express();
 var router = express.Router();
 var mongoose = require("mongoose");
-var Example = mongoose.model("Example");
+var Lead = mongoose.model("Lead");
 
 router.post("/", (req,res) => {
-  var newExample = new Example({
-  exampleString: req.body.exampleString
+  var newLead = new Lead({
+  name: req.body.name,
+  phone: req.body.phone,
+  status: req.body.status,
+  url: req.body.url,
+  comment: req.body.comment
+  })
+
+  newLead.save((err, result) => {
+    if(err) {
+      res.send(err);
+    } else {
+      res.status(401).send(result);
+    }
   })
 })
 
 router.get("/:id", (req, res) => {
-  var exampleid = new mongodb.ObjectID(req.params["id"]);
-  Example.findOne({"_id": exampleid},function (err, examples) {
+  var leadid = new mongodb.ObjectID(req.params["id"]);
+  Lead.findOne({"_id": leadid},function (err, leads) {
     if (err) {
       res.send(err);
     } else {
-      res.send(examples);
+      res.send(leads);
     }
   })
 })
 
 router.put("/:id", (req, res) => {
-  var exampleid = new mongodb.ObjectID(req.params["id"]);
-  Example.find({"_id": exampleid},function (err, example) {
+  var leadid = new mongodb.ObjectID(req.params["id"]);
+  Lead.find({"_id": leadid},function (err, lead) {
     if (err) {
         res.status(500).send(err);
     } else {
-        var example = example[0];
-        example.exampleString = req.body.exampleString || example.exampleString;
+        var lead = lead[0];
+        lead.name = req.body.name || lead.name;
+        lead.phone = req.body.phone || lead.phone;
+        lead.status = req.body.status || lead.status;
+        lead.url = req.body.url || lead.url;
+        lead.comment = req.body.comment || lead.comment;
 
-        example.save(function (err, example) {
+        lead.save(function (err, lead) {
             if (err) {
                 res.status(500).send(err)
             }
-            res.send(example);
+            res.send(lead);
         });
     }
 });
 })
 
 router.delete("/", (req, res) => {
-  var exampleid = req.body._id;
-  Example.find({_id: exampleid}).remove().then(() => {
+  var leadid = req.body._id;
+  Lead.find({_id: leadid}).remove().then(() => {
     res.send("success");
   })
 })
