@@ -70,7 +70,7 @@ export default {
     top: 0;
     left: 0;
     right: 0;
-    z-index: 7;
+    z-index: 3;
     text-align: center;
     line-height: 70px;
     font-family: @base-font;
@@ -85,9 +85,9 @@ export default {
   .slidebox {
     position: absolute;
     top: 0;
+    bottom: 0;
     left: 0;
     right: 0;
-    height: 800px;
     overflow: hidden;
   }
 
@@ -182,35 +182,35 @@ export default {
   .slide1 {
     position: absolute;
     width: 100%;
-    z-index: 1;
+    z-index: -6;
   }
 
   .slide2 {
     position: absolute;
     width: 100%;
-    z-index: 2;
+    z-index: -5;
   }
 
   .slide3 {
     position: absolute;
     width: 100%;
-    z-index: 3;
+    z-index: -4;
   }
   .slide4 {
     position: absolute;
     width: 100%;
-    z-index: 4;
+    z-index: -3;
   }
 
   .slide5 {
     position: absolute;
     width: 100%;
-    z-index: 5;
+    z-index: -2;
   }
   .slide6 {
     position: absolute;
     width: 100%;
-    z-index: 6;
+    z-index: -1;
   }
 
   .slide-enter-active, .slide-leave-active {
