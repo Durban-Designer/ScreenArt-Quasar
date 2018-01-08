@@ -96,9 +96,25 @@ export default {
 }
 
 .Work:hover {
-  transform:scale(1.3,1.3);
-  -webkit-transform:scale(1.3,1.3);
-  -moz-transform:scale(1.3,1.3);
+  &:after {
+        content:'';
+        position: absolute;
+        width: 100%;
+        height: 3px;
+        bottom: 0;
+        left: 0;
+        background-color: red;
+        transform: scaleX(0);
+        transform-origin: bottom right;
+        transition: transform 0.3s;
+    }
+
+    &:hover {
+        &:after {
+            transform-origin: bottom left;
+            transform: scaleX(1);
+        }
+    }
 }
 
 .Work {
