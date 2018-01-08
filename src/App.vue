@@ -1,7 +1,7 @@
 <template>
   <!-- Don't drop "q-app" class -->
   <div id="q-app">
-    <navbar></navbar>
+    <navbar :loggedIn="loggedIn"></navbar>
     <router-view />
   </div>
 </template>
@@ -12,6 +12,11 @@ export default {
   name: 'app',
   components: {
     'navbar': Navbar
+  },
+  data: function () {
+    return {
+      loggedIn: false
+    }
   }
 }
 </script>
