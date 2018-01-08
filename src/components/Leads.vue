@@ -1,48 +1,36 @@
 <template>
   <div class="main">
-    <div class="search">
+    <div class="lead" v-if="lead">
       <input type="text" class="search" placeholder="SearchLeads"></input>
       <button type="submit" class="searchButton">Search</button>
-      <h1>Lead Contact Info</h1>
-      <p class="clientName">{{this.lead.clientName}}</p>
-      <p class="primaryContact">{{this.lead.primaryContact}}</p>
-      <p class="title">{{this.lead.title}}</p>
-      <p class="phonenum">{{this.lead.phoneNumber}}</p>
-      <p class="email">{{this.lead.email}}</p>
-      <p class="address">{{this.lead.addressOne}}</p>
-      <p class="secondaryContact">{{this.lead.secondaryContact}}</p>
-      <p class="secondaryphonenum">{{this.lead.secondaryphoneNumber}}</p>
-      <p class="secondaryemail">{{this.lead.secondaryemail}}</p>
-      <p class="secondaryaddress">{{this.lead.secondaryaddress}}</p>
-      <h1>Status</h1>
-      <!--change lead status options-->
-      <div class="leadStatus">{{this.lead.status}}</div>
-      <p class="notes">{{this.lead.notes}}</p>
-      <button class="editButton" v-on:click="toggleEdit">Edit</button>
+      <h4>Lead Info</h4>
+      <p class="clientName"></p>
+      <p class="primaryContact"></p>
+      <p class="title"></p>
+      <p class="phonenum"></p>
+      <p class="email"></p>
+      <p class="address"></p>
+      <div class="leadStatus"></div>
+      <p class="notes"></p>
+      <button class="editButton" v-on:click="edit = true; lead = false;">Edit</button>
     </div>
-    <div v-bind:class="leadEditLogic">
-      <h1 class="entertitle">Edit Lead Information</h1>
-      <input type="text" class="clientNameEdit" v-model="lead.clientName" placeholder="Client Name" required></input>
-      <input type="text" class="primaryContactEdit" v-model="lead.primaryContact" placeholder="Primary Contact" required></input>
-      <input type="text" class="titleEdit" v-model="lead.title" placeholder="Title"></input>
-      <input type="tel" class="phoneEdit" v-model="lead.phoneNumber" placeholder="Phone Number" required></input><br/>
-      <input type="text" class="userNameEdit" v-model="lead.email" placeholder="Email Address" required></input>
-      <input type="text" class="addressEdit" v-model="lead.address" placeholder="Address"required></input>
-      <input type="text" class="secondaryContactEdit" v-model="lead.secondaryContact" placeholder="Secondary Contact"></input>
-      <input type="tel" class="secondaryphoneEdit" v-model="lead.secondaryphoneNumber" placeholder="Secondary Phone Number"></input><br/>
-      <input type="text" class="secondaryuserNameEdit" v-model="lead.secondaryemail" placeholder="Secondary Email Address"></input>
-      <input type="text" class="secondaryaddressEdit" v-model="lead.secondaryaddress" placeholder="Secondary Address"></input>
+    <div class="edit" v-if="edit">
+      <h4 class="entertitle">Lead Info</h4>
+      <input type="text" class="clientNameEdit" v-model="activeLead.clientName" placeholder="Client Name" required></input>
+      <input type="text" class="primaryContactEdit" v-model="activeLead.primaryContact" placeholder="Primary Contact" required></input>
+      <input type="text" class="titleEdit" v-model="activeLead.title" placeholder="Title"></input>
+      <input type="tel" class="phoneEdit" v-model="activeLead.phoneNumber" placeholder="Phone Number" required></input><br/>
+      <input type="text" class="emaileEdit" v-model="activeLead.email" placeholder="Email Address" required></input>
+      <input type="text" class="addressEdit" v-model="activeLead.address" placeholder="Address"required></input>
       <button class="addContact" v-on:click="">Add Contact</button>
-      <h1>Status</h1>
       <select>
         <option value="notContacted">not contacted</option>
         <option value="contacted">contacted</option>
         <option value="jobInProgress">job in-progress</option>
         <option value="jobFinished">job finished</option>
       </select>
-      <input type="text" class="notesEdit" v-model="lead.notes" placeholder="Notes"></input>
-      <button class="confirmButton" v-on:click="submit">Confirm Changes</button>
-    </div>
+      <input type="text" class="notesEdit" v-model="activeLead.notes" placeholder="Notes"></input>
+      <button class="confirmButton" v-on:click="submit; edit = false; lead = true">Confirm Changes</button>
     </div>
   </div>
 </template>
@@ -52,7 +40,7 @@ export default {
   name: 'leads',
   data: function () {
     return {
-      user: {
+      activeLead: {
         clientName: '',
         primaryContact: '',
         phoneNumber: '',
@@ -61,41 +49,140 @@ export default {
         status: '',
         notes: ''
       },
+      leads: [],
       error: '',
       tabSelected: 0,
-      edit: false
+      edit: false,
+      lead: true
     }
   },
   props: ['logged'],
   computed: {
-    leadLogic: function () {
-      return {
-        main: !this.edit,
-        hidden: this.edit
-      }
-    },
-    leadEditLogic: function () {
-      return {
-        main: this.edit,
-        hidden: !this.edit
-      }
-    }
-  },
+},
   methods: {
-    toggleEdit () {
-      this.edit = true
-    },
-    submit () {
-      this.edit = false
-    }
   }
 }
 </script>
 
 <style scoped lang='less'>
 .main {
+
+}
+
+.lead {
   display: grid;
-  grid-template-columns: ;
-  grid-template-rows: ;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(12, 50px);
+}
+
+.search {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+.searchButton {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+h4 {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 3;
+  grid-row-end: 4;
+}
+
+.clientName {
+
+}
+
+.primaryContact {
+
+}
+
+.title {
+
+}
+
+.phonenum {
+
+}
+
+.email {
+
+}
+
+.address {
+
+}
+
+.leadStatus {
+
+}
+
+.notes {
+
+}
+
+.editButton {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 10;
+  grid-row-end: 11;
+}
+
+.edit {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(12, 50px);
+}
+
+.editlead {
+
+}
+
+.editclientName {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row: 4;
+}
+
+.editprimaryContact {
+
+}
+
+.edittitle {
+
+}
+
+.editphonenum {
+
+}
+
+.editemail {
+
+}
+
+.editaddress {
+
+}
+
+.editleadStatus {
+
+}
+
+.editnotes {
+
+}
+
+.confirmButton {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 10;
+  grid-row-end: 11;
 }
 </style>
