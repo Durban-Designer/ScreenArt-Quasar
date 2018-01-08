@@ -82,6 +82,8 @@ export default {
   display: grid;
   grid-template-columns: repeat(2, 1fr) 220px repeat(2,1fr);
   grid-template-rows: 100px;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
 }
 
 .slidebox {
