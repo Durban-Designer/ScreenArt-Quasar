@@ -49,45 +49,46 @@
 
 <script>
 export default {
-data: function () {
-  return {
-    user: {
-      clientName: '',
-      primaryContact: '',
-      phoneNumber: '',
-      email: '',
-      address: '',
-      status: '',
-      notes: '',
+  name: 'leads',
+  data: function () {
+    return {
+      user: {
+        clientName: '',
+        primaryContact: '',
+        phoneNumber: '',
+        email: '',
+        address: '',
+        status: '',
+        notes: ''
+      },
+      error: '',
+      tabSelected: 0,
+      edit: false
+    }
+  },
+  props: ['logged'],
+  computed: {
+    leadLogic: function () {
+      return {
+        main: !this.edit,
+        hidden: this.edit
+      }
     },
-    error: '',
-    tabSelected: 0,
-    edit: false
-  }
-},
-props: ['logged'],
-computed: {
-  leadLogic: function () {
-    return {
-      main: !this.edit,
-      hidden: this.edit
+    leadEditLogic: function () {
+      return {
+        main: this.edit,
+        hidden: !this.edit
+      }
     }
   },
-  leadEditLogic: function () {
-    return {
-      main: this.edit,
-      hidden: !this.edit
+  methods: {
+    toggleEdit () {
+      this.edit = true
+    },
+    submit () {
+      this.edit = false
     }
   }
-},
-methods: {
-  toggleEdit () {
-    this.edit = true
-  },
-  submit () {
-    this.edit = false
-  }
-}
 }
 </script>
 

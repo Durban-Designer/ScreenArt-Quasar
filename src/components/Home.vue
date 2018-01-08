@@ -15,7 +15,7 @@
       <button class="Team">Team</button>
       <button class="Quotes">Quotes</button>
     </div>
-
+    <div class="leads" v-on:click="$router.push('/leads')">Leads</div>
   </div>
 </template>
 
@@ -153,18 +153,27 @@ export default {
   width: 25%;
   text-shadow: 2px 2px 3px black;
   width: 100%;
-
 }
+
+.leads {
+  position: absolute;
+  top: 600px;
+  left: 0
+  right 0;
+}
+
 .slide1 {
   position: absolute;
   width: 100%;
   z-index: 1;
 }
+
 .slide2 {
   position: absolute;
   width: 100%;
   z-index: 2;
 }
+
 .slide3 {
   position: absolute;
   width: 100%;
@@ -175,6 +184,7 @@ export default {
   width: 100%;
   z-index: 4;
 }
+
 .slide5 {
   position: absolute;
   width: 100%;
@@ -185,9 +195,11 @@ export default {
   width: 100%;
   z-index: 6;
 }
+
 .slide-enter-active, .slide-leave-active {
   transition: all .50s ease;
 }
+
 .slide-enter {
   transform: translateX(2000px);
   opacity: 0;

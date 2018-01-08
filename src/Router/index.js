@@ -1,12 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 const Home = () => import('@/components/Home')
-const Home = () => import('@/components/Leads')
-const Home = () => import('@/components/admin')
-const Home = () => import('@/components/work')
-const Home = () => import('@/components/contact')
-const Home = () => import('@/components/team')
-const Home = () => import('@/components/quotes')
+const Work = () => import('@/components/work')
+const Contact = () => import('@/components/contact')
+const Team = () => import('@/components/team')
+const Quotes = () => import('@/components/quotes')
+const Leads = () => import('@/components/leads')
+const Admin = () => import('@/components/admin')
 
 Vue.use(Router)
 
@@ -46,6 +46,16 @@ export default new Router({
       path: '/quotes',
       name: 'quotes',
       component: Quotes
+    },
+    {
+      path: '/leads',
+      name: 'leads',
+      component: Leads
+    },
+    {
+      path: '/admin',
+      name: 'admin',
+      component: Admin
     }
   ]
 })
