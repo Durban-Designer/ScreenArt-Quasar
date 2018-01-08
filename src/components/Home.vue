@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import Work from './components/Work'
+import Work from './elements/Work'
 export default {
   name: 'home',
   components: {
