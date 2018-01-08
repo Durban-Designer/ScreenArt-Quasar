@@ -11,10 +11,10 @@
     </div>
     <div class="navbar">
       <button class="Work" v-on:click="showWork = !showWork">Work</button>
-      <button class="Contact">Contact</button>
+      <button class="Contact" v-on:click="showWork = !showWork">Contact</button>
       <div class="sa" v-on:click="$router.push('/')"></div>
-      <button class="Team">Team</button>
-      <button class="Quotes">Quotes</button>
+      <button class="Team" v-on:click="showWork = !showWork">Team</button>
+      <button class="Quotes" v-on:click="showWork = !showWork">Quotes</button>
     </div>
     <div class="leads" v-on:click="$router.push('/leads')">Leads</div>
   </div>
