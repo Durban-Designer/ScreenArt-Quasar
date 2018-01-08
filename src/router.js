@@ -26,8 +26,12 @@ export default new VueRouter({
 
   routes: [
     { path: '/', component: load('Home') },
-    { path: '/admin', component: load('Admin') },
-    { path: '/leads', component: load('Leads') },
+    { path: '/Work', component: load('Work') },
+    { path: '/Contact', component: load('Contact') },
+    { path: '/Team', component: load('Team') },
+    { path: '/Login', component: load('Login') },
+    { path: '/Admin', component: load('Admin') },
+    { path: '/Leads', component: load('Leads') },
     // Always leave this last one
     { path: '*', component: load('Error404') } // Not found
   ]
