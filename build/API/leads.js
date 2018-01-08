@@ -21,7 +21,7 @@ router.post("/", (req,res) => {
     } else {
       res.status(401).send(result);
     }
-  })
+  });
 })
 
 router.get("/", (req, res) => {
@@ -31,7 +31,7 @@ router.get("/", (req, res) => {
     } else {
       res.send(leads);
     }
-  }
+  })
 })
 
 router.get("/:id", (req, res) => {
