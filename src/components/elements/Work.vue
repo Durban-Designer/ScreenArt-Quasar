@@ -36,6 +36,6 @@ h1 {
   line-height: 100px;
 }
 .bart {
-  background-image: url("../assets/Bart.svg");
+  background-image: url("../../assets/Bart.svg");
 }
 </style>
