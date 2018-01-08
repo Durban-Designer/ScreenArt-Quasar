@@ -18,12 +18,10 @@
       <h4 class="entertitle">Lead Info</h4>
       <input type="text" class="clientNameEdit" v-model="activeLead.clientName" placeholder="Client Name" required></input>
       <input type="text" class="primaryContactEdit" v-model="activeLead.primaryContact" placeholder="Primary Contact" required></input>
-      <input type="text" class="titleEdit" v-model="activeLead.title" placeholder="Title"></input>
       <input type="tel" class="phoneEdit" v-model="activeLead.phoneNumber" placeholder="Phone Number" required></input><br/>
-      <input type="text" class="emaileEdit" v-model="activeLead.email" placeholder="Email Address" required></input>
+      <input type="text" class="emailEdit" v-model="activeLead.email" placeholder="Email Address" required></input>
       <input type="text" class="addressEdit" v-model="activeLead.address" placeholder="Address"required></input>
-      <button class="addContact" v-on:click="">Add Contact</button>
-      <select>
+      <select class="statusEdit">
         <option value="notContacted">not contacted</option>
         <option value="contacted">contacted</option>
         <option value="jobInProgress">job in-progress</option>
@@ -58,7 +56,7 @@ export default {
   },
   props: ['logged'],
   computed: {
-},
+  },
   methods: {
   }
 }
@@ -66,7 +64,14 @@ export default {
 
 <style scoped lang='less'>
 .main {
-
+  margin-left: 5px;
+  margin-top: 110px;
+  width: 99%;
+  height: 500px;
+  z-index: 10;
+  position: absolute;
+  background:rgba(0,0,0,0.6);
+  border-radius: 12px;
 }
 
 .lead {
@@ -78,22 +83,20 @@ export default {
 .search {
   grid-column-start: 1;
   grid-column-end: 2;
-  grid-row-start: 2;
-  grid-row-end: 3;
+  grid-row: 3;
 }
 
 .searchButton {
   grid-column-start: 2;
   grid-column-end: 3;
-  grid-row-start: 2;
-  grid-row-end: 3;
+  grid-row: 3;
 }
 
 h4 {
   grid-column-start: 1;
   grid-column-end: 3;
-  grid-row-start: 3;
-  grid-row-end: 4;
+  grid-row-start: 2;
+  grid-row-end: 3;
 }
 
 .clientName {
@@ -141,48 +144,59 @@ h4 {
   grid-template-rows: repeat(12, 50px);
 }
 
-.editlead {
+.leadEdit {
 
 }
 
-.editclientName {
+.clientNameEdit {
   grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row: 3;
+}
+
+.primaryContactEdit {
+  grid-column-start: 2;
   grid-column-end: 3;
-  grid-row: 4;
+  grid-row: 3;
 }
 
-.editprimaryContact {
+.phoneEdit {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row: 5;
+}
+
+.emailEdit {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row: 6;
+}
+
+.addressEdit {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row: 7;
+}
+
+.leadStatusEdit {
 
 }
 
-.edittitle {
-
+.notesEdit {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row: 8;
 }
 
-.editphonenum {
-
-}
-
-.editemail {
-
-}
-
-.editaddress {
-
-}
-
-.editleadStatus {
-
-}
-
-.editnotes {
-
+.statusEdit {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row: 9;
 }
 
 .confirmButton {
   grid-column-start: 1;
-  grid-column-end: 3;
-  grid-row-start: 10;
-  grid-row-end: 11;
+  grid-column-end: 2;
+  grid-row: 10;
 }
 </style>
