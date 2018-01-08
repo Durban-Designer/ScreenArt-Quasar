@@ -70,6 +70,9 @@ export default {
   height: 100px;
   background:rgba(0,0,0,0.6);
   position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 7;
   text-align: center;
   line-height: 70px;
@@ -78,8 +81,17 @@ export default {
   display: grid;
   grid-template-columns: repeat(2, 1fr) 220px repeat(2,1fr);
   grid-template-rows: 100px;
-
 }
+
+.slidebox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 800px;
+  overflow: hidden;
+}
+
 .Work:hover {
   transform:scale(1.3,1.3);
   -webkit-transform:scale(1.3,1.3);
