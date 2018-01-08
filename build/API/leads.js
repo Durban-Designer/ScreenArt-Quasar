@@ -21,6 +21,16 @@ router.post("/", (req,res) => {
     } else {
       res.status(401).send(result);
     }
+  });
+})
+
+router.get("/", (req, res) => {
+  Lead.find({},function (err, leads) {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(leads);
+    }
   })
 })
 
