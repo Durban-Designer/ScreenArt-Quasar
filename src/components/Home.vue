@@ -9,7 +9,7 @@
       <transition name="slide"><img class="slide6" v-if="show === 5" src="../assets/window.jpg"></transition>
     </div>
     <div class="navbar">
-      <button class="Work" v-on:click="$router.push('/Work')">Work</button>
+      <button class="Work" v-on:click="('/Work')">Work</button>
       <button class="Contact">Contact</button>
       <div class="sa" v-on:click="$router.push('/')"></div>
       <button class="Team">Team</button>
@@ -20,8 +20,12 @@
 </template>
 
 <script>
+import Work from './components/Work'
 export default {
   name: 'home',
+  components: {
+    'Work': Work
+  },
   created () {
     let vue = this
     function toggleShow () {
