@@ -24,6 +24,16 @@ router.post("/", (req,res) => {
   })
 })
 
+router.get("/", (req, res) => {
+  Lead.find({},function (err, leads) {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(leads);
+    }
+  }
+})
+
 router.get("/:id", (req, res) => {
   var leadid = new mongodb.ObjectID(req.params["id"]);
   Lead.findOne({"_id": leadid},function (err, leads) {
