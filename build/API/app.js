@@ -7,6 +7,8 @@ var router = express.Router();
 var path = __dirname + "/views/";
 require("./user");
 var users = require("./users.js");
+require("./lead");
+var leads = require("./leads.js");
 
 mongoose.Promise = global.Promise;
 
@@ -28,6 +30,7 @@ app.use(function(req, res, next) {
 })
 
 app.use("/users", users);
+app.use("/leads", leads);
 
 router.get("/", (req,res) => {
   res.sendFile(path + "index.html");

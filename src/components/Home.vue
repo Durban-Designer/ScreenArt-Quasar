@@ -1,5 +1,6 @@
 <template>
   <div class="main">
+    <work v-if="showWork"></work>
     <div class="slidebox">
       <transition name="slide"><img class="slide1" v-if="show === 0" src="../assets/Seasons.jpg"></transition>
       <transition name="slide"><img class="slide2" v-if="show === 1" src="../assets/birds.jpg"></transition>
@@ -9,7 +10,7 @@
       <transition name="slide"><img class="slide6" v-if="show === 5" src="../assets/window.jpg"></transition>
     </div>
     <div class="navbar">
-      <button class="Work">Work</button>
+      <button class="Work" v-on:click="showWork = !showWork">Work</button>
       <button class="Contact">Contact</button>
       <div class="sa" v-on:click="$router.push('/')"></div>
       <button class="Team">Team</button>
@@ -20,8 +21,12 @@
 </template>
 
 <script>
+import Work from './elements/Work'
 export default {
   name: 'home',
+  components: {
+    'work': Work
+  },
   created () {
     let vue = this
     function toggleShow () {
@@ -48,7 +53,8 @@ export default {
   },
   data () {
     return {
-      show: 0
+      show: 0,
+      showWork: false
     }
   }
 }
@@ -58,13 +64,16 @@ export default {
 @base-font:'Montserrat', sans-serif;
 
 .main {
-  height: 3000px;
+  height: 1000px;
 }
 .navbar {
   width: 100%;
   height: 100px;
   background:rgba(0,0,0,0.6);
   position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 7;
   text-align: center;
   line-height: 70px;
@@ -73,13 +82,25 @@ export default {
   display: grid;
   grid-template-columns: repeat(2, 1fr) 220px repeat(2,1fr);
   grid-template-rows: 100px;
-
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
 }
+
+.slidebox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 800px;
+  overflow: hidden;
+}
+
 .Work:hover {
   transform:scale(1.3,1.3);
   -webkit-transform:scale(1.3,1.3);
   -moz-transform:scale(1.3,1.3);
 }
+
 .Work {
   background-color: transparent;
   border: none;
