@@ -1,7 +1,6 @@
 <template>
   <div class="workPage">
     <h1>Currently Under Construction</h1>
-    <div class="bart"></div>
   </div>
 </template>
 
@@ -18,12 +17,14 @@ export default {
 @base-font:'Montserrat', sans-serif;
 
 .workPage {
-  margin-top: 800px;
-  width: 100%;
-  height: 300px;
+  margin-left: 5px;
+  margin-top: 110px;
+  width: 99%;
+  height: 500px;
   z-index: 10;
   position: absolute;
   background:rgba(0,0,0,0.6);
+  border-radius: 12px
 
 }
 h1 {
@@ -35,7 +36,5 @@ h1 {
   text-align: center;
   line-height: 100px;
 }
-.bart {
-  background-image: url("../../assets/Bart.svg");
-}
+
 </style>
