@@ -9,13 +9,13 @@
       <transition name="slide"><img class="slide6" v-if="show === 5" src="../assets/window.jpg"></transition>
     </div>
     <div class="navbar">
-      <button class="Work" v-on:click="('/Work')">Work</button>
+      <button class="Work" v-on:click="showWork = !showWork">Work</button>
       <button class="Contact">Contact</button>
       <div class="sa" v-on:click="$router.push('/')"></div>
       <button class="Team">Team</button>
       <button class="Quotes">Quotes</button>
     </div>
-
+    <work v-if="showWork"></work>
   </div>
 </template>
 
@@ -24,7 +24,7 @@ import Work from './elements/Work'
 export default {
   name: 'home',
   components: {
-    'Work': Work
+    'work': Work
   },
   created () {
     let vue = this
@@ -52,7 +52,8 @@ export default {
   },
   data () {
     return {
-      show: 0
+      show: 0,
+      showWork: false
     }
   }
 }
