@@ -3,7 +3,7 @@
   <div id="q-app">
     <navbar :loggedIn="loggedIn"></navbar>
     <transition name="fade">
-      <router-view />
+      <router-view v-on:login="login" v-on:logOut="logOut" :user="user" :loggedIn="loggedIn"/>
     </transition>
   </div>
 </template>
@@ -17,7 +17,27 @@ export default {
   },
   data: function () {
     return {
-      loggedIn: false
+      loggedIn: false,
+      user: {
+        id: '',
+        token: ''
+      }
+    }
+  },
+  methods: {
+    login: function (user) {
+      let vue = this
+      vue.user.token = user.token
+      vue.user.id = user.id
+      vue.loggedIn = true
+      vue.$router.push('/user')
+    },
+    logOut: function () {
+      let vue = this
+      vue.user.token = ''
+      vue.user.id = ''
+      vue.loggedIn = false
+      vue.$router.push('/')
     }
   }
 }

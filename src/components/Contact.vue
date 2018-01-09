@@ -29,6 +29,10 @@
         phone: '',
         message: ''
       }
+    },
+    methods: {
+      send: function () {
+      }
     }
   }
 </script>
