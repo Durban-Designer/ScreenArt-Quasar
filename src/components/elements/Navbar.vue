@@ -91,30 +91,43 @@ export default {
     right: 0;
     overflow: hidden;
   }
+  @keyframes bounce {
+	0%, 100% {
+		-webkit-transform: translateY(0);
+		-ms-transform:     translateY(0);
+		transform:         translateY(0)
+	}
+	100% {
+		-webkit-transform: translateY(-10px);
+		-ms-transform:     translateY(-10px);
+		transform:         translateY(-10px)
+	}
 
-  .Work:hover {
-    transform:scale(1.3,1.3);
-    -webkit-transform:scale(1.3,1.3);
-    -moz-transform:scale(1.3,1.3);
-  }
-
+}
+button {
+  -webkit-animation-duration: .25s;
+  animation-duration: .25s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+  -webkit-animation-iteration-count: 1;
+}
+button:hover {
+  animation-name: bounce;
+  -moz-animation-name: bounce;
+}
   .Work {
     background-color: transparent;
     border: none;
     color: #fff;
     font-family: @base-font;
-    font-size: 1.4em;
+    font-size: 1.8em;
     width: 25%;
     text-shadow: 2px 2px 3px black;
     grid-column: 1;
     width: 100%;
-
-  }
-
-  .Contact:hover {
-    transform:scale(1.3,1.3);
-    -webkit-transform:scale(1.3,1.3);
-    -moz-transform:scale(1.3,1.3);
   }
 
   .Contact {
@@ -122,17 +135,11 @@ export default {
     border: none;
     color: #fff;
     font-family: @base-font;
-    font-size: 1.4em;
+    font-size: 1.8em;
     width: 25%;
     text-shadow: 2px 2px 3px black;
     grid-column: 2;
     width: 100%;
-  }
-
-  .Team:hover {
-    transform:scale(1.3,1.3);
-    -webkit-transform:scale(1.3,1.3);
-    -moz-transform:scale(1.3,1.3);
   }
 
   .Team {
@@ -140,7 +147,7 @@ export default {
     border: none;
     color: #fff;
     font-family: @base-font;
-    font-size: 1.4em;
+    font-size: 1.8em;
     width: 25%;
     text-shadow: 2px 2px 3px black;
     width: 100%;
@@ -157,17 +164,13 @@ export default {
     filter: drop-shadow(1px 2px 2px #000);
     align-items: center;
   }
-  .Login:hover {
-    transform:scale(1.3,1.3);
-    -webkit-transform:scale(1.3,1.3);
-    -moz-transform:scale(1.3,1.3);
-  }
+
   .Login {
     background-color: transparent;
     border: none;
     color: #fff;
     font-family: @base-font;
-    font-size: 1.4em;
+    font-size: 1.8em;
     width: 25%;
     text-shadow: 2px 2px 3px black;
     width: 100%;
