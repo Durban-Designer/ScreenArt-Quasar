@@ -80,6 +80,7 @@ export default {
     grid-template-rows: 100px;
     border-bottom-left-radius: 12px;
     border-bottom-right-radius: 12px;
+    box-shadow: 2px 2px 4px #000;
   }
 
   .slidebox {
@@ -152,6 +153,8 @@ export default {
     background-image: url("../../assets/logo.svg");
     z-index: 8;
     background-repeat: no-repeat;
+    -webkit-filter: drop-shadow(1px 2px 2px #000);
+    filter: drop-shadow(1px 2px 2px #000);
     align-items: center;
   }
   .Login:hover {
