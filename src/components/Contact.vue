@@ -34,7 +34,7 @@
 </script>
 
 <style scoped lang='less'>
-@base-font:'Montserrat', sans-serif;
+@base-font:'Pathway Gothic One', sans-serif;
 
   .main {
     margin-left: 5px;
