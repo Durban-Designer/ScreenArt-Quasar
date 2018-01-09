@@ -6,7 +6,15 @@ var LeadSchema = new mongoose.Schema({
   },
   phone: {
     type: Number,
-    required: true
+    required: false
+  },
+  email: {
+    type: String,
+    required: false
+  },
+  address: {
+    type: String,
+    required: false
   },
   status: {
     type: String,
