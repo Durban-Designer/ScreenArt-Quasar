@@ -30,6 +30,7 @@ export default new VueRouter({
     { path: '/Contact', component: load('Contact') },
     { path: '/Team', component: load('Team') },
     { path: '/Login', component: load('Login') },
+    { path: '/User', component: load('User') },
     { path: '/Admin', component: load('Admin') },
     { path: '/Leads', component: load('Leads') },
     // Always leave this last one

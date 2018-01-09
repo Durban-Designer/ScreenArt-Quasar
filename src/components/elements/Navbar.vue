@@ -4,9 +4,9 @@
       <button class="Work" v-on:click="$router.push('/work')">WORK</button>
       <button class="Contact" v-on:click="$router.push('/contact')">CONTACT</button>
       <div class="sa" v-on:click="$router.push('/')"></div>
-      <button class="Team" v-on:click="$router.push('/team')">TEAM</button>
-      <button class="Login" v-on:click="$router.push('/login')">LOG IN</button>
-      <div class="leads" v-on:click="$router.push('/leads')" v-if="loggedIn">Leads</div>
+      <button class="Team" v-on:click="$router.push('/team')">Team</button>
+      <button class="Login" v-on:click="$router.push('/login')" v-if="!loggedIn">Login</button>
+      <button class="Login" v-on:click="$router.push('/user')" v-if="loggedIn">CRM Access</button>
     </div>
     <div class="slidebox">
       <transition name="slide"><img class="slide1" v-if="show === 0" src="../../assets/Seasons.jpg"></transition>
