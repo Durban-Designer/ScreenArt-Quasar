@@ -1,20 +1,20 @@
 <template>
   <div class="main">
-      <h2>Contact Us</h2>
+      <h2>CONTACT US</h2>
       <div class="contactBox">
         <input class="name" v-model="name" placeholder="name"></input>
         <input class="email" v-model="email" placeholder="email"></input>
         <input class="phone" v-model="phone" placeholder="phone"></input>
         <input class="message" v-model="message" placeholder="message"></input>
         <div v-on:click="send" class="send">Send</div>
-        <h2 class="words">Send Us A Message</h2>
-        <h3>Or</h3>
-        <h3 class="callus">Call Us</h3>
+        <h2 class="words">SEND US A MESSAGE</h2>
+        <h3>OR</h3>
+        <h3 class="callus">CALL US</h3>
         <ul>
           <li>(480)-526-2634</li>
-          <li>(602)-558-1817 </li>
+          <li>(602)-558-1817</li>
         </ul>
-        <h3 class="blurb">We understand that your time is important. So we'll do our best to respond as quickly as possible!</h3>
+        <h3 class="blurb">We understand that your time is important.<br/> So we'll do our best to respond as quickly as possible!</h3>
       </div>
     </div>
 </template>
@@ -51,7 +51,7 @@
   h2 {
     font-family: @base-font;
     font-weight: lighter;
-    font-size: 2em;
+    font-size: 3em;
     color: #fff;
     text-shadow: 2px 2px 3px black;
     text-align: center;
@@ -60,7 +60,7 @@
   h3 {
     font-family: @base-font;
     font-weight: lighter;
-    font-size: 2em;
+    font-size: 2.5em;
     color: #fff;
     text-shadow: 2px 2px 3px black;
     text-align: center;
@@ -72,7 +72,7 @@
   ul {
     font-family: @base-font;
     font-weight: lighter;
-    font-size: 3em;
+    font-size: 3.5em;
     color: #fff;
     text-shadow: 2px 2px 3px black;
     text-align: center;
@@ -88,7 +88,7 @@
     grid-row: 1;
     grid-column-start: 1;
     grid-column-end: 3;
-    font-size: 1.8em;
+    font-size: 2em;
     line-height: 0px;
     text-decoration: underline;
   }
@@ -98,7 +98,7 @@
     grid-column-start: 4;
     grid-column-end: 6;
     line-height: 0px;
-    font-size: 2em;
+    font-size: 2.5em;
     text-align: center;
     text-decoration: underline;
     margin-right: 40px;
@@ -108,7 +108,7 @@
     grid-row-end: 6;
     grid-column-start: 4;
     grid-column-end: 6;
-    line-height: 30px;
+    line-height: 50px;
   }
   .contactBox {
     margin-left: 50px;
