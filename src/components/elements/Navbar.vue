@@ -1,11 +1,11 @@
 <template>
   <div>
     <div class="navbar">
-      <button class="Work" v-on:click="$router.push('/work')">Work</button>
-      <button class="Contact" v-on:click="$router.push('/contact')">Contact</button>
+      <button class="Work" v-on:click="$router.push('/work')">WORK</button>
+      <button class="Contact" v-on:click="$router.push('/contact')">CONTACT</button>
       <div class="sa" v-on:click="$router.push('/')"></div>
-      <button class="Team" v-on:click="$router.push('/team')">Team</button>
-      <button class="Login" v-on:click="$router.push('/login')">Login</button>
+      <button class="Team" v-on:click="$router.push('/team')">TEAM</button>
+      <button class="Login" v-on:click="$router.push('/login')">LOG IN</button>
       <div class="leads" v-on:click="$router.push('/leads')" v-if="loggedIn">Leads</div>
     </div>
     <div class="slidebox">
@@ -57,7 +57,7 @@ export default {
 </script>
 
 <style scoped lang='less'>
-  @base-font:'Montserrat', sans-serif;
+  @base-font:'Pathway Gothic One', sans-serif;
 
   .main {
     height: 1000px;
@@ -105,6 +105,7 @@ export default {
 
 }
 button {
+  letter-spacing: 1.3px;
   -webkit-animation-duration: .25s;
   animation-duration: .25s;
   -webkit-animation-fill-mode: both;
@@ -123,7 +124,7 @@ button:hover {
     border: none;
     color: #fff;
     font-family: @base-font;
-    font-size: 1.8em;
+    font-size: 2em;
     width: 25%;
     text-shadow: 2px 2px 3px black;
     grid-column: 1;
@@ -135,7 +136,7 @@ button:hover {
     border: none;
     color: #fff;
     font-family: @base-font;
-    font-size: 1.8em;
+    font-size: 2em;
     width: 25%;
     text-shadow: 2px 2px 3px black;
     grid-column: 2;
@@ -147,7 +148,7 @@ button:hover {
     border: none;
     color: #fff;
     font-family: @base-font;
-    font-size: 1.8em;
+    font-size: 2em;
     width: 25%;
     text-shadow: 2px 2px 3px black;
     width: 100%;
@@ -170,7 +171,7 @@ button:hover {
     border: none;
     color: #fff;
     font-family: @base-font;
-    font-size: 1.8em;
+    font-size: 2em;
     width: 25%;
     text-shadow: 2px 2px 3px black;
     width: 100%;
