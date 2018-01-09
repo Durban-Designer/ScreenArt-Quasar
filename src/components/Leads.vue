@@ -1,17 +1,20 @@
 <template>
   <div class="main">
-    <div class="lead" v-if="lead">
-      <input type="text" class="search" placeholder="SearchLeads"></input>
-      <button type="submit" class="searchButton">Search</button>
-      <h4>Lead Info</h4>
-      <p class="clientName"></p>
-      <p class="phonenum"></p>
-      <p class="email"></p>
-      <p class="address"></p>
-      <div class="leadStatus"></div>
-      <p class="notes"></p>
-      <button v-on:click="newLead">New Lead</button>
-      <button class="editButton" v-on:click="edit = true; lead = false;">Edit</button>
+    <div class="leadBox" v-if="leadBox">
+      <input type="text" class="search" placeholder="SearchLeads" v-model="searchBox"></input>
+      <button type="submit" class="searchButton"v-on:click="search">Search</button>
+      <h4>Leads</h4>
+      <div class="lead"></div>
+      <div class="leadItem">
+        <button class="editButton" v-on:click="edit = true; lead = false;">Edit</button>
+        <p class="clientName"></p>
+        <p class="phonenum"></p>
+        <p class="email"></p>
+        <p class="address"></p>
+        <div class="leadStatus"></div>
+        <p class="notes"></p>
+      </div>
+      <button class="newLead" v-on:click="newLead">New Lead</button>
     </div>
     <div class="edit" v-if="edit">
       <h4 class="entertitle">Lead Info</h4>
@@ -48,11 +51,12 @@ export default {
         status: '',
         notes: ''
       },
-      leads: [],
+      leads: [{}],
       error: '',
       tabSelected: 0,
       edit: false,
-      lead: true
+      leadBox: true,
+      searchBox: ''
     }
   },
   props: ['logged'],
@@ -70,10 +74,10 @@ export default {
         })
     },
     clearLeads () {
-      this.leads = []
+      this.leads = [{}]
     },
     submit () {
-      var vue = this
+      let vue = this
       axios.put('http://13.57.57.81:81/leads' + vue.userId, {
         clientName: vue.activeLead.clientName.toLowerCase(),
         phoneNumber: vue.activeLead.phoneNumber,
@@ -82,17 +86,17 @@ export default {
         status: vue.activeLead.status,
         notes: vue.activeLead.notes
       }, {headers: { 'Authorization': 'JWT ' + vue.token }})
-      .then(function () {
-        vue.edit = false
-      })
-      .catch(function (error) {
-        console.log(error)
-      })
+        .then(function () {
+          vue.edit = false
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
       vue.clearLeads()
       vue.populateLeads()
     },
     newLead () {
-      var vue = this
+      let vue = this
       axios.post('http://13.57.57.81:81/leads', {
         clientName: vue.activeLead.clientName.toLowerCase(),
         phoneNumber: vue.activeLead.phoneNumber,
@@ -103,9 +107,20 @@ export default {
       })
       vue.clearLeads()
       vue.populateLeads()
+    },
+    search () {
+      let vue = this
+      vue.clearLeads()
+      axios.get('http://13.57.57.81:81/leads/name/' + vue.searchBox)
+        .then(function (response) {
+          vue.leads = response.data
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
     }
-  },
   }
+}
 </script>
 
 <style scoped lang='less'>
@@ -120,7 +135,7 @@ export default {
   border-radius: 12px;
 }
 
-.lead {
+.leadBox {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(12, 50px);
@@ -177,9 +192,16 @@ h4 {
 
 }
 
+.newLead {
+  grid-column-start: 4;
+  grid-column-end: 5;
+  grid-row-start: 3;
+  grid-row-end: 3;
+}
+
 .editButton {
   grid-column-start: 1;
-  grid-column-end: 3;
+  grid-column-end: 2;
   grid-row-start: 10;
   grid-row-end: 11;
 }
@@ -198,6 +220,8 @@ h4 {
   grid-column-start: 1;
   grid-column-end: 2;
   grid-row: 3;
+  margin-top: 10px;
+  margin-right: 10px;
 }
 
 .primaryContactEdit {
@@ -207,15 +231,20 @@ h4 {
 }
 
 .phoneEdit {
-  grid-column-start: 1;
-  grid-column-end: 2;
-  grid-row: 5;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row: 3;
 }
 
 .emailEdit {
   grid-column-start: 1;
   grid-column-end: 2;
-  grid-row: 6;
+  grid-row: 4;
+  margin-top: 10px;
+  margin-right: 10px;
 }
 
 .addressEdit {
@@ -231,13 +260,14 @@ h4 {
 .notesEdit {
   grid-column-start: 1;
   grid-column-end: 2;
-  grid-row: 8;
+  grid-row: 9;
 }
 
 .statusEdit {
-  grid-column-start: 1;
-  grid-column-end: 2;
-  grid-row: 9;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 4;
+  grid-row-end: 4;
 }
 
 .confirmButton {
