@@ -5,19 +5,17 @@
       <button type="submit" class="searchButton">Search</button>
       <h4>Lead Info</h4>
       <p class="clientName"></p>
-      <p class="primaryContact"></p>
-      <p class="title"></p>
       <p class="phonenum"></p>
       <p class="email"></p>
       <p class="address"></p>
       <div class="leadStatus"></div>
       <p class="notes"></p>
+      <button v-on:click="newLead">New Lead</button>
       <button class="editButton" v-on:click="edit = true; lead = false;">Edit</button>
     </div>
     <div class="edit" v-if="edit">
       <h4 class="entertitle">Lead Info</h4>
       <input type="text" class="clientNameEdit" v-model="activeLead.clientName" placeholder="Client Name" required></input>
-      <input type="text" class="primaryContactEdit" v-model="activeLead.primaryContact" placeholder="Primary Contact" required></input>
       <input type="tel" class="phoneEdit" v-model="activeLead.phoneNumber" placeholder="Phone Number" required></input><br/>
       <input type="text" class="emailEdit" v-model="activeLead.email" placeholder="Email Address" required></input>
       <input type="text" class="addressEdit" v-model="activeLead.address" placeholder="Address"required></input>
@@ -34,13 +32,16 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'leads',
+  created () {
+    this.populateLeads()
+  },
   data: function () {
     return {
       activeLead: {
         clientName: '',
-        primaryContact: '',
         phoneNumber: '',
         email: '',
         address: '',
@@ -58,8 +59,53 @@ export default {
   computed: {
   },
   methods: {
+    populateLeads () {
+      let vue = this
+      axios.get('http://13.57.57.81:81/leads')
+        .then(function (response) {
+          vue.leads = response.data
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
+    },
+    clearLeads () {
+      this.leads = []
+    },
+    submit () {
+      var vue = this
+      axios.put('http://13.57.57.81:81/leads' + vue.userId, {
+        clientName: vue.activeLead.clientName.toLowerCase(),
+        phoneNumber: vue.activeLead.phoneNumber,
+        email: vue.activeLead.email,
+        address: vue.activeLead.address,
+        status: vue.activeLead.status,
+        notes: vue.activeLead.notes
+      }, {headers: { 'Authorization': 'JWT ' + vue.token }})
+      .then(function () {
+        vue.edit = false
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
+      vue.clearLeads()
+      vue.populateLeads()
+    },
+    newLead () {
+      var vue = this
+      axios.post('http://13.57.57.81:81/leads', {
+        clientName: vue.activeLead.clientName.toLowerCase(),
+        phoneNumber: vue.activeLead.phoneNumber,
+        email: vue.activeLead.email,
+        address: vue.activeLead.address,
+        status: vue.activeLead.status,
+        notes: vue.activeLead.notes
+      })
+      vue.clearLeads()
+      vue.populateLeads()
+    }
+  },
   }
-}
 </script>
 
 <style scoped lang='less'>
