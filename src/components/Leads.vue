@@ -54,7 +54,6 @@ export default {
     return {
       user: {
         clientName: '',
-        primaryContact: '',
         phoneNumber: '',
         email: '',
         address: '',

@@ -10,6 +10,8 @@ router.post("/", (req,res) => {
   var newLead = new Lead({
   name: req.body.name,
   phone: req.body.phone,
+  email: req.body.email,
+  address: req.body.address,
   status: req.body.status,
   url: req.body.url,
   comment: req.body.comment
@@ -36,7 +38,18 @@ router.get("/", (req, res) => {
 
 router.get("/:id", (req, res) => {
   var leadid = new mongodb.ObjectID(req.params["id"]);
-  Lead.findOne({"_id": leadid},function (err, leads) {
+  Lead.find({"_id": leadid},function (err, leads) {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(leads);
+    }
+  })
+})
+
+router.get("/name/:name", (req, res) => {
+  var leadName = req.params["name"];
+  Lead.find({"name": leadName},function (err, leads) {
     if (err) {
       res.send(err);
     } else {
@@ -54,6 +67,8 @@ router.put("/:id", (req, res) => {
         var lead = lead[0];
         lead.name = req.body.name || lead.name;
         lead.phone = req.body.phone || lead.phone;
+        lead.email = req.body.email || lead.email;
+        lead.address = req.body.address || lead.address;
         lead.status = req.body.status || lead.status;
         lead.url = req.body.url || lead.url;
         lead.comment = req.body.comment || lead.comment;
