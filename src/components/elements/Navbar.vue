@@ -152,7 +152,8 @@ export default {
     background-image: url("../../assets/logo.svg");
     z-index: 8;
     background-repeat: no-repeat;
-    
+    -webkit-filter: drop-shadow(1px 2px 2px #fff);
+    filter: drop-shadow(1px 2px 2px #fff);
     align-items: center;
   }
   .Login:hover {
