@@ -12,7 +12,7 @@
         <h3 class="callus">Call Us</h3>
         <ul>
           <li>(480)-526-2634</li>
-          <li>(602)-558-1817</li>
+          <li>(602)-558-1817 </li>
         </ul>
         <h3 class="blurb">We understand that your time is important. So we'll do our best to respond as quickly as possible!</h3>
       </div>
@@ -40,11 +40,12 @@
     margin-left: 5px;
     margin-top: 110px;
     width: 99%;
-    height: 600px;
+    height: 740px;
     z-index: 10;
     position: absolute;
     background:rgba(0,0,0,0.6);
-    border-radius: 12px
+    border-radius: 12px;
+    box-shadow: 2px 2px 4px #000;
   }
 
   h2 {
@@ -64,11 +65,14 @@
     text-shadow: 2px 2px 3px black;
     text-align: center;
     line-height: 200px;
+    grid-column-start: 3;
+    grid-column-end: 4;
+    margin-right: 20px;
   }
   ul {
     font-family: @base-font;
     font-weight: lighter;
-    font-size: 2em;
+    font-size: 3em;
     color: #fff;
     text-shadow: 2px 2px 3px black;
     text-align: center;
@@ -76,15 +80,15 @@
     grid-row-end: 5;
     grid-column-start: 4;
     grid-column-end: 6;
-    list-style-position: outside;
-    line-height: 50px;
+    list-style: none;
+    line-height: 80px;
     margin-right: 40px;
   }
   .words {
     grid-row: 1;
     grid-column-start: 1;
     grid-column-end: 3;
-    font-size: 1.4em;
+    font-size: 1.8em;
     line-height: 0px;
     text-decoration: underline;
   }
@@ -94,7 +98,7 @@
     grid-column-start: 4;
     grid-column-end: 6;
     line-height: 0px;
-    font-size: 1.8em;
+    font-size: 2em;
     text-align: center;
     text-decoration: underline;
     margin-right: 40px;
@@ -107,7 +111,6 @@
     line-height: 30px;
   }
   .contactBox {
-
     margin-left: 50px;
     margin-right: 15px;
     display: grid;
