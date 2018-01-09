@@ -152,7 +152,6 @@ export default {
     background-image: url("../../assets/logo.svg");
     z-index: 8;
     background-repeat: no-repeat;
-    
     align-items: center;
   }
   .Login:hover {
