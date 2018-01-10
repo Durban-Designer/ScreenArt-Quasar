@@ -10,8 +10,8 @@
         <p class="clientName"></p>
         <p class="phonenum"></p>
         <p class="email"></p>
+        <p class="leadStatus"></p>
         <p class="address"></p>
-        <div class="leadStatus"></div>
         <p class="notes"></p>
       </div>
       <button class="newLead" v-on:click="newLead">New Lead</button>
@@ -29,8 +29,9 @@
         <option value="jobFinished">job finished</option>
       </select>
       <input type="text" class="notesEdit" v-model="activeLead.notes" placeholder="Notes"></input>
-      <button class="submitNew" v-on:click="submit">Submit</button>
-      <button class="submitEdit" v-on:click="submitEdit">Submit</button>
+      <button class="submit" v-if="postLead" v-on:click="submit">Submit</button>
+      <button class="cancel" v-on:click="cancel">Cancel</button>
+      <button class="submit" v-if="edit" v-on:click="submitEdit">Submit</button>
     </div>
   </div>
 </template>
@@ -59,7 +60,9 @@ export default {
       leadbox: true,
       searchBox: '',
       newlead: false,
-      leaditem: false
+      leaditem: false,
+      postlead: false,
+      leadId: ''
     }
   },
   props: ['logged'],
@@ -108,7 +111,8 @@ export default {
       vue.populateLeads()
     },
     submitEdit () {
-      axios.put('http://13.57.57.81:81/leads', {
+      let vue = this
+      axios.put('http://13.57.57.81:81/leads/' + vue.leadId, {
         clientName: vue.activeLead.clientName.toLowerCase(),
         phoneNumber: vue.activeLead.phoneNumber,
         email: vue.activeLead.email,
@@ -123,13 +127,19 @@ export default {
         .catch(function (error) {
           console.log(error)
         })
-      },
+    },
+    cancel () {
+      let vue = this
+      vue.edit = false
+      vue.leadbox = true
+    },
     newLead () {
       let vue = this
       vue.clearLeads()
       vue.clearActiveLeads()
       vue.edit = true
       vue.leadbox = false
+      vue.postLead = true
     },
     displayLead () {
       let vue = this
@@ -251,8 +261,6 @@ h4 {
   grid-column-start: 1;
   grid-column-end: 2;
   grid-row: 3;
-  margin-top: 10px;
-  margin-right: 10px;
 }
 
 .primaryContactEdit {
@@ -262,9 +270,6 @@ h4 {
 }
 
 .phoneEdit {
-  margin-top: 10px;
-  margin-right: 10px;
-  margin-left: 10px;
   grid-column-start: 2;
   grid-column-end: 3;
   grid-row: 3;
@@ -274,14 +279,12 @@ h4 {
   grid-column-start: 1;
   grid-column-end: 2;
   grid-row: 4;
-  margin-top: 10px;
-  margin-right: 10px;
 }
 
 .addressEdit {
   grid-column-start: 1;
   grid-column-end: 2;
-  grid-row: 7;
+  grid-row: 5;
 }
 
 .leadStatusEdit {
@@ -290,8 +293,9 @@ h4 {
 
 .notesEdit {
   grid-column-start: 1;
-  grid-column-end: 2;
-  grid-row: 9;
+  grid-column-end: 3;
+  grid-row-start: 6;
+  grid-row-end: 8;
 }
 
 .statusEdit {
@@ -301,9 +305,15 @@ h4 {
   grid-row-end: 4;
 }
 
-.submitButton {
+.submit {
   grid-column-start: 1;
   grid-column-end: 2;
+  grid-row: 10;
+}
+
+.cancel {
+  grid-column-start: 2;
+  grid-column-end: 3;
   grid-row: 10;
 }
 </style>
