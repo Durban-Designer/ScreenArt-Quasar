@@ -59,14 +59,11 @@ export default {
 <style scoped lang='less'>
   @base-font:'Pathway Gothic One', sans-serif;
 
-  .main {
-    height: 1000px;
-  }
   .navbar {
     width: 100%;
-    height: 100px;
+    height: 12.5%;
     background:rgba(0,0,0,0.6);
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
@@ -84,12 +81,12 @@ export default {
   }
 
   .slidebox {
-    position: absolute;
+    position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-    overflow: hidden;
+    overflow: auto;
   }
   @keyframes bounce {
 	0%, 100% {

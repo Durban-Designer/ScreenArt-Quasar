@@ -1,6 +1,6 @@
 <template>
-  <div class="workPage">
-    <h1>user page</h1>
+  <div class="main">
+    <h1>USER SCREEN</h1>
     <button class="logOut" v-on:click="$emit('logOut')">Log Out</button>
   </div>
 </template>
@@ -16,9 +16,9 @@ export default {
 </script>
 
 <style scoped lang='less'>
-  @base-font:'Montserrat', sans-serif;
+  @base-font:'Pathway Gothic One', sans-serif;
 
-  .workPage {
+  .main {
     margin-left: 5px;
     margin-top: 110px;
     width: 99%;
