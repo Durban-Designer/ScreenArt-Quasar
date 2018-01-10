@@ -36,9 +36,9 @@ router.get("/", (req, res) => {
   })
 })
 
-router.get("/:id", (req, res) => {
-  var leadid = new mongodb.ObjectID(req.params["id"]);
-  Lead.find({"_id": leadid},function (err, leads) {
+router.get("/name/:name", (req, res) => {
+  var leadName = req.params["name"];
+  Lead.find({"name": leadName},function (err, leads) {
     if (err) {
       res.send(err);
     } else {
@@ -47,9 +47,9 @@ router.get("/:id", (req, res) => {
   })
 })
 
-router.get("/name/:name", (req, res) => {
-  var leadName = req.params["name"];
-  Lead.find({"name": leadName},function (err, leads) {
+router.get("/:id", (req, res) => {
+  var leadid = new mongodb.ObjectID(req.params["id"]);
+  Lead.find({"_id": leadid},function (err, leads) {
     if (err) {
       res.send(err);
     } else {

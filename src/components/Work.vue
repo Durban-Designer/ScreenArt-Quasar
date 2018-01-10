@@ -1,6 +1,6 @@
 <template>
   <div class="workPage">
-    <h1>Currently Under Construction</h1>
+    <h1>CURRENTLY UNDER CONSTRUCTION</h1>
   </div>
 </template>
 
@@ -14,17 +14,18 @@ export default {
 </script>
 
 <style scoped lang='less'>
-  @base-font:'Montserrat', sans-serif;
+@base-font:'Pathway Gothic One', sans-serif;
 
   .workPage {
     margin-left: 5px;
     margin-top: 110px;
     width: 99%;
-    height: 500px;
+    height: 740px;
     z-index: 10;
     position: absolute;
     background:rgba(0,0,0,0.6);
-    border-radius: 12px
+    border-radius: 12px;
+    box-shadow: 2px 2px 4px #000;
   }
 
   h1 {

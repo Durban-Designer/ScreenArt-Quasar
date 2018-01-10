@@ -1,12 +1,12 @@
 <template>
   <div>
     <div class="navbar">
-      <button class="Work" v-on:click="$router.push('/work')">Work</button>
-      <button class="Contact" v-on:click="$router.push('/contact')">Contact</button>
+      <button class="Work" v-on:click="$router.push('/work')">WORK</button>
+      <button class="Contact" v-on:click="$router.push('/contact')">CONTACT</button>
       <div class="sa" v-on:click="$router.push('/')"></div>
-      <button class="Team" v-on:click="$router.push('/team')">Team</button>
-      <button class="Login" v-on:click="$router.push('/login')">Login</button>
-      <div class="leads" v-on:click="$router.push('/leads')" v-if="loggedIn">Leads</div>
+      <button class="Team" v-on:click="$router.push('/team')">TEAM</button>
+      <button class="Login" v-on:click="$router.push('/login')" v-if="!loggedIn">LOGIN</button>
+      <button class="Login" v-on:click="$router.push('/user')" v-if="loggedIn">CRM ACCESS</button>
     </div>
     <div class="slidebox">
       <transition name="slide"><img class="slide1" v-if="show === 0" src="../../assets/Seasons.jpg"></transition>
@@ -57,7 +57,7 @@ export default {
 </script>
 
 <style scoped lang='less'>
-  @base-font:'Montserrat', sans-serif;
+  @base-font:'Pathway Gothic One', sans-serif;
 
   .main {
     height: 1000px;
@@ -80,6 +80,7 @@ export default {
     grid-template-rows: 100px;
     border-bottom-left-radius: 12px;
     border-bottom-right-radius: 12px;
+    box-shadow: 2px 2px 4px #000;
   }
 
   .slidebox {
@@ -90,30 +91,44 @@ export default {
     right: 0;
     overflow: hidden;
   }
+  @keyframes bounce {
+	0%, 100% {
+		-webkit-transform: translateY(0);
+		-ms-transform:     translateY(0);
+		transform:         translateY(0)
+	}
+	100% {
+		-webkit-transform: translateY(-10px);
+		-ms-transform:     translateY(-10px);
+		transform:         translateY(-10px)
+	}
 
-  .Work:hover {
-    transform:scale(1.3,1.3);
-    -webkit-transform:scale(1.3,1.3);
-    -moz-transform:scale(1.3,1.3);
-  }
-
+}
+button {
+  letter-spacing: 1.3px;
+  -webkit-animation-duration: .25s;
+  animation-duration: .25s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+  -webkit-animation-iteration-count: 1;
+}
+button:hover {
+  animation-name: bounce;
+  -moz-animation-name: bounce;
+}
   .Work {
     background-color: transparent;
     border: none;
     color: #fff;
     font-family: @base-font;
-    font-size: 1.4em;
+    font-size: 2em;
     width: 25%;
     text-shadow: 2px 2px 3px black;
     grid-column: 1;
     width: 100%;
-
-  }
-
-  .Contact:hover {
-    transform:scale(1.3,1.3);
-    -webkit-transform:scale(1.3,1.3);
-    -moz-transform:scale(1.3,1.3);
   }
 
   .Contact {
@@ -121,17 +136,11 @@ export default {
     border: none;
     color: #fff;
     font-family: @base-font;
-    font-size: 1.4em;
+    font-size: 2em;
     width: 25%;
     text-shadow: 2px 2px 3px black;
     grid-column: 2;
     width: 100%;
-  }
-
-  .Team:hover {
-    transform:scale(1.3,1.3);
-    -webkit-transform:scale(1.3,1.3);
-    -moz-transform:scale(1.3,1.3);
   }
 
   .Team {
@@ -139,7 +148,7 @@ export default {
     border: none;
     color: #fff;
     font-family: @base-font;
-    font-size: 1.4em;
+    font-size: 2em;
     width: 25%;
     text-shadow: 2px 2px 3px black;
     width: 100%;
@@ -152,21 +161,17 @@ export default {
     background-image: url("../../assets/logo.svg");
     z-index: 8;
     background-repeat: no-repeat;
-    -webkit-filter: drop-shadow(1px 2px 2px #fff);
-    filter: drop-shadow(1px 2px 2px #fff);
+    -webkit-filter: drop-shadow(1px 2px 2px #000);
+    filter: drop-shadow(1px 2px 2px #000);
     align-items: center;
   }
-  .Login:hover {
-    transform:scale(1.3,1.3);
-    -webkit-transform:scale(1.3,1.3);
-    -moz-transform:scale(1.3,1.3);
-  }
+
   .Login {
     background-color: transparent;
     border: none;
     color: #fff;
     font-family: @base-font;
-    font-size: 1.4em;
+    font-size: 2em;
     width: 25%;
     text-shadow: 2px 2px 3px black;
     width: 100%;

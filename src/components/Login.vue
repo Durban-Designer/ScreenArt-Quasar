@@ -1,6 +1,9 @@
 <template>
   <div class="workPage">
-    <h1>Currently Under Construction</h1>
+    <h1>Login</h1>
+    <input class="email" placeholder="Email" v-model="email"></input>
+    <input class="password" placeholder="Password" v-model="password"></input>
+    <button class="login" v-on:click="login">Log In</button>
   </div>
 </template>
 
@@ -9,6 +12,14 @@ import axios from 'axios'
 export default {
   name: 'login',
   data: function () {
+    return {
+      email: '',
+      password: '',
+      user: {
+        token: '',
+        id: ''
+      }
+    }
   },
   computed: {
     wrongInput: function () {
@@ -19,16 +30,17 @@ export default {
     }
   },
   methods: {
-    submit () {
-      axios.post('http://13.57.57.81:81/leads', {
-        email: this.user.email.toLowerCase(),
-        password: this.user.password
+    login () {
+      let vue = this
+      axios.post('http://13.57.57.81:81/users/login', {
+        email: vue.email.toLowerCase(),
+        password: vue.password
       })
         .then(response => {
           if (response.status !== 401) {
-            this.user.token = response.data.token
-            this.user.id = response.data.userId
-            this.$emit('login', this.user)
+            vue.user.token = response.data.token
+            vue.user.id = response.data.userId
+            vue.$emit('login', vue.user)
           }
         })
         .catch(response => {
@@ -41,7 +53,7 @@ export default {
 </script>
 
 <style scoped lang='less'>
-  @base-font:'Montserrat', sans-serif;
+  @base-font:'Pathway Gothic One', sans-serif;
 
 .workPage {
   margin-left: 5px;
