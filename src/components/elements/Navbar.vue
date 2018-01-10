@@ -9,12 +9,12 @@
       <button class="Login" v-on:click="$router.push('/user')" v-if="loggedIn">CRM ACCESS</button>
     </div>
     <div class="slidebox">
-      <transition name="slide"><img class="slide1" v-if="show === 0" src="../../assets/Seasons.webp"></transition>
-      <transition name="slide"><img class="slide2" v-if="show === 1" src="../../assets/birds.webp"></transition>
-      <transition name="slide"><img class="slide3" v-if="show === 2" src="../../assets/angles.webp"></transition>
-      <transition name="slide"><img class="slide4" v-if="show === 3" src="../../assets/grate.webp"></transition>
-      <transition name="slide"><img class="slide5" v-if="show === 4" src="../../assets/humans.webp"></transition>
-      <transition name="slide"><img class="slide6" v-if="show === 5" src="../../assets/window.webp"></transition>
+      <transition name="slide"><img class="slide1" v-if="show === 0" src="../../assets/Seasons.jpg"></transition>
+      <transition name="slide"><img class="slide2" v-if="show === 1" src="../../assets/birds.jpg"></transition>
+      <transition name="slide"><img class="slide3" v-if="show === 2" src="../../assets/angles.jpg"></transition>
+      <transition name="slide"><img class="slide4" v-if="show === 3" src="../../assets/grate.jpg"></transition>
+      <transition name="slide"><img class="slide5" v-if="show === 4" src="../../assets/humans.jpg"></transition>
+      <transition name="slide"><img class="slide6" v-if="show === 5" src="../../assets/window.jpg"></transition>
     </div>
   </div>
 </template>
