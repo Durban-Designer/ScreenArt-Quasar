@@ -1,11 +1,11 @@
 <template>
   <div class="main">
-    <div class="leadBox" v-if="leadBox">
+    <div class="leadbox" v-if="leadbox">
       <input type="text" class="search" placeholder="SearchLeads" v-model="searchBox"></input>
       <button type="submit" class="searchButton"v-on:click="search">Search</button>
       <h4>Leads</h4>
-      <div class="lead"></div>
-      <div class="leadItem">
+      <div class="lead" v-on:click="displayLead"></div>
+      <div class="leadItem" v-if="leaditem">
         <button class="editButton" v-on:click="edit = true; lead = false;">Edit</button>
         <p class="clientName"></p>
         <p class="phonenum"></p>
@@ -29,7 +29,8 @@
         <option value="jobFinished">job finished</option>
       </select>
       <input type="text" class="notesEdit" v-model="activeLead.notes" placeholder="Notes"></input>
-      <button class="confirmButton" v-on:click="submit; edit = false; lead = true">Confirm Changes</button>
+      <button class="submitNew" v-on:click="submit">Submit</button>
+      <button class="submitEdit" v-on:click="submitEdit">Submit</button>
     </div>
   </div>
 </template>
@@ -55,8 +56,10 @@ export default {
       error: '',
       tabSelected: 0,
       edit: false,
-      leadBox: true,
-      searchBox: ''
+      leadbox: true,
+      searchBox: '',
+      newlead: false,
+      leaditem: false
     }
   },
   props: ['logged'],
@@ -76,9 +79,17 @@ export default {
     clearLeads () {
       this.leads = [{}]
     },
+    clearActiveLeads () {
+      this.activeLead.clientName = ''
+      this.activeLead.phoneNumber = ''
+      this.activeLead.email = ''
+      this.activeLead.address = ''
+      this.activeLead.status = ''
+      this.activeLead.notes = ''
+    },
     submit () {
       let vue = this
-      axios.put('http://13.57.57.81:81/leads' + vue.userId, {
+      axios.post('http://13.57.57.81:81/leads', {
         clientName: vue.activeLead.clientName.toLowerCase(),
         phoneNumber: vue.activeLead.phoneNumber,
         email: vue.activeLead.email,
@@ -88,6 +99,7 @@ export default {
       }, {headers: { 'Authorization': 'JWT ' + vue.token }})
         .then(function () {
           vue.edit = false
+          vue.leadbox = true
         })
         .catch(function (error) {
           console.log(error)
@@ -95,18 +107,33 @@ export default {
       vue.clearLeads()
       vue.populateLeads()
     },
-    newLead () {
-      let vue = this
-      axios.post('http://13.57.57.81:81/leads', {
+    submitEdit () {
+      axios.put('http://13.57.57.81:81/leads', {
         clientName: vue.activeLead.clientName.toLowerCase(),
         phoneNumber: vue.activeLead.phoneNumber,
         email: vue.activeLead.email,
         address: vue.activeLead.address,
         status: vue.activeLead.status,
         notes: vue.activeLead.notes
-      })
+      }, {headers: { 'Authorization': 'JWT ' + vue.token }})
+        .then(function () {
+          vue.edit = false
+          vue.leadbox = true
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
+      },
+    newLead () {
+      let vue = this
       vue.clearLeads()
-      vue.populateLeads()
+      vue.clearActiveLeads()
+      vue.edit = true
+      vue.leadbox = false
+    },
+    displayLead () {
+      let vue = this
+      vue.leadItem = true
     },
     search () {
       let vue = this
@@ -158,6 +185,10 @@ h4 {
   grid-column-end: 3;
   grid-row-start: 2;
   grid-row-end: 3;
+}
+
+.leadItem {
+
 }
 
 .clientName {
@@ -270,7 +301,7 @@ h4 {
   grid-row-end: 4;
 }
 
-.confirmButton {
+.submitButton {
   grid-column-start: 1;
   grid-column-end: 2;
   grid-row: 10;
