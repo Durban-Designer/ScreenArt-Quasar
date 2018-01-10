@@ -4,7 +4,7 @@
       <input type="text" class="search" placeholder="SearchLeads" v-model="searchBox"></input>
       <button type="submit" class="searchButton"v-on:click="search">Search</button>
       <h4>Leads</h4>
-      <div class="lead" v-on:click="displayLead"></div>
+      <div class="lead" v-for="lead in leads" v-on:click="displayLead"></div>
       <div class="leadItem" v-if="leaditem">
         <button class="editButton" v-on:click="edit = true; lead = false;">Edit</button>
         <p class="name"></p>
