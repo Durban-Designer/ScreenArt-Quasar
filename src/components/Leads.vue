@@ -7,19 +7,19 @@
       <div class="lead" v-on:click="displayLead"></div>
       <div class="leadItem" v-if="leaditem">
         <button class="editButton" v-on:click="edit = true; lead = false;">Edit</button>
-        <p class="clientName"></p>
-        <p class="phonenum"></p>
+        <p class="name"></p>
+        <p class="phone"></p>
         <p class="email"></p>
-        <p class="leadStatus"></p>
+        <p class="status"></p>
         <p class="address"></p>
-        <p class="notes"></p>
+        <p class="comment"></p>
       </div>
       <button class="newLead" v-on:click="newLead">New Lead</button>
     </div>
     <div class="edit" v-if="edit">
       <h4 class="entertitle">Lead Info</h4>
-      <input type="text" class="clientNameEdit" v-model="activeLead.clientName" placeholder="Client Name" required></input>
-      <input type="tel" class="phoneEdit" v-model="activeLead.phoneNumber" placeholder="Phone Number" required></input><br/>
+      <input type="text" class="clientNameEdit" v-model="activeLead.name" placeholder="Client Name" required></input>
+      <input type="tel" class="phoneEdit" v-model="activeLead.phone" placeholder="Phone Number" required></input><br/>
       <input type="text" class="emailEdit" v-model="activeLead.email" placeholder="Email Address" required></input>
       <input type="text" class="addressEdit" v-model="activeLead.address" placeholder="Address"required></input>
       <select class="statusEdit">
@@ -28,7 +28,7 @@
         <option value="jobInProgress">job in-progress</option>
         <option value="jobFinished">job finished</option>
       </select>
-      <input type="text" class="notesEdit" v-model="activeLead.notes" placeholder="Notes"></input>
+      <input type="text" class="notesEdit" v-model="activeLead.comment" placeholder="Notes"></input>
       <button class="submit" v-if="postLead" v-on:click="submit">Submit</button>
       <button class="cancel" v-on:click="cancel">Cancel</button>
       <button class="submit" v-if="edit" v-on:click="submitEdit">Submit</button>
@@ -46,12 +46,13 @@ export default {
   data: function () {
     return {
       activeLead: {
-        clientName: '',
-        phoneNumber: '',
+        name: '',
+        phone: '',
         email: '',
+        url: '',
         address: '',
         status: '',
-        notes: ''
+        comment: ''
       },
       leads: [{}],
       error: '',
@@ -62,7 +63,7 @@ export default {
       newlead: false,
       leaditem: false,
       postlead: false,
-      leadId: ''
+      leadId: '5a53df40871aaf31174aa3e4'
     }
   },
   props: ['logged'],
