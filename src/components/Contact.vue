@@ -2,11 +2,11 @@
   <div class="main">
       <h2>CONTACT US</h2>
       <div class="contactBox">
-        <input class="name" v-model="name" placeholder="name"></input>
-        <input class="email" v-model="email" placeholder="email"></input>
-        <input class="phone" v-model="phone" placeholder="phone"></input>
-        <input class="message" v-model="message" placeholder="message"></input>
-        <div v-on:click="send" class="send">Send</div>
+        <input class="name" v-model="name" placeholder="NAME"></input>
+        <input class="email" v-model="email" placeholder="EMAIL"></input>
+        <input class="phone" v-model="phone" placeholder="PHONE"></input>
+        <input class="message" v-model="message" placeholder="MESSAGE"></input>
+        <div v-on:click="send" class="send">SEND</div>
         <h2 class="words">SEND US A MESSAGE</h2>
         <h3>OR</h3>
         <h3 class="callus">CALL US</h3>
@@ -119,7 +119,7 @@
     margin-right: 15px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 45px 25px 25px 25px 150px 25px;
+    grid-template-rows: 70px 30px 30px 30px 150px 25px;
   }
 
   .name {
@@ -127,7 +127,7 @@
   grid-column-end: 3;
   grid-row: 2;
   margin-bottom: 5px;
-
+  font-size: 1.3em;
 }
 
 .email {
@@ -136,6 +136,7 @@
   grid-row: 3;
   box-sizing: border-box;
   margin-bottom: 5px;
+  font-size: 1.3em;
 }
 
 .phone {
@@ -143,6 +144,7 @@
   grid-column-end: 3;
   grid-row: 4;
   margin-bottom: 5px;
+  font-size: 1.3em;
 }
 
 .message {
@@ -151,6 +153,7 @@
   grid-row-start: 5;
   grid-row-end: 6;
   box-sizing: border-box;
+  font-size: 1.3em;
 
 }
 
@@ -164,7 +167,8 @@
   height: 30px;
   color: #fff;
   border: solid 1px #fff;
-  font-family: 'Lato', sans-serif;
+  font-family: @base-font;
+  font-size: 1.5em;
   line-height: 30px;
 }
 .send:hover {
@@ -252,15 +256,12 @@ input:hover:focus::-ms-placeholder, textarea:hover::focus:-ms-placeholder {
 }
 
 input {
-  font-size: 1em;
-
+  font-size: 1.5em;
+  font-family: @base-font;
   background: transparent;
   outline: none;
   color: #fff;
-
   border: solid 1px #fff;
-
-
   transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
@@ -281,7 +282,7 @@ textarea {
   background: transparent;
   outline: none;
   color: #726659;
-  font-family: 'Lato', sans-serif;
+  font-family: @base-font;
   font-size: 0.875em;
   border: solid 1px #999;
   transition: all 0.3s ease-in-out;
