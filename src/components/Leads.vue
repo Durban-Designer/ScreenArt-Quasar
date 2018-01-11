@@ -35,7 +35,7 @@
         <option value="jobFinished">job finished</option>
       </select>
       <input type="text" class="notesEdit" v-model="activeLead.comment" placeholder="Notes"></input>
-      <button class="cancel" v-on:click="cancel">Cancel</button>
+      <button class="cancel" v-on:click="cancelEdit">Cancel</button>
       <button class="submitEdit" v-on:click="submitEdit">Submit</button>
     </div>
     <div class="newLead" v-if="newLead">
@@ -174,11 +174,15 @@ export default {
     },
     cancel () {
       let vue = this
-      vue.edit = false
-      vue.leadItem = true
       vue.newLead = false
+      vue.leadbox = true
       vue.clearLeads()
       this.populateLeads()
+    },
+    cancelEdit () {
+      let vue = this
+      vue.edit = false
+      vue.leaditem = true
     },
     newLeadButton () {
       let vue = this
@@ -269,36 +273,36 @@ h4 {
 
 }
 
-.clientName {
-
-}
-
-.primaryContact {
-
+.name {
+  color: #fff;
 }
 
 .title {
 
 }
 
-.phonenum {
-
+.phone {
+  color: #fff;
 }
 
 .email {
-
+  color: #fff;
 }
 
 .address {
-
+  color: #fff;
 }
 
-.leadStatus {
-
+.status {
+  color: #fff;
 }
 
-.notes {
+.comment {
+  color: #fff;
+}
 
+.url {
+  color: #fff;
 }
 
 .newLead {
