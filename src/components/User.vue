@@ -2,7 +2,7 @@
   <div class="main">
     <h1>user page</h1>
     <button class="leads" v-on:click="$router.push('/leads')">Leads</button><br/>
-    <button class="admin" v-on:click="$router.push('/admin')">Admin</button>
+    <button class="admin" v-on:click="$router.push('/admin')">Admin</button><br/>
     <button class="logOut" v-on:click="$emit('logOut')">Log Out</button>
   </div>
 </template>

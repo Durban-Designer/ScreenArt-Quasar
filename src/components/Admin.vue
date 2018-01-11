@@ -2,7 +2,7 @@
   <div class="main">
     <button>Add New User</button>
     <button>User Manifest</button>
-    <button>Settings</button>\
+    <button>Settings</button>
     <button class="back" v-on:click="$router.push('/user')">Back</button>
   </div>
 </template>
