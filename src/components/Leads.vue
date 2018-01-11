@@ -203,6 +203,7 @@ export default {
 </script>
 
 <style scoped lang='less'>
+@base-font:'Pathway Gothic One', sans-serif;
 .main {
   margin-left: 5px;
   margin-top: 110px;
@@ -221,7 +222,7 @@ export default {
 }
 
 .back {
-  
+
 }
 
 .search {
@@ -234,6 +235,11 @@ export default {
   grid-column-start: 2;
   grid-column-end: 3;
   grid-row: 3;
+}
+
+button {
+  color: #000;
+  background-color: #fff;
 }
 
 h4 {
@@ -374,5 +380,126 @@ h4 {
   grid-column-start: 2;
   grid-column-end: 3;
   grid-row: 10;
+}
+
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+  color: #fff;
+  font-size: 0.875em;
+}
+
+input:focus::-webkit-input-placeholder, textarea:focus::-webkit-input-placeholder {
+  color: #fff;
+}
+
+input::-moz-placeholder, textarea::-moz-placeholder {
+  color: #fff;
+  font-size: 0.875em;
+}
+
+input:focus::-moz-placeholder, textarea:focus::-moz-placeholder {
+  color: #fff;
+}
+
+input::placeholder, textarea::placeholder {
+  color: #fff;
+  font-size: 0.875em;
+}
+
+input:focus::placeholder, textarea::focus:placeholder {
+  color: #fff;
+}
+
+input::-ms-placeholder, textarea::-ms-placeholder {
+  color: #fff;
+  font-size: 0.875em;
+}
+
+input:focus::-ms-placeholder, textarea:focus::-ms-placeholder {
+  color: #fff;
+}
+
+/* on hover placeholder */
+
+input:hover::-webkit-input-placeholder, textarea:hover::-webkit-input-placeholder {
+  color: #fff;
+  font-size: 0.875em;
+}
+
+input:hover:focus::-webkit-input-placeholder, textarea:hover:focus::-webkit-input-placeholder {
+  color: #fff;
+}
+
+input:hover::-moz-placeholder, textarea:hover::-moz-placeholder {
+  color: #fff;
+  font-size: 0.875em;
+}
+
+input:hover:focus::-moz-placeholder, textarea:hover:focus::-moz-placeholder {
+  color: #cbc6c1;
+}
+
+input:hover::placeholder, textarea:hover::placeholder {
+  color: #fff;
+  font-size: 0.875em;
+}
+
+input:hover:focus::placeholder, textarea:hover:focus::placeholder {
+  color: #fff;
+}
+
+input:hover::placeholder, textarea:hover::placeholder {
+  color: #fff;
+  font-size: 0.875em;
+}
+
+input:hover:focus::-ms-placeholder, textarea:hover::focus:-ms-placeholder {
+  color: #fff;
+}
+
+#form {
+  position: relative;
+  width: 500px;
+  margin: 50px auto 100px auto;
+}
+
+input {
+  font-size: 1.5em;
+  font-family: @base-font;
+  background: transparent;
+  outline: none;
+  color: #fff;
+  border: solid 1px #fff;
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+}
+
+input:hover {
+  background: #fff;
+  color: #5d5d5d;
+}
+
+textarea {
+  width: 470px;
+  max-width: 470px;
+  height: 110px;
+  max-height: 110px;
+  padding: 15px;
+  background: transparent;
+  outline: none;
+  color: #726659;
+  font-family: @base-font;
+  font-size: 0.875em;
+  border: solid 1px #999;
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+}
+
+textarea:hover {
+  background: #999;
+  color: #fff;
 }
 </style>
