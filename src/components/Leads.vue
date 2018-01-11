@@ -163,13 +163,14 @@ export default {
 <style scoped lang='less'>
 .main {
   margin-left: 5px;
-  margin-top: 110px;
+  margin-top: 10%;
   width: 99%;
-  height: 500px;
+  height: 73.5%;
   z-index: 10;
-  position: absolute;
+  position: fixed;
   background:rgba(0,0,0,0.6);
   border-radius: 12px;
+  box-shadow: 2px 2px 4px #000;
 }
 
 .leadBox {

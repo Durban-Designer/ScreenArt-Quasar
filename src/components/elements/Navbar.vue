@@ -11,7 +11,7 @@
     <div class="slidebox">
       <transition name="slide"><img class="slide1" v-if="show === 0" src="../../assets/Seasons.jpg"></transition>
       <transition name="slide"><img class="slide2" v-if="show === 1" src="../../assets/birds.jpg"></transition>
-      <transition name="slide"><img class="slide3" v-if="show === 2" src="../../assets/angles.jpg"></transition>
+      <transition name="slide"><img class="slide3" v-if="show === 2" src="../../assets/mountains.jpg"></transition>
       <transition name="slide"><img class="slide4" v-if="show === 3" src="../../assets/grate.jpg"></transition>
       <transition name="slide"><img class="slide5" v-if="show === 4" src="../../assets/humans.jpg"></transition>
       <transition name="slide"><img class="slide6" v-if="show === 5" src="../../assets/window.jpg"></transition>
@@ -86,7 +86,6 @@ export default {
     bottom: 0;
     left: 0;
     right: 0;
-    overflow: auto;
   }
   @keyframes bounce {
 	0%, 100% {
@@ -162,7 +161,6 @@ button:hover {
     filter: drop-shadow(1px 2px 2px #000);
     align-items: center;
   }
-
   .Login {
     background-color: transparent;
     border: none;

@@ -26,7 +26,8 @@ export default {
   height: 600px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(4, 6em);
+  grid-template-rows: repeat(6, 6em);
+  position: fixed;
 }
 h1 {
   margin-right: 20px;
@@ -67,25 +68,26 @@ h3 {
 
 }
 .boxr {
-  height: 85px;
+  height: 67px;
   grid-column-start: 3;
   grid-column-end: 5;
   grid-row-start: 2;
   grid-row-end: 3;
   background-color: #c22227;
   z-index: 10;
-  margin-top: 20px;
+  margin-top: 41px;
   box-shadow: 2px 4px 3px black;
 }
 .boxg {
   grid-column-start: 4;
   grid-column-end: 5;
-  grid-row: 2;
+  grid-row-start: 3;
+  grid-row-end: 8;
   width: 280px;
-  height: 603px;
+  height: 800px;
   background:rgba(0,0,0,0.6);
   z-index: 9;
-  margin-top: 20px;
   margin-left: 200px;
+
 }
 </style>

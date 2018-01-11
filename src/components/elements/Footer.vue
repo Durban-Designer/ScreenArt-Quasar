@@ -5,6 +5,7 @@
 
 <script>
 export default {
+  name: 'Footer',
   data () {
     return {}
   }
@@ -17,8 +18,9 @@ export default {
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: red;
+    height: 200px;
     color: white;
     text-align: center;
+    background:rgba(0,0,0,0.6);
 }
 </style>
