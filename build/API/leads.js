@@ -112,9 +112,10 @@ router.put("/:id", passport.authenticate('jwt', { session: false }),(req, res) =
 });
 })
 
-router.delete("/", passport.authenticate('jwt', { session: false }),(req, res) => {
-  var leadid = req.body._id;
+router.delete("/:id", passport.authenticate('jwt', { session: false }),(req, res) => {
+  var leadid = new mongodb.ObjectID(req.params["id"]);
   Lead.find({_id: leadid}).remove().then(() => {
+    console.log("success");
     res.send("success");
   })
 })

@@ -61,11 +61,16 @@
 import axios from 'axios'
 export default {
   name: 'leads',
-  props: ['user', 'logged'],
+  props: ['user', 'loggedIn'],
   created () {
     let vue = this
-    vue.clearLeads()
-    this.populateLeads()
+    if (vue.loggedIn === true) {
+      vue.clearLeads()
+      this.populateLeads()
+    }
+    else {
+      vue.$router.push('/login')
+    }
   },
   data: function () {
     return {
@@ -144,6 +149,7 @@ export default {
           vue.edit = false
           vue.leadbox = true
           vue.newLead = false
+          vue.clearActiveLeads()
         })
         .catch(function (error) {
           console.log(error)
@@ -166,6 +172,23 @@ export default {
           vue.edit = false
           vue.leadbox = true
           vue.clearLeads()
+          vue.clearActiveLeads()
+          vue.populateLeads()
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
+    },
+    deleteLead () {
+      let vue = this
+      axios.delete('http://13.57.57.81:81/leads/' + vue.activeLead.id, {headers: { 'Authorization': 'JWT ' + vue.user.token }})
+        .then(function (callback) {
+          console.log(callback)
+          vue.edit = false
+          vue.leadbox = true
+          vue.leaditem = false
+          vue.clearLeads()
+          vue.clearActiveLeads()
           vue.populateLeads()
         })
         .catch(function (error) {
