@@ -19,7 +19,7 @@
       <p class="comment">{{activeLead.comment}}</p>
       <p class="url">{{activeLead.url}}</p>
       <button class="editButton" v-on:click="edit = true; lead = false; leaditem = false;">Edit</button>
-      <button class="" v-on:click="">Delete</button>
+      <button class="delete" v-on:click="deleteLead">Delete</button>
       <button class="back" v-on:click="leaditem = false; leadbox = true">Back</button>
     </div>
     <div class="edit" v-if="edit">
@@ -75,7 +75,8 @@ export default {
         url: '',
         address: '',
         status: '',
-        comment: ''
+        comment: '',
+        id: '5a53df40871aaf31174aa3e4'
       },
       leads: [{}],
       error: '',
@@ -87,7 +88,6 @@ export default {
       newleadButton: false,
       leaditem: false,
       postlead: false,
-      leadId: '5a53df40871aaf31174aa3e4'
     }
   },
   props: ['logged'],
@@ -173,7 +173,7 @@ export default {
     cancel () {
       let vue = this
       vue.edit = false
-      vue.leadbox = true
+      vue.leadItem = true
       vue.newLead = false
       vue.clearLeads()
       this.populateLeads()
