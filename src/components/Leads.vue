@@ -28,7 +28,7 @@
       <input type="tel" class="phoneEdit" v-model="activeLead.phone" placeholder="Phone Number" required></input><br/>
       <input type="text" class="emailEdit" v-model="activeLead.email" placeholder="Email Address" required></input>
       <input type="text" class="addressEdit" v-model="activeLead.address" placeholder="Address"required></input>
-      <select class="statusEdit">
+      <select class="statusEdit" v-model="activeLead.status">
         <option value="notContacted">not contacted</option>
         <option value="contacted">contacted</option>
         <option value="jobInProgress">job in-progress</option>
@@ -44,7 +44,7 @@
       <input type="tel" class="phoneNew" v-model="activeLead.phone" placeholder="Phone Number" required></input><br/>
       <input type="text" class="emailNew" v-model="activeLead.email" placeholder="Email Address" required></input>
       <input type="text" class="addressNew" v-model="activeLead.address" placeholder="Address"required></input>
-      <select class="statusNew">
+      <select class="statusNew" v-model="activeLead.status">
         <option value="notContacted">not contacted</option>
         <option value="contacted">contacted</option>
         <option value="jobInProgress">job in-progress</option>
@@ -76,7 +76,8 @@ export default {
         url: '',
         address: '',
         status: '',
-        comment: ''
+        comment: '',
+        id: ''
       },
       leads: [{}],
       error: '',
@@ -87,8 +88,7 @@ export default {
       searchBox: '',
       newleadButton: false,
       leaditem: false,
-      postlead: false,
-      leadId: '5a53df40871aaf31174aa3e4'
+      postlead: false
     }
   },
   computed: {
@@ -115,10 +115,12 @@ export default {
       this.activeLead.status = ''
       this.activeLead.comment = ''
       this.activeLead.url = ''
+      this.activeLead.id = ''
     },
     leadItemDisplay (lead) {
       let vue = this
       vue.leaditem = true
+      vue.activeLead.id = lead._id
       vue.activeLead.name = lead.name
       vue.activeLead.phone = lead.phone
       vue.activeLead.email = lead.email
@@ -151,7 +153,7 @@ export default {
     },
     submitEdit () {
       let vue = this
-      axios.put('http://13.57.57.81:81/leads/' + vue.leadId, {
+      axios.put('http://13.57.57.81:81/leads/' + vue.activeLead.id, {
         name: vue.activeLead.name.toLowerCase(),
         phone: vue.activeLead.phone,
         email: vue.activeLead.email,
