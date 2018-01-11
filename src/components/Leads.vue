@@ -149,6 +149,7 @@ export default {
           vue.edit = false
           vue.leadbox = true
           vue.newLead = false
+          vue.clearActiveLeads()
         })
         .catch(function (error) {
           console.log(error)
@@ -171,6 +172,7 @@ export default {
           vue.edit = false
           vue.leadbox = true
           vue.clearLeads()
+          vue.clearActiveLeads()
           vue.populateLeads()
         })
         .catch(function (error) {
@@ -179,13 +181,14 @@ export default {
     },
     deleteLead () {
       let vue = this
-      axios.delete('http://13.57.57.81:81/leads', {headers: { 'Authorization': 'JWT ' + vue.user.token }}, {
-        _id: vue.activeLead.id
-      })
-        .then(function () {
+      axios.delete('http://13.57.57.81:81/leads/' + vue.activeLead.id, {headers: { 'Authorization': 'JWT ' + vue.user.token }})
+        .then(function (callback) {
+          console.log(callback)
           vue.edit = false
           vue.leadbox = true
+          vue.leaditem = false
           vue.clearLeads()
+          vue.clearActiveLeads()
           vue.populateLeads()
         })
         .catch(function (error) {
