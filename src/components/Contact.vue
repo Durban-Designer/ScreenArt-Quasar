@@ -90,7 +90,7 @@
     line-height: 80px;
     margin-right: 40px;
   }
-  
+
   .words {
     grid-row: 1;
     grid-column-start: 1;
@@ -110,6 +110,7 @@
     text-decoration: underline;
     margin-right: 40px;
   }
+  
   .blurb {
     grid-row-start: 6;
     grid-row-end: 6;
@@ -117,6 +118,7 @@
     grid-column-end: 6;
     line-height: 50px;
   }
+
   .contactBox {
     margin-left: 50px;
     margin-right: 15px;
@@ -157,7 +159,6 @@
   grid-row-end: 6;
   box-sizing: border-box;
   font-size: 1.3em;
-
 }
 
 .send {

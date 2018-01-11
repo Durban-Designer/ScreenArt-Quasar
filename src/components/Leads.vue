@@ -11,7 +11,6 @@
       <button class="back" v-on:click="$router.push('/user')">Back</button>
     </div>
     <div class="leadItem" v-if="leaditem">
-      <button class="editButton" v-on:click="edit = true; lead = false; leaditem = false;">Edit</button>
       <p class="name">{{activeLead.name}}</p>
       <p class="phone">{{activeLead.phone}}</p>
       <p class="email">{{activeLead.email}}</p>
@@ -19,7 +18,9 @@
       <p class="address">{{activeLead.address}}</p>
       <p class="comment">{{activeLead.comment}}</p>
       <p class="url">{{activeLead.url}}</p>
-      <button class="back" v-on:click="$router.push('/user')">Back</button>
+      <button class="editButton" v-on:click="edit = true; lead = false; leaditem = false;">Edit</button>
+      <button class="" v-on:click="">Delete</button>
+      <button class="back" v-on:click="leaditem = false; leadbox = true">Back</button>
     </div>
     <div class="edit" v-if="edit">
       <h4 class="entertitle">Lead Info</h4>
@@ -36,7 +37,6 @@
       <input type="text" class="notesEdit" v-model="activeLead.comment" placeholder="Notes"></input>
       <button class="cancel" v-on:click="cancel">Cancel</button>
       <button class="submitEdit" v-on:click="submitEdit">Submit</button>
-      <button class="back" v-on:click="$router.push('/user')">Back</button>
     </div>
     <div class="newLead" v-if="newLead">
       <h4 class="entertitle">Lead Info</h4>
@@ -174,6 +174,7 @@ export default {
       let vue = this
       vue.edit = false
       vue.leadbox = true
+      vue.newLead = false
       vue.clearLeads()
       this.populateLeads()
     },
@@ -249,10 +250,14 @@ h4 {
   grid-column-end: 3;
   grid-row-start: 2;
   grid-row-end: 3;
+  font-size: 2em;
+  line-height: 0px;
+  text-decoration: underline;
+  color: #fff;
 }
 
 .lead {
-
+  color: #fff;
 }
 
 .leadlist {
