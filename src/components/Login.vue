@@ -59,19 +59,20 @@ export default {
 
 .main {
   margin-left: 5px;
-  margin-top: 110px;
+  margin-top: 10%;
   width: 99%;
-  height: 500px;
+  height: 73.5%;
   z-index: 10;
-  position: absolute;
+  position: fixed;
   background:rgba(0,0,0,0.6);
-  border-radius: 12px
+  border-radius: 12px;
+  box-shadow: 2px 2px 4px #000;
 }
 
 h1 {
   font-family: @base-font;
   font-weight: lighter;
-  font-size: 2em;
+  font-size: 3em;
   color: #fff;
   text-shadow: 2px 2px 3px black;
   text-align: center;

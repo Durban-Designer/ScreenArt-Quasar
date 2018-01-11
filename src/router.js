@@ -28,7 +28,7 @@ export default new VueRouter({
     { path: '/', component: load('Home') },
     { path: '/Work', component: load('Work') },
     { path: '/Contact', component: load('Contact') },
-    { path: '/Team', component: load('Team') },
+    { path: '/Info', component: load('Info') },
     { path: '/Login', component: load('Login') },
     { path: '/User', component: load('User') },
     { path: '/Admin', component: load('Admin') },

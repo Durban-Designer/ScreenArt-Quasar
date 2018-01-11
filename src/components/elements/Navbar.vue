@@ -3,7 +3,7 @@
     <div class="navbar">
       <button class="Work" v-on:click="$router.push('/work')">WORK</button>
       <button class="Contact" v-on:click="$router.push('/contact')">CONTACT</button>
-      <div class="sa" v-on:click="$router.push('/')"></div>
+      <div v-bind:class="saLogic" v-on:click="$router.push('/')"></div>
       <button class="Team" v-on:click="$router.push('/team')">TEAM</button>
       <button class="Login" v-on:click="$router.push('/login')" v-if="!loggedIn">LOGIN</button>
       <button class="Login" v-on:click="$router.push('/user')" v-if="loggedIn">CRM ACCESS</button>
@@ -11,7 +11,7 @@
     <div class="slidebox">
       <transition name="slide"><img class="slide1" v-if="show === 0" src="../../assets/Seasons.jpg"></transition>
       <transition name="slide"><img class="slide2" v-if="show === 1" src="../../assets/birds.jpg"></transition>
-      <transition name="slide"><img class="slide3" v-if="show === 2" src="../../assets/angles.jpg"></transition>
+      <transition name="slide"><img class="slide3" v-if="show === 2" src="../../assets/mountains.jpg"></transition>
       <transition name="slide"><img class="slide4" v-if="show === 3" src="../../assets/grate.jpg"></transition>
       <transition name="slide"><img class="slide5" v-if="show === 4" src="../../assets/humans.jpg"></transition>
       <transition name="slide"><img class="slide6" v-if="show === 5" src="../../assets/window.jpg"></transition>
@@ -20,6 +20,7 @@
 </template>
 
 <script>
+let x = false
 export default {
   name: 'navbar',
   props: ['loggedIn'],
@@ -47,10 +48,35 @@ export default {
     }
     setInterval(toggleShow, 4000)
   },
+  computed: {
+    saLogic: function () {
+      return {
+        sa: true,
+        navButtonAnimation: this.isToggled,
+        navButtonAnimationExit: !this.isToggled && !this.first
+      }
+    }
+  },
   data () {
     return {
       show: 0,
-      showWork: false
+      showWork: false,
+      isToggled: false,
+      first: true
+    }
+  },
+  methods: {
+    navToggle: function () {
+      // Nav button functionality
+      if (x === false) {
+        x = true
+        this.isToggled = true
+        this.first = false
+      }
+      else if (x === true) {
+        x = false
+        this.isToggled = false
+      }
     }
   }
 }
@@ -59,14 +85,11 @@ export default {
 <style scoped lang='less'>
   @base-font:'Pathway Gothic One', sans-serif;
 
-  .main {
-    height: 1000px;
-  }
   .navbar {
     width: 100%;
-    height: 100px;
+    height: 12.5%;
     background:rgba(0,0,0,0.6);
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
@@ -93,16 +116,16 @@ export default {
 }
 
 @keyframes bounce {
-0%, 100% {
-	-webkit-transform: translateY(0);
-	-ms-transform:     translateY(0);
-	transform:         translateY(0)
-}
-100% {
-	-webkit-transform: translateY(-10px);
-	-ms-transform:     translateY(-10px);
-	transform:         translateY(-10px)
-}
+  0%, 100% {
+  	-webkit-transform: translateY(0);
+  	-ms-transform:     translateY(0);
+  	transform:         translateY(0)
+  }
+  100% {
+  	-webkit-transform: translateY(-10px);
+  	-ms-transform:     translateY(-10px);
+  	transform:         translateY(-10px)
+  }
 }
 
 button {
@@ -159,12 +182,33 @@ button:hover {
   .sa {
     width: 100%;
     height: 100%;
-    background-image: url("../../assets/logo.svg");
     z-index: 8;
     background-repeat: no-repeat;
+    background-image: url("../../assets/logoAnimation.svg");
     -webkit-filter: drop-shadow(1px 2px 2px #000);
     filter: drop-shadow(1px 2px 2px #000);
     align-items: center;
+  }
+
+  @keyframes navButtonAnimation {
+    100% {background-position: -1980px;}
+  }
+
+  @keyframes navButtonAnimationReverse {
+    0% {background-position: -1980px;}
+    100% {background-position: 0px;}
+  }
+
+  .navButtonAnimation {
+    animation: navButtonAnimation .4s steps(9);
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+  }
+
+  .navButtonAnimationExit {
+    animation: navButtonAnimationReverse .5s steps(9);
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
   }
 
   .Login {

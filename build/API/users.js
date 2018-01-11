@@ -57,7 +57,9 @@ router.post("/login", (req, res) => {
 router.post("/", (req,res) => {
   var newUser = new User({
   email: req.body.email,
-  password: req.body.password
+  password: req.body.password,
+  admin: req.body.admin,
+  employee: req.body.employee
   })
 
   newUser.save((err, result) => {
@@ -68,6 +70,25 @@ router.post("/", (req,res) => {
         var payload = {"id": users.id};
         var token = jwt.sign(payload, jwtOptions.secretOrKey);
         res.status(201).json({userId: payload.id, token: token});
+      })
+    }
+  })
+})
+
+router.get("/all/:id", passport.authenticate('jwt', { session: false }),(req, res) => {
+  var userid = new mongodb.ObjectID(req.params["id"]);
+  User.find({},function (err, users) {
+    if (err) {
+      res.send(err);
+    } else {
+      User.findOne({"_id": userid},function (err, user) {
+        if (err) {
+          res.send(err);
+        } else if (user.admin === true) {
+          res.send(users);
+        } else {
+          res.status(401).send('Unauthorized')
+        }
       })
     }
   })
@@ -93,6 +114,8 @@ router.put("/:id", passport.authenticate('jwt', { session: false }), (req, res) 
         var user = user[0];
         user.email = req.body.email || user.email;
         user.password = req.body.password || user.password;
+        user.admin = req.body.admin || user.admin;
+        user.employee = req.body.employee || user.employee;
 
         user.save(function (err, user) {
             if (err) {

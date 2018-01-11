@@ -10,6 +10,16 @@ var UserSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true
+  },
+  admin: {
+    type: Boolean,
+    required: false,
+    default: false
+  },
+  employee: {
+    type: Boolean,
+    required: false,
+    default: false
   }
 })
 

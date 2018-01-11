@@ -28,7 +28,7 @@
       <input type="tel" class="phoneEdit" v-model="activeLead.phone" placeholder="Phone Number" required></input><br/>
       <input type="text" class="emailEdit" v-model="activeLead.email" placeholder="Email Address" required></input>
       <input type="text" class="addressEdit" v-model="activeLead.address" placeholder="Address"required></input>
-      <select class="statusEdit">
+      <select class="statusEdit" v-model="activeLead.status">
         <option value="notContacted">not contacted</option>
         <option value="contacted">contacted</option>
         <option value="jobInProgress">job in-progress</option>
@@ -44,7 +44,7 @@
       <input type="tel" class="phoneNew" v-model="activeLead.phone" placeholder="Phone Number" required></input><br/>
       <input type="text" class="emailNew" v-model="activeLead.email" placeholder="Email Address" required></input>
       <input type="text" class="addressNew" v-model="activeLead.address" placeholder="Address"required></input>
-      <select class="statusNew">
+      <select class="statusNew" v-model="activeLead.status">
         <option value="notContacted">not contacted</option>
         <option value="contacted">contacted</option>
         <option value="jobInProgress">job in-progress</option>
@@ -61,6 +61,7 @@
 import axios from 'axios'
 export default {
   name: 'leads',
+  props: ['user', 'logged'],
   created () {
     let vue = this
     vue.clearLeads()
@@ -76,7 +77,7 @@ export default {
         address: '',
         status: '',
         comment: '',
-        id: '5a53df40871aaf31174aa3e4'
+        id: ''
       },
       leads: [{}],
       error: '',
@@ -87,16 +88,15 @@ export default {
       searchBox: '',
       newleadButton: false,
       leaditem: false,
-      postlead: false,
+      postlead: false
     }
   },
-  props: ['logged'],
   computed: {
   },
   methods: {
     populateLeads () {
       let vue = this
-      axios.get('http://13.57.57.81:81/leads')
+      axios.get('http://13.57.57.81:81/leads', {headers: { 'Authorization': 'JWT ' + vue.user.token }})
         .then(function (response) {
           vue.leads = response.data
         })
@@ -115,10 +115,12 @@ export default {
       this.activeLead.status = ''
       this.activeLead.comment = ''
       this.activeLead.url = ''
+      this.activeLead.id = ''
     },
     leadItemDisplay (lead) {
       let vue = this
       vue.leaditem = true
+      vue.activeLead.id = lead._id
       vue.activeLead.name = lead.name
       vue.activeLead.phone = lead.phone
       vue.activeLead.email = lead.email
@@ -136,7 +138,7 @@ export default {
         address: vue.activeLead.address,
         status: vue.activeLead.status,
         comment: vue.activeLead.comment,
-        url: vue.activeLead.comment
+        url: vue.activeLead.url
       })
         .then(function () {
           vue.edit = false
@@ -151,7 +153,7 @@ export default {
     },
     submitEdit () {
       let vue = this
-      axios.put('http://13.57.57.81:81/leads/' + vue.leadId, {
+      axios.put('http://13.57.57.81:81/leads/' + vue.activeLead.id, {
         name: vue.activeLead.name.toLowerCase(),
         phone: vue.activeLead.phone,
         email: vue.activeLead.email,
@@ -159,7 +161,7 @@ export default {
         status: vue.activeLead.status,
         comment: vue.activeLead.comment,
         url: vue.activeLead.url
-      })
+      }, {headers: { 'Authorization': 'JWT ' + vue.user.token }})
         .then(function () {
           vue.edit = false
           vue.leadbox = true
@@ -192,7 +194,7 @@ export default {
     },
     search () {
       let vue = this
-      axios.get('http://13.57.57.81:81/leads/name/' + vue.searchBox)
+      axios.get('http://13.57.57.81:81/leads/name/' + vue.searchBox, {headers: { 'Authorization': 'JWT ' + vue.user.token }})
         .then(function (response) {
           vue.leads = response.data
         })
@@ -208,13 +210,14 @@ export default {
 @base-font:'Pathway Gothic One', sans-serif;
 .main {
   margin-left: 5px;
-  margin-top: 110px;
+  margin-top: 10%;
   width: 99%;
-  height: 500px;
+  height: 73.5%;
   z-index: 10;
-  position: absolute;
+  position: fixed;
   background:rgba(0,0,0,0.6);
   border-radius: 12px;
+  box-shadow: 2px 2px 4px #000;
 }
 
 .leadBox {
