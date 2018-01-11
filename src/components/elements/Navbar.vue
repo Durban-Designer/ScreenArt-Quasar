@@ -3,8 +3,8 @@
     <div class="navbar">
       <button class="Work" v-on:click="$router.push('/work')">WORK</button>
       <button class="Contact" v-on:click="$router.push('/contact')">CONTACT</button>
-      <div class="sa" v-on:click="$router.push('/')"></div>
-      <button class="Team" v-on:click="$router.push('/info')">INFO</button>
+      <div v-bind:class="saLogic" v-on:click="$router.push('/')"></div>
+      <button class="Team" v-on:click="$router.push('/team')">TEAM</button>
       <button class="Login" v-on:click="$router.push('/login')" v-if="!loggedIn">LOGIN</button>
       <button class="Login" v-on:click="$router.push('/user')" v-if="loggedIn">CRM ACCESS</button>
     </div>
@@ -20,6 +20,7 @@
 </template>
 
 <script>
+let x = false
 export default {
   name: 'navbar',
   props: ['loggedIn'],
@@ -47,10 +48,35 @@ export default {
     }
     setInterval(toggleShow, 4000)
   },
+  computed: {
+    saLogic: function () {
+      return {
+        sa: true,
+        navButtonAnimation: this.isToggled,
+        navButtonAnimationExit: !this.isToggled && !this.first
+      }
+    }
+  },
   data () {
     return {
       show: 0,
-      showWork: false
+      showWork: false,
+      isToggled: false,
+      first: true
+    }
+  },
+  methods: {
+    navToggle: function () {
+      // Nav button functionality
+      if (x === false) {
+        x = true
+        this.isToggled = true
+        this.first = false
+      }
+      else if (x === true) {
+        x = false
+        this.isToggled = false
+      }
     }
   }
 }
@@ -154,13 +180,35 @@ button:hover {
   .sa {
     width: 100%;
     height: 100%;
-    background-image: url("../../assets/logo.svg");
     z-index: 8;
     background-repeat: no-repeat;
+    background-image: url("../../assets/logoAnimation.svg");
     -webkit-filter: drop-shadow(1px 2px 2px #000);
     filter: drop-shadow(1px 2px 2px #000);
     align-items: center;
   }
+
+  @keyframes navButtonAnimation {
+    100% {background-position: -1980px;}
+  }
+
+  @keyframes navButtonAnimationReverse {
+    0% {background-position: -1980px;}
+    100% {background-position: 0px;}
+  }
+
+  .navButtonAnimation {
+    animation: navButtonAnimation .4s steps(9);
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+  }
+
+  .navButtonAnimationExit {
+    animation: navButtonAnimationReverse .5s steps(9);
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+  }
+
   .Login {
     background-color: transparent;
     border: none;
