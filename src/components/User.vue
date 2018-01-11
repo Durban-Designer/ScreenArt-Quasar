@@ -1,6 +1,7 @@
 <template>
   <div class="workPage">
     <h1>user page</h1>
+    <button class="leads" v-on:click="$router.push('/leads')">Leads</button><br/>
     <button class="logOut" v-on:click="$emit('logOut')">Log Out</button>
   </div>
 </template>
@@ -38,5 +39,8 @@ export default {
     text-shadow: 2px 2px 3px black;
     text-align: center;
     line-height: 100px;
+  }
+  .leads {
+
   }
 </style>
