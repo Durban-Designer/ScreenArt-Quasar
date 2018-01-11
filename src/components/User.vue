@@ -10,7 +10,13 @@
 <script>
 export default {
   name: 'user',
-  props: ['user'],
+  props: ['user', 'loggedIn'],
+  created () {
+    let vue = this
+    if (vue.loggedIn === false) {
+      vue.$router.push('/login')
+    }
+  },
   data () {
     return {}
   }

@@ -61,11 +61,16 @@
 import axios from 'axios'
 export default {
   name: 'leads',
-  props: ['user', 'logged'],
+  props: ['user', 'loggedIn'],
   created () {
     let vue = this
-    vue.clearLeads()
-    this.populateLeads()
+    if (vue.loggedIn === true) {
+      vue.clearLeads()
+      this.populateLeads()
+    }
+    else {
+      vue.$router.push('/login')
+    }
   },
   data: function () {
     return {
