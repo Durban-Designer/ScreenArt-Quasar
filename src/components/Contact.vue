@@ -61,6 +61,7 @@
     text-align: center;
     line-height: 100px;
   }
+
   h3 {
     font-family: @base-font;
     font-weight: lighter;
@@ -73,6 +74,7 @@
     grid-column-end: 4;
     margin-right: 20px;
   }
+
   ul {
     font-family: @base-font;
     font-weight: lighter;
@@ -88,6 +90,7 @@
     line-height: 80px;
     margin-right: 40px;
   }
+  
   .words {
     grid-row: 1;
     grid-column-start: 1;

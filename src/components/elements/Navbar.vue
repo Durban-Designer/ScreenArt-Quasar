@@ -106,26 +106,28 @@ export default {
     box-shadow: 2px 2px 4px #000;
   }
 
-  .slidebox {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-  }
-  @keyframes bounce {
-	0%, 100% {
-		-webkit-transform: translateY(0);
-		-ms-transform:     translateY(0);
-		transform:         translateY(0)
-	}
-	100% {
-		-webkit-transform: translateY(-10px);
-		-ms-transform:     translateY(-10px);
-		transform:         translateY(-10px)
-	}
-
+.slidebox {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
 }
+
+@keyframes bounce {
+  0%, 100% {
+  	-webkit-transform: translateY(0);
+  	-ms-transform:     translateY(0);
+  	transform:         translateY(0)
+  }
+  100% {
+  	-webkit-transform: translateY(-10px);
+  	-ms-transform:     translateY(-10px);
+  	transform:         translateY(-10px)
+  }
+}
+
 button {
   letter-spacing: 1.3px;
   -webkit-animation-duration: .25s;
