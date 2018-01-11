@@ -19,7 +19,7 @@
       <p class="comment">{{activeLead.comment}}</p>
       <p class="url">{{activeLead.url}}</p>
       <button class="editButton" v-on:click="edit = true; lead = false; leaditem = false;">Edit</button>
-      <button class="" v-on:click="">Delete</button>
+      <button class="delete" v-on:click="deleteLead">Delete</button>
       <button class="back" v-on:click="leaditem = false; leadbox = true">Back</button>
     </div>
     <div class="edit" v-if="edit">
@@ -167,6 +167,21 @@ export default {
         comment: vue.activeLead.comment,
         url: vue.activeLead.url
       }, {headers: { 'Authorization': 'JWT ' + vue.user.token }})
+        .then(function () {
+          vue.edit = false
+          vue.leadbox = true
+          vue.clearLeads()
+          vue.populateLeads()
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
+    },
+    deleteLead () {
+      let vue = this
+      axios.delete('http://13.57.57.81:81/leads', {headers: { 'Authorization': 'JWT ' + vue.user.token }}, {
+        _id: vue.activeLead.id
+      })
         .then(function () {
           vue.edit = false
           vue.leadbox = true
