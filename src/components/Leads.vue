@@ -61,6 +61,7 @@
 import axios from 'axios'
 export default {
   name: 'leads',
+  props: ['user', 'logged'],
   created () {
     let vue = this
     vue.clearLeads()
@@ -90,13 +91,12 @@ export default {
       leadId: '5a53df40871aaf31174aa3e4'
     }
   },
-  props: ['logged'],
   computed: {
   },
   methods: {
     populateLeads () {
       let vue = this
-      axios.get('http://13.57.57.81:81/leads')
+      axios.get('http://13.57.57.81:81/leads', {headers: { 'Authorization': 'JWT ' + vue.user.token }})
         .then(function (response) {
           vue.leads = response.data
         })
@@ -130,12 +130,13 @@ export default {
     submitLead () {
       let vue = this
       axios.post('http://13.57.57.81:81/leads', {
-        clientName: vue.activeLead.name.toLowerCase(),
-        phoneNumber: vue.activeLead.phone,
+        name: vue.activeLead.name.toLowerCase(),
+        phone: vue.activeLead.phone,
         email: vue.activeLead.email,
         address: vue.activeLead.address,
         status: vue.activeLead.status,
-        notes: vue.activeLead.comment
+        comment: vue.activeLead.comment,
+        url: vue.activeLead.url
       })
         .then(function () {
           vue.edit = false
@@ -158,7 +159,7 @@ export default {
         status: vue.activeLead.status,
         comment: vue.activeLead.comment,
         url: vue.activeLead.url
-      })
+      }, {headers: { 'Authorization': 'JWT ' + vue.user.token }})
         .then(function () {
           vue.edit = false
           vue.leadbox = true
@@ -190,7 +191,7 @@ export default {
     },
     search () {
       let vue = this
-      axios.get('http://13.57.57.81:81/leads/name/' + vue.searchBox)
+      axios.get('http://13.57.57.81:81/leads/name/' + vue.searchBox, {headers: { 'Authorization': 'JWT ' + vue.user.token }})
         .then(function (response) {
           vue.leads = response.data
         })

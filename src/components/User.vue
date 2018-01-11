@@ -1,5 +1,5 @@
 <template>
-  <div class="workPage">
+  <div class="main">
     <h1>user page</h1>
     <button class="leads" v-on:click="$router.push('/leads')">Leads</button><br/>
     <button class="admin" v-on:click="$router.push('/admin')">Admin</button>
