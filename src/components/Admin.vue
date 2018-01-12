@@ -1,38 +1,17 @@
 <template>
   <div class="main">
-    <div v-if="buttons">
-      <button v-on:click="addUser = true; buttons = false">Add New User</button>
+    <users v-if="viewUsers" v-on:back="viewUsers = false" :user="user"></users>
+    <div class="settings" v-else-if="settings"></div>
+    <div v-else>
       <button v-on:click="viewUsers = true; buttons = false">User Manifest</button>
       <button>Settings</button>
       <button class="back" v-on:click="$router.push('/crm')">Back</button>
     </div>
-    <div class="addUser" v-if="addUser">
-      <input class="name" placeholder="name" v-model="activeUser.name"></input>
-      <input class="email" placeholder="email" v-model="activeUser.email"></input>
-      <input class="password" placeholder="password" v-model="activeUser.password"></input>
-      <input class="admin" type="checkbox" v-model="activeUser.admin">Admin</input>
-      <input class="employee" type="checkbox" v-model="activeUser.employee">Employee</input>
-      <button class="submit" v-on:click="submitUser">Submit</button>
-      <button class="back" v-on:click="addUser = false; buttons = true">Back</button>
-    </div>
-    <div class="editUser" v-if="editUser">
-      <input class="name" placeholder="name" v-model="activeUser.name"></input>
-      <input class="email" placeholder="email" v-model="activeUser.email"></input>
-      <input class="password" placeholder="password" v-model="activeUser.password"></input>
-      <input class="admin" type="checkbox" v-model="activeUser.admin">Admin</input>
-      <input class="employee" type="checkbox" v-model="activeUser.employee">Employee</input>
-      <button class="submit" v-on:click="submitUser">Submit</button>
-    </div>
-    <div class="users" v-if="viewUsers" v-for="user in users">
-      <h5 v-on:click="" class="user">{{user.name}}</h5>
-      <button class="back" v-on:click="viewUsers = false; buttons = true">Back</button>
-    </div>
-    <div class="settings"></div>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
+import Users from './elements/Users'
 export default {
   name: 'Admin',
   props: ['user', 'loggedIn'],
@@ -42,39 +21,16 @@ export default {
       vue.$router.push('/login')
     }
   },
+  components: {
+    'users': Users
+  },
   data () {
     return {
       buttons: true,
       addUser: false,
       editUser: false,
       viewUsers: false,
-      users: [],
-      activeUser: {
-        email: '',
-        password: '',
-        name: '',
-        admin: false,
-        employee: false
-      }
-    }
-  },
-  methods: {
-    submitUser () {
-      let vue = this
-      axios.post('http://13.57.57.81:81/users', {
-        email: vue.activeUser.email,
-        password: vue.activeUser.password,
-        name: vue.activeUser.name,
-        admin: vue.activeUser.admin,
-        employee: vue.activeUser.employee
-      })
-        .then(function () {
-          vue.addUser = false
-          vue.buttons = true
-        })
-        .catch(function (error) {
-          console.log(error)
-        })
+      settings: false
     }
   }
 }
