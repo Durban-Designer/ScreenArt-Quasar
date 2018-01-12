@@ -4,7 +4,7 @@
       <button v-on:click="addUser = true; buttons = false">Add New User</button>
       <button v-on:click="viewUsers = true; buttons = false">User Manifest</button>
       <button>Settings</button>
-      <button class="back" v-on:click="$router.push('/user')">Back</button>
+      <button class="back" v-on:click="$router.push('/crm')">Back</button>
     </div>
     <div class="addUser" v-if="addUser">
       <input class="name" placeholder="name" v-model="activeUser.name"></input>
@@ -38,7 +38,7 @@ export default {
   props: ['user', 'loggedIn'],
   created () {
     let vue = this
-    if (vue.loggedIn === false) {
+    if (vue.loggedIn === false && vue.user.admin === true) {
       vue.$router.push('/login')
     }
   },
@@ -75,8 +75,7 @@ export default {
         .catch(function (error) {
           console.log(error)
         })
-    },
-    
+    }
   }
 }
 </script>

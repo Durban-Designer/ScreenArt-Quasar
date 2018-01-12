@@ -67,7 +67,7 @@ router.get("/", passport.authenticate('jwt', { session: false }),(req, res) => {
 
 router.get("/name/:name", passport.authenticate('jwt', { session: false }),(req, res) => {
   var leadName = req.params["name"];
-  Lead.find({"name": leadName},function (err, leads) {
+  Lead.find({"name": {$regex: '^' + leadName}},function (err, leads) {
     if (err) {
       res.send(err);
     } else {
