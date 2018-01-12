@@ -24,7 +24,7 @@
     </div>
     <div class="edit" v-if="edit">
       <h4 class="entertitle">Lead Info</h4>
-      <input type="text" class="clientNameEdit" v-model="activeLead.name" placeholder="Name" required></input>
+      <input type="text" class="nameEdit" v-model="activeLead.name" placeholder="Name" required></input>
       <input type="tel" class="phoneEdit" v-model="activeLead.phone" placeholder="Phone Number" required></input><br/>
       <input type="text" class="emailEdit" v-model="activeLead.email" placeholder="Email Address" required></input>
       <input type="text" class="addressEdit" v-model="activeLead.address" placeholder="Address"required></input>
