@@ -110,13 +110,14 @@
     text-decoration: underline;
     margin-right: 40px;
   }
-  
+
   .blurb {
     grid-row-start: 6;
     grid-row-end: 6;
     grid-column-start: 4;
     grid-column-end: 6;
-    line-height: 50px;
+    line-height: 40px;
+    font-size: 2em;
   }
 
   .contactBox {
