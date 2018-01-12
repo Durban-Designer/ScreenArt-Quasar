@@ -8,7 +8,7 @@
         <h5 v-on:click="leadItemDisplay(lead)" class="lead">{{lead.name}}:{{lead.status}}</h5>
       </div>
       <button class="newLead" v-on:click="newLeadButton">New Lead</button>
-      <button class="back" v-on:click="$router.push('/user')">Back</button>
+      <button class="back" v-on:click="$router.push('/crm')">Back</button>
     </div>
     <div class="leadItem" v-if="leaditem">
       <p class="name">{{activeLead.name}}</p>
@@ -64,7 +64,7 @@ export default {
   props: ['user', 'loggedIn'],
   created () {
     let vue = this
-    if (vue.loggedIn === true) {
+    if (vue.loggedIn === true && vue.user.employee === true) {
       vue.clearLeads()
       this.populateLeads()
     }
@@ -182,8 +182,7 @@ export default {
     deleteLead () {
       let vue = this
       axios.delete('http://13.57.57.81:81/leads/' + vue.activeLead.id, {headers: { 'Authorization': 'JWT ' + vue.user.token }})
-        .then(function (callback) {
-          console.log(callback)
+        .then(function () {
           vue.edit = false
           vue.leadbox = true
           vue.leaditem = false

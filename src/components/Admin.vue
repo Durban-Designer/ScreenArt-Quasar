@@ -3,7 +3,7 @@
     <button>Add New User</button>
     <button>User Manifest</button>
     <button>Settings</button>\
-    <button class="back" v-on:click="$router.push('/user')">Back</button>
+    <button class="back" v-on:click="$router.push('/crm')">Back</button>
   </div>
 </template>
 
@@ -13,7 +13,7 @@ export default {
   props: ['user', 'loggedIn'],
   created () {
     let vue = this
-    if (vue.loggedIn === false) {
+    if (vue.loggedIn === false && vue.user.admin === true) {
       vue.$router.push('/login')
     }
   },
