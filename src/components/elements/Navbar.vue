@@ -6,7 +6,7 @@
       <div v-bind:class="saLogic" v-on:click="$router.push('/')"></div>
       <button class="Team" v-on:click="$router.push('/team')">TEAM</button>
       <button class="Login" v-on:click="$router.push('/login')" v-if="!loggedIn">LOGIN</button>
-      <button class="Login" v-on:click="$router.push('/crm')" v-if="loggedIn && user.employee">CRM ACCESS</button>
+      <button class="Login" v-on:click="$router.push('/crm')" v-if="loggedIn && user.employee">CRM</button>
       <button class="Login" v-on:click="$router.push('/customeraccount')" v-if="loggedIn && !user.employee">ACCOUNT</button>
     </div>
     <div class="slidebox">

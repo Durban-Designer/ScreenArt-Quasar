@@ -220,13 +220,22 @@ export default {
     },
     search () {
       let vue = this
-      axios.get('http://13.57.57.81:81/leads/name/' + vue.searchBox, {headers: { 'Authorization': 'JWT ' + vue.user.token }})
-        .then(function (response) {
-          vue.leads = response.data
-        })
-        .catch(function (error) {
-          console.log(error)
-        })
+      if (vue.searchBox === '') {
+        vue.clearLeads()
+        vue.clearActiveLeads()
+        vue.populateLeads()
+      }
+      else {
+        axios.get('http://13.57.57.81:81/leads/name/' + vue.searchBox, {headers: { 'Authorization': 'JWT ' + vue.user.token }})
+          .then(function (response) {
+            vue.clearLeads()
+            vue.clearActiveLeads()
+            vue.leads = response.data
+          })
+          .catch(function (error) {
+            console.log(error)
+          })
+      }
     }
   }
 }

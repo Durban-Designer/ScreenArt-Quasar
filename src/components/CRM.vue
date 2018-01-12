@@ -1,15 +1,16 @@
 <template>
   <div class="main">
-    <div class="home" v-if="!changePass">
+    <div class="passModal" v-if="changePass">
+      <input v-model="password" placeholder="Password"></input>
+      <button class="back" v-on:click="changePass = false">Back</button>
+      <button class="confirmChange" v-on:click="confirmChange">Confirm Change</button>
+    </div>
+    <div class="home" v-else>
       <h1>CRM Homepage</h1>
       <button class="leads" v-on:click="$router.push('/leads')">Leads</button><br/>
       <button class="admin" v-on:click="$router.push('/admin')" v-if="user.admin">Admin</button>
       <button class="changePass" v-on:click="changePass = true">Change Password</button>
       <button class="logOut" v-on:click="$emit('logOut')">Log Out</button>
-    </div>
-    <div class="passModal" v-if="changePass">
-      <input v-model="password" placeholder="Password"></input>
-      <button class="confirmChange" v-on:click="confirmChange">Confirm Change</button>
     </div>
   </div>
 </template>
