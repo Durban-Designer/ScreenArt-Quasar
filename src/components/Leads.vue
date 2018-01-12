@@ -158,12 +158,12 @@ export default {
           vue.leadbox = true
           vue.newLead = false
           vue.clearActiveLeads()
+          vue.clearLeads()
+          vue.populateLeads()
         })
         .catch(function (error) {
           console.log(error)
         })
-      vue.clearLeads()
-      vue.populateLeads()
     },
     submitEdit () {
       let vue = this
