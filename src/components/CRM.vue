@@ -1,17 +1,21 @@
 <template>
   <div class="main">
-    <div class="passModal" v-if="changePass">
-      <input v-model="password" placeholder="Password"></input>
-      <button class="back" v-on:click="changePass = false">Back</button>
-      <button class="confirmChange" v-on:click="confirmChange">Confirm Change</button>
-    </div>
-    <div class="home" v-else>
-      <h1>CRM Homepage</h1>
-      <button class="leads" v-on:click="$router.push('/leads')">Leads</button><br/>
-      <button class="admin" v-on:click="$router.push('/admin')" v-if="user.admin">Admin</button>
-      <button class="changePass" v-on:click="changePass = true">Change Password</button>
-      <button class="logOut" v-on:click="$emit('logOut')">Log Out</button>
-    </div>
+    <transition name="fade">
+      <div class="passModal" v-if="changePass">
+        <input v-model="password" placeholder="Password"></input>
+        <button class="back" v-on:click="changePass = false">Back</button>
+        <button class="confirmChange" v-on:click="confirmChange">Confirm Change</button>
+      </div>
+    </transition>
+    <transition name="fade">
+      <div class="home" v-if="!changePass">
+        <h1>CRM Homepage</h1>
+        <button class="leads" v-on:click="$router.push('/leads')">Leads</button><br/>
+        <button class="admin" v-on:click="$router.push('/admin')" v-if="user.admin">Admin</button>
+        <button class="changePass" v-on:click="changePass = true">Change Password</button>
+        <button class="logOut" v-on:click="$emit('logOut')">Log Out</button>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -73,7 +77,28 @@ export default {
     text-align: center;
     line-height: 100px;
   }
+
   .leads {
 
+  }
+
+  button {
+    width: 160px;
+    height: 60px;
+    line-height: 50px;
+    background-color: #111;
+    margin-left: 20px;
+    color: #fff;
+    border-radius: 10px;
+  }
+
+  .fade-enter-active, .fade-leave-active {
+    transition: all .25s ease;
+    transition: all .25s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+  }
+
+  .fade-enter, .fade-leave-active {
+    opacity: 0;
+    transform: translateY(20px);
   }
 </style>
