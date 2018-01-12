@@ -19,7 +19,9 @@ export default {
       password: '',
       user: {
         token: '',
-        id: ''
+        id: '',
+        admin: false,
+        employee: false
       }
     }
   },
@@ -42,6 +44,8 @@ export default {
           if (response.status !== 401) {
             vue.user.token = response.data.token
             vue.user.id = response.data.userId
+            vue.user.admin = response.data.admin
+            vue.user.employee = response.data.employee
             vue.$emit('login', vue.user)
           }
         })

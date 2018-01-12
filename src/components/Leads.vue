@@ -1,59 +1,67 @@
 <template>
   <div class="main">
-    <div class="leadbox" v-if="leadbox">
-      <input type="text" class="search" placeholder="SearchLeads" v-model="searchBox"></input>
-      <button type="submit" class="searchButton" v-on:click="search">Search</button>
-      <h4>Leads</h4>
-      <div class="leadList" v-on:click="displayLead" v-for="lead in leads">
-        <h5 v-on:click="leadItemDisplay(lead)" class="lead">{{lead.name}}:{{lead.status}}</h5>
+    <transition name="fade">
+      <div class="leadbox" v-if="leadbox">
+        <input type="text" class="search" placeholder="SearchLeads" v-model="searchBox"></input>
+        <button type="submit" class="searchButton" v-on:click="search">Search</button>
+        <h4>Leads</h4>
+        <div class="leadList" v-on:click="displayLead" v-for="lead in leads">
+          <h5 v-on:click="leadItemDisplay(lead)" class="lead">{{lead.name}}:{{lead.status}}</h5>
+        </div>
+        <button class="newLead" v-on:click="newLeadButton">New Lead</button>
+        <button class="back" v-on:click="$router.push('/crm')">Back</button>
       </div>
-      <button class="newLead" v-on:click="newLeadButton">New Lead</button>
-      <button class="back" v-on:click="$router.push('/user')">Back</button>
-    </div>
-    <div class="leadItem" v-if="leaditem">
-      <p class="name">{{activeLead.name}}</p>
-      <p class="phone">{{activeLead.phone}}</p>
-      <p class="email">{{activeLead.email}}</p>
-      <p class="status">{{activeLead.status}}></p>
-      <p class="address">{{activeLead.address}}</p>
-      <p class="comment">{{activeLead.comment}}</p>
-      <p class="url">{{activeLead.url}}</p>
-      <button class="editButton" v-on:click="edit = true; lead = false; leaditem = false;">Edit</button>
-      <button class="delete" v-on:click="deleteLead">Delete</button>
-      <button class="back" v-on:click="leaditem = false; leadbox = true">Back</button>
-    </div>
-    <div class="edit" v-if="edit">
-      <h4 class="entertitle">Lead Info</h4>
-      <input type="text" class="clientNameEdit" v-model="activeLead.name" placeholder="Name" required></input>
-      <input type="tel" class="phoneEdit" v-model="activeLead.phone" placeholder="Phone Number" required></input><br/>
-      <input type="text" class="emailEdit" v-model="activeLead.email" placeholder="Email Address" required></input>
-      <input type="text" class="addressEdit" v-model="activeLead.address" placeholder="Address"required></input>
-      <select class="statusEdit" v-model="activeLead.status">
-        <option value="notContacted">not contacted</option>
-        <option value="contacted">contacted</option>
-        <option value="jobInProgress">job in-progress</option>
-        <option value="jobFinished">job finished</option>
-      </select>
-      <input type="text" class="notesEdit" v-model="activeLead.comment" placeholder="Notes"></input>
-      <button class="cancel" v-on:click="cancelEdit">Cancel</button>
-      <button class="submitEdit" v-on:click="submitEdit">Submit</button>
-    </div>
-    <div class="newLead" v-if="newLead">
-      <h4 class="entertitle">Lead Info</h4>
-      <input type="text" class="nameNew" v-model="activeLead.name" placeholder="Name" required></input>
-      <input type="tel" class="phoneNew" v-model="activeLead.phone" placeholder="Phone Number" required></input><br/>
-      <input type="text" class="emailNew" v-model="activeLead.email" placeholder="Email Address" required></input>
-      <input type="text" class="addressNew" v-model="activeLead.address" placeholder="Address"required></input>
-      <select class="statusNew" v-model="activeLead.status">
-        <option value="notContacted">not contacted</option>
-        <option value="contacted">contacted</option>
-        <option value="jobInProgress">job in-progress</option>
-        <option value="jobFinished">job finished</option>
-      </select>
-      <input type="text" class="commentNew" v-model="activeLead.comment" placeholder="Notes"></input>
-      <button class="cancel" v-on:click="cancel">Cancel</button>
-      <button class="submitLead" v-on:click="submitLead">Submit</button>
-    </div>
+    </transition>
+    <transition name="fade">
+      <div class="leadItem" v-if="leaditem">
+        <p class="name">{{activeLead.name}}</p>
+        <p class="phone">{{activeLead.phone}}</p>
+        <p class="email">{{activeLead.email}}</p>
+        <p class="status">{{activeLead.status}}></p>
+        <p class="address">{{activeLead.address}}</p>
+        <p class="comment">{{activeLead.comment}}</p>
+        <p class="url">{{activeLead.url}}</p>
+        <button class="editButton" v-on:click="edit = true; lead = false; leaditem = false;">Edit</button>
+        <button class="delete" v-on:click="deleteLead">Delete</button>
+        <button class="back" v-on:click="leaditem = false; leadbox = true">Back</button>
+      </div>
+    </transition>
+    <transition name="fade">
+      <div class="edit" v-if="edit">
+        <h4 class="entertitle">Lead Info</h4>
+        <input type="text" class="clientNameEdit" v-model="activeLead.name" placeholder="Name" required></input>
+        <input type="tel" class="phoneEdit" v-model="activeLead.phone" placeholder="Phone Number" required></input><br/>
+        <input type="text" class="emailEdit" v-model="activeLead.email" placeholder="Email Address" required></input>
+        <input type="text" class="addressEdit" v-model="activeLead.address" placeholder="Address"required></input>
+        <select class="statusEdit" v-model="activeLead.status">
+          <option value="notContacted">not contacted</option>
+          <option value="contacted">contacted</option>
+          <option value="jobInProgress">job in-progress</option>
+          <option value="jobFinished">job finished</option>
+        </select>
+        <input type="text" class="notesEdit" v-model="activeLead.comment" placeholder="Notes"></input>
+        <button class="cancel" v-on:click="cancelEdit">Cancel</button>
+        <button class="submitEdit" v-on:click="submitEdit">Submit</button>
+      </div>
+    </transition>
+    <transition name="fade">
+      <div class="newLead" v-if="newLead">
+        <h4 class="entertitle">Lead Info</h4>
+        <input type="text" class="nameNew" v-model="activeLead.name" placeholder="Name" required></input>
+        <input type="tel" class="phoneNew" v-model="activeLead.phone" placeholder="Phone Number" required></input><br/>
+        <input type="text" class="emailNew" v-model="activeLead.email" placeholder="Email Address" required></input>
+        <input type="text" class="addressNew" v-model="activeLead.address" placeholder="Address"required></input>
+        <select class="statusNew" v-model="activeLead.status">
+          <option value="notContacted">not contacted</option>
+          <option value="contacted">contacted</option>
+          <option value="jobInProgress">job in-progress</option>
+          <option value="jobFinished">job finished</option>
+        </select>
+        <input type="text" class="commentNew" v-model="activeLead.comment" placeholder="Notes"></input>
+        <button class="cancel" v-on:click="cancel">Cancel</button>
+        <button class="submitLead" v-on:click="submitLead">Submit</button>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -64,7 +72,7 @@ export default {
   props: ['user', 'loggedIn'],
   created () {
     let vue = this
-    if (vue.loggedIn === true) {
+    if (vue.loggedIn === true && vue.user.employee === true) {
       vue.clearLeads()
       this.populateLeads()
     }
@@ -182,8 +190,7 @@ export default {
     deleteLead () {
       let vue = this
       axios.delete('http://13.57.57.81:81/leads/' + vue.activeLead.id, {headers: { 'Authorization': 'JWT ' + vue.user.token }})
-        .then(function (callback) {
-          console.log(callback)
+        .then(function () {
           vue.edit = false
           vue.leadbox = true
           vue.leaditem = false
@@ -221,13 +228,22 @@ export default {
     },
     search () {
       let vue = this
-      axios.get('http://13.57.57.81:81/leads/name/' + vue.searchBox, {headers: { 'Authorization': 'JWT ' + vue.user.token }})
-        .then(function (response) {
-          vue.leads = response.data
-        })
-        .catch(function (error) {
-          console.log(error)
-        })
+      if (vue.searchBox === '') {
+        vue.clearLeads()
+        vue.clearActiveLeads()
+        vue.populateLeads()
+      }
+      else {
+        axios.get('http://13.57.57.81:81/leads/name/' + vue.searchBox, {headers: { 'Authorization': 'JWT ' + vue.user.token }})
+          .then(function (response) {
+            vue.clearLeads()
+            vue.clearActiveLeads()
+            vue.leads = response.data
+          })
+          .catch(function (error) {
+            console.log(error)
+          })
+      }
     }
   }
 }
@@ -270,8 +286,13 @@ export default {
 }
 
 button {
-  color: #000;
-  background-color: #fff;
+  width: 160px;
+  height: 60px;
+  line-height: 50px;
+  background-color: #111;
+  margin-left: 20px;
+  color: #fff;
+  border-radius: 10px;
 }
 
 h4 {
@@ -537,5 +558,15 @@ textarea {
 textarea:hover {
   background: #999;
   color: #fff;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: all .25s ease;
+  transition: all .25s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+
+.fade-enter, .fade-leave-active {
+  opacity: 0;
+  transform: translateY(20px);
 }
 </style>

@@ -30,9 +30,10 @@ export default new VueRouter({
     { path: '/Contact', component: load('Contact') },
     { path: '/Info', component: load('Info') },
     { path: '/Login', component: load('Login') },
-    { path: '/User', component: load('User') },
+    { path: '/Crm', component: load('CRM') },
     { path: '/Admin', component: load('Admin') },
     { path: '/Leads', component: load('Leads') },
+    { path: '/Customeraccount', component: load('Customer') },
     // Always leave this last one
     { path: '*', component: load('Error404') } // Not found
   ]

@@ -6,7 +6,8 @@
       <div v-bind:class="saLogic" v-on:click="$router.push('/')"></div>
       <button class="Info" v-on:click="$router.push('/info')">INFO</button>
       <button class="Login" v-on:click="$router.push('/login')" v-if="!loggedIn">LOGIN</button>
-      <button class="Login" v-on:click="$router.push('/user')" v-if="loggedIn">CRM ACCESS</button>
+      <button class="Login" v-on:click="$router.push('/crm')" v-if="loggedIn && user.employee">CRM</button>
+      <button class="Login" v-on:click="$router.push('/customeraccount')" v-if="loggedIn && !user.employee">ACCOUNT</button>
     </div>
     <div class="slidebox">
       <transition name="slide"><img class="slide1" v-if="show === 0" src="../../assets/Seasons.jpg"></transition>
@@ -23,7 +24,7 @@
 let x = false
 export default {
   name: 'navbar',
-  props: ['loggedIn'],
+  props: ['loggedIn', 'user'],
   created () {
     let vue = this
     function toggleShow () {
