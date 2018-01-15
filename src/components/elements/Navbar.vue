@@ -4,7 +4,7 @@
       <button class="Work" v-on:click="$router.push('/work')">WORK</button>
       <button class="Contact" v-on:click="$router.push('/contact')">CONTACT</button>
       <div v-bind:class="saLogic" v-on:click="$router.push('/')"></div>
-      <button class="Team" v-on:click="$router.push('/team')">TEAM</button>
+      <button class="Info" v-on:click="$router.push('/info')">INFO</button>
       <button class="Login" v-on:click="$router.push('/login')" v-if="!loggedIn">LOGIN</button>
       <button class="Login" v-on:click="$router.push('/crm')" v-if="loggedIn && user.employee">CRM</button>
       <button class="Login" v-on:click="$router.push('/customeraccount')" v-if="loggedIn && !user.employee">ACCOUNT</button>
@@ -88,7 +88,7 @@ export default {
 
   .navbar {
     width: 100%;
-    height: 12.5%;
+    height: 12.8%;
     background:rgba(0,0,0,0.6);
     position: fixed;
     top: 0;
@@ -168,7 +168,7 @@ button:hover {
     width: 100%;
   }
 
-  .Team {
+  .Info {
     background-color: transparent;
     border: none;
     color: #fff;

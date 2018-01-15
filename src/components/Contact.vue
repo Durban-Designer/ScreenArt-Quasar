@@ -14,7 +14,7 @@
           <li>(480)-526-2634</li>
           <li>(602)-558-1817</li>
         </ul>
-        <h3 class="blurb">We understand that your time is important.<br/> So we'll do our best to respond as quickly as possible!</h3>
+        <h3 class="blurb">We understand that your time is important. So we'll do our best to respond as quickly as possible!</h3>
       </div>
     </div>
 </template>
@@ -83,12 +83,12 @@
     text-shadow: 2px 2px 3px black;
     text-align: center;
     grid-row-start: 2;
-    grid-row-end: 5;
+    grid-row-end: 3;
     grid-column-start: 4;
     grid-column-end: 6;
     list-style: none;
-    line-height: 80px;
-    margin-right: 40px;
+    line-height: 60px;
+    margin-right: 70px;
   }
 
   .words {
@@ -110,13 +110,14 @@
     text-decoration: underline;
     margin-right: 40px;
   }
-  
+
   .blurb {
     grid-row-start: 6;
     grid-row-end: 6;
     grid-column-start: 4;
     grid-column-end: 6;
-    line-height: 50px;
+    line-height: 28px;
+    font-size: 2em;
   }
 
   .contactBox {
