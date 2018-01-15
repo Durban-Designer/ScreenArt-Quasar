@@ -2,14 +2,14 @@
   <div class="main">
     <transition name="fade">
       <div class="leadbox" v-if="leadbox">
-        <input type="text" class="search" placeholder="SearchLeads" v-model="searchBox"></input>
-        <button type="submit" class="searchButton" v-on:click="search">Search</button>
-        <h4>Leads</h4>
+        <input type="text" class="search" placeholder="Search Leads" v-model="searchBox"></input>
+        <button type="submit" class="searchButton" v-on:click="search">SEARCH</button>
+        <h4>LEADS</h4>
         <div class="leadList" v-on:click="displayLead" v-for="lead in leads">
           <h5 v-on:click="leadItemDisplay(lead)" class="lead">{{lead.name}}:{{lead.status}}</h5>
         </div>
-        <button class="newLead" v-on:click="newLeadButton">New Lead</button>
-        <button class="back" v-on:click="$router.push('/crm')">Back</button>
+        <button class="newLead" v-on:click="newLeadButton">NEW LEAD</button>
+        <button class="back" v-on:click="$router.push('/crm')">BACK</button>
       </div>
     </transition>
     <transition name="fade">
@@ -34,14 +34,14 @@
         <input type="text" class="emailEdit" v-model="activeLead.email" placeholder="Email Address" required></input>
         <input type="text" class="addressEdit" v-model="activeLead.address" placeholder="Address"required></input>
         <select class="statusEdit" v-model="activeLead.status">
-          <option value="notContacted">not contacted</option>
-          <option value="contacted">contacted</option>
-          <option value="jobInProgress">job in-progress</option>
-          <option value="jobFinished">job finished</option>
+          <option value="notContacted">NOT CONTACTED</option>
+          <option value="contacted">CONTACTED</option>
+          <option value="jobInProgress">IN PROGRESS</option>
+          <option value="jobFinished">FINISHED</option>
         </select>
         <input type="text" class="notesEdit" v-model="activeLead.comment" placeholder="Notes"></input>
-        <button class="cancel" v-on:click="cancelEdit">Cancel</button>
-        <button class="submitEdit" v-on:click="submitEdit">Submit</button>
+        <button class="cancel" v-on:click="cancelEdit">CANCEL</button>
+        <button class="submitEdit" v-on:click="submitEdit">SUBMIT</button>
       </div>
     </transition>
     <transition name="fade">
@@ -52,10 +52,10 @@
         <input type="text" class="emailNew" v-model="activeLead.email" placeholder="Email Address" required></input>
         <input type="text" class="addressNew" v-model="activeLead.address" placeholder="Address"required></input>
         <select class="statusNew" v-model="activeLead.status">
-          <option value="notContacted">not contacted</option>
-          <option value="contacted">contacted</option>
-          <option value="jobInProgress">job in-progress</option>
-          <option value="jobFinished">job finished</option>
+          <option value="notContacted">NOT CONTACTED</option>
+          <option value="contacted">CONTACTED</option>
+          <option value="jobInProgress">IN PROGRESS</option>
+          <option value="jobFinished">FINISHED</option>
         </select>
         <input type="text" class="commentNew" v-model="activeLead.comment" placeholder="Notes"></input>
         <button class="cancel" v-on:click="cancel">Cancel</button>
@@ -261,6 +261,8 @@ export default {
   background:rgba(0,0,0,0.6);
   border-radius: 12px;
   box-shadow: 2px 2px 4px #000;
+
+
 }
 
 .leadBox {
@@ -270,44 +272,38 @@ export default {
 }
 
 .back {
-
 }
 
 .search {
-  grid-column-start: 1;
-  grid-column-end: 2;
-  grid-row: 3;
+  width: 30%;
+  height: 40px;
 }
 
 .searchButton {
-  grid-column-start: 2;
-  grid-column-end: 3;
-  grid-row: 3;
+
 }
 
 button {
-  width: 160px;
-  height: 60px;
-  line-height: 50px;
-  background-color: #111;
-  margin-left: 20px;
+  font-family: @base-font;
+  height: 40px;
+  background-color: transparent;
   color: #fff;
-  border-radius: 10px;
+  box-shadow: 2px 2px 4px #000;
+  margin-top: 25px;
+  font-size: 2em;
 }
 
 h4 {
-  grid-column-start: 1;
-  grid-column-end: 3;
-  grid-row-start: 2;
-  grid-row-end: 3;
   font-size: 2em;
   line-height: 0px;
   text-decoration: underline;
   color: #fff;
+  font-family: @base-font;
 }
 
 .lead {
   color: #fff;
+  font-family: @base-font;
 }
 
 .leadlist {
@@ -350,17 +346,9 @@ h4 {
 }
 
 .newLead {
-  grid-column-start: 4;
-  grid-column-end: 5;
-  grid-row-start: 3;
-  grid-row-end: 3;
 }
 
 .editButton {
-  grid-column-start: 1;
-  grid-column-end: 2;
-  grid-row-start: 10;
-  grid-row-end: 11;
 }
 
 .edit {
