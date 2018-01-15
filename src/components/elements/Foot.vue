@@ -46,4 +46,8 @@ h1 {
 
 }
 
+@media only screen and (max-width:750px) {
+
+
+}
 </style>

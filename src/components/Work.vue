@@ -38,4 +38,8 @@ export default {
     line-height: 100px;
   }
 
+  @media only screen and (max-width:750px) {
+
+
+  }
 </style>

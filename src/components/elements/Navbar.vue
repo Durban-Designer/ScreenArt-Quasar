@@ -277,4 +277,9 @@ button:hover {
     transform: translateX(-2000px);
     opacity: 0;
   }
+
+  @media only screen and (max-width:750px) {
+
+
+  }
 </style>
