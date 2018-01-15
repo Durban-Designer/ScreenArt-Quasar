@@ -114,6 +114,7 @@ export default {
   left: 0;
   right: 0;
   overflow: hidden;
+  z-index: -1;
 }
 
 @keyframes bounce {
