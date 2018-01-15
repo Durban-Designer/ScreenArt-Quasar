@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="main">
     <div class="navbar">
       <button class="Work" v-on:click="$router.push('/work')">WORK</button>
       <button class="Contact" v-on:click="$router.push('/contact')">CONTACT</button>
