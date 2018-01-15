@@ -3,10 +3,11 @@
     <div class="addUser" v-if="addUser">
       <input class="name" placeholder="name" v-model="activeUser.name"></input>
       <input class="email" placeholder="email" v-model="activeUser.email"></input>
+      <input class="password" placeholder="password" v-model="activeUser.password"></input>
       <input class="admin" type="checkbox" v-model="activeUser.admin">Admin</input>
       <input class="employee" type="checkbox" v-model="activeUser.employee">Employee</input>
       <button class="submit" v-on:click="userSubmit">Submit</button>
-      <button class="back" v-on:click="addUser = false; buttons = true">Back</button>
+      <button class="back" v-on:click="addButton">Back</button>
     </div>
     <div class="editUser" v-else-if="editUser">
       <input class="name" placeholder="name" v-model="activeUser.name"></input>
@@ -20,7 +21,7 @@
       <div class="users" v-for="user in users">
         <h5 v-on:click="editToggle(user)" class="user">{{user.name}}</h5>
       </div>
-      <button class="add" v-on:click="">Add</button>
+      <button class="add" v-on:click="addUser = true">Add</button>
       <button class="back" v-on:click="$emit('back')">Back</button>
     </div>
     <div class="userView" v-else>
@@ -29,7 +30,7 @@
       <p>{{activeUser.password}}</p>
       <p>{{activeUser.admin}}</p>
       <p>{{activeUser.employee}}</p>
-      <button v-on:click="">Edit</button>
+      <button v-on:click="editUser = true">Edit</button>
     </div>
   </div>
 </template>
@@ -86,6 +87,10 @@ export default {
           console.log(error)
         })
     },
+    clearUsers () {
+      let vue = this
+      vue.activeUser = []
+    },
     editToggle (user) {
       let vue = this
       vue.activeUser.id = user._id
@@ -94,6 +99,11 @@ export default {
       vue.activeUser.admin = user.admin
       vue.activeUser.employee = user.employee
       vue.editUser = true
+    },
+    addButton () {
+      let vue = this
+      vue.addUser = false
+      vue.populateUsers()
     },
     userEdit () {
       let vue = this
