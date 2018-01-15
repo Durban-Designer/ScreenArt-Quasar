@@ -17,7 +17,7 @@ export default {
   props: ['user', 'loggedIn'],
   created () {
     let vue = this
-    if (vue.loggedIn === false && vue.user.admin === true) {
+    if (vue.loggedIn === false || vue.user.admin === false) {
       vue.$router.push('/login')
     }
   },
