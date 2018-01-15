@@ -1,13 +1,17 @@
 <template>
   <div class="main">
-    <button>Add New User</button>
-    <button>User Manifest</button>
-    <button>Settings</button>
-    <button class="back" v-on:click="$router.push('/crm')">Back</button>
+    <users v-if="viewUsers" v-on:back="viewUsers = false" :user="user"></users>
+    <div class="settings" v-else-if="settings"></div>
+    <div v-else>
+      <button v-on:click="viewUsers = true; buttons = false">User Manifest</button>
+      <button>Settings</button>
+      <button class="back" v-on:click="$router.push('/crm')">Back</button>
+    </div>
   </div>
 </template>
 
 <script>
+import Users from './elements/Users'
 export default {
   name: 'Admin',
   props: ['user', 'loggedIn'],
@@ -17,8 +21,17 @@ export default {
       vue.$router.push('/login')
     }
   },
+  components: {
+    'users': Users
+  },
   data () {
-    return {}
+    return {
+      buttons: true,
+      addUser: false,
+      editUser: false,
+      viewUsers: false,
+      settings: false
+    }
   }
 }
 </script>
