@@ -3,10 +3,11 @@
     <div class="addUser" v-if="addUser">
       <input class="name" placeholder="name" v-model="activeUser.name"></input>
       <input class="email" placeholder="email" v-model="activeUser.email"></input>
+      <input class="password" placeholder="password" v-model="activeUser.password"></input>
       <input class="admin" type="checkbox" v-model="activeUser.admin">Admin</input>
       <input class="employee" type="checkbox" v-model="activeUser.employee">Employee</input>
       <button class="submit" v-on:click="userSubmit">Submit</button>
-      <button class="back" v-on:click="addUser = false; buttons = true">Back</button>
+      <button class="back" v-on:click="addButton">Back</button>
     </div>
     <div class="userView" v-else-if="viewUser">
       <p>{{activeUser.name}}</p>
@@ -34,7 +35,7 @@
       <div class="users" v-for="user in users">
         <h5 v-on:click="editToggle(user)" class="user">{{user.name}}</h5>
       </div>
-      <button class="add" v-on:click="">Add</button>
+      <button class="add" v-on:click="addUser = true">Add</button>
       <button class="back" v-on:click="$emit('back')">Back</button>
     </div>
   </div>
@@ -101,10 +102,15 @@ export default {
         .then(function () {
           vue.addUser = false
           vue.buttons = true
+          vue.populateUsers()
         })
         .catch(function (error) {
           console.log(error)
         })
+    },
+    clearUsers () {
+      let vue = this
+      vue.activeUser = []
     },
     editToggle (user) {
       let vue = this
@@ -114,6 +120,11 @@ export default {
       vue.activeUser.admin = user.admin
       vue.activeUser.employee = user.employee
       vue.viewUser = true
+    },
+    addButton () {
+      let vue = this
+      vue.addUser = false
+      vue.populateUsers()
     },
     userEdit () {
       let vue = this
