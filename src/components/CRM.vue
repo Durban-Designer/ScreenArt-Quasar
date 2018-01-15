@@ -9,11 +9,11 @@
     </transition>
     <transition name="fade">
       <div class="home" v-if="!changePass">
-        <h1>CRM Homepage</h1>
-        <button class="leads" v-on:click="$router.push('/leads')">Leads</button><br/>
-        <button class="admin" v-on:click="$router.push('/admin')" v-if="user.admin">Admin</button>
-        <button class="changePass" v-on:click="changePass = true">Change Password</button>
-        <button class="logOut" v-on:click="$emit('logOut')">Log Out</button>
+        <h1>CRM DASHBOARD</h1>
+        <button class="leads" v-on:click="$router.push('/leads')">LEADS</button><br/>
+        <button class="admin" v-on:click="$router.push('/admin')" v-if="user.admin">ADMIN</button>
+        <button class="changePass" v-on:click="changePass = true">CHANGE PASSWORD</button>
+        <button class="logOut" v-on:click="$emit('logOut')">LOG OUT</button>
       </div>
     </transition>
   </div>
@@ -66,32 +66,56 @@ export default {
     background:rgba(0,0,0,0.6);
     border-radius: 12px;
     box-shadow: 2px 2px 4px #000;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
   }
 
   h1 {
     font-family: @base-font;
     font-weight: lighter;
-    font-size: 2em;
+    font-size: 3em;
     color: #fff;
     text-shadow: 2px 2px 3px black;
     text-align: center;
     line-height: 100px;
   }
-
-  .leads {
-
+  .passModal {
+    grid-column: 2;
+    margin-top: 50px;
   }
-
-  button {
-    width: 160px;
-    height: 60px;
-    line-height: 50px;
-    background-color: #111;
-    margin-left: 20px;
+  input {
+    width: 100%;
+    height: 35px;
+    background: transparent;
+    border-color: #fff;
     color: #fff;
-    border-radius: 10px;
+    font-family: @base-font;
+    font-size: 1.5em;
   }
+  button {
+    font-family: @base-font;
+    width: 100%;
+    height: 40px;
+    background-color: transparent;
+    color: #fff;
+    box-shadow: 2px 2px 4px #000;
+    margin-top: 25px;
+    font-size: 2em;
+  }
+  input:hover {
+    background: #fff;
+    color: #5d5d5d;
+  }
+  button:hover {
+    background: #fff;
+    color: #5d5d5d;
+  }
+  .home {
+    width: 100%;
+    align-items: center;
+    grid-column: 2;
 
+  }
   .fade-enter-active, .fade-leave-active {
     transition: all .25s ease;
     transition: all .25s cubic-bezier(1.0, 0.5, 0.8, 1.0);

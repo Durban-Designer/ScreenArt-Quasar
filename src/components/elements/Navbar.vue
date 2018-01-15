@@ -278,7 +278,7 @@ button:hover {
     opacity: 0;
   }
 
-  @media only screen and (max-width:750px) {
+  @media only screen and (max-width:540px) {
 
 
   }
