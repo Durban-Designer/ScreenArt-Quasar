@@ -253,4 +253,9 @@ textarea:hover {
   background: #999;
   color: #fff;
 }
+
+@media only screen and (max-width:750px) {
+
+
+}
 </style>

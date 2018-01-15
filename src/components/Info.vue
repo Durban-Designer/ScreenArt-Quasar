@@ -52,7 +52,7 @@ export default {
   h1 {
     font-family: @base-font;
     font-weight: lighter;
-    font-size: 3em;
+    font-size: 2.5em;
     color: #fff;
     text-shadow: 2px 4px 3px black;
     text-align: center;
@@ -109,6 +109,11 @@ export default {
   90% { top: -690px;}
   95% { top: -690px;}
   100% { top: -740px; }
+
+  }
+
+  @media only screen and (max-width:750px) {
+
 
   }
 </style>

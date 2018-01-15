@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="main">
     <div class="navbar">
       <button class="Work" v-on:click="$router.push('/work')">WORK</button>
       <button class="Contact" v-on:click="$router.push('/contact')">CONTACT</button>
@@ -276,5 +276,10 @@ button:hover {
   .slide-leave-to {
     transform: translateX(-2000px);
     opacity: 0;
+  }
+
+  @media only screen and (max-width:750px) {
+
+
   }
 </style>
