@@ -111,4 +111,9 @@ export default {
   100% { top: -740px; }
 
   }
+
+  @media only screen and (max-width:750px) {
+
+
+  }
 </style>
