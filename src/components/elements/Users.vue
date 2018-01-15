@@ -86,6 +86,8 @@ export default {
         .catch(function (error) {
           console.log(error)
         })
+      vue.clearUsers()
+      vue.populateUsers()
     },
     clearUsers () {
       let vue = this
