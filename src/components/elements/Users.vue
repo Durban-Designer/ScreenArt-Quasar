@@ -10,10 +10,10 @@
       <button class="back" v-on:click="addButton">Back</button>
     </div>
     <div class="userView" v-else-if="viewUser">
-      <p>{{activeUser.name}}</p>
-      <p>{{activeUser.email}}</p>
-      <p>{{activeUser.admin}}</p>
-      <p>{{activeUser.employee}}</p>
+      <h4>Name:</h4><p>{{activeUser.name}}</p>
+      <h4>Email:</h4><p>{{activeUser.email}}</p>
+      <h4>Admin:</h4><p>{{activeUser.admin}}</p>
+      <h4>Employee:</h4><p>{{activeUser.employee}}</p>
       <button v-on:click="editUser=true; viewUser=false">Edit</button>
       <button class="delete" v-on:click="deleteUserModal=true">Delete</button>
       <button v-on:click="viewUser=false">Back</button>
@@ -24,8 +24,8 @@
       </div>
     </div>
     <div class="editUser" v-else-if="editUser">
-      <input class="name" placeholder="name" v-model="activeUser.name"></input>
-      <input class="email" placeholder="email" v-model="activeUser.email"></input>
+      <h4>Name:</h4><input class="name" placeholder="name" v-model="activeUser.name"></input>
+      <h4>Email:</h4><input class="email" placeholder="email" v-model="activeUser.email"></input>
       <input class="admin" type="checkbox" v-model="activeUser.admin">Admin</input>
       <input class="employee" type="checkbox" v-model="activeUser.employee">Employee</input>
       <button class="submit" v-on:click="userEdit">Submit</button>
