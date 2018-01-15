@@ -1,6 +1,5 @@
 <template>
   <div class="main">
-    <h1>INFORMATION</h1>
     <div class="infobox">
       <div class="screenArt">
         <p class="does">SCREENART STUDIOS DOES</p>
@@ -65,6 +64,7 @@ export default {
   grid-template-rows: 40px 50px;
   margin-left: 0px;
   text-shadow: 2px 4px 3px black;
+  margin-top: 30px;
 
 
 }
