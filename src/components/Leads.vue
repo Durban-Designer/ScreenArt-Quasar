@@ -261,8 +261,6 @@ export default {
   background:rgba(0,0,0,0.6);
   border-radius: 12px;
   box-shadow: 2px 2px 4px #000;
-
-
 }
 
 .leadBox {
@@ -280,7 +278,6 @@ export default {
 }
 
 .searchButton {
-
 }
 
 button {
@@ -304,6 +301,10 @@ h4 {
 .lead {
   color: #fff;
   font-family: @base-font;
+}
+
+.lead:hover {
+  color: #c0a0dd;
 }
 
 .leadlist {
@@ -358,7 +359,6 @@ h4 {
 }
 
 .leadEdit {
-
 }
 
 .clientNameEdit {
