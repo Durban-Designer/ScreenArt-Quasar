@@ -63,6 +63,7 @@ export default {
     text-align: center;
     line-height: 100px;
   }
+
   .screenArt {
   font-family: @base-font;
   font-size: 2em;
@@ -71,26 +72,24 @@ export default {
   margin-left: 0px;
   text-shadow: 2px 4px 3px black;
   margin-top: 30px;
-
-
 }
 
 .scrollBox {
-
   overflow: hidden;
   height: 60px;
   text-align: center;
-
 }
+
 .does {
   font-size: 2em;
   line-height: 60px;
   width: 100%;
   text-align: center;
 }
+
 .scroll {
   font-family: @base-font;
-  font-size: 4em;
+  font-size: 4.05em;
   display: inline-block;
   color: #C22227;
   position: relative;
@@ -102,6 +101,7 @@ export default {
   text-align: center;
   text-shadow: 2px 4px 3px black;
 }
+
   @keyframes move{
   0%  { top: 0px; }
   10% { top: -80px;}
