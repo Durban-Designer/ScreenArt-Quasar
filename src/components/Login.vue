@@ -2,10 +2,11 @@
   <div class="main">
     <h1>LOG IN</h1>
     <div class="loginBox">
-    <input class="email" placeholder="EMAIL" v-model="email"></input>
-    <input class="password" placeholder="PASSWORD" v-model="password"></input>
-    <button class="login" v-on:click="login">GO</button>
-  </div>
+      <input class="email" placeholder="EMAIL" v-model="email"></input>
+      <input class="password" placeholder="PASSWORD" v-model="password" type="password" v-on:keypress.enter="login"></input>
+      <h3 class="logged">Stay logged in?<input type="checkbox" v-model="stayLogged"></input></h3>
+      <button class="login" v-on:click="login">GO</button>
+    </div>
   </div>
 </template>
 
@@ -17,6 +18,7 @@ export default {
     return {
       email: '',
       password: '',
+      stayLogged: false,
       user: {
         token: '',
         id: '',
@@ -46,6 +48,18 @@ export default {
             vue.user.id = response.data.userId
             vue.user.admin = response.data.admin
             vue.user.employee = response.data.employee
+            if (vue.stayLogged === true) {
+              localStorage.setItem('token', response.data.token)
+              localStorage.setItem('userId', response.data.userId)
+              localStorage.setItem('admin', response.data.admin)
+              localStorage.setItem('employee', response.data.employee)
+            }
+            else {
+              localStorage.removeItem('token')
+              localStorage.removeItem('userId')
+              localStorage.removeItem('admin')
+              localStorage.removeItem('employee')
+            }
             vue.$emit('login', vue.user)
           }
         })
@@ -53,6 +67,8 @@ export default {
           console.log(response)
           this.wrong = true
         })
+    },
+    togglePass () {
     }
   }
 }
@@ -82,13 +98,14 @@ h1 {
   text-align: center;
   line-height: 100px;
 }
+
 .loginBox {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 }
-.email {
 
-    margin-bottom: 10px;
+.email {
+  margin-bottom: 10px;
   grid-column: 2;
   background: transparent;
   outline: none;
@@ -101,6 +118,7 @@ h1 {
   -moz-transition: all 0.3s ease-in-out;
   -ms-transition: all 0.3s ease-in-out;
 }
+
 .password {
   margin-bottom: 10px;
   grid-column: 2;
@@ -115,6 +133,19 @@ h1 {
   -moz-transition: all 0.3s ease-in-out;
   -ms-transition: all 0.3s ease-in-out;
 }
+
+.logged {
+  grid-column: 2;
+  text-align: center;
+  color: #fff;
+}
+
+.logged input {
+  margin-left: 20px;
+  width: 30px;
+  height: 30px;
+}
+
 .login {
   grid-column: 2;
   text-align: center;
@@ -126,10 +157,12 @@ h1 {
   font-size: 1.5em;
   line-height: 30px;
 }
+
 .login:hover {
   color: #000;
   background-color: #fff;
 }
+
 input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
   color: #fff;
   font-size: 0.875em;

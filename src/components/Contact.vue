@@ -45,7 +45,7 @@
     margin-top: 10%;
     width: 99%;
     height: 73.5%;
-    z-index: 10;
+    z-index: 4;
     position: fixed;
     background:rgba(0,0,0,0.6);
     border-radius: 12px;

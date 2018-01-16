@@ -24,7 +24,7 @@
       <h1>Carpet Guys</h1>
       <p>
         Carpet Guys is a Mobile CRM Hybrid Web Application we developed that enables the employees to clock in, view jobs, check their schedule, navigate to jobs on a map, message customers and employees, upload photos,
-        track leads, and run marketting campaigns. As well as having a customer facing side that allows customers to track job progress, upload photos, and has social media links.
+        track leads, and run marketing campaigns. As well as having a customer facing side that allows customers to track job progress, upload photos, and has social media links.
       </p>
       <button class="back" v-on:click="modal=''">Back</button>
     </div>
@@ -38,10 +38,10 @@
       <button class="back" v-on:click="modal=''">Back</button>
     </div>
     <div class="tiles" v-else>
-      <div class="totalResponse" v-on:click="modal='tr'">Total Response</div>
-      <div class="quickVenom" v-on:click="modal='qc'">Quick Venom</div>
-      <div class="carpetGuys" v-on:click="modal='cg'">Carpet Guys</div>
-      <div class="hammurabiGame" v-on:click="modal='hm'">Hammurabi Game</div>
+      <div class="totalResponse" v-on:click="modal='tr'"></div>
+      <div class="quickVenom" v-on:click="modal='qc'"></div>
+      <div class="carpetGuys" v-on:click="modal='cg'"></div>
+      <div class="hammurabiGame" v-on:click="modal='hm'"></div>
     </div>
   </div>
 </template>
@@ -65,7 +65,6 @@ export default {
     margin-top: 10%;
     width: 99%;
     height: 73.5%;
-    z-index: 10;
     position: fixed;
     background:rgba(0,0,0,0.6);
     border-radius: 12px;
@@ -76,13 +75,87 @@ export default {
   h1 {
     font-family: @base-font;
     font-weight: lighter;
-    font-size: 2em;
+    font-size: 3em;
     color: #fff;
     text-shadow: 2px 2px 3px black;
     text-align: center;
     line-height: 100px;
   }
+  button{
+    background: transparent;
+    color: #fff;
+    border-color: #fff;
+    font-size: 1.5em;
+    margin-left: 10px;
 
+  }
+  p {
+    font-family: @base-font;
+    line-height: 40px;
+    font-size: 2em;
+    text-shadow: 2px 2px 3px black;
+    width: 50%;
+    text-align: right;
+    float: right;
+    margin-right: 20px;
+  }
+  .tiles {
+    width: 90%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 300px 200px;
+    text-align: center;
+    margin-top: 30px;
+    margin-left: 5%;
+
+  }
+  span {
+    color: #c22227;
+    font-weight: bold;
+  }
+  .totalResponse {
+    background-image: url('../assets/totalResponseLogo.svg');
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    -webkit-filter: drop-shadow(1px 2px 2px #000);
+    filter: drop-shadow(1px 2px 2px #000);
+    transform: scale(1.3, 1.3);
+    grid-column: 1;
+    grid-row: 1;
+    background-size: contain;
+    margin-left: 80px;
+  }
+
+  .quickVenom {
+    background-image: url('../assets/qwc-venumm.svg');
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    -webkit-filter: drop-shadow(1px 2px 2px #000);
+    filter: drop-shadow(1px 2px 2px #000);
+    background-size: contain;
+    grid-column: 2;
+    grid-row: 1;
+    margin-top: 30px;
+  }
+
+  .carpetGuys {
+    background-image: url('../assets/carpetguytype.png');
+    background-repeat:no-repeat;
+    background-size: contain;
+  }
+
+  .hammurabiGame {
+    background-image: url('../assets/h3000.jpg');
+    background-repeat:no-repeat;
+    background-size:contain;
+    grid-column: 2;
+    grid-row: 2;
+    margin-left: 160px;
+  }
   @media only screen and (max-width:750px) {
 
 

@@ -72,12 +72,12 @@ export default {
   props: ['user', 'loggedIn'],
   created () {
     let vue = this
-    if (vue.loggedIn === true && vue.user.employee === true) {
-      vue.clearLeads()
-      this.populateLeads()
+    if (vue.loggedIn === false || vue.user.employee === false) {
+      vue.$router.push('/login')
     }
     else {
-      vue.$router.push('/login')
+      vue.clearLeads()
+      this.populateLeads()
     }
   },
   data: function () {
@@ -164,6 +164,8 @@ export default {
         .catch(function (error) {
           console.log(error)
         })
+      vue.clearLeads()
+      this.populateLeads()
     },
     submitEdit () {
       let vue = this
@@ -186,6 +188,8 @@ export default {
         .catch(function (error) {
           console.log(error)
         })
+      vue.clearLeads()
+      this.populateLeads()
     },
     deleteLead () {
       let vue = this
