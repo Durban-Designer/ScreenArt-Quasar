@@ -18,6 +18,16 @@ export default {
     'navbar': Navbar,
     'foot': Foot
   },
+  created () {
+    let vue = this
+    vue.user.token = localStorage.getItem('token')
+    vue.user.id = localStorage.getItem('userId')
+    vue.user.admin = localStorage.getItem('admin')
+    vue.user.employee = localStorage.getItem('employee')
+    if (vue.user.token !== null) {
+      vue.loggedIn = true
+    }
+  },
   data: function () {
     return {
       loggedIn: false,
@@ -49,6 +59,10 @@ export default {
       vue.user.token = ''
       vue.user.id = ''
       vue.loggedIn = false
+      localStorage.removeItem('token')
+      localStorage.removeItem('userId')
+      localStorage.removeItem('admin')
+      localStorage.removeItem('employee')
       vue.$router.push('/')
     }
   }

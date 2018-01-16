@@ -20,6 +20,7 @@
           </div>
     </div>
 
+          <br/>
     </div>
   </div>
 </template>
@@ -47,6 +48,7 @@ export default {
     background:rgba(0,0,0,0.6);
     border-radius: 12px;
     box-shadow: 2px 2px 4px #000;
+    color: #fff;
   }
 
   h1 {
@@ -66,6 +68,7 @@ export default {
   grid-template-rows: 40px 50px;
   margin-left: 0px;
   text-shadow: 2px 4px 3px black;
+  margin-top: 30px;
 }
 
 .scrollBox {
