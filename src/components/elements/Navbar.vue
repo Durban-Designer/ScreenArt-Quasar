@@ -3,6 +3,7 @@
     <div class="navbar">
       <div v-bind:class="saLogic" v-on:click="navToggle"></div>
       <div v-bind:class="navpaneLogic">
+        <button class="Home" v-on:click="navToggle(); $router.push('/')">HOME</button>
         <button class="Work" v-on:click="navToggle(); $router.push('/work')">WORK</button>
         <button class="Contact" v-on:click="navToggle(); $router.push('/contact')">CONTACT</button>
         <button class="Info" v-on:click="navToggle(); $router.push('/info')">INFO</button>
@@ -102,9 +103,11 @@ export default {
 
   .navpane {
     display: none;
+    overflow: hidden;
   }
 
   .sa {
+    margin-top: 20px;
     width: 100%;
     height: 100%;
     grid-column: 3;
@@ -118,8 +121,8 @@ export default {
 
   .navbar {
     width: 100%;
-    height: 120px;
-    background:rgba(0,0,0,0.6);
+    height: 135px;
+    background:rgba(0,0,0,0.5);
     position: fixed;
     top: 0;
     left: 0;
@@ -132,8 +135,7 @@ export default {
     display: grid;
     grid-template-columns: repeat(2, 1fr) 220px repeat(2,1fr);
     grid-template-rows: 100px;
-    border-bottom-left-radius: 12px;
-    border-bottom-right-radius: 12px;
+
     box-shadow: 2px 2px 4px #000;
   }
 
@@ -172,10 +174,11 @@ export default {
     animation: navpaneAnimation .4s steps(9);
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
-    grid-column: 3;
+    grid-column-start: 2;
+    grid-column-end: 5;
     z-index: 10;
     width: 100%;
-    height: 350px;
+    height: 380px;
     margin-top: 40px;
     background:rgba(0,0,0,0.6);
     border-radius: 12px;
@@ -190,7 +193,7 @@ export default {
     grid-column: 3;
     z-index: 10;
     width: 100%;
-    height: 350px;
+    height: 30px;
     margin-top: 40px;
     background:rgba(0,0,0,0.6);
     border-radius: 12px;
@@ -198,54 +201,68 @@ export default {
     color: #fff;
   }
 
-  .Work {
-    width: 80%;
-    color: #fff;
-    background:rgba(0,0,0,0.6);
-    border-radius: 12px;
-    box-shadow: 2px 2px 4px #000;
+  .Home {
+    box-shadow: none;
+    grid-column: 1;
+    background-color: transparent;
     border: none;
-    margin-top: 10px;
+    color: #fff;
+    font-family: @base-font;
+    font-size: 2.5em;
+    width: 100%;
+    text-shadow: 2px 2px 3px black;
+    grid-column: 1;
+    width: 100%;
+  }
+  .Work {
+background-color: transparent;
+width: 100%;
+text-shadow: 2px 2px 3px black;
+background-color: transparent;
+border: none;
+color: #fff;
+font-size: 2.5em;
   }
 
   .Contact {
-    width: 80%;
-    color: #fff;
-    background:rgba(0,0,0,0.6);
-    border-radius: 12px;
-    box-shadow: 2px 2px 4px #000;
+    background-color: transparent;
+    width: 100%;
+    text-shadow: 2px 2px 3px black;
+    background-color: transparent;
     border: none;
-    margin-top: 10px;
+    color: #fff;
+    font-size: 2.5em;
   }
 
   .Info {
-    width: 80%;
-    color: #fff;
-    background:rgba(0,0,0,0.6);
-    border-radius: 12px;
-    box-shadow: 2px 2px 4px #000;
+    background-color: transparent;
+    width: 100%;
+    text-shadow: 2px 2px 3px black;
+    background-color: transparent;
     border: none;
-    margin-top: 10px;
+    color: #fff;
+    font-size: 2.5em;
   }
 
   .Login {
-    width: 80%;
-    color: #fff;
-    background:rgba(0,0,0,0.6);
-    border-radius: 12px;
-    box-shadow: 2px 2px 4px #000;
+    background-color: transparent;
+    width: 100%;
+    text-shadow: 2px 2px 3px black;
+    background-color: transparent;
     border: none;
-    margin-top: 10px;
+    color: #fff;
+    font-size: 2.5em;
   }
 
   .slidebox {
-    position: absolute;
+    position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
     overflow: hidden;
     z-index: -1;
+    height: 135px;
   }
 
   .slide1 {
@@ -295,7 +312,7 @@ export default {
     transform: translateX(-2000px);
     opacity: 0;
   }
-
+  /*lANDSCAPE*/
   @media (min-width: 700px) {
     .navpane {
       width: 100%;
@@ -315,6 +332,7 @@ export default {
     }
 
     button {
+
       letter-spacing: 1.3px;
       -webkit-animation-duration: .25s;
       animation-duration: .25s;
@@ -344,7 +362,19 @@ export default {
           transform:         translateY(-10px)
         }
       }
-
+      .Home {
+        display: none;
+      }
+      .slidebox {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        overflow: hidden;
+        z-index: -1;
+        height: 100%;
+      }
       .Work {
         box-shadow: none;
         grid-column: 1;
@@ -352,7 +382,7 @@ export default {
         border: none;
         color: #fff;
         font-family: @base-font;
-        font-size: 2em;
+        font-size: 2.5em;
         width: 25%;
         text-shadow: 2px 2px 3px black;
         grid-column: 1;
@@ -366,7 +396,7 @@ export default {
         border: none;
         color: #fff;
         font-family: @base-font;
-        font-size: 2em;
+        font-size: 2.5em;
         width: 25%;
         text-shadow: 2px 2px 3px black;
         grid-column: 2;
@@ -380,7 +410,7 @@ export default {
         border: none;
         color: #fff;
         font-family: @base-font;
-        font-size: 2em;
+        font-size: 2.5em;
         width: 25%;
         text-shadow: 2px 2px 3px black;
         width: 100%;
@@ -393,7 +423,7 @@ export default {
         border: none;
         color: #fff;
         font-family: @base-font;
-        font-size: 2em;
+        font-size: 2.5em;
         width: 25%;
         text-shadow: 2px 2px 3px black;
         width: 100%;
