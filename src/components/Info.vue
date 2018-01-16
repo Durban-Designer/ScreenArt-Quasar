@@ -1,5 +1,5 @@
 <template>
-  <div class="main">
+  <div class="main" @scroll="onScroll">
     <div class="info" v-if="modal">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     </div>
@@ -28,18 +28,14 @@
 <script>
 export default {
   name: 'Info',
-  created () {
-    window.addEventListener('scroll', function () {
-      console.log('scroll')
-      this.modal = !this.modal
-    })
-  },
   data: function () {
     return {
       modal: false
     }
   },
   methods: {
+    onScroll () {
+    }
   }
 }
 </script>

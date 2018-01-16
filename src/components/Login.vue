@@ -2,10 +2,10 @@
   <div class="main">
     <h1>LOG IN</h1>
     <div class="loginBox">
-    <input class="email" placeholder="EMAIL" v-model="email"></input>
-    <input class="password" placeholder="PASSWORD" v-model="password"></input>
-    <button class="login" v-on:click="login">GO</button>
-  </div>
+      <input class="email" placeholder="EMAIL" v-model="email"></input>
+      <input class="password" placeholder="PASSWORD" v-model="password" type="password" v-on:keyup.enter="login"></input>
+      <button class="login" v-on:click="login">GO</button>
+    </div>
   </div>
 </template>
 
@@ -53,6 +53,8 @@ export default {
           console.log(response)
           this.wrong = true
         })
+    },
+    togglePass () {
     }
   }
 }
@@ -87,8 +89,7 @@ h1 {
   grid-template-columns: 1fr 1fr 1fr;
 }
 .email {
-
-    margin-bottom: 10px;
+  margin-bottom: 10px;
   grid-column: 2;
   background: transparent;
   outline: none;
@@ -101,6 +102,7 @@ h1 {
   -moz-transition: all 0.3s ease-in-out;
   -ms-transition: all 0.3s ease-in-out;
 }
+
 .password {
   margin-bottom: 10px;
   grid-column: 2;
@@ -115,6 +117,11 @@ h1 {
   -moz-transition: all 0.3s ease-in-out;
   -ms-transition: all 0.3s ease-in-out;
 }
+
+.showPass {
+
+}
+
 .login {
   grid-column: 2;
   text-align: center;
