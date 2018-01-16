@@ -61,7 +61,7 @@ export default {
 @base-font:'Pathway Gothic One', sans-serif;
 
   .workPage {
-    margin-top: 125px;;
+    margin-top: 150px;;
     width: 99%;
     height: 73.5%;
     position: fixed;
@@ -118,6 +118,7 @@ export default {
   .totalResponse {
     background-image: url('../assets/totalResponse.svg');
     background-repeat: no-repeat;
+    background-size: contain;
     width: 100%;
     height: 100%;
     z-index: 10;
@@ -125,7 +126,6 @@ export default {
     filter: drop-shadow(1px 2px 2px #000);
     grid-column: 1;
     grid-row: 1;
-    background-size: contain;
   }
 
   .quickVenom {
@@ -163,11 +163,15 @@ export default {
       width: 90%;
       display: grid;
       grid-template-columns: 1fr;
-      grid-template-rows: repeat(4, 100px);
+      grid-template-rows: repeat(4, 80px);
       grid-row-gap: 10px;
       text-align: center;
       margin-top: 100px;
       margin-left: 5%;
+    }
+
+    .tiles:hover {
+
     }
 
     .totalResponse {
@@ -203,6 +207,7 @@ export default {
       background-size: contain;
       grid-column: 1;
       grid-row: 3;
+      margin-top: 6%;
     }
 
     .hammurabiGame {

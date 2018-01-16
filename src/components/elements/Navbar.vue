@@ -165,7 +165,6 @@ export default {
     display: grid;
     grid-template-columns: repeat(2, 1fr) 220px repeat(2,1fr);
     grid-template-rows: 100px;
-
     box-shadow: 2px 2px 4px #000;
   }
 
@@ -245,14 +244,15 @@ export default {
     grid-column: 1;
     width: 100%;
   }
+  
   .Work {
-background-color: transparent;
-width: 100%;
-text-shadow: 2px 2px 3px black;
-background-color: transparent;
-border: none;
-color: #fff;
-font-size: 2.5em;
+    background-color: transparent;
+    width: 100%;
+    text-shadow: 2px 2px 3px black;
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 2.5em;
   }
 
   .Contact {
