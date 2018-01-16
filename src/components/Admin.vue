@@ -3,6 +3,7 @@
     <users v-if="viewUsers" v-on:back="viewUsers = false" :user="user"></users>
     <div class="settings" v-else-if="settings"></div>
     <div class="adminopt" v-else>
+      <h1>ADMIN</h1>
       <button v-on:click="viewUsers = true; buttons = false">User Manifest</button>
       <button>Settings</button>
       <button class="back" v-on:click="$router.push('/crm')">Back</button>
@@ -41,9 +42,9 @@ export default {
 
 .main {
   margin-left: 5px;
-  margin-top: 10%;
+  margin-top: 145px;
   width: 99%;
-  height: 73.5%;
+  height: 70%;
   z-index: 10;
   position: fixed;
   background:rgba(0,0,0,0.6);
@@ -51,31 +52,34 @@ export default {
   box-shadow: 2px 2px 4px #000;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: repeat(4, 1fr);
 }
 
 h1 {
+  grid-column: 2;
   font-family: @base-font;
   font-weight: lighter;
-  font-size: 3em;
+  font-size: 2em;
   color: #fff;
   text-shadow: 2px 2px 3px black;
   text-align: center;
-  line-height: 100px;
+  line-height: 2em;
 }
 
 .adminopt {
   grid-column: 2;
-  margin-top: 40px;
+  margin-top: 10px;
 }
+
 button {
   font-family: @base-font;
   width: 100%;
-  height: 40px;
+  height: 60px;
   background-color: transparent;
   color: #fff;
   box-shadow: 2px 2px 4px #000;
   margin-top: 25px;
-  font-size: 2em;
+  font-size: 1.6em;
 }
 button:hover {
   background: #fff;

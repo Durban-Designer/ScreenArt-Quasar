@@ -30,6 +30,7 @@ export default {
   grid-template-rows: repeat(6, 6em);
   position: fixed;
 }
+
 h1 {
   font-size: 5em;
   grid-column-start: 1;
@@ -39,8 +40,8 @@ h1 {
   font-family: @base-font;
   line-height: 100px;
   color: #fff;
-
 }
+
 h3 {
   font-size: 3.2em;
   grid-column-start: 3;
@@ -49,14 +50,16 @@ h3 {
   font-family: @base-font;
   color: #c22227;
 }
+
 .brand {
   grid-row: 3;
   line-height: 0px;
-
 }
+
 .passion {
   grid-row: 4;
 }
+
 .boxr {
   margin-bottom: 20px;
   grid-row-start: 1;
@@ -68,7 +71,6 @@ h3 {
 }
 
 @media (min-width: 700px) {
-
   h1 {
     margin-right: 20px;
     font-family: @base-font;
@@ -82,6 +84,7 @@ h3 {
     grid-row: 2;
     letter-spacing: 2px;
   }
+
   h3 {
     line-height: 70px;
     margin-right: 20px;
@@ -91,22 +94,23 @@ h3 {
     color: #fff;
     text-shadow: 2px 4px 3px black;
     text-align: right;
-
   }
+
   .brand {
     grid-column-start: 3;
     grid-column-end: 7;
-    grid-row: 3;
+    grid-row: 4;
     z-index: 12;
   }
+
   .passion {
     grid-column-start: 3;
     grid-column-end: 7;
-    grid-row: 3;
+    grid-row: 4;
     z-index: 12;
     margin-top: 90px;
-
   }
+
   .boxr {
     height: 67px;
     grid-column-start: 4;
@@ -118,6 +122,7 @@ h3 {
     margin-top: 41px;
     box-shadow: 2px 4px 3px black;
   }
+
   .boxg {
     grid-column-start: 6;
     grid-column-end: 7;
@@ -127,8 +132,6 @@ h3 {
     height: 750px;
     background:rgba(0,0,0,0.6);
     z-index: 9;
-
   }
-
 }
 </style>
