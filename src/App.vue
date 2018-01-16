@@ -59,6 +59,10 @@ export default {
       vue.user.token = ''
       vue.user.id = ''
       vue.loggedIn = false
+      localStorage.removeItem('token')
+      localStorage.removeItem('userId')
+      localStorage.removeItem('admin')
+      localStorage.removeItem('employee')
       vue.$router.push('/')
     }
   }
