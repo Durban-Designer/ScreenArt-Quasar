@@ -18,6 +18,16 @@ export default {
     'navbar': Navbar,
     'foot': Foot
   },
+  created () {
+    let vue = this
+    vue.user.token = localStorage.getItem('token')
+    vue.user.id = localStorage.getItem('userId')
+    vue.user.admin = localStorage.getItem('admin')
+    vue.user.employee = localStorage.getItem('employee')
+    if (vue.user.token !== null) {
+      vue.loggedIn = true
+    }
+  },
   data: function () {
     return {
       loggedIn: false,
