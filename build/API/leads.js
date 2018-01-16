@@ -1,10 +1,39 @@
 var express = require("express");
 var mongodb = require("mongodb");
 var _ = require("lodash");
+var bodyParser = require("body-parser");
+var passport = require("passport");
+var passportJWT = require("passport-jwt");
+var jwt = require('jsonwebtoken');
 var app = express();
 var router = express.Router();
 var mongoose = require("mongoose");
 var Lead = mongoose.model("Lead");
+var User = mongoose.model("User");
+var bcrypt = require('bcryptjs');
+var ExtractJwt = passportJWT.ExtractJwt;
+var JwtStrategy = passportJWT.Strategy;
+
+var jwtOptions = {}
+jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme("JWT");
+jwtOptions.secretOrKey = 'LokisBreath-420';
+
+var strategy = new JwtStrategy(jwtOptions, function(jwt_payload, next) {
+  User.findOne({"_id": jwt_payload.id}, function(err, user) {
+    if (err) {
+          return next(err, false);
+      }
+      if (user) {
+          return next(null, user);
+      } else {
+          return next(null, false);
+      }
+  });
+});
+
+app.use(passport.initialize());
+passport.use(strategy);
+app.use(bodyParser.json());
 
 router.post("/", (req,res) => {
   var newLead = new Lead({
@@ -21,12 +50,12 @@ router.post("/", (req,res) => {
     if(err) {
       res.send(err);
     } else {
-      res.status(401).send(result);
+      res.send(result);
     }
   });
 })
 
-router.get("/", (req, res) => {
+router.get("/", passport.authenticate('jwt', { session: false }),(req, res) => {
   Lead.find({},function (err, leads) {
     if (err) {
       res.send(err);
@@ -36,9 +65,9 @@ router.get("/", (req, res) => {
   })
 })
 
-router.get("/name/:name", (req, res) => {
+router.get("/name/:name", passport.authenticate('jwt', { session: false }),(req, res) => {
   var leadName = req.params["name"];
-  Lead.find({"name": leadName},function (err, leads) {
+  Lead.find({"name": {$regex: '^' + leadName}},function (err, leads) {
     if (err) {
       res.send(err);
     } else {
@@ -47,7 +76,7 @@ router.get("/name/:name", (req, res) => {
   })
 })
 
-router.get("/:id", (req, res) => {
+router.get("/:id", passport.authenticate('jwt', { session: false }),(req, res) => {
   var leadid = new mongodb.ObjectID(req.params["id"]);
   Lead.find({"_id": leadid},function (err, leads) {
     if (err) {
@@ -58,7 +87,7 @@ router.get("/:id", (req, res) => {
   })
 })
 
-router.put("/:id", (req, res) => {
+router.put("/:id", passport.authenticate('jwt', { session: false }),(req, res) => {
   var leadid = new mongodb.ObjectID(req.params["id"]);
   Lead.find({"_id": leadid},function (err, lead) {
     if (err) {
@@ -83,9 +112,10 @@ router.put("/:id", (req, res) => {
 });
 })
 
-router.delete("/", (req, res) => {
-  var leadid = req.body._id;
+router.delete("/:id", passport.authenticate('jwt', { session: false }),(req, res) => {
+  var leadid = new mongodb.ObjectID(req.params["id"]);
   Lead.find({_id: leadid}).remove().then(() => {
+    console.log("success");
     res.send("success");
   })
 })

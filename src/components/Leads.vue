@@ -1,38 +1,67 @@
 <template>
   <div class="main">
-    <div class="leadbox" v-if="leadbox">
-      <input type="text" class="search" placeholder="SearchLeads" v-model="searchBox"></input>
-      <button type="submit" class="searchButton"v-on:click="search">Search</button>
-      <h4>Leads</h4>
-      <div class="lead" v-on:click="displayLead"></div>
-      <div class="leadItem" v-if="leaditem">
-        <button class="editButton" v-on:click="edit = true; lead = false;">Edit</button>
-        <p class="clientName"></p>
-        <p class="phonenum"></p>
-        <p class="email"></p>
-        <p class="leadStatus"></p>
-        <p class="address"></p>
-        <p class="notes"></p>
+    <transition name="fade">
+      <div class="leadbox" v-if="leadbox">
+        <input type="text" class="search" placeholder="SearchLeads" v-model="searchBox"></input>
+        <button type="submit" class="searchButton" v-on:click="search">Search</button>
+        <h4>Leads</h4>
+        <div class="leadList" v-on:click="displayLead" v-for="lead in leads">
+          <h5 v-on:click="leadItemDisplay(lead)" class="lead">{{lead.name}}:{{lead.status}}</h5>
+        </div>
+        <button class="newLead" v-on:click="newLeadButton">New Lead</button>
+        <button class="back" v-on:click="$router.push('/crm')">Back</button>
       </div>
-      <button class="newLead" v-on:click="newLead">New Lead</button>
-    </div>
-    <div class="edit" v-if="edit">
-      <h4 class="entertitle">Lead Info</h4>
-      <input type="text" class="clientNameEdit" v-model="activeLead.clientName" placeholder="Client Name" required></input>
-      <input type="tel" class="phoneEdit" v-model="activeLead.phoneNumber" placeholder="Phone Number" required></input><br/>
-      <input type="text" class="emailEdit" v-model="activeLead.email" placeholder="Email Address" required></input>
-      <input type="text" class="addressEdit" v-model="activeLead.address" placeholder="Address"required></input>
-      <select class="statusEdit">
-        <option value="notContacted">not contacted</option>
-        <option value="contacted">contacted</option>
-        <option value="jobInProgress">job in-progress</option>
-        <option value="jobFinished">job finished</option>
-      </select>
-      <input type="text" class="notesEdit" v-model="activeLead.notes" placeholder="Notes"></input>
-      <button class="submit" v-if="postLead" v-on:click="submit">Submit</button>
-      <button class="cancel" v-on:click="cancel">Cancel</button>
-      <button class="submit" v-if="edit" v-on:click="submitEdit">Submit</button>
-    </div>
+    </transition>
+    <transition name="fade">
+      <div class="leadItem" v-if="leaditem">
+        <p class="name">{{activeLead.name}}</p>
+        <p class="phone">{{activeLead.phone}}</p>
+        <p class="email">{{activeLead.email}}</p>
+        <p class="status">{{activeLead.status}}></p>
+        <p class="address">{{activeLead.address}}</p>
+        <p class="comment">{{activeLead.comment}}</p>
+        <p class="url">{{activeLead.url}}</p>
+        <button class="editButton" v-on:click="edit = true; lead = false; leaditem = false;">Edit</button>
+        <button class="delete" v-on:click="deleteLead">Delete</button>
+        <button class="back" v-on:click="leaditem = false; leadbox = true">Back</button>
+      </div>
+    </transition>
+    <transition name="fade">
+      <div class="edit" v-if="edit">
+        <h4 class="entertitle">Lead Info</h4>
+        <input type="text" class="clientNameEdit" v-model="activeLead.name" placeholder="Name" required></input>
+        <input type="tel" class="phoneEdit" v-model="activeLead.phone" placeholder="Phone Number" required></input><br/>
+        <input type="text" class="emailEdit" v-model="activeLead.email" placeholder="Email Address" required></input>
+        <input type="text" class="addressEdit" v-model="activeLead.address" placeholder="Address"required></input>
+        <select class="statusEdit" v-model="activeLead.status">
+          <option value="notContacted">not contacted</option>
+          <option value="contacted">contacted</option>
+          <option value="jobInProgress">job in-progress</option>
+          <option value="jobFinished">job finished</option>
+        </select>
+        <input type="text" class="notesEdit" v-model="activeLead.comment" placeholder="Notes"></input>
+        <button class="cancel" v-on:click="cancelEdit">Cancel</button>
+        <button class="submitEdit" v-on:click="submitEdit">Submit</button>
+      </div>
+    </transition>
+    <transition name="fade">
+      <div class="newLead" v-if="newLead">
+        <h4 class="entertitle">Lead Info</h4>
+        <input type="text" class="nameNew" v-model="activeLead.name" placeholder="Name" required></input>
+        <input type="tel" class="phoneNew" v-model="activeLead.phone" placeholder="Phone Number" required></input><br/>
+        <input type="text" class="emailNew" v-model="activeLead.email" placeholder="Email Address" required></input>
+        <input type="text" class="addressNew" v-model="activeLead.address" placeholder="Address"required></input>
+        <select class="statusNew" v-model="activeLead.status">
+          <option value="notContacted">not contacted</option>
+          <option value="contacted">contacted</option>
+          <option value="jobInProgress">job in-progress</option>
+          <option value="jobFinished">job finished</option>
+        </select>
+        <input type="text" class="commentNew" v-model="activeLead.comment" placeholder="Notes"></input>
+        <button class="cancel" v-on:click="cancel">Cancel</button>
+        <button class="submitLead" v-on:click="submitLead">Submit</button>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -40,38 +69,47 @@
 import axios from 'axios'
 export default {
   name: 'leads',
+  props: ['user', 'loggedIn'],
   created () {
-    this.populateLeads()
+    let vue = this
+    if (vue.loggedIn === true && vue.user.employee === true) {
+      vue.clearLeads()
+      this.populateLeads()
+    }
+    else {
+      vue.$router.push('/login')
+    }
   },
   data: function () {
     return {
       activeLead: {
-        clientName: '',
-        phoneNumber: '',
+        name: '',
+        phone: '',
         email: '',
+        url: '',
         address: '',
         status: '',
-        notes: ''
+        comment: '',
+        id: ''
       },
       leads: [{}],
       error: '',
       tabSelected: 0,
-      edit: false,
       leadbox: true,
+      newLead: false,
+      edit: false,
       searchBox: '',
-      newlead: false,
+      newleadButton: false,
       leaditem: false,
-      postlead: false,
-      leadId: ''
+      postlead: false
     }
   },
-  props: ['logged'],
   computed: {
   },
   methods: {
     populateLeads () {
       let vue = this
-      axios.get('http://13.57.57.81:81/leads')
+      axios.get('http://13.57.57.81:81/leads', {headers: { 'Authorization': 'JWT ' + vue.user.token }})
         .then(function (response) {
           vue.leads = response.data
         })
@@ -83,46 +121,82 @@ export default {
       this.leads = [{}]
     },
     clearActiveLeads () {
-      this.activeLead.clientName = ''
-      this.activeLead.phoneNumber = ''
+      this.activeLead.name = ''
+      this.activeLead.phone = ''
       this.activeLead.email = ''
       this.activeLead.address = ''
       this.activeLead.status = ''
-      this.activeLead.notes = ''
+      this.activeLead.comment = ''
+      this.activeLead.url = ''
+      this.activeLead.id = ''
     },
-    submit () {
+    leadItemDisplay (lead) {
+      let vue = this
+      vue.leaditem = true
+      vue.activeLead.id = lead._id
+      vue.activeLead.name = lead.name
+      vue.activeLead.phone = lead.phone
+      vue.activeLead.email = lead.email
+      vue.activeLead.address = lead.address
+      vue.activeLead.status = lead.status
+      vue.activeLead.comment = lead.comment
+      vue.activeLead.url = lead.url
+    },
+    submitLead () {
       let vue = this
       axios.post('http://13.57.57.81:81/leads', {
-        clientName: vue.activeLead.clientName.toLowerCase(),
-        phoneNumber: vue.activeLead.phoneNumber,
+        name: vue.activeLead.name.toLowerCase(),
+        phone: vue.activeLead.phone,
         email: vue.activeLead.email,
         address: vue.activeLead.address,
         status: vue.activeLead.status,
-        notes: vue.activeLead.notes
-      }, {headers: { 'Authorization': 'JWT ' + vue.token }})
+        comment: vue.activeLead.comment,
+        url: vue.activeLead.url
+      })
         .then(function () {
           vue.edit = false
           vue.leadbox = true
+          vue.newLead = false
+          vue.clearActiveLeads()
+          vue.clearLeads()
+          vue.populateLeads()
         })
         .catch(function (error) {
           console.log(error)
         })
-      vue.clearLeads()
-      vue.populateLeads()
     },
     submitEdit () {
       let vue = this
-      axios.put('http://13.57.57.81:81/leads/' + vue.leadId, {
-        clientName: vue.activeLead.clientName.toLowerCase(),
-        phoneNumber: vue.activeLead.phoneNumber,
+      axios.put('http://13.57.57.81:81/leads/' + vue.activeLead.id, {
+        name: vue.activeLead.name.toLowerCase(),
+        phone: vue.activeLead.phone,
         email: vue.activeLead.email,
         address: vue.activeLead.address,
         status: vue.activeLead.status,
-        notes: vue.activeLead.notes
-      }, {headers: { 'Authorization': 'JWT ' + vue.token }})
+        comment: vue.activeLead.comment,
+        url: vue.activeLead.url
+      }, {headers: { 'Authorization': 'JWT ' + vue.user.token }})
         .then(function () {
           vue.edit = false
           vue.leadbox = true
+          vue.clearLeads()
+          vue.clearActiveLeads()
+          vue.populateLeads()
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
+    },
+    deleteLead () {
+      let vue = this
+      axios.delete('http://13.57.57.81:81/leads/' + vue.activeLead.id, {headers: { 'Authorization': 'JWT ' + vue.user.token }})
+        .then(function () {
+          vue.edit = false
+          vue.leadbox = true
+          vue.leaditem = false
+          vue.clearLeads()
+          vue.clearActiveLeads()
+          vue.populateLeads()
         })
         .catch(function (error) {
           console.log(error)
@@ -130,52 +204,73 @@ export default {
     },
     cancel () {
       let vue = this
-      vue.edit = false
+      vue.newLead = false
       vue.leadbox = true
+      vue.clearLeads()
+      this.populateLeads()
     },
-    newLead () {
+    cancelEdit () {
+      let vue = this
+      vue.edit = false
+      vue.leaditem = true
+    },
+    newLeadButton () {
       let vue = this
       vue.clearLeads()
       vue.clearActiveLeads()
-      vue.edit = true
       vue.leadbox = false
-      vue.postLead = true
+      vue.newLead = true
     },
     displayLead () {
       let vue = this
       vue.leadItem = true
+      vue.leadbox = false
     },
     search () {
       let vue = this
-      vue.clearLeads()
-      axios.get('http://13.57.57.81:81/leads/name/' + vue.searchBox)
-        .then(function (response) {
-          vue.leads = response.data
-        })
-        .catch(function (error) {
-          console.log(error)
-        })
+      if (vue.searchBox === '') {
+        vue.clearLeads()
+        vue.clearActiveLeads()
+        vue.populateLeads()
+      }
+      else {
+        axios.get('http://13.57.57.81:81/leads/name/' + vue.searchBox, {headers: { 'Authorization': 'JWT ' + vue.user.token }})
+          .then(function (response) {
+            vue.clearLeads()
+            vue.clearActiveLeads()
+            vue.leads = response.data
+          })
+          .catch(function (error) {
+            console.log(error)
+          })
+      }
     }
   }
 }
 </script>
 
 <style scoped lang='less'>
+@base-font:'Pathway Gothic One', sans-serif;
 .main {
   margin-left: 5px;
-  margin-top: 110px;
+  margin-top: 10%;
   width: 99%;
-  height: 500px;
+  height: 73.5%;
   z-index: 10;
-  position: absolute;
+  position: fixed;
   background:rgba(0,0,0,0.6);
   border-radius: 12px;
+  box-shadow: 2px 2px 4px #000;
 }
 
 .leadBox {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(12, 50px);
+}
+
+.back {
+
 }
 
 .search {
@@ -190,47 +285,68 @@ export default {
   grid-row: 3;
 }
 
+button {
+  width: 160px;
+  height: 60px;
+  line-height: 50px;
+  background-color: #111;
+  margin-left: 20px;
+  color: #fff;
+  border-radius: 10px;
+}
+
 h4 {
   grid-column-start: 1;
   grid-column-end: 3;
   grid-row-start: 2;
   grid-row-end: 3;
+  font-size: 2em;
+  line-height: 0px;
+  text-decoration: underline;
+  color: #fff;
+}
+
+.lead {
+  color: #fff;
+}
+
+.leadlist {
 }
 
 .leadItem {
 
 }
 
-.clientName {
-
-}
-
-.primaryContact {
-
+.name {
+  color: #fff;
 }
 
 .title {
 
 }
 
-.phonenum {
-
+.phone {
+  color: #fff;
 }
 
 .email {
-
+  color: #fff;
 }
 
 .address {
-
+  color: #fff;
 }
 
-.leadStatus {
-
+.status {
+  color: #fff;
 }
 
-.notes {
+.comment {
+  color: #fff;
+}
 
+.url {
+  color: #fff;
 }
 
 .newLead {
@@ -305,7 +421,13 @@ h4 {
   grid-row-end: 4;
 }
 
-.submit {
+.submitEdit {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row: 10;
+}
+
+.submitLeads {
   grid-column-start: 1;
   grid-column-end: 2;
   grid-row: 10;
@@ -315,5 +437,136 @@ h4 {
   grid-column-start: 2;
   grid-column-end: 3;
   grid-row: 10;
+}
+
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+  color: #fff;
+  font-size: 0.875em;
+}
+
+input:focus::-webkit-input-placeholder, textarea:focus::-webkit-input-placeholder {
+  color: #fff;
+}
+
+input::-moz-placeholder, textarea::-moz-placeholder {
+  color: #fff;
+  font-size: 0.875em;
+}
+
+input:focus::-moz-placeholder, textarea:focus::-moz-placeholder {
+  color: #fff;
+}
+
+input::placeholder, textarea::placeholder {
+  color: #fff;
+  font-size: 0.875em;
+}
+
+input:focus::placeholder, textarea::focus:placeholder {
+  color: #fff;
+}
+
+input::-ms-placeholder, textarea::-ms-placeholder {
+  color: #fff;
+  font-size: 0.875em;
+}
+
+input:focus::-ms-placeholder, textarea:focus::-ms-placeholder {
+  color: #fff;
+}
+
+/* on hover placeholder */
+
+input:hover::-webkit-input-placeholder, textarea:hover::-webkit-input-placeholder {
+  color: #fff;
+  font-size: 0.875em;
+}
+
+input:hover:focus::-webkit-input-placeholder, textarea:hover:focus::-webkit-input-placeholder {
+  color: #fff;
+}
+
+input:hover::-moz-placeholder, textarea:hover::-moz-placeholder {
+  color: #fff;
+  font-size: 0.875em;
+}
+
+input:hover:focus::-moz-placeholder, textarea:hover:focus::-moz-placeholder {
+  color: #cbc6c1;
+}
+
+input:hover::placeholder, textarea:hover::placeholder {
+  color: #fff;
+  font-size: 0.875em;
+}
+
+input:hover:focus::placeholder, textarea:hover:focus::placeholder {
+  color: #fff;
+}
+
+input:hover::placeholder, textarea:hover::placeholder {
+  color: #fff;
+  font-size: 0.875em;
+}
+
+input:hover:focus::-ms-placeholder, textarea:hover::focus:-ms-placeholder {
+  color: #fff;
+}
+
+#form {
+  position: relative;
+  width: 500px;
+  margin: 50px auto 100px auto;
+}
+
+input {
+  font-size: 1.5em;
+  font-family: @base-font;
+  background: transparent;
+  outline: none;
+  color: #fff;
+  border: solid 1px #fff;
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+}
+
+input:hover {
+  background: #fff;
+  color: #5d5d5d;
+}
+
+textarea {
+  width: 470px;
+  max-width: 470px;
+  height: 110px;
+  max-height: 110px;
+  padding: 15px;
+  background: transparent;
+  outline: none;
+  color: #726659;
+  font-family: @base-font;
+  font-size: 0.875em;
+  border: solid 1px #999;
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+}
+
+textarea:hover {
+  background: #999;
+  color: #fff;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: all .25s ease;
+  transition: all .25s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+
+.fade-enter, .fade-leave-active {
+  opacity: 0;
+  transform: translateY(20px);
 }
 </style>

@@ -14,7 +14,7 @@
           <li>(480)-526-2634</li>
           <li>(602)-558-1817</li>
         </ul>
-        <h3 class="blurb">We understand that your time is important.<br/> So we'll do our best to respond as quickly as possible!</h3>
+        <h3 class="blurb">We understand that your time is important. So we'll do our best to respond as quickly as possible!</h3>
       </div>
     </div>
 </template>
@@ -42,11 +42,11 @@
 
   .main {
     margin-left: 5px;
-    margin-top: 110px;
+    margin-top: 10%;
     width: 99%;
-    height: 740px;
+    height: 73.5%;
     z-index: 10;
-    position: absolute;
+    position: fixed;
     background:rgba(0,0,0,0.6);
     border-radius: 12px;
     box-shadow: 2px 2px 4px #000;
@@ -61,6 +61,7 @@
     text-align: center;
     line-height: 100px;
   }
+
   h3 {
     font-family: @base-font;
     font-weight: lighter;
@@ -73,6 +74,7 @@
     grid-column-end: 4;
     margin-right: 20px;
   }
+
   ul {
     font-family: @base-font;
     font-weight: lighter;
@@ -81,13 +83,14 @@
     text-shadow: 2px 2px 3px black;
     text-align: center;
     grid-row-start: 2;
-    grid-row-end: 5;
+    grid-row-end: 3;
     grid-column-start: 4;
     grid-column-end: 6;
     list-style: none;
-    line-height: 80px;
-    margin-right: 40px;
+    line-height: 60px;
+    margin-right: 70px;
   }
+
   .words {
     grid-row: 1;
     grid-column-start: 1;
@@ -107,13 +110,16 @@
     text-decoration: underline;
     margin-right: 40px;
   }
+
   .blurb {
     grid-row-start: 6;
     grid-row-end: 6;
     grid-column-start: 4;
     grid-column-end: 6;
-    line-height: 50px;
+    line-height: 28px;
+    font-size: 2em;
   }
+
   .contactBox {
     margin-left: 50px;
     margin-right: 15px;
@@ -154,7 +160,6 @@
   grid-row-end: 6;
   box-sizing: border-box;
   font-size: 1.3em;
-
 }
 
 .send {
@@ -294,5 +299,10 @@ textarea {
 textarea:hover {
   background: #999;
   color: #fff;
+}
+
+@media only screen and (max-width:750px) {
+
+
 }
 </style>

@@ -43,7 +43,7 @@ router.post("/login", (req, res) => {
         if (isMatch === true) {
           var payload = {"id": users.id};
           var token = jwt.sign(payload, jwtOptions.secretOrKey);
-          res.json({userId: users.id, token: token});
+          res.json({userId: users.id, token: token, admin: users.admin, employee: users.employee});
         } else {
           res.status(401).send(false);
         }
@@ -57,7 +57,10 @@ router.post("/login", (req, res) => {
 router.post("/", (req,res) => {
   var newUser = new User({
   email: req.body.email,
-  password: req.body.password
+  password: req.body.password,
+  name: req.body.name,
+  admin: req.body.admin,
+  employee: req.body.employee
   })
 
   newUser.save((err, result) => {
@@ -68,6 +71,25 @@ router.post("/", (req,res) => {
         var payload = {"id": users.id};
         var token = jwt.sign(payload, jwtOptions.secretOrKey);
         res.status(201).json({userId: payload.id, token: token});
+      })
+    }
+  })
+})
+
+router.get("/all/:id", passport.authenticate('jwt', { session: false }),(req, res) => {
+  var userid = new mongodb.ObjectID(req.params["id"]);
+  User.find({},function (err, users) {
+    if (err) {
+      res.send(err);
+    } else {
+      User.findOne({"_id": userid},function (err, user) {
+        if (err) {
+          res.send(err);
+        } else if (user.admin === true) {
+          res.send(users);
+        } else {
+          res.status(401).send('Unauthorized')
+        }
       })
     }
   })
@@ -93,6 +115,9 @@ router.put("/:id", passport.authenticate('jwt', { session: false }), (req, res) 
         var user = user[0];
         user.email = req.body.email || user.email;
         user.password = req.body.password || user.password;
+        user.name = req.body.name || user.name;
+        user.employee = req.body.employee || user.employee;
+        user.admin = req.body.admin || user.admin;
 
         user.save(function (err, user) {
             if (err) {
@@ -104,8 +129,8 @@ router.put("/:id", passport.authenticate('jwt', { session: false }), (req, res) 
   });
 })
 
-router.delete("/", passport.authenticate('jwt', { session: false }), (req, res) => {
-  var userid = req.body._id;
+router.delete("/:id", passport.authenticate('jwt', { session: false }), (req, res) => {
+  var userid = new mongodb.ObjectID(req.params["id"]);
   User.find({_id: userid}).remove().then(() => {
     res.send("success");
   })
