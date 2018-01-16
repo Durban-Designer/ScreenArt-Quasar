@@ -3,6 +3,7 @@
     <users v-if="viewUsers" v-on:back="viewUsers = false" :user="user"></users>
     <div class="settings" v-else-if="settings"></div>
     <div class="adminopt" v-else>
+      <h1>ADMIN</h1>
       <button v-on:click="viewUsers = true; buttons = false">User Manifest</button>
       <button>Settings</button>
       <button class="back" v-on:click="$router.push('/crm')">Back</button>
