@@ -45,9 +45,9 @@ export default {
 
   .main {
     margin-left: 5px;
-    margin-top: 10%;
+    margin-top: 145px;
     width: 99%;
-    height: 73.5%;
+    height: 70%;
     z-index: 10;
     position: fixed;
     background:rgba(0,0,0,0.6);
