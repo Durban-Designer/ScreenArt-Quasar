@@ -38,10 +38,10 @@
       <button class="back" v-on:click="modal=''">Back</button>
     </div>
     <div class="tiles" v-else>
-      <div class="totalResponse" v-on:click="modal='tr'">Total Response</div>
-      <div class="quickVenom" v-on:click="modal='qc'">Quick Venom</div>
-      <div class="carpetGuys" v-on:click="modal='cg'">Carpet Guys</div>
-      <div class="hammurabiGame" v-on:click="modal='hm'">Hammurabi Game</div>
+      <div class="totalResponse" v-on:click="modal='tr'"></div>
+      <div class="quickVenom" v-on:click="modal='qc'"></div>
+      <div class="carpetGuys" v-on:click="modal='cg'"></div>
+      <div class="hammurabiGame" v-on:click="modal='hm'"></div>
     </div>
   </div>
 </template>
@@ -82,7 +82,59 @@ export default {
     text-align: center;
     line-height: 100px;
   }
+  .tiles {
+    width: 90%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 300px 200px;
+    text-align: center;
+    margin-top: 30px;
+    margin-left: 5%;
 
+  }
+  .totalResponse {
+    background-image: url('../assets/totalResponseLogo.svg');
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    -webkit-filter: drop-shadow(1px 2px 2px #000);
+    filter: drop-shadow(1px 2px 2px #000);
+    transform: scale(1.2, 1.2);
+    grid-column: 1;
+    grid-row: 1;
+    background-size: contain;
+  }
+
+  .quickVenom {
+    background-image: url('../assets/qwc-venumm.svg');
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    -webkit-filter: drop-shadow(1px 2px 2px #000);
+    filter: drop-shadow(1px 2px 2px #000);
+    background-size: contain;
+    grid-column: 2;
+    grid-row: 1;
+    margin-top: 30px;
+  }
+
+  .carpetGuys {
+    background-image: url('../assets/carpetguytype.png');
+    background-repeat:no-repeat;
+    background-size: contain;
+
+  }
+
+  .hammurabiGame {
+    background-image: url('../assets/h3000.jpg');
+    background-repeat:no-repeat;
+    background-size:contain;
+    grid-column: 2;
+    grid-row: 2;
+    margin-left: 160px;
+  }
   @media only screen and (max-width:750px) {
 
 
