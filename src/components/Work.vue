@@ -61,9 +61,10 @@ export default {
 @base-font:'Pathway Gothic One', sans-serif;
 
   .workPage {
-    margin-top: 150px;;
+    margin-left: 5px;
+    margin-top: 145px;
     width: 99%;
-    height: 73.5%;
+    height: 70%;
     position: fixed;
     background:rgba(0,0,0,0.6);
     border-radius: 12px;
