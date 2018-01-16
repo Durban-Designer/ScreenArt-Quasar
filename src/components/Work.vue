@@ -21,7 +21,6 @@ export default {
     margin-top: 10%;
     width: 99%;
     height: 73.5%;
-    z-index: 10;
     position: fixed;
     background:rgba(0,0,0,0.6);
     border-radius: 12px;
@@ -38,8 +37,4 @@ export default {
     line-height: 100px;
   }
 
-  @media only screen and (max-width:750px) {
-
-
-  }
 </style>
