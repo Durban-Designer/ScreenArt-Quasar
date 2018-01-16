@@ -4,7 +4,7 @@
       <button class="Work" v-on:click="$router.push('/work')">WORK</button>
       <button class="Contact" v-on:click="$router.push('/contact')">CONTACT</button>
       <div class="sa" v-on:click="$router.push('/')"></div>
-      <button class="Team" v-on:click="$router.push('/team')">TEAM</button>
+      <button class="Team" v-on:click="$router.push('/info')">INFO</button>
       <button class="Login" v-on:click="$router.push('/login')" v-if="!loggedIn">LOGIN</button>
       <button class="Login" v-on:click="$router.push('/user')" v-if="loggedIn">CRM ACCESS</button>
     </div>
