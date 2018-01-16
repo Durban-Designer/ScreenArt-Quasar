@@ -81,14 +81,15 @@ export default {
     text-align: center;
     line-height: 100px;
   }
+
   button{
     background: transparent;
     color: #fff;
     border-color: #fff;
     font-size: 1.5em;
     margin-left: 10px;
-
   }
+
   p {
     font-family: @base-font;
     line-height: 40px;
@@ -99,6 +100,7 @@ export default {
     float: right;
     margin-right: 20px;
   }
+
   .tiles {
     width: 90%;
     display: grid;
@@ -107,25 +109,24 @@ export default {
     text-align: center;
     margin-top: 30px;
     margin-left: 5%;
-
   }
+
   span {
     color: #c22227;
     font-weight: bold;
   }
+
   .totalResponse {
-    background-image: url('../assets/totalResponseLogo.svg');
+    background-image: url('../assets/totalResponse.svg');
     background-repeat: no-repeat;
     width: 100%;
     height: 100%;
     z-index: 10;
     -webkit-filter: drop-shadow(1px 2px 2px #000);
     filter: drop-shadow(1px 2px 2px #000);
-    transform: scale(1.3, 1.3);
     grid-column: 1;
     grid-row: 1;
     background-size: contain;
-    margin-left: 80px;
   }
 
   .quickVenom {
@@ -143,7 +144,7 @@ export default {
   }
 
   .carpetGuys {
-    background-image: url('../assets/carpetguytype.png');
+    background-image: url('../assets/carpetGuys.svg');
     background-repeat:no-repeat;
     background-size: contain;
   }
@@ -156,8 +157,64 @@ export default {
     grid-row: 2;
     margin-left: 160px;
   }
+
   @media only screen and (max-width:750px) {
 
+    .tiles {
+      width: 90%;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(4, 100px);
+      grid-row-gap: 10px;
+      text-align: center;
+      margin-top: 100px;
+      margin-left: 5%;
+    }
 
+    .totalResponse {
+      background-image: url('../assets/totalResponse.svg');
+      background-repeat: no-repeat;
+      width: 100%;
+      height: 100%;
+      z-index: 10;
+      -webkit-filter: drop-shadow(1px 2px 2px #000);
+      filter: drop-shadow(1px 2px 2px #000);
+      grid-column: 1;
+      grid-row: 1;
+      background-size: contain;
+    }
+
+    .quickVenom {
+      background-image: url('../assets/qwc-venumm.svg');
+      background-repeat: no-repeat;
+      width: 100%;
+      height: 100%;
+      z-index: 10;
+      -webkit-filter: drop-shadow(1px 2px 2px #000);
+      filter: drop-shadow(1px 2px 2px #000);
+      background-size: contain;
+      grid-column: 1;
+      grid-row: 2;
+      margin-top: 0;
+    }
+
+    .carpetGuys {
+      background-image: url('../assets/carpetGuys.svg');
+      background-repeat:no-repeat;
+      background-size: contain;
+      grid-column: 1;
+      grid-row: 3;
+    }
+
+    .hammurabiGame {
+      width: 100%;
+      height: 100%;
+      background-image: url('../assets/h3000.jpg');
+      background-repeat:no-repeat;
+      background-size:contain;
+      grid-column: 1;
+      grid-row: 4;
+      margin-left: 0;
+    }
   }
 </style>
