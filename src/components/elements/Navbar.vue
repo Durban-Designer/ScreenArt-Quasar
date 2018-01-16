@@ -3,13 +3,13 @@
     <div class="navbar">
       <div v-bind:class="saLogic" v-on:click="navToggle"></div>
       <div v-bind:class="navpaneLogic">
-        <button class="Home" v-on:click="navToggle(); $router.push('/')">HOME</button>
-        <button class="Work" v-on:click="navToggle(); $router.push('/work')">WORK</button>
-        <button class="Contact" v-on:click="navToggle(); $router.push('/contact')">CONTACT</button>
-        <button class="Info" v-on:click="navToggle(); $router.push('/info')">INFO</button>
-        <button class="Login" v-on:click="navToggle(); $router.push('/login')" v-if="!loggedIn">LOGIN</button>
-        <button class="Login" v-on:click="navToggle(); $router.push('/crm')" v-if="loggedIn && user.employee">CRM</button>
-        <button class="Login" v-on:click="navToggle(); $router.push('/customeraccount')" v-if="loggedIn && !user.employee">ACCOUNT</button>
+        <button v-bind:class="HomeLogic" v-on:click="navToggle(); $router.push('/')">HOME</button>
+        <button v-bind:class="WorkLogic" v-on:click="navToggle(); $router.push('/work')">WORK</button>
+        <button v-bind:class="ContactLogic" v-on:click="navToggle(); $router.push('/contact')">CONTACT</button>
+        <button v-bind:class="InfoLogic" v-on:click="navToggle(); $router.push('/info')">INFO</button>
+        <button v-bind:class="LoginLogic" v-on:click="navToggle(); $router.push('/login')" v-if="!loggedIn">LOGIN</button>
+        <button v-bind:class="LoginLogic" v-on:click="navToggle(); $router.push('/crm')" v-if="loggedIn && user.employee">CRM</button>
+        <button v-bind:class="LoginLogic" v-on:click="navToggle(); $router.push('/customeraccount')" v-if="loggedIn && !user.employee">ACCOUNT</button>
       </div>
     </div>
     <div class="slidebox">
@@ -65,6 +65,36 @@ export default {
         navpane: this.first,
         navpaneAnimation: this.isToggled,
         navpaneAnimationExit: !this.isToggled && !this.first
+      }
+    },
+    HomeLogic: function () {
+      return {
+        Home: this.isToggled,
+        hidden: !this.isToggled
+      }
+    },
+    WorkLogic: function () {
+      return {
+        Work: this.isToggled,
+        hidden: !this.isToggled
+      }
+    },
+    ContactLogic: function () {
+      return {
+        Contact: this.isToggled,
+        hidden: !this.isToggled
+      }
+    },
+    InfoLogic: function () {
+      return {
+        Info: this.isToggled,
+        hidden: !this.isToggled
+      }
+    },
+    LoginLogic: function () {
+      return {
+        Login: this.isToggled,
+        hidden: !this.isToggled
       }
     }
   },
@@ -155,7 +185,8 @@ export default {
 
   @keyframes navpaneAnimationReverse {
     0% { opacity: 1; }
-    100% { opacity: 0; }
+    99% { opacity: 0; }
+    100% { opacity: 0;}
   }
 
   .navButtonAnimation {
