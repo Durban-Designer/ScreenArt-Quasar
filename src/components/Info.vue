@@ -1,26 +1,26 @@
 <template>
-  <div class="main">
-    <h1>INFORMATION</h1>
-    <div class="infobox">
+  <div class="main" @scroll="onScroll">
+    <div class="info" v-if="modal">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </div>
+    <div class="infobox" v-else>
       <div class="screenArt">
         <p class="does">SCREENART STUDIOS DOES</p>
       </div>
       <div class="scrollBox">
-          <div class="scroll">
-            <br/>
-            WEB DESIGN<br/>
-            HYBRID WEB APPS<br/>
-            MEDIA CREATION<br/>
-            WEB HOSTING<br/>
-            BRAND MARKETING<br/>
-            GRAPHIC DESIGN<br/>
-            SOCIAL MEDIA MARKETING<br/>
-            CONSULTING<br/>
-            IT ALL.
-          </div>
-    </div>
-
+        <div class="scroll">
           <br/>
+          WEB DESIGN<br/>
+          HYBRID WEB APPS<br/>
+          MEDIA CREATION<br/>
+          WEB HOSTING<br/>
+          BRAND MARKETING<br/>
+          GRAPHIC DESIGN<br/>
+          SOCIAL MEDIA MARKETING<br/>
+          CONSULTING<br/>
+          IT ALL.
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -30,6 +30,11 @@ export default {
   name: 'Info',
   data: function () {
     return {
+      modal: false
+    }
+  },
+  methods: {
+    onScroll () {
     }
   }
 }
