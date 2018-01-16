@@ -32,6 +32,7 @@
       <button class="back" v-on:click="editUser = false; viewUser= true">Back</button>
     </div>
     <div class="userList" v-else>
+      <h1>USERS</h1>
       <div class="users" v-for="user in users">
         <h5 v-on:click="editToggle(user)" class="user">{{user.name}}</h5>
       </div>
@@ -154,6 +155,11 @@ export default {
 
 <style scoped lang='less'>
   .main {
+    background: none;
+    border: none;
+    box-shadow: none;
+    margin-top: 80px;
+    margin-left: 20%;
     color: #fff;
   }
 </style>

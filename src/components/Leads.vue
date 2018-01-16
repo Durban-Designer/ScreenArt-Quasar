@@ -257,9 +257,9 @@ export default {
 @base-font:'Pathway Gothic One', sans-serif;
 .main {
   margin-left: 5px;
-  margin-top: 10%;
+  margin-top: 145px;
   width: 99%;
-  height: 73.5%;
+  height: 70%;
   z-index: 10;
   position: fixed;
   background:rgba(0,0,0,0.6);
@@ -277,11 +277,14 @@ export default {
 }
 
 .search {
-  width: 30%;
+  margin: 10px;
+  width: 60%;
   height: 40px;
 }
 
 .searchButton {
+  margin: 10px;
+  height: 40px;
 }
 
 button {
