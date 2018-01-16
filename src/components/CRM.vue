@@ -10,6 +10,7 @@
     <transition name="fade">
       <div class="home" v-if="!changePass">
         <h1>CRM-DASHBOARD</h1>
+        <button class="inbox" v-on:click="$router.push('/inbox')">INBOX</button><br/>
         <button class="leads" v-on:click="$router.push('/leads')">LEADS</button><br/>
         <button class="admin" v-on:click="$router.push('/admin')" v-if="user.admin">ADMIN</button>
         <button class="changePass" v-on:click="changePass = true">CHANGE PASSWORD</button>
