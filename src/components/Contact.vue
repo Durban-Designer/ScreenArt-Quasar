@@ -20,21 +20,67 @@
 </template>
 
 <script>
-  export default {
-    name: 'Contact',
-    data: function () {
-      return {
-        name: '',
-        email: '',
-        phone: '',
-        message: ''
-      }
+import axios from 'axios'
+export default {
+  name: 'Contact',
+  data: function () {
+    return {
+      name: '',
+      email: '',
+      phone: '',
+      message: ''
+    }
+  },
+  methods: {
+    submitLead () {
+      let vue = this
+      axios.post('http://13.57.57.81:81/leads', {
+        name: vue.activeLead.name.toLowerCase(),
+        phone: vue.activeLead.phone,
+        email: vue.activeLead.email,
+        address: vue.activeLead.address,
+        status: 'noreply',
+        comment: vue.activeLead.comment,
+        url: vue.activeLead.url
+      })
+        .then(function () {
+          vue.edit = false
+          vue.leadbox = true
+          vue.newLead = false
+          vue.clearActiveLeads()
+          vue.clearLeads()
+          vue.populateLeads()
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
+      vue.clearLeads()
+      this.populateLeads()
     },
-    methods: {
-      send: function () {
-      }
+    send () {
+      let vue = this
+      axios.post('http://13.57.57.81:81/messages', {
+        name: vue.activeLead.name.toLowerCase(),
+        phone: vue.activeLead.phone,
+        email: vue.activeLead.email,
+        comment: vue.activeLead.comment
+      })
+        .then(function () {
+          vue.edit = false
+          vue.leadbox = true
+          vue.newLead = false
+          vue.clearActiveLeads()
+          vue.clearLeads()
+          vue.populateLeads()
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
+      vue.clearLeads()
+      this.populateLeads()
     }
   }
+}
 </script>
 
 <style scoped lang='less'>
