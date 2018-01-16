@@ -2,11 +2,11 @@
   <div class="main">
     <h1>LOG IN</h1>
     <div class="loginBox">
-    <input class="email" placeholder="EMAIL" v-model="email"></input>
-    <input class="password" placeholder="PASSWORD" v-model="password"></input>
-    <h3 class="logged">Stay logged in?<input type="checkbox" v-model="stayLogged"></input></h3>
-    <button class="login" v-on:click="login">GO</button>
-  </div>
+      <input class="email" placeholder="EMAIL" v-model="email"></input>
+      <input class="password" placeholder="PASSWORD" v-model="password" type="password" v-on:keypress.enter="login"></input>
+      <h3 class="logged">Stay logged in?<input type="checkbox" v-model="stayLogged"></input></h3>
+      <button class="login" v-on:click="login">GO</button>
+    </div>
   </div>
 </template>
 
@@ -67,6 +67,8 @@ export default {
           console.log(response)
           this.wrong = true
         })
+    },
+    togglePass () {
     }
   }
 }
