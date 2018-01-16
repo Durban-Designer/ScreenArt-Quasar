@@ -3,12 +3,12 @@
     <div class="navbar">
       <div v-bind:class="saLogic" v-on:click="navToggle"></div>
       <div v-bind:class="navpaneLogic">
-        <button class="Work" v-on:click="$router.push('/work'); navToggle()">WORK</button>
-        <button class="Contact" v-on:click="$router.push('/contact'); navToggle()">CONTACT</button>
-        <button class="Info" v-on:click="$router.push('/info'); navToggle()">INFO</button>
-        <button class="Login" v-on:click="$router.push('/login'); navToggle()" v-if="!loggedIn">LOGIN</button>
-        <button class="Login" v-on:click="$router.push('/crm'); navToggle()" v-if="loggedIn && user.employee">CRM</button>
-        <button class="Login" v-on:click="$router.push('/customeraccount'); navToggle()" v-if="loggedIn && !user.employee">ACCOUNT</button>
+        <button class="Work" v-on:click="navToggle(); $router.push('/work')">WORK</button>
+        <button class="Contact" v-on:click="navToggle(); $router.push('/contact')">CONTACT</button>
+        <button class="Info" v-on:click="navToggle(); $router.push('/info')">INFO</button>
+        <button class="Login" v-on:click="navToggle(); $router.push('/login')" v-if="!loggedIn">LOGIN</button>
+        <button class="Login" v-on:click="navToggle(); $router.push('/crm')" v-if="loggedIn && user.employee">CRM</button>
+        <button class="Login" v-on:click="navToggle(); $router.push('/customeraccount')" v-if="loggedIn && !user.employee">ACCOUNT</button>
       </div>
     </div>
     <div class="slidebox">
