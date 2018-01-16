@@ -17,7 +17,7 @@
         <p class="name">{{activeLead.name}}</p>
         <p class="phone">{{activeLead.phone}}</p>
         <p class="email">{{activeLead.email}}</p>
-        <p class="status">{{activeLead.status}}></p>
+        <p class="status">{{activeLead.status}}</p>
         <p class="address">{{activeLead.address}}</p>
         <p class="comment">{{activeLead.comment}}</p>
         <p class="url">{{activeLead.url}}</p>
