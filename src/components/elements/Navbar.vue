@@ -114,6 +114,7 @@ export default {
   left: 0;
   right: 0;
   overflow: hidden;
+  z-index: -1;
 }
 
 @keyframes bounce {
@@ -278,7 +279,7 @@ button:hover {
     opacity: 0;
   }
 
-  @media only screen and (max-width:750px) {
+  @media only screen and (max-width:540px) {
 
 
   }
