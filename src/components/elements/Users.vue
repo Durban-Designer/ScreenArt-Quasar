@@ -32,6 +32,7 @@
       <button class="back" v-on:click="editUser = false; viewUser= true">Back</button>
     </div>
     <div class="userList" v-else>
+      <h1>USERS</h1>
       <div class="users" v-for="user in users">
         <h5 v-on:click="editToggle(user)" class="user">{{user.name}}</h5>
       </div>
@@ -153,7 +154,24 @@ export default {
 </script>
 
 <style scoped lang='less'>
+@base-font:'Pathway Gothic One', sans-serif;
   .main {
+    background: none;
+    border: none;
+    box-shadow: none;
+    margin-top: 80px;
+    margin-left: 20%;
     color: #fff;
+  }
+
+  h1 {
+    grid-column: 2;
+    font-family: @base-font;
+    font-weight: lighter;
+    font-size: 2em;
+    color: #fff;
+    text-shadow: 2px 2px 3px black;
+    text-align: center;
+    line-height: 2em;
   }
 </style>

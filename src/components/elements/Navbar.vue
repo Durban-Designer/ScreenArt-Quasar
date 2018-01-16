@@ -69,32 +69,32 @@ export default {
     },
     HomeLogic: function () {
       return {
-        Home: this.isToggled,
-        hidden: !this.isToggled
+        Home: this.isToggled || this.first,
+        hidden: !this.isToggled && !this.first
       }
     },
     WorkLogic: function () {
       return {
-        Work: this.isToggled,
-        hidden: !this.isToggled
+        Work: this.isToggled || this.first,
+        hidden: !this.isToggled && !this.first
       }
     },
     ContactLogic: function () {
       return {
-        Contact: this.isToggled,
-        hidden: !this.isToggled
+        Contact: this.isToggled || this.first,
+        hidden: !this.isToggled && !this.first
       }
     },
     InfoLogic: function () {
       return {
-        Info: this.isToggled,
-        hidden: !this.isToggled
+        Info: this.isToggled || this.first,
+        hidden: !this.isToggled && !this.first
       }
     },
     LoginLogic: function () {
       return {
-        Login: this.isToggled,
-        hidden: !this.isToggled
+        Login: this.isToggled || this.first,
+        hidden: !this.isToggled && !this.first
       }
     }
   },

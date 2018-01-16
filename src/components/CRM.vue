@@ -9,7 +9,7 @@
     </transition>
     <transition name="fade">
       <div class="home" v-if="!changePass">
-        <h1>CRM DASHBOARD</h1>
+        <h1>CRM-DASHBOARD</h1>
         <button class="leads" v-on:click="$router.push('/leads')">LEADS</button><br/>
         <button class="admin" v-on:click="$router.push('/admin')" v-if="user.admin">ADMIN</button>
         <button class="changePass" v-on:click="changePass = true">CHANGE PASSWORD</button>
@@ -57,9 +57,9 @@ export default {
   @base-font:'Pathway Gothic One', sans-serif;
 
   .main {
-    margin-top: 10%;
+    margin-top: 145px;
     width: 100%;
-    height: 73.5%;
+    height: 70%;
     z-index: 10;
     position: fixed;
     background:rgba(0,0,0,0.6);
@@ -72,11 +72,12 @@ export default {
   h1 {
     font-family: @base-font;
     font-weight: lighter;
-    font-size: 3em;
+    width: 100%;
+    font-size: 1.6em;
     color: #fff;
     text-shadow: 2px 2px 3px black;
     text-align: center;
-    line-height: 100px;
+    line-height: 1.6em;
   }
 
   .passModal {
@@ -97,7 +98,7 @@ export default {
   button {
     font-family: @base-font;
     width: 100%;
-    height: 40px;
+    height: 60px;
     background-color: transparent;
     color: #fff;
     box-shadow: 2px 2px 4px #000;
