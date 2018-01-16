@@ -164,6 +164,8 @@ export default {
         .catch(function (error) {
           console.log(error)
         })
+      vue.clearLeads()
+      this.populateLeads()
     },
     submitEdit () {
       let vue = this
@@ -186,6 +188,8 @@ export default {
         .catch(function (error) {
           console.log(error)
         })
+      vue.clearLeads()
+      this.populateLeads()
     },
     deleteLead () {
       let vue = this
