@@ -29,7 +29,12 @@ export default {
       email: '',
       phone: '',
       message: '',
-      time: '',
+      time: {
+        month: '',
+        day: '',
+        hour: '',
+        minute: ''
+      },
       lead: {
         leadId: ''
       }
@@ -75,11 +80,9 @@ export default {
     timeUpdate () {
       let vue = this
       this.time = new Date()
-      vue.hours = vue.time.getHours()
-      vue.day = vue.time.getDate()
-      vue.month = vue.time.getMonth()
-      vue.year = vue.time.getYear()
-      vue.clockTime = vue.hours + ' ' + vue.day + ' ' + vue.month + '' + vue.year
+      vue.hour = vue.time.getHours()
+      vue.minute = vue.time.getMinutes()
+      vue.clockTime = vue.hours + ':' + vue.minute + '  ' + vue.day + '/' + vue.month
     }
   }
 }
