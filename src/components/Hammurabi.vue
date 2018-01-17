@@ -10,7 +10,7 @@
 <script>
 import ThreeThousand from './elements/ThreeThousand'
 export default {
-  name: 'game',
+  name: 'hammurabi',
   components: {
     'threethousand': ThreeThousand
   },

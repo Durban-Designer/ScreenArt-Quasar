@@ -10,6 +10,7 @@
     <transition name="fade">
       <div class="home" v-if="!changePass">
         <h1>CRM-DASHBOARD</h1>
+        <button class="inbox" v-on:click="$router.push('/inbox')">INBOX</button><br/>
         <button class="leads" v-on:click="$router.push('/leads')">LEADS</button><br/>
         <button class="admin" v-on:click="$router.push('/admin')" v-if="user.admin">ADMIN</button>
         <button class="changePass" v-on:click="changePass = true">CHANGE PASSWORD</button>
@@ -59,7 +60,7 @@ export default {
   .main {
     margin-top: 145px;
     width: 100%;
-    height: 70%;
+    height: 74%;
     z-index: 10;
     position: fixed;
     background:rgba(0,0,0,0.6);

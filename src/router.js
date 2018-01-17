@@ -33,8 +33,9 @@ export default new VueRouter({
     { path: '/Crm', component: load('CRM') },
     { path: '/Admin', component: load('Admin') },
     { path: '/Leads', component: load('Leads') },
-    { path: '/Hammurabi', component: load('Hammurabi') },
     { path: '/Customeraccount', component: load('Customer') },
+    { path: '/Inbox', component: load('Inbox') },
+    { path: '/Hammurabi', component: load('Hammurabi') },
     // Always leave this last one
     { path: '*', component: load('Error404') } // Not found
   ]

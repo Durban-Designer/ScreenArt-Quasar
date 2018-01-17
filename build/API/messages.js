@@ -10,6 +10,7 @@ var router = express.Router();
 var mongoose = require("mongoose");
 var Lead = mongoose.model("Lead");
 var User = mongoose.model("User");
+var Message = mongoose.model("Message");
 var bcrypt = require('bcryptjs');
 var ExtractJwt = passportJWT.ExtractJwt;
 var JwtStrategy = passportJWT.Strategy;
@@ -40,10 +41,11 @@ router.post("/", (req,res) => {
   name: req.body.name,
   phone: req.body.phone,
   email: req.body.email,
-  comment: req.body.comment
+  status: req.body.status,
+  message: req.body.message
   })
 
-  newLead.save((err, result) => {
+  newMessage.save((err, result) => {
     if(err) {
       res.send(err);
     } else {
@@ -53,18 +55,18 @@ router.post("/", (req,res) => {
 })
 
 router.get("/", passport.authenticate('jwt', { session: false }),(req, res) => {
-  Lead.find({},function (err, leads) {
+  Message.find({},function (err, messages) {
     if (err) {
       res.send(err);
     } else {
-      res.send(leads);
+      res.send(messages);
     }
   })
 })
 
 router.get("/name/:name", passport.authenticate('jwt', { session: false }),(req, res) => {
   var messageName = req.params["name"];
-  Lead.find({"name": {$regex: '^' + messageName}},function (err, messages) {
+  Message.find({"name": {$regex: '^' + messageName}},function (err, messages) {
     if (err) {
       res.send(err);
     } else {
@@ -75,7 +77,7 @@ router.get("/name/:name", passport.authenticate('jwt', { session: false }),(req,
 
 router.get("/:id", passport.authenticate('jwt', { session: false }),(req, res) => {
   var messageid = new mongodb.ObjectID(req.params["id"]);
-  Lead.find({"_id": leadid},function (err, leads) {
+  Message.find({"_id": messageid},function (err, messages) {
     if (err) {
       res.send(err);
     } else {
@@ -86,29 +88,30 @@ router.get("/:id", passport.authenticate('jwt', { session: false }),(req, res) =
 
 router.put("/:id", passport.authenticate('jwt', { session: false }),(req, res) => {
   var messageid = new mongodb.ObjectID(req.params["id"]);
-  Lead.find({"_id": messageid},function (err, message) {
+  Message.find({"_id": messageid},function (err, message) {
     if (err) {
         res.status(500).send(err);
     } else {
-        var lead = lead[0];
+        var message = message[0];
         message.name = req.body.name || message.name;
         message.phone = req.body.phone || message.phone;
         message.email = req.body.email || message.email;
-        message.comment = req.body.comment || message.comment;
+        message.status = req.body.status || message.status;
+        message.message = req.body.message || message.message;
 
-        lead.save(function (err, lead) {
+        message.save(function (err, message) {
             if (err) {
                 res.status(500).send(err)
             }
-            res.send(lead);
+            res.send(message);
         });
     }
 });
 })
 
 router.delete("/:id", passport.authenticate('jwt', { session: false }),(req, res) => {
-  var leadid = new mongodb.ObjectID(req.params["id"]);
-  Lead.find({_id: leadid}).remove().then(() => {
+  var messageid = new mongodb.ObjectID(req.params["id"]);
+  Message.find({_id: messageid}).remove().then(() => {
     console.log("success");
     res.send("success");
   })

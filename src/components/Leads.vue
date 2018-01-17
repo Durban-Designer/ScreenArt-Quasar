@@ -38,6 +38,7 @@
           <option value="contacted">CONTACTED</option>
           <option value="jobInProgress">IN PROGRESS</option>
           <option value="jobFinished">FINISHED</option>
+          <option value="noreply">CONTACTED US/ Noreply</option>
         </select>
         <input type="text" class="notesEdit" v-model="activeLead.comment" placeholder="Notes"></input>
         <button class="cancel" v-on:click="cancelEdit">CANCEL</button>
@@ -56,6 +57,7 @@
           <option value="contacted">CONTACTED</option>
           <option value="jobInProgress">IN PROGRESS</option>
           <option value="jobFinished">FINISHED</option>
+          <option value="noreply">CONTACTED US/ Noreply</option>
         </select>
         <input type="text" class="commentNew" v-model="activeLead.comment" placeholder="Notes"></input>
         <button class="cancel" v-on:click="cancel">Cancel</button>
