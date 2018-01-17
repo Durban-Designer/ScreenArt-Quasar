@@ -116,8 +116,8 @@ router.put("/:id", passport.authenticate('jwt', { session: false }), (req, res) 
         user.email = req.body.email || user.email;
         user.password = req.body.password || user.password;
         user.name = req.body.name || user.name;
-        user.employee = req.body.employee || user.employee;
         user.admin = req.body.admin || user.admin;
+        user.employee = req.body.employee || user.employee;
 
         user.save(function (err, user) {
             if (err) {

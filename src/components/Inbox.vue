@@ -9,6 +9,7 @@
       <option value=""></option>
     </select>
     <button type="submit" class="searchButton" v-on:click="search">SEARCH</button>
+    <button class="backButton" v-on:click="$router.push('/crm')">BACK</button>
     <div class="messageList" v-on:click="displayMessage" v-for="message in messages">
       <h5 v-on:click="messageItemDisplay(message)" class="message">{{message.name}}:{{message.status}}</h5>
     </div>
@@ -16,6 +17,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   data () {
     return {
