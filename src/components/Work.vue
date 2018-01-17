@@ -38,10 +38,10 @@
       <button class="back" v-on:click="modal=''">Back</button>
     </div>
     <div class="tiles" v-else>
-      <div class="totalResponse " v-on:click="modal='tr'"></div>
-      <div class="quickVenom " v-on:click="modal='qc'"></div>
-      <div class="carpetGuys " v-on:click="modal='cg'"></div>
-      <div class="hammurabiGame " v-on:click="modal='hm'"></div>
+      <div class="totalResponse" v-on:click="modal='tr'"></div>
+      <div class="quickVenom" v-on:click="modal='qc'"></div>
+      <div class="carpetGuys" v-on:click="modal='cg'"></div>
+      <div class="hammurabiGame" v-on:click="modal='hm'"></div>
     </div>
   </div>
 </template>
@@ -119,7 +119,6 @@ export default {
   .totalResponse {
     background-image: url('../assets/totalResponse.svg');
     background-repeat: no-repeat;
-    background-size: contain;
     width: 100%;
     height: 100%;
     z-index: 10;
@@ -127,6 +126,7 @@ export default {
     filter: drop-shadow(1px 2px 2px #000);
     grid-column: 1;
     grid-row: 1;
+    background-size: contain;
   }
 
   .quickVenom {
@@ -140,6 +140,7 @@ export default {
     background-size: contain;
     grid-column: 2;
     grid-row: 1;
+    margin-top: 30px;
   }
 
   .carpetGuys {
@@ -149,13 +150,11 @@ export default {
   }
 
   .hammurabiGame {
-    background-image: url('../assets/Hammurabi3000.svg');
+    background-image: url('../assets/h3000.jpg');
     background-repeat:no-repeat;
     background-size:contain;
     grid-column: 2;
     grid-row: 2;
-    -webkit-filter: drop-shadow(1px 2px 2px #000);
-    filter: drop-shadow(1px 2px 1px #000);
     margin-left: 160px;
   }
 
@@ -165,18 +164,15 @@ export default {
       width: 90%;
       display: grid;
       grid-template-columns: 1fr;
-      grid-template-rows: repeat(4, 80px);
+      grid-template-rows: repeat(4, 100px);
       grid-row-gap: 10px;
       text-align: center;
       margin-top: 100px;
       margin-left: 5%;
     }
 
-    .tiles:hover {
-
-    }
-
     .totalResponse {
+      background-image: url('../assets/totalResponse.svg');
       background-repeat: no-repeat;
       width: 100%;
       height: 100%;
@@ -189,6 +185,7 @@ export default {
     }
 
     .quickVenom {
+      background-image: url('../assets/qwc-venumm.svg');
       background-repeat: no-repeat;
       width: 100%;
       height: 100%;
@@ -202,6 +199,7 @@ export default {
     }
 
     .carpetGuys {
+      background-image: url('../assets/carpetGuys.svg');
       background-repeat:no-repeat;
       background-size: contain;
       grid-column: 1;
@@ -211,6 +209,7 @@ export default {
     .hammurabiGame {
       width: 100%;
       height: 100%;
+      background-image: url('../assets/h3000.jpg');
       background-repeat:no-repeat;
       background-size:contain;
       grid-column: 1;
