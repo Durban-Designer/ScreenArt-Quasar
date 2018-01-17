@@ -42,7 +42,8 @@ router.post("/", (req,res) => {
   phone: req.body.phone,
   email: req.body.email,
   status: req.body.status,
-  message: req.body.message
+  message: req.body.message,
+  time: req.body.time
   })
 
   newMessage.save((err, result) => {
@@ -98,6 +99,7 @@ router.put("/:id", passport.authenticate('jwt', { session: false }),(req, res) =
         message.email = req.body.email || message.email;
         message.status = req.body.status || message.status;
         message.message = req.body.message || message.message;
+        message.time = req.body.time || message.time;
 
         message.save(function (err, message) {
             if (err) {
