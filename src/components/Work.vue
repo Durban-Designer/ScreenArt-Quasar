@@ -1,5 +1,6 @@
 <template>
   <div class="workPage">
+    <div class="work"><h1>Work</h1></div>
     <div class="totalResponseModal"v-if="modal==='tr'">
       <h1>Total Response</h1>
       <p>
@@ -38,10 +39,10 @@
       <button class="back" v-on:click="modal=''">Back</button>
     </div>
     <div class="tiles" v-else>
-      <div class="totalResponse " v-on:click="modal='tr'"></div>
-      <div class="quickVenom " v-on:click="modal='qc'"></div>
-      <div class="carpetGuys " v-on:click="modal='cg'"></div>
-      <div class="hammurabiGame " v-on:click="modal='hm'"></div>
+      <div class="totalResponse clickMe" v-on:click="modal='tr'"></div>
+      <div class="quickVenom clickMe" v-on:click="modal='qc'"></div>
+      <div class="carpetGuys clickMe" v-on:click="modal='cg'"></div>
+      <div class="hammurabiGame clickMe" v-on:click="modal='hm'"></div>
     </div>
   </div>
 </template>
@@ -61,9 +62,8 @@ export default {
 @base-font:'Pathway Gothic One', sans-serif;
 
   .workPage {
-    margin-left: 5px;
     margin-top: 145px;
-    width: 99%;
+    width: 100%;
     height: 70%;
     position: fixed;
     background:rgba(0,0,0,0.6);
@@ -80,9 +80,10 @@ export default {
     text-shadow: 2px 2px 3px black;
     text-align: center;
     line-height: 100px;
+    margin: 0;
   }
 
-  button{
+  button {
     background: transparent;
     color: #fff;
     border-color: #fff;
@@ -108,7 +109,6 @@ export default {
     grid-template-rows: 300px 200px;
     text-align: center;
     margin-top: 30px;
-    margin-left: 5%;
   }
 
   span {
@@ -121,10 +121,8 @@ export default {
     background-repeat: no-repeat;
     background-size: contain;
     width: 100%;
-    height: 100%;
+    height: auto;
     z-index: 10;
-    -webkit-filter: drop-shadow(1px 2px 2px #000);
-    filter: drop-shadow(1px 2px 2px #000);
     grid-column: 1;
     grid-row: 1;
   }
@@ -133,10 +131,8 @@ export default {
     background-image: url('../assets/qwc-venumm.svg');
     background-repeat: no-repeat;
     width: 100%;
-    height: 100%;
+    height: auto;
     z-index: 10;
-    -webkit-filter: drop-shadow(1px 2px 2px #000);
-    filter: drop-shadow(1px 2px 2px #000);
     background-size: contain;
     grid-column: 2;
     grid-row: 1;
@@ -146,76 +142,61 @@ export default {
     background-image: url('../assets/carpetGuys.svg');
     background-repeat:no-repeat;
     background-size: contain;
+    width: 100%;
+    height: auto;
   }
 
   .hammurabiGame {
     background-image: url('../assets/Hammurabi3000.svg');
     background-repeat:no-repeat;
     background-size:contain;
+    width: 100%;
+    height: 100%;
     grid-column: 2;
     grid-row: 2;
-    -webkit-filter: drop-shadow(1px 2px 2px #000);
-    filter: drop-shadow(1px 2px 1px #000);
     margin-left: 160px;
   }
 
   @media only screen and (max-width:750px) {
 
     .tiles {
-      width: 90%;
       display: grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: 7.5% 1fr 7.5%;
       grid-template-rows: repeat(4, 80px);
       grid-row-gap: 10px;
-      text-align: center;
-      margin-top: 100px;
-      margin-left: 5%;
-    }
-
-    .tiles:hover {
-
+      margin-left: 6%;
     }
 
     .totalResponse {
-      background-repeat: no-repeat;
-      width: 100%;
-      height: 100%;
-      z-index: 10;
-      -webkit-filter: drop-shadow(1px 2px 2px #000);
-      filter: drop-shadow(1px 2px 2px #000);
-      grid-column: 1;
+      grid-column: 2;
       grid-row: 1;
       background-size: contain;
     }
 
     .quickVenom {
-      background-repeat: no-repeat;
-      width: 100%;
-      height: 100%;
-      z-index: 10;
-      -webkit-filter: drop-shadow(1px 2px 2px #000);
-      filter: drop-shadow(1px 2px 2px #000);
-      background-size: contain;
-      grid-column: 1;
+      grid-column: 2;
       grid-row: 2;
       margin-top: 0;
     }
 
     .carpetGuys {
-      background-repeat:no-repeat;
-      background-size: contain;
-      grid-column: 1;
+      grid-column: 2;
       grid-row: 3;
     }
 
     .hammurabiGame {
-      width: 100%;
-      height: 100%;
-      background-repeat:no-repeat;
-      background-size:contain;
-      grid-column: 1;
+      grid-column: 2;
       grid-row: 4;
       margin-left: 0;
+    }
+
+    .clickMe {
+      background-color: #d1d1d1;
+      border-radius: 12px;
+      box-shadow: 2px 2px 4px #000;
+      color: #fff;
+      -webkit-filter: drop-shadow(1px 2px 2px #000);
+      filter: drop-shadow(1px 2px 1px #000);
     }
   }
 </style>
