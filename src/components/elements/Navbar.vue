@@ -237,7 +237,7 @@ export default {
     width: 100%;
     height: 30px;
     margin-top: 40px;
-    background:rgba(0,0,0,0.6);
+    background: rgba(0,0,0,0.6);
     border-radius: 12px;
     box-shadow: 2px 2px 4px #000;
     color: #fff;

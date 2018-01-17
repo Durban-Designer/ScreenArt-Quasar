@@ -38,10 +38,10 @@
       <button class="back" v-on:click="modal=''">Back</button>
     </div>
     <div class="tiles" v-else>
-      <div class="totalResponse" v-on:click="modal='tr'"></div>
-      <div class="quickVenom" v-on:click="modal='qc'"></div>
-      <div class="carpetGuys" v-on:click="modal='cg'"></div>
-      <div class="hammurabiGame" v-on:click="modal='hm'"></div>
+      <div class="totalResponse " v-on:click="modal='tr'"></div>
+      <div class="quickVenom " v-on:click="modal='qc'"></div>
+      <div class="carpetGuys " v-on:click="modal='cg'"></div>
+      <div class="hammurabiGame " v-on:click="modal='hm'"></div>
     </div>
   </div>
 </template>
