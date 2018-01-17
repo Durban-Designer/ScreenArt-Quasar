@@ -140,7 +140,6 @@ export default {
     background-size: contain;
     grid-column: 2;
     grid-row: 1;
-    margin-top: 30px;
   }
 
   .carpetGuys {
@@ -150,11 +149,13 @@ export default {
   }
 
   .hammurabiGame {
-    background-image: url('../assets/h3000.jpg');
+    background-image: url('../assets/Hammurabi3000.svg');
     background-repeat:no-repeat;
     background-size:contain;
     grid-column: 2;
     grid-row: 2;
+    -webkit-filter: drop-shadow(1px 2px 2px #000);
+    filter: drop-shadow(1px 2px 1px #000);
     margin-left: 160px;
   }
 
@@ -176,7 +177,6 @@ export default {
     }
 
     .totalResponse {
-      background-image: url('../assets/totalResponse.svg');
       background-repeat: no-repeat;
       width: 100%;
       height: 100%;
@@ -189,7 +189,6 @@ export default {
     }
 
     .quickVenom {
-      background-image: url('../assets/qwc-venumm.svg');
       background-repeat: no-repeat;
       width: 100%;
       height: 100%;
@@ -203,18 +202,15 @@ export default {
     }
 
     .carpetGuys {
-      background-image: url('../assets/carpetGuys.svg');
       background-repeat:no-repeat;
       background-size: contain;
       grid-column: 1;
       grid-row: 3;
-      margin-top: 6%;
     }
 
     .hammurabiGame {
       width: 100%;
       height: 100%;
-      background-image: url('../assets/h3000.jpg');
       background-repeat:no-repeat;
       background-size:contain;
       grid-column: 1;
