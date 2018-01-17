@@ -1,12 +1,14 @@
 <template>
   <div class="main">
     <users v-if="viewUsers" v-on:back="viewUsers = false" :user="user"></users>
-    <div class="settings" v-else-if="settings"></div>
+    <div class="settings" v-else-if="settings">
+      <button class="back" v-on:click="settings = false">Back</button>
+    </div>
     <div class="adminopt" v-else>
       <h1>ADMIN</h1>
-      <button v-on:click="viewUsers = true; buttons = false">User Manifest</button>
-      <button>Settings</button>
-      <button class="back" v-on:click="$router.push('/crm')">Back</button>
+      <button v-on:click="viewUsers = true">User Manifest</button>
+      <button v-on:click="settings = true">Settings</button>
+      <button v-on:click="$router.push('/crm')">Back</button>
     </div>
   </div>
 </template>
@@ -27,9 +29,6 @@ export default {
   },
   data () {
     return {
-      buttons: true,
-      addUser: false,
-      editUser: false,
       viewUsers: false,
       settings: false
     }
@@ -71,6 +70,21 @@ h1 {
   margin-top: 10px;
 }
 
+.settings {
+  grid-column-start: 1;
+  grid-column-end: 4;
+  text-align: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.back {
+  width: 100%;
+  text-align: center;
+  grid-column: 2;
+  margin-top: 200px;
+}
+
 button {
   font-family: @base-font;
   width: 100%;
@@ -81,6 +95,7 @@ button {
   margin-top: 25px;
   font-size: 1.6em;
 }
+
 button:hover {
   background: #fff;
   color: #5d5d5d;
