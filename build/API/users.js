@@ -11,7 +11,7 @@ var mongoose = require("mongoose");
 var User = mongoose.model("User");
 var bcrypt = require('bcryptjs');
 var ExtractJwt = passportJWT.ExtractJwt;
-var JwtStrategy = passportJWT.Strategy;
+var JwtStrategy = passportJWT.Strategy; 
 
 var jwtOptions = {}
 jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme("JWT");
