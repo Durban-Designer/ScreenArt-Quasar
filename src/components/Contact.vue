@@ -1,22 +1,22 @@
 <template>
   <div class="main">
-      <h2>CONTACT US</h2>
-      <div class="contactBox">
-        <input class="name" v-model="name" placeholder="NAME"></input>
-        <input class="email" v-model="email" placeholder="EMAIL"></input>
-        <input class="phone" v-model="phone" placeholder="PHONE"></input>
-        <input class="message" v-model="message" placeholder="MESSAGE"></input>
-        <div v-on:click="send" class="send">SEND</div>
-        <h2 class="words">SEND US A MESSAGE</h2>
-        <h3>OR</h3>
-        <h3 class="callus">CALL US</h3>
-        <ul>
-          <li>(480)-526-2634</li>
-          <li>(602)-558-1817</li>
-        </ul>
-        <h3 class="blurb">We understand that your time is important. So we'll do our best to respond as quickly as possible!</h3>
-      </div>
+    <h2>CONTACT US</h2>
+    <div class="contactBox">
+      <input class="name" v-model="name" placeholder="NAME"></input>
+      <input class="email" v-model="email" placeholder="EMAIL"></input>
+      <input class="phone" v-model="phone" placeholder="PHONE"></input>
+      <input class="message" v-model="message" placeholder="MESSAGE"></input>
+      <div v-on:click="send" class="send">SEND</div>
+      <h2 class="words">SEND US A MESSAGE</h2>
+      <h3>OR</h3>
+      <h3 class="callus">CALL US</h3>
+      <ul>
+        <li>(480)-526-2634</li>
+        <li>(602)-558-1817</li>
+      </ul>
+      <h3 class="blurb">We understand that your time is important. So we'll do our best to respond as quickly as possible!</h3>
     </div>
+  </div>
 </template>
 
 <script>
@@ -28,56 +28,46 @@ export default {
       name: '',
       email: '',
       phone: '',
-      message: ''
+      message: '',
+      lead: {
+        leadId: ''
+      }
     }
   },
   methods: {
+    send () {
+      let vue = this
+      vue.submitLead()
+      vue.submitMessage()
+    },
     submitLead () {
       let vue = this
       axios.post('http://13.57.57.81:81/leads', {
-        name: vue.activeLead.name.toLowerCase(),
-        phone: vue.activeLead.phone,
-        email: vue.activeLead.email,
-        address: vue.activeLead.address,
-        status: 'noreply',
-        comment: vue.activeLead.comment,
-        url: vue.activeLead.url
+        name: vue.name.toLowerCase(),
+        phone: vue.phone,
+        email: vue.email,
+        status: 'noreply'
       })
-        .then(function () {
-          vue.edit = false
-          vue.leadbox = true
-          vue.newLead = false
-          vue.clearActiveLeads()
-          vue.clearLeads()
-          vue.populateLeads()
+        .then(function (lead) {
+          vue.lead.leadId = lead._id
         })
         .catch(function (error) {
           console.log(error)
         })
-      vue.clearLeads()
-      this.populateLeads()
     },
-    send () {
+    submitMessage () {
       let vue = this
       axios.post('http://13.57.57.81:81/messages', {
-        name: vue.activeLead.name.toLowerCase(),
-        phone: vue.activeLead.phone,
-        email: vue.activeLead.email,
-        comment: vue.activeLead.comment
+        name: vue.name.toLowerCase(),
+        phone: vue.phone,
+        email: vue.email,
+        message: vue.message
       })
         .then(function () {
-          vue.edit = false
-          vue.leadbox = true
-          vue.newLead = false
-          vue.clearActiveLeads()
-          vue.clearLeads()
-          vue.populateLeads()
         })
         .catch(function (error) {
           console.log(error)
         })
-      vue.clearLeads()
-      this.populateLeads()
     }
   }
 }
