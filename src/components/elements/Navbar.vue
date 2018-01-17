@@ -10,6 +10,7 @@
         <button v-bind:class="LoginLogic" v-on:click="navToggle(); $router.push('/login')" v-if="!loggedIn">LOGIN</button>
         <button v-bind:class="LoginLogic" v-on:click="navToggle(); $router.push('/crm')" v-if="loggedIn && user.employee">CRM</button>
         <button v-bind:class="LoginLogic" v-on:click="navToggle(); $router.push('/customeraccount')" v-if="loggedIn && !user.employee">ACCOUNT</button>
+        <div class="back"></div>
       </div>
     </div>
     <div class="slidebox">
@@ -136,6 +137,17 @@ export default {
     overflow: hidden;
   }
 
+  .back {
+    width: 100%;
+    height: 135px;
+    background-color: #515151;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: -10;
+  }
+
   .sa {
     margin-top: 20px;
     width: 100%;
@@ -165,7 +177,6 @@ export default {
     display: grid;
     grid-template-columns: repeat(2, 1fr) 220px repeat(2,1fr);
     grid-template-rows: 100px;
-
     box-shadow: 2px 2px 4px #000;
   }
 
@@ -226,7 +237,7 @@ export default {
     width: 100%;
     height: 30px;
     margin-top: 40px;
-    background:rgba(0,0,0,0.6);
+    background: rgba(0,0,0,0.6);
     border-radius: 12px;
     box-shadow: 2px 2px 4px #000;
     color: #fff;
@@ -245,14 +256,15 @@ export default {
     grid-column: 1;
     width: 100%;
   }
+
   .Work {
-background-color: transparent;
-width: 100%;
-text-shadow: 2px 2px 3px black;
-background-color: transparent;
-border: none;
-color: #fff;
-font-size: 2.5em;
+    background-color: transparent;
+    width: 100%;
+    text-shadow: 2px 2px 3px black;
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 2.5em;
   }
 
   .Contact {
@@ -360,6 +372,10 @@ font-size: 2.5em;
       display: grid;
       grid-template-columns: repeat(2, 1fr) 220px repeat(2,1fr);
       grid-template-rows: 100px;
+    }
+
+    .back {
+      display: none;
     }
 
     button {
