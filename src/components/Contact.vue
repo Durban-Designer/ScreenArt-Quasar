@@ -29,6 +29,7 @@ export default {
       email: '',
       phone: '',
       message: '',
+      time: '',
       lead: {
         leadId: ''
       }
@@ -37,6 +38,7 @@ export default {
   methods: {
     send () {
       let vue = this
+      vue.timeUpdate()
       vue.submitLead()
       vue.submitMessage()
     },
@@ -61,13 +63,23 @@ export default {
         name: vue.name.toLowerCase(),
         phone: vue.phone,
         email: vue.email,
-        message: vue.message
+        message: vue.message,
+        time: vue.time
       })
         .then(function () {
         })
         .catch(function (error) {
           console.log(error)
         })
+    },
+    timeUpdate () {
+      let vue = this
+      this.time = new Date()
+      vue.hours = vue.time.getHours()
+      vue.day = vue.time.getDate()
+      vue.month = vue.time.getMonth()
+      vue.year = vue.time.getYear()
+      vue.clockTime = vue.hours + ' ' + vue.day + ' ' + vue.month + '' + vue.year
     }
   }
 }

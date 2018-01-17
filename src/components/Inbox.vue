@@ -10,8 +10,8 @@
     </select>
     <button type="submit" class="searchButton" v-on:click="search">SEARCH</button>
     <button class="backButton" v-on:click="$router.push('/crm')">BACK</button>
-    <div class="messageList" v-on:click="displayMessage" v-for="message in messages">
-      <h5 v-on:click="messageItemDisplay(message)" class="message">{{message.name}}:{{message.status}}</h5>
+    <div class="messageList" v-on:click="" v-for="message in messages">
+      <h5 v-on:click="messageItemDisplay(message)" class="message">{{message.name}}:{{message.time}}</h5>
     </div>
   </div>
 </template>
@@ -19,6 +19,13 @@
 <script>
 import axios from 'axios'
 export default {
+  name: 'inbox',
+  props: ['user', 'loggedIn'],
+  created () {
+    let vue = this
+    vue.clearMessages()
+    vue.populateMessages()
+  },
   data () {
     return {
       searchBox: '',
@@ -30,7 +37,7 @@ export default {
       let vue = this
       axios.get('http://13.57.57.81:81/messages', {headers: { 'Authorization': 'JWT ' + vue.user.token }})
         .then(function (response) {
-          vue.leads = response.data
+          vue.messages = response.data
         })
         .catch(function (error) {
           console.log(error)
@@ -49,7 +56,7 @@ export default {
         axios.get('http://13.57.57.81:81/messages/name/' + vue.searchBox, {headers: { 'Authorization': 'JWT ' + vue.user.token }})
           .then(function (response) {
             vue.clearMessages()
-            vue.leads = response.data
+            vue.messages = response.data
           })
           .catch(function (error) {
             console.log(error)
