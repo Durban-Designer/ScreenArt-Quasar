@@ -78,10 +78,9 @@ export default {
   @base-font:'Pathway Gothic One', sans-serif;
 
 .main {
-  margin-left: 5px;
-  margin-top: 10%;
+  margin-top: 40%;
   width: 99%;
-  height: 73.5%;
+  height: 70%;
   z-index: 10;
   position: fixed;
   background:rgba(0,0,0,0.6);
@@ -101,7 +100,7 @@ h1 {
 
 .loginBox {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr ;
 }
 
 .email {
@@ -138,12 +137,14 @@ h1 {
   grid-column: 2;
   text-align: center;
   color: #fff;
+  font-size: 1.5em;
+
 }
 
 .logged input {
-  margin-left: 20px;
   width: 30px;
-  height: 30px;
+  height: 20px;
+
 }
 
 .login {
@@ -287,8 +288,10 @@ textarea:hover {
   color: #fff;
 }
 
-@media only screen and (max-width:750px) {
-
+@media only screen and (min-width:750px) {
+.main {
+  margin-top: 13%;
+}
 
 }
 </style>
