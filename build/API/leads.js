@@ -87,7 +87,7 @@ router.get("/name/:name/:page", passport.authenticate('jwt', { session: false })
   })
 })
 
-router.get("/:id", passport.authenticate('jwt', { session: false }),(req, res) => {
+router.get("/id/:id", passport.authenticate('jwt', { session: false }),(req, res) => {
   var leadid = new mongodb.ObjectID(req.params["id"]);
   Lead.find({"_id": leadid},function (err, leads) {
     if (err) {
