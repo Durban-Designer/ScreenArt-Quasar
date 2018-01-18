@@ -13,6 +13,7 @@ var User = mongoose.model("User");
 var bcrypt = require('bcryptjs');
 var ExtractJwt = passportJWT.ExtractJwt;
 var JwtStrategy = passportJWT.Strategy;
+var recordsPerPage = 8;
 
 var jwtOptions = {}
 jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme("JWT");
@@ -55,8 +56,13 @@ router.post("/", (req,res) => {
   });
 })
 
-router.get("/", passport.authenticate('jwt', { session: false }),(req, res) => {
-  Lead.find({},function (err, leads) {
+router.get("/:page", passport.authenticate('jwt', { session: false }),(req, res) => {
+  var pageNum = req.params["page"] || 1;
+  Lead
+  .find()
+  .skip((pageNum - 1) * recordsPerPage)
+  .limit(recordsPerPage)
+  .exec(function (err, leads) {
     if (err) {
       res.send(err);
     } else {
@@ -65,9 +71,14 @@ router.get("/", passport.authenticate('jwt', { session: false }),(req, res) => {
   })
 })
 
-router.get("/name/:name", passport.authenticate('jwt', { session: false }),(req, res) => {
+router.get("/name/:name/:page", passport.authenticate('jwt', { session: false }),(req, res) => {
   var leadName = req.params["name"];
-  Lead.find({"name": {$regex: '^' + leadName}},function (err, leads) {
+  var pageNum = req.params["page"] || 1;
+  Lead
+  .find({"name": {$regex: '^' + leadName}})
+  .skip((pageNum - 1) * recordsPerPage)
+  .limit(recordsPerPage)
+  .exec(function (err, leads) {
     if (err) {
       res.send(err);
     } else {

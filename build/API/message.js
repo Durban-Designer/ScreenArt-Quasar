@@ -4,21 +4,14 @@ var MessageSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  phone: {
-    type: Number,
-    required: false
-  },
-  email: {
-    type: String,
-    required: false
-  },
-  message: {
-    type: String,
-    required: false
-  },
+  phone: Number,
+  email: String,
+  message: String,
   time: {
-    type: Number,
-    required: true
+    month: String,
+    day: String,
+    hour: String,
+    minute: String
   }
 })
 

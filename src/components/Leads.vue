@@ -9,6 +9,8 @@
           <h5 v-on:click="leadItemDisplay(lead)" class="lead">{{lead.name}}:{{lead.status}}</h5>
         </div>
         <button class="newLead" v-on:click="newLeadButton">NEW LEAD</button>
+        <button class="nextPage" v-on:click="changePage(false)" v-if="nextPage">Next Page</button>
+        <button class="previousPage" v-on:click="changePage(true)" v-if="previousPage">Previous Page</button>
         <button class="back" v-on:click="$router.push('/crm')">BACK</button>
       </div>
     </transition>
@@ -95,6 +97,9 @@ export default {
         id: ''
       },
       leads: [{}],
+      page: 1,
+      nextPage: false,
+      previousPage: false,
       error: '',
       tabSelected: 0,
       leadbox: true,
@@ -111,9 +116,21 @@ export default {
   methods: {
     populateLeads () {
       let vue = this
-      axios.get('http://13.57.57.81:81/leads', {headers: { 'Authorization': 'JWT ' + vue.user.token }})
+      axios.get('http://13.57.57.81:81/leads/' + vue.page, {headers: { 'Authorization': 'JWT ' + vue.user.token }})
         .then(function (response) {
           vue.leads = response.data
+          if (vue.leads.length === 8) {
+            vue.nextPage = true
+          }
+          else {
+            vue.nextPage = false
+          }
+          if (vue.page > 1) {
+            vue.previousPage = true
+          }
+          else {
+            vue.previousPage = false
+          }
         })
         .catch(function (error) {
           console.log(error)
@@ -131,6 +148,16 @@ export default {
       this.activeLead.comment = ''
       this.activeLead.url = ''
       this.activeLead.id = ''
+    },
+    changePage (direction) {
+      let vue = this
+      if (direction === true) {
+        vue.page--
+      }
+      else {
+        vue.page++
+      }
+      vue.search()
     },
     leadItemDisplay (lead) {
       let vue = this
@@ -240,11 +267,23 @@ export default {
         vue.populateLeads()
       }
       else {
-        axios.get('http://13.57.57.81:81/leads/name/' + vue.searchBox, {headers: { 'Authorization': 'JWT ' + vue.user.token }})
+        axios.get('http://13.57.57.81:81/leads/name/' + vue.searchBox + '/' + vue.page, {headers: { 'Authorization': 'JWT ' + vue.user.token }})
           .then(function (response) {
             vue.clearLeads()
             vue.clearActiveLeads()
             vue.leads = response.data
+            if (vue.leads.length === 8) {
+              vue.nextPage = true
+            }
+            else {
+              vue.nextPage = false
+            }
+            if (vue.page > 1) {
+              vue.previousPage = true
+            }
+            else {
+              vue.previousPage = false
+            }
           })
           .catch(function (error) {
             console.log(error)
