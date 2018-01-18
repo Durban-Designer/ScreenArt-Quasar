@@ -92,10 +92,6 @@ export default {
       vue.activeMessage.message = message.message
       vue.activeMessage.time = message.time
       vue.activeMessage.leadId = message.leadId
-    },
-    gotoLead () {
-      let vue = this
-      $emit(gotoLead, vue.activeMessage.leadId)
     }
   }
 }
