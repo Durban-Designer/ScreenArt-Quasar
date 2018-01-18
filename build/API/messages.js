@@ -43,6 +43,7 @@ router.post("/", (req,res) => {
   email: req.body.email,
   status: req.body.status,
   message: req.body.message,
+  leadId: req.body.leadId,
   time: req.body.time
   })
 
@@ -99,6 +100,7 @@ router.put("/:id", passport.authenticate('jwt', { session: false }),(req, res) =
         message.email = req.body.email || message.email;
         message.status = req.body.status || message.status;
         message.message = req.body.message || message.message;
+        message.leadId = req.body.leadId || message.leadId;
         message.time = req.body.time || message.time;
 
         message.save(function (err, message) {

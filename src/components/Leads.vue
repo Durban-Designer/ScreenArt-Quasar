@@ -86,14 +86,14 @@ export default {
     if (vue.leadId !== '') {
       axios.get('http://13.57.57.81:81/leads/id/' + vue.leadId, {headers: { 'Authorization': 'JWT ' + vue.user.token }})
         .then(function (response) {
-          vue.activeLead.name = response.data.name
-          vue.activeLead.phone = response.data.phone
-          vue.activeLead.email = response.data.email
-          vue.activeLead.url = response.data.url
-          vue.activeLead.address = response.data.address
-          vue.activeLead.status = response.data.status
-          vue.activeLead.comment = response.data.comment
-          vue.activeLead.id = response.data.id
+          vue.activeLead.name = response.data[0].name
+          vue.activeLead.phone = response.data[0].phone
+          vue.activeLead.email = response.data[0].email
+          vue.activeLead.url = response.data[0].url
+          vue.activeLead.address = response.data[0].address
+          vue.activeLead.status = response.data[0].status
+          vue.activeLead.comment = response.data[0].comment
+          vue.activeLead.id = response.data[0]._id
           vue.leadbox = false
           vue.leaditem = true
           console.log(response.data)
