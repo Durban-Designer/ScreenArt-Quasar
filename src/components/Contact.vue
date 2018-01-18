@@ -1,40 +1,88 @@
 <template>
   <div class="main">
-      <h2>CONTACT US</h2>
-      <div class="contactBox">
-        <input class="name" v-model="name" placeholder="NAME"></input>
-        <input class="email" v-model="email" placeholder="EMAIL"></input>
-        <input class="phone" v-model="phone" placeholder="PHONE"></input>
-        <input class="message" v-model="message" placeholder="MESSAGE"></input>
-        <div v-on:click="send" class="send">SEND</div>
-        <h2 class="words">SEND US A MESSAGE</h2>
-        <h3>OR</h3>
-        <h3 class="callus">CALL US</h3>
-        <ul>
-          <li>(480)-526-2634</li>
-          <li>(602)-558-1817</li>
-        </ul>
-        <h3 class="blurb">We understand that your time is important. So we'll do our best to respond as quickly as possible!</h3>
-      </div>
+    <h2>CONTACT US</h2>
+    <div class="contactBox">
+      <input class="name" v-model="name" placeholder="NAME"></input>
+      <input class="email" v-model="email" placeholder="EMAIL"></input>
+      <input class="phone" v-model="phone" placeholder="PHONE"></input>
+      <input class="message" v-model="message" placeholder="MESSAGE"></input>
+      <div v-on:click="send" class="send">SEND</div>
+      <h2 class="words">SEND US A MESSAGE</h2>
+      <h3>OR</h3>
+      <h3 class="callus">CALL US</h3>
+      <ul>
+        <li>(480)-526-2634</li>
+        <li>(602)-558-1817</li>
+      </ul>
+      <h3 class="blurb">We understand that your time is important. So we'll do our best to respond as quickly as possible!</h3>
     </div>
+  </div>
 </template>
 
 <script>
-  export default {
-    name: 'Contact',
-    data: function () {
-      return {
-        name: '',
-        email: '',
-        phone: '',
-        message: ''
-      }
-    },
-    methods: {
-      send: function () {
+import axios from 'axios'
+export default {
+  name: 'Contact',
+  data: function () {
+    return {
+      name: '',
+      email: '',
+      phone: '',
+      message: '',
+      time: '',
+      lead: {
+        leadId: ''
       }
     }
+  },
+  methods: {
+    send () {
+      let vue = this
+      vue.timeUpdate()
+      vue.submitLead()
+      vue.submitMessage()
+    },
+    submitLead () {
+      let vue = this
+      axios.post('http://13.57.57.81:81/leads', {
+        name: vue.name.toLowerCase(),
+        phone: vue.phone,
+        email: vue.email,
+        status: 'noreply'
+      })
+        .then(function (lead) {
+          vue.lead.leadId = lead._id
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
+    },
+    submitMessage () {
+      let vue = this
+      axios.post('http://13.57.57.81:81/messages', {
+        name: vue.name.toLowerCase(),
+        phone: vue.phone,
+        email: vue.email,
+        message: vue.message,
+        time: vue.time
+      })
+        .then(function () {
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
+    },
+    timeUpdate () {
+      let vue = this
+      this.time = new Date()
+      vue.hours = vue.time.getHours()
+      vue.day = vue.time.getDate()
+      vue.month = vue.time.getMonth()
+      vue.year = vue.time.getYear()
+      vue.clockTime = vue.hours + ' ' + vue.day + ' ' + vue.month + '' + vue.year
+    }
   }
+}
 </script>
 
 <style scoped lang='less'>

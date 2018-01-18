@@ -9,6 +9,8 @@ require("./user");
 var users = require("./users.js");
 require("./lead");
 var leads = require("./leads.js");
+require("./message");
+var messages = require("./messages.js");
 
 mongoose.Promise = global.Promise;
 
@@ -31,6 +33,7 @@ app.use(function(req, res, next) {
 
 app.use("/users", users);
 app.use("/leads", leads);
+app.use("/messages", messages);
 
 router.get("/", (req,res) => {
   res.sendFile(path + "index.html");
