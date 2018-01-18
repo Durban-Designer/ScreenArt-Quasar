@@ -7,6 +7,7 @@
       <p class="message">Message:{{activeMessage.message}}</p>
       <p class="time">Time:{{activeMessage.time}}</p>
       <button v-on:click="gotoLead">GOTO Lead</button>
+      <button v-on:click="deleteMessage">Delete</button>
       <button v-on:click="messageItem=false">BACK</button>
     </div>
     <div v-else>
@@ -47,7 +48,8 @@ export default {
         email: '',
         message: '',
         time: '',
-        leadId: ''
+        leadId: '',
+        id: ''
       },
       messageItem: false
     }
@@ -65,6 +67,18 @@ export default {
     },
     clearMessages () {
       this.messages = [{}]
+    },
+    deleteMessage () {
+      let vue = this
+      axios.delete('http://13.57.57.81:81/messages/' + vue.activeMessage.id, {headers: { 'Authorization': 'JWT ' + vue.user.token }})
+        .then(function () {
+          vue.messageItem = false
+          vue.clearMessages()
+          vue.populateMessages()
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
     },
     search () {
       let vue = this
@@ -92,6 +106,7 @@ export default {
       vue.activeMessage.message = message.message
       vue.activeMessage.time = message.time
       vue.activeMessage.leadId = message.leadId
+      vue.activeMessage.id = message._id
       console.log(message)
     },
     gotoLead () {

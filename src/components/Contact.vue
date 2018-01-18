@@ -36,9 +36,7 @@ export default {
         hour: '',
         minute: ''
       },
-      lead: {
-        leadId: ''
-      }
+      leadId: ''
     }
   },
   methods: {
@@ -46,7 +44,6 @@ export default {
       let vue = this
       vue.timeUpdate()
       vue.submitLead()
-      vue.submitMessage()
     },
     submitLead () {
       let vue = this
@@ -57,8 +54,11 @@ export default {
         status: 'noreply'
       })
         .then(function (lead) {
-          vue.lead.leadId = lead._id
+          vue.leadId = lead.data._id
           vue.success = true
+          console.log(lead)
+          console.log(vue.leadId)
+          vue.submitMessage()
         })
         .catch(function (error) {
           console.log(error)
@@ -73,10 +73,12 @@ export default {
         email: vue.email,
         message: vue.message,
         time: vue.time,
-        leadId: vue.lead.leadId
+        leadId: vue.leadId
       })
-        .then(function () {
+        .then(function (message) {
           vue.success = true
+          console.log(message)
+          console.log(vue.leadId)
         })
         .catch(function (error) {
           console.log(error)
@@ -88,7 +90,7 @@ export default {
       let time = new Date()
       vue.time.hour = time.getHours()
       vue.time.minute = time.getMinutes()
-      vue.time.day = time.getDay()
+      vue.time.day = time.getDate()
       vue.time.month = time.getMonth()
       vue.clockTime = vue.time.hours + ':' + vue.time.minute + '  ' + vue.time.day + '/' + vue.time.month
     }
