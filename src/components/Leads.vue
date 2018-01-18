@@ -256,9 +256,8 @@ export default {
 <style scoped lang='less'>
 @base-font:'Pathway Gothic One', sans-serif;
 .main {
-  margin-left: 5px;
   margin-top: 145px;
-  width: 99%;
+  width: 100%;
   height: 70%;
   z-index: 10;
   position: fixed;
