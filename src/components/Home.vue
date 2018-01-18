@@ -22,7 +22,7 @@ export default {
 @base-font:'Pathway Gothic One', sans-serif;
 
 .main {
-  margin-top: 2%;
+  margin-top: 135px;
   width: 100%;
   height: 600px;
   display: grid;
@@ -73,6 +73,16 @@ h3 {
 }
 
 @media (min-width: 700px) {
+  .main {
+    margin-top: 2%;
+    width: 100%;
+    height: 600px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(6, 6em);
+    position: fixed;
+  }
+
   h1 {
     margin-right: 20px;
     font-family: @base-font;
