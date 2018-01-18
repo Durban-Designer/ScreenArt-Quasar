@@ -73,7 +73,7 @@
 import axios from 'axios'
 export default {
   name: 'leads',
-  props: ['user', 'loggedIn'],
+  props: ['user', 'loggedIn', 'leadId'],
   created () {
     let vue = this
     if (vue.loggedIn === false || vue.user.employee === false) {
@@ -82,6 +82,25 @@ export default {
     else {
       vue.clearLeads()
       this.populateLeads()
+    }
+    if (vue.leadId !== '') {
+      axios.get('http://13.57.57.81:81/leads/id/' + vue.leadId, {headers: { 'Authorization': 'JWT ' + vue.user.token }})
+        .then(function (response) {
+          vue.activeLead.name = response.data.name
+          vue.activeLead.phone = response.data.phone
+          vue.activeLead.email = response.data.email
+          vue.activeLead.url = response.data.url
+          vue.activeLead.address = response.data.address
+          vue.activeLead.status = response.data.status
+          vue.activeLead.comment = response.data.comment
+          vue.activeLead.id = response.data.id
+          vue.leadbox = false
+          vue.leaditem = true
+          console.log(response.data)
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
     }
   },
   data: function () {
