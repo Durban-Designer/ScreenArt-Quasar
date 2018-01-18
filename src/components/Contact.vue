@@ -2,11 +2,13 @@
   <div class="main">
     <h2>CONTACT US</h2>
     <div class="contactBox">
+      <div class="success" v-if="success">Your Message Was Sent!</div>
+      <div class="error" v-else-if="error">OH NO Message Failed</div>
+      <div v-on:click="send" class="send" v-else>SEND</div>
       <input class="name" v-model="name" placeholder="NAME"></input>
       <input class="email" v-model="email" placeholder="EMAIL"></input>
       <input class="phone" v-model="phone" placeholder="PHONE"></input>
       <input class="message" v-model="message" placeholder="MESSAGE"></input>
-      <div v-on:click="send" class="send">SEND</div>
       <h2 class="words">SEND US A MESSAGE</h2>
       <h3>OR</h3>
       <h3 class="callus">CALL US</h3>
@@ -25,11 +27,18 @@ export default {
   name: 'Contact',
   data: function () {
     return {
+      success: false,
+      error: false,
       name: '',
       email: '',
       phone: '',
       message: '',
-      time: '',
+      time: {
+        month: '',
+        day: '',
+        hour: '',
+        minute: ''
+      },
       lead: {
         leadId: ''
       }
@@ -52,9 +61,11 @@ export default {
       })
         .then(function (lead) {
           vue.lead.leadId = lead._id
+          vue.success = true
         })
         .catch(function (error) {
           console.log(error)
+          vue.error = true
         })
     },
     submitMessage () {
@@ -64,22 +75,25 @@ export default {
         phone: vue.phone,
         email: vue.email,
         message: vue.message,
-        time: vue.time
+        time: vue.time,
+        leadId: vue.lead.leadId
       })
         .then(function () {
+          vue.success = true
         })
         .catch(function (error) {
           console.log(error)
+          vue.error = true
         })
     },
     timeUpdate () {
       let vue = this
-      this.time = new Date()
-      vue.hours = vue.time.getHours()
-      vue.day = vue.time.getDate()
-      vue.month = vue.time.getMonth()
-      vue.year = vue.time.getYear()
-      vue.clockTime = vue.hours + ' ' + vue.day + ' ' + vue.month + '' + vue.year
+      let time = new Date()
+      vue.time.hour = time.getHours()
+      vue.time.minute = time.getMinutes()
+      vue.time.day = time.getDay()
+      vue.time.month = time.getMonth()
+      vue.clockTime = vue.time.hours + ':' + vue.time.minute + '  ' + vue.time.day + '/' + vue.time.month
     }
   }
 }
@@ -174,6 +188,20 @@ export default {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 70px 30px 30px 30px 150px 25px;
+  }
+
+  .success {
+    margin-top: 10px;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row: 6;
+  }
+
+  .error {
+    margin-top: 10px;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row: 6;
   }
 
   .name {

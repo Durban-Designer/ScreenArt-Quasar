@@ -1,17 +1,28 @@
 <template>
   <div class="main">
-    <h4>INBOX</h4>
-    <input type="text" class="search" placeholder="Search Messages" v-model="searchBox"></input>
-    <select class="filter">
-      <option value=""></option>
-      <option value=""></option>
-      <option value=""></option>
-      <option value=""></option>
-    </select>
-    <button type="submit" class="searchButton" v-on:click="search">SEARCH</button>
-    <button class="backButton" v-on:click="$router.push('/crm')">BACK</button>
-    <div class="messageList" v-on:click="" v-for="message in messages">
-      <h5 v-on:click="messageItemDisplay(message)" class="message">{{message.name}}:{{message.time}}</h5>
+    <div class="messageView" v-if="messageItem">
+      <p class="name">Name:{{activeMessage.name}}</p>
+      <p class="phone">Phone:{{activeMessage.phone}}</p>
+      <p class="email">Email:{{activeMessage.email}}</p>
+      <p class="message">Message:{{activeMessage.message}}</p>
+      <p class="time">Time:{{activeMessage.time}}</p>
+      <button v-on:click="gotoLead">GOTO Lead</button>
+      <button v-on:click="messageItem=false">BACK</button>
+    </div>
+    <div v-else>
+      <h4>INBOX</h4>
+      <input type="text" class="search" placeholder="Search Messages" v-model="searchBox"></input>
+      <select class="filter">
+        <option value=""></option>
+        <option value=""></option>
+        <option value=""></option>
+        <option value=""></option>
+      </select>
+      <button type="submit" class="searchButton" v-on:click="search">SEARCH</button>
+      <button class="backButton" v-on:click="$router.push('/crm')">BACK</button>
+      <div class="messageList" v-on:click="" v-for="message in messages">
+        <h5 v-on:click="messageItemView(message)" class="message">{{message.name}}:{{message.time}}</h5>
+      </div>
     </div>
   </div>
 </template>
@@ -29,7 +40,16 @@ export default {
   data () {
     return {
       searchBox: '',
-      messages: []
+      messages: [],
+      activeMessage: {
+        name: '',
+        phone: '',
+        email: '',
+        message: '',
+        time: '',
+        leadId: ''
+      },
+      messageItem: false
     }
   },
   methods: {
@@ -62,6 +82,16 @@ export default {
             console.log(error)
           })
       }
+    },
+    messageItemView (message) {
+      let vue = this
+      vue.messageItem = true
+      vue.activeMessage.name = message.name
+      vue.activeMessage.phone = message.phone
+      vue.activeMessage.email = message.email
+      vue.activeMessage.message = message.message
+      vue.activeMessage.time = message.time
+      vue.activeMessage.leadId = message.leadId
     }
   }
 }

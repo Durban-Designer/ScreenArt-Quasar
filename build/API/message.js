@@ -12,6 +12,10 @@ var MessageSchema = new mongoose.Schema({
     day: String,
     hour: String,
     minute: String
+  },
+  leadId: {
+    type: String,
+    required: true
   }
 })
 
