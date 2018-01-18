@@ -20,7 +20,7 @@
       </select>
       <button type="submit" class="searchButton" v-on:click="search">SEARCH</button>
       <button class="backButton" v-on:click="$router.push('/crm')">BACK</button>
-      <div class="messageList" v-on:click="" v-for="message in messages">
+      <div class="messageList" v-for="message in messages">
         <h5 v-on:click="messageItemView(message)" class="message">{{message.name}}:{{message.time}}</h5>
       </div>
     </div>
@@ -92,6 +92,11 @@ export default {
       vue.activeMessage.message = message.message
       vue.activeMessage.time = message.time
       vue.activeMessage.leadId = message.leadId
+      console.log(message)
+    },
+    gotoLead () {
+      let vue = this
+      vue.$emit('gotoLead', vue.activeMessage.leadId)
     }
   }
 }
