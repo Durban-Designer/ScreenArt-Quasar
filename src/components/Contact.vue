@@ -75,7 +75,8 @@ export default {
         phone: vue.phone,
         email: vue.email,
         message: vue.message,
-        time: vue.time
+        time: vue.time,
+        leadId: vue.lead.leadId
       })
         .then(function () {
           vue.success = true

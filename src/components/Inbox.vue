@@ -6,7 +6,7 @@
       <p class="email">Email:{{activeMessage.email}}</p>
       <p class="message">Message:{{activeMessage.message}}</p>
       <p class="time">Time:{{activeMessage.time}}</p>
-      <button>GOTO Lead</button>
+      <button v-on:click="gotoLead">GOTO Lead</button>
       <button v-on:click="messageItem=false">BACK</button>
     </div>
     <div v-else>
@@ -46,7 +46,8 @@ export default {
         phone: '',
         email: '',
         message: '',
-        time: ''
+        time: '',
+        leadId: ''
       },
       messageItem: false
     }
@@ -89,6 +90,12 @@ export default {
       vue.activeMessage.phone = message.phone
       vue.activeMessage.email = message.email
       vue.activeMessage.message = message.message
+      vue.activeMessage.time = message.time
+      vue.activeMessage.leadId = message.leadId
+    },
+    gotoLead () {
+      let vue = this
+      $emit(gotoLead, vue.activeMessage.leadId)
     }
   }
 }

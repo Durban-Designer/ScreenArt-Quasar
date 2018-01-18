@@ -3,7 +3,7 @@
   <div id="q-app">
     <navbar :loggedIn="loggedIn" :user="user"></navbar>
     <transition name="fade">
-      <router-view v-on:login="login" v-on:logOut="logOut" :user="user" :loggedIn="loggedIn"/>
+      <router-view v-on:login="login" v-on:logOut="logOut" v-on:gotoLead="goToLead" :user="user" :loggedIn="loggedIn" :leadId="leadId"/>
     </transition>
     <foot></foot>
   </div>
@@ -31,6 +31,7 @@ export default {
   data: function () {
     return {
       loggedIn: false,
+      leadId: '',
       user: {
         id: '',
         token: '',
@@ -64,6 +65,11 @@ export default {
       localStorage.removeItem('admin')
       localStorage.removeItem('employee')
       vue.$router.push('/')
+    },
+    goToLead: function (leadId) {
+      let vue = this
+      vue.leadId = leadId
+      vue.$router.push('/leads')
     }
   }
 }
