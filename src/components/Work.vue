@@ -150,7 +150,7 @@ export default {
   }
 
   .hammurabiGame {
-    background-image: url('../assets/h3000.jpg');
+    background-image: url('../assets/Hammurabi3000.svg');
     background-repeat:no-repeat;
     background-size:contain;
     grid-column: 2;
