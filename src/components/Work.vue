@@ -171,13 +171,15 @@ export default {
     }
 
     .work_Title {
-      grid-row: 1;
-      font-size: 3em;
-      text-decoration: underline;
-      text-decoration-color: #c22227;
       font-family: @base-font;
-
+      font-weight: lighter;
+      font-size: 3em;
+      color: #fff;
+      text-shadow: 2px 2px 3px black;
+      text-align: center;
     }
+
+
 
     .totalResponse {
       background-repeat: no-repeat;
@@ -189,6 +191,10 @@ export default {
       grid-column: 1;
       grid-row: 2;
       background-size: contain;
+    }
+
+    .totalResponseModal {
+
     }
 
     .quickVenom {
