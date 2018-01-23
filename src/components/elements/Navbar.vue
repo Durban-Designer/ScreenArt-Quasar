@@ -10,7 +10,6 @@
         <button v-bind:class="LoginLogic" v-on:click="navToggle(); $router.push('/login')" v-if="!loggedIn">LOGIN</button>
         <button v-bind:class="LoginLogic" v-on:click="navToggle(); $router.push('/crm')" v-if="loggedIn && user.employee">CRM</button>
         <button v-bind:class="LoginLogic" v-on:click="navToggle(); $router.push('/customeraccount')" v-if="loggedIn && !user.employee">ACCOUNT</button>
-        <div class="back"></div>
       </div>
     </div>
     <div class="slidebox">

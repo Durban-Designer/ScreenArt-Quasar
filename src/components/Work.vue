@@ -38,10 +38,11 @@
       <button class="back" v-on:click="modal=''">Back</button>
     </div>
     <div class="tiles" v-else>
-      <div class="totalResponse" v-on:click="modal='tr'"></div>
-      <div class="quickVenom" v-on:click="modal='qc'"></div>
-      <div class="carpetGuys" v-on:click="modal='cg'"></div>
-      <div class="hammurabiGame" v-on:click="modal='hm'"></div>
+      <div class="work_Title">Work</div>
+      <div class="totalResponse click-me" v-on:click="modal='tr'"></div>
+      <div class="quickVenom click-me" v-on:click="modal='qc'"></div>
+      <div class="carpetGuys click-me" v-on:click="modal='cg'"></div>
+      <div class="hammurabiGame click-me" v-on:click="modal='hm'"></div>
     </div>
   </div>
 </template>
@@ -61,9 +62,8 @@ export default {
 @base-font:'Pathway Gothic One', sans-serif;
 
   .workPage {
-    margin-left: 5px;
     margin-top: 145px;
-    width: 99%;
+    width: 100%;
     height: 70%;
     position: fixed;
     background:rgba(0,0,0,0.6);
@@ -122,8 +122,6 @@ export default {
     width: 100%;
     height: 100%;
     z-index: 10;
-    -webkit-filter: drop-shadow(1px 2px 2px #000);
-    filter: drop-shadow(1px 2px 2px #000);
     grid-column: 1;
     grid-row: 1;
     background-size: contain;
@@ -135,8 +133,6 @@ export default {
     width: 100%;
     height: 100%;
     z-index: 10;
-    -webkit-filter: drop-shadow(1px 2px 2px #000);
-    filter: drop-shadow(1px 2px 2px #000);
     background-size: contain;
     grid-column: 2;
     grid-row: 1;
@@ -150,7 +146,7 @@ export default {
   }
 
   .hammurabiGame {
-    background-image: url('../assets/h3000.jpg');
+    background-image: url('../assets/Hammurabi3000.svg');
     background-repeat:no-repeat;
     background-size:contain;
     grid-column: 2;
@@ -158,21 +154,32 @@ export default {
     margin-left: 160px;
   }
 
+  .click-me {
+    background-color: #414141;
+    border-radius: 12px;
+    -webkit-filter: drop-shadow(1px 2px 2px #000);
+    filter: drop-shadow(1px 2px 2px #000);
+  }
+
   @media only screen and (max-width:750px) {
 
     .tiles {
-      width: 90%;
-      display: grid;
       grid-template-columns: 1fr;
-      grid-template-rows: repeat(4, 100px);
+      grid-template-rows: 75px repeat(4, 100px);
       grid-row-gap: 10px;
       text-align: center;
-      margin-top: 100px;
-      margin-left: 5%;
+    }
+
+    .work_Title {
+      grid-row: 1;
+      font-size: 3em;
+      text-decoration: underline;
+      text-decoration-color: #c22227;
+      font-family: @base-font;
+
     }
 
     .totalResponse {
-      background-image: url('../assets/totalResponse.svg');
       background-repeat: no-repeat;
       width: 100%;
       height: 100%;
@@ -180,12 +187,11 @@ export default {
       -webkit-filter: drop-shadow(1px 2px 2px #000);
       filter: drop-shadow(1px 2px 2px #000);
       grid-column: 1;
-      grid-row: 1;
+      grid-row: 2;
       background-size: contain;
     }
 
     .quickVenom {
-      background-image: url('../assets/qwc-venumm.svg');
       background-repeat: no-repeat;
       width: 100%;
       height: 100%;
@@ -194,26 +200,24 @@ export default {
       filter: drop-shadow(1px 2px 2px #000);
       background-size: contain;
       grid-column: 1;
-      grid-row: 2;
+      grid-row: 3;
       margin-top: 0;
     }
 
     .carpetGuys {
-      background-image: url('../assets/carpetGuys.svg');
       background-repeat:no-repeat;
       background-size: contain;
       grid-column: 1;
-      grid-row: 3;
+      grid-row: 4;
     }
 
     .hammurabiGame {
       width: 100%;
       height: 100%;
-      background-image: url('../assets/h3000.jpg');
       background-repeat:no-repeat;
       background-size:contain;
       grid-column: 1;
-      grid-row: 4;
+      grid-row: 5;
       margin-left: 0;
     }
   }
