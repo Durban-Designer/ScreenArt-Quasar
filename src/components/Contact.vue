@@ -224,10 +224,12 @@ export default {
   font-size: 1.5em;
   line-height: 30px;
 }
+
 .send:hover {
   color: #000;
   background-color: #fff;
 }
+
 input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
   color: #fff;
   font-size: 0.875em;
