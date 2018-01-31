@@ -40,29 +40,35 @@ export default {
 @base-font:'Pathway Gothic One', sans-serif;
 
 .main {
+  margin: 0;
+  margin: 0;
+  grid-column-start: 1;
+  grid-column-end: 3;
   margin-left: 5px;
   margin-top: 145px;
   width: 99%;
-  height: 70%;
+  height: 68%;
   z-index: 10;
   position: fixed;
   background:rgba(0,0,0,0.6);
   border-radius: 12px;
   box-shadow: 2px 2px 4px #000;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: .4fr 1fr .4fr;
   grid-template-rows: repeat(4, 1fr);
 }
 
 h1 {
-  grid-column: 2;
   font-family: @base-font;
   font-weight: lighter;
-  font-size: 2em;
+  width: 100%;
+  font-size: 1.4em;
   color: #fff;
   text-shadow: 2px 2px 3px black;
   text-align: center;
-  line-height: 2em;
+  line-height: 1.6em;
+  margin-bottom: 20px;
+  margin-top: 6px;
 }
 
 .adminopt {
@@ -88,12 +94,13 @@ h1 {
 button {
   font-family: @base-font;
   width: 100%;
-  height: 60px;
+  height: 50px;
+  line-height: 50px;
   background-color: transparent;
   color: #fff;
   box-shadow: 2px 2px 4px #000;
-  margin-top: 25px;
-  font-size: 1.6em;
+  margin-top: 12px;
+  font-size: 1.5em;
 }
 
 button:hover {
