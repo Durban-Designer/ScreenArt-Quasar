@@ -1,14 +1,15 @@
 <template>
   <div class="main">
-    <div class="modal" v-if="modal ===3">
-      <h1>services</h1>
-      <p>
-        lorem ipsum dolor est
-      </p>
-      <button class="next" v-on:click="modal++" v-if="modal < 3">Next</button>
-      <button class="previous" v-on:click="modal--" v-if="modal > 1">Previous</button>
-    </div>
-    <div class="modal" v-else-if="modal === 2">
+    <div class="modal">
+      <div class="services">
+        <h1>services</h1>
+        <ul>
+          <li>Web Development</li>
+          <li>App Development</li>
+          <li>Graphic Design</li>
+          <li>Consulting</li>
+        </ul>
+      </div>
       <div class="bon">
         <div class="bonImage"></div>
         <p>
@@ -23,10 +24,6 @@
           specializing in the Quick Venom Stack as well as a Graphic Designer, and Photographer.
         </p>
       </div>
-      <button class="next" v-on:click="modal++" v-if="modal < 3">Next</button>
-      <button class="previous" v-on:click="modal--" v-if="modal > 1">Previous</button>
-    </div>
-    <div class="modal" v-else>
       <div class="royce">
         <div class="royceImage"></div>
         <p>
@@ -42,8 +39,6 @@
           as an Artist, Graphic Designer, and Photographer.
         </p>
       </div>
-      <button class="next" v-on:click="modal++" v-if="modal < 3">Next</button>
-      <button class="previous" v-on:click="modal--" v-if="modal > 1">Previous</button>
     </div>
   </div>
 </template>
@@ -76,78 +71,96 @@
     border-radius: 12px;
     box-shadow: 2px 2px 4px #000;
     color: #fff;
+    overflow: hidden;
   }
 
   .modal {
+    overflow-y: scroll;
+    height: 400px;
     display: grid;
     grid-template-columns: .1fr 2fr .1fr;
-    grid-template-rows: 20px repeat(2, 160px) 40px;
+    grid-template-rows: 20px repeat(5, 400px) 40px;
   }
 
   .royce {
     grid-column: 2;
     grid-row: 2;
     display: grid;
-    grid-template-columns: .4fr 1fr;
+    grid-template-columns: .1fr 1fr .1fr;
+    grid-template-rows: 200px 200px;
   }
 
   .royceImage {
-    grid-column: 1;
+    background-image: url('../assets/RoyceHeadshot.png');
+    background-repeat: no-repeat;
+    grid-row: 1;
+    grid-column: 2;
+    width: 100%;
+    height: 100%;
   }
 
   .kris {
     grid-column: 2;
     grid-row: 3;
     display: grid;
-    grid-template-columns: .4fr 1fr;
+    grid-template-columns: .1fr 1fr .1fr;
+    grid-template-rows: 200px 200px;
   }
 
   .krisImage {
-    grid-column: 1;
+    background-image: url('../assets/KrisHeadshot.png');
+    background-repeat: no-repeat;
+    grid-row: 1;
+    grid-column: 2;
+    width: 100%;
+    height: 100%;
   }
 
   .bon {
-    grid-column-start: 1;
-    grid-column-end: 3;
-    grid-row: 2;
+    grid-column: 2;
+    grid-row: 4;
     display: grid;
-    grid-template-columns: .4fr 1fr;
+    grid-template-columns: .1fr 1fr .1fr;
+    grid-template-rows: 200px 200px;
   }
 
   .bonImage {
-    grid-column: 1;
+    background-image: url('../assets/BonHeadshot.png');
+    background-repeat: no-repeat;
+    grid-row: 1;
+    grid-column: 2;
+    width: 100%;
+    height: 100%;
   }
 
   .avery {
-    grid-column-start: 1;
-    grid-column-end: 3;
-    grid-row: 3;
+    grid-column: 2;
+    grid-row: 5;
     display: grid;
-    grid-template-columns: .4fr 1fr;
+    grid-template-columns: .1fr 1fr .1fr;
+    grid-template-rows: 200px 200px;
   }
 
   .averyImage {
-    grid-column: 1;
-  }
-
-  .previous {
-    height: 40px;
-    width: 100%;
-    grid-column: 1;
-    grid-row: 4;
-  }
-
-  .next {
-    height: 40px;
-    width: 100%;
+    background-image: url('../assets/AveryHeadshot.png');
+    background-repeat: no-repeat;
+    grid-row: 1;
     grid-column: 2;
-    grid-row: 4;
+    width: 100%;
+    height: 100%;
+  }
+
+  .services {
+    grid-column: 2;
+    grid-row: 6;
   }
 
   p {
+    grid-row: 2;
     grid-column: 2;
     font-size: 1em;
     line-height: 1.2em;
+    padding-top: 24px;
   }
 
   @media only screen and (min-width:700px) {
