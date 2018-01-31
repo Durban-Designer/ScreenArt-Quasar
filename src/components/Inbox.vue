@@ -109,18 +109,6 @@ export default {
       vue.activeMessage.id = message._id
       console.log(message)
     },
-    deleteMessage () {
-      let vue = this
-      axios.delete('http://13.57.57.81:81/messages/' + vue.activeMessage.id, {headers: { 'Authorization': 'JWT ' + vue.user.token }})
-        .then(function () {
-          vue.messageItem = false
-          vue.clearMessages()
-          vue.populateMessages()
-        })
-        .catch(function (error) {
-          console.log(error)
-        })
-    },
     gotoLead () {
       let vue = this
       vue.$emit('gotoLead', vue.activeMessage.leadId)

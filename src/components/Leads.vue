@@ -130,8 +130,6 @@ export default {
       postlead: false
     }
   },
-  computed: {
-  },
   methods: {
     populateLeads () {
       let vue = this
