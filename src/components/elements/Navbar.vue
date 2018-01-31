@@ -13,12 +13,12 @@
       </div>
     </div>
     <div class="slidebox">
-      <transition name="slide"><img class="slide1" v-if="show === 0" src="../../assets/Seasons.jpg"></transition>
-      <transition name="slide"><img class="slide2" v-if="show === 1" src="../../assets/birds.jpg"></transition>
-      <transition name="slide"><img class="slide3" v-if="show === 2" src="../../assets/mountains.jpg"></transition>
-      <transition name="slide"><img class="slide4" v-if="show === 3" src="../../assets/grate.jpg"></transition>
-      <transition name="slide"><img class="slide5" v-if="show === 4" src="../../assets/humans.jpg"></transition>
-      <transition name="slide"><img class="slide6" v-if="show === 5" src="../../assets/window.jpg"></transition>
+      <transition name="slide"><div class="slide1" v-if="show === 0"></div></transition>
+      <transition name="slide"><div class="slide2" v-if="show === 1"></div></transition>
+      <transition name="slide"><div class="slide3" v-if="show === 2"></div></transition>
+      <transition name="slide"><div class="slide4" v-if="show === 3"></div></transition>
+      <transition name="slide"><div class="slide5" v-if="show === 4"></div></transition>
+      <transition name="slide"><div class="slide6" v-if="show === 5"></div></transition>
     </div>
   </div>
 </template>
@@ -297,36 +297,66 @@ export default {
   }
 
   .slide1 {
+    background-image: url("../../assets/SeasonsMobile.jpg");
     position: absolute;
     width: 100%;
+    height: 140px;
+    margin: 0;
+    padding: 0;
+    top: 0;
     z-index: -6;
   }
 
   .slide2 {
+    background-image: url("../../assets/birdsMobile.jpg");
     position: absolute;
     width: 100%;
+    height: 140px;
+    margin: 0;
+    padding: 0;
+    top: 0;
     z-index: -5;
   }
 
   .slide3 {
+    background-image: url("../../assets/mountainsMobile.jpg");
     position: absolute;
     width: 100%;
+    height: 140px;
+    margin: 0;
+    padding: 0;
+    top: 0;
     z-index: -4;
   }
   .slide4 {
+    background-image: url("../../assets/grateMobile.jpg");
     position: absolute;
     width: 100%;
+    height: 140px;
+    margin: 0;
+    padding: 0;
+    top: 0;
     z-index: -3;
   }
 
   .slide5 {
+    background-image: url("../../assets/humansMobile.jpg");
     position: absolute;
     width: 100%;
+    height: 140px;
+    margin: 0;
+    padding: 0;
+    top: 0;
     z-index: -2;
   }
   .slide6 {
+    background-image: url("../../assets/windowMobile.jpg");
     position: absolute;
     width: 100%;
+    height: 140px;
+    margin: 0;
+    padding: 0;
+    top: 0;
     z-index: -1;
   }
 
@@ -363,7 +393,6 @@ export default {
     }
 
     button {
-
       letter-spacing: 1.3px;
       -webkit-animation-duration: .25s;
       animation-duration: .25s;
@@ -393,9 +422,11 @@ export default {
           transform:         translateY(-10px)
         }
       }
+
       .Home {
         display: none;
       }
+
       .slidebox {
         position: fixed;
         top: 0;
@@ -406,6 +437,29 @@ export default {
         z-index: -1;
         height: 100%;
       }
+
+      .slide1 {
+        background-image: url("../../assets/Seasons.jpg");
+      }
+
+      .slide2 {
+        background-image: url("../../assets/birds.jpg");
+      }
+
+      .slide3 {
+        background-image: url("../../assets/mountains.jpg");
+      }
+      .slide4 {
+        background-image: url("../../assets/grate.jpg");
+      }
+
+      .slide5 {
+        background-image: url("../../assets/humans.jpg");
+      }
+      .slide6 {
+        background-image: url("../../assets/window.jpg");
+      }
+
       .Work {
         box-shadow: none;
         grid-column: 1;

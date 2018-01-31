@@ -76,7 +76,7 @@
 
   .modal {
     overflow-y: scroll;
-    height: 400px;
+    height: 100%;
     display: grid;
     grid-template-columns: .1fr 2fr .1fr;
     grid-template-rows: 20px repeat(5, 400px) 40px;
@@ -151,6 +151,7 @@
   }
 
   .services {
+    padding-top: 80px;
     grid-column: 2;
     grid-row: 6;
   }

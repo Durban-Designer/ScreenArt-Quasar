@@ -38,7 +38,7 @@ export default {
   methods: {
     login () {
       let vue = this
-      axios.post('http://54.219.138.159:81/users/login', {
+      axios.post('http://13.57.57.81:81/users/login', {
         email: vue.email.toLowerCase(),
         password: vue.password
       })
@@ -78,9 +78,10 @@ export default {
   @base-font:'Pathway Gothic One', sans-serif;
 
 .main {
-  margin-top: 40%;
-  width: 99%;
-  height: 70%;
+  margin-top: 145px;
+  margin-left: 2%;
+  width: 96%;
+  height: 68%;
   z-index: 10;
   position: fixed;
   background:rgba(0,0,0,0.6);

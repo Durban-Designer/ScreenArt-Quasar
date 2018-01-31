@@ -30,7 +30,6 @@
     </transition>
     <transition name="fade">
       <div class="edit" v-if="edit">
-        <h4 class="entertitle">Lead Info</h4>
         <input type="text" class="clientNameEdit" v-model="activeLead.name" placeholder="Name" required></input>
         <input type="tel" class="phoneEdit" v-model="activeLead.phone" placeholder="Phone Number" required></input><br/>
         <input type="text" class="emailEdit" v-model="activeLead.email" placeholder="Email Address" required></input>
@@ -49,7 +48,6 @@
     </transition>
     <transition name="fade">
       <div class="newLead" v-if="newLead">
-        <h4 class="entertitle">Lead Info</h4>
         <input type="text" class="nameNew" v-model="activeLead.name" placeholder="Name" required></input>
         <input type="tel" class="phoneNew" v-model="activeLead.phone" placeholder="Phone Number" required></input><br/>
         <input type="text" class="emailNew" v-model="activeLead.email" placeholder="Email Address" required></input>
@@ -317,7 +315,8 @@ export default {
 @base-font:'Pathway Gothic One', sans-serif;
 .main {
   margin-top: 145px;
-  width: 100%;
+  width: 96%;
+  margin-left: 5px;
   height: 68%;
   z-index: 10;
   position: fixed;
@@ -430,31 +429,31 @@ h4 {
 .clientNameEdit {
   grid-column-start: 1;
   grid-column-end: 2;
-  grid-row: 3;
+  grid-row: 2;
 }
 
 .primaryContactEdit {
   grid-column-start: 2;
   grid-column-end: 3;
-  grid-row: 3;
+  grid-row: 2;
 }
 
 .phoneEdit {
   grid-column-start: 2;
   grid-column-end: 3;
-  grid-row: 3;
+  grid-row: 2;
 }
 
 .emailEdit {
   grid-column-start: 1;
   grid-column-end: 2;
-  grid-row: 4;
+  grid-row: 3;
 }
 
 .addressEdit {
   grid-column-start: 1;
   grid-column-end: 2;
-  grid-row: 5;
+  grid-row: 4;
 }
 
 .leadStatusEdit {
@@ -464,33 +463,33 @@ h4 {
 .notesEdit {
   grid-column-start: 1;
   grid-column-end: 3;
-  grid-row-start: 6;
-  grid-row-end: 8;
+  grid-row-start: 5;
+  grid-row-end: 7;
 }
 
 .statusEdit {
   grid-column-start: 2;
   grid-column-end: 3;
-  grid-row-start: 4;
-  grid-row-end: 4;
+  grid-row-start: 3;
+  grid-row-end: 3;
 }
 
 .submitEdit {
   grid-column-start: 1;
   grid-column-end: 2;
-  grid-row: 10;
+  grid-row: 7;
 }
 
 .submitLeads {
   grid-column-start: 1;
   grid-column-end: 2;
-  grid-row: 10;
+  grid-row: 7;
 }
 
 .cancel {
   grid-column-start: 2;
   grid-column-end: 3;
-  grid-row: 10;
+  grid-row: 7;
 }
 
 input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {

@@ -41,7 +41,6 @@ export default {
 
 .main {
   margin: 0;
-  margin: 0;
   grid-column-start: 1;
   grid-column-end: 3;
   margin-left: 5px;
