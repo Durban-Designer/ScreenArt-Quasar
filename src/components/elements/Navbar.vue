@@ -440,24 +440,54 @@ export default {
 
       .slide1 {
         background-image: url("../../assets/Seasons.jpg");
+        height: auto;
+        width: 100%;
+        bottom: 0;
+        left: 0;
+        right: 0;
       }
 
       .slide2 {
         background-image: url("../../assets/birds.jpg");
+        height: auto;
+        width: 100%;
+        bottom: 0;
+        left: 0;
+        right: 0;
       }
 
       .slide3 {
         background-image: url("../../assets/mountains.jpg");
+        height: auto;
+        width: 100%;
+        bottom: 0;
+        left: 0;
+        right: 0;
       }
       .slide4 {
         background-image: url("../../assets/grate.jpg");
+        height: auto;
+        width: 100%;
+        bottom: 0;
+        left: 0;
+        right: 0;
       }
 
       .slide5 {
         background-image: url("../../assets/humans.jpg");
+        height: auto;
+        width: 100%;
+        bottom: 0;
+        left: 0;
+        right: 0;
       }
       .slide6 {
         background-image: url("../../assets/window.jpg");
+        height: auto;
+        width: 100%;
+        bottom: 0;
+        left: 0;
+        right: 0;
       }
 
       .Work {
