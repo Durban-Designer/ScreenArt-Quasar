@@ -291,7 +291,8 @@ textarea:hover {
 
 @media only screen and (min-width:750px) {
 .main {
-
+  width: 99%;
+  height: 74.3%;
 }
 }
 </style>
