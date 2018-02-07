@@ -111,9 +111,10 @@ export default {
 <style scoped lang="less">
 .main {
   margin-left: 5px;
-  margin-top: 10%;
-  width: 99%;
-  height: 73.5%;
+  margin-right: 5px;
+  margin-top: 20px;
+  width: 96%;
+  height: 68%;
   z-index: 10;
   position: fixed;
   background:rgba(0,0,0,0.6);

@@ -10,26 +10,26 @@
       <button class="back" v-on:click="addButton">Back</button>
     </div>
     <div class="userView" v-else-if="viewUser">
-      <h4>Name:</h4><p>{{activeUser.name}}</p>
-      <h4>Email:</h4><p>{{activeUser.email}}</p>
-      <h4>Admin:</h4><p>{{activeUser.admin}}</p>
-      <h4>Employee:</h4><p>{{activeUser.employee}}</p>
+      <h5>Name:</h5><p>{{activeUser.name}}</p>
+      <h5>Email:</h5><p>{{activeUser.email}}</p>
+      <h5>Admin:</h5><p>{{activeUser.admin}}</p>
+      <h5>Employee:</h5><p>{{activeUser.employee}}</p>
       <button v-on:click="editUser=true; viewUser=false">Edit</button>
-      <button class="delete" v-on:click="deleteUserModal=true">Delete</button>
       <button v-on:click="viewUser=false">Back</button>
+    </div>
+    <div class="editUser" v-else-if="editUser">
+      <h5>Name:</h5><input class="name" placeholder="name" v-model="activeUser.name"></input>
+      <h5>Email:</h5><input class="email" placeholder="email" v-model="activeUser.email"></input>
+      <input class="admin" type="checkbox" v-model="activeUser.admin">Admin</input>
+      <input class="employee" type="checkbox" v-model="activeUser.employee">Employee</input>
+      <button class="submit" v-on:click="userEdit">Submit</button>
+      <button class="delete" v-on:click="deleteUserModal=true">Delete</button>
+      <button class="back" v-on:click="editUser = false; viewUser= true">Back</button>
       <div class="deleteModal" v-if="deleteUserModal">
         <h2>Are you sure?</h2>
         <button v-on:click="deleteUser">Yes</button>
         <button v-on:click="deleteUserModal = false">No</button>
       </div>
-    </div>
-    <div class="editUser" v-else-if="editUser">
-      <h4>Name:</h4><input class="name" placeholder="name" v-model="activeUser.name"></input>
-      <h4>Email:</h4><input class="email" placeholder="email" v-model="activeUser.email"></input>
-      <input class="admin" type="checkbox" v-model="activeUser.admin">Admin</input>
-      <input class="employee" type="checkbox" v-model="activeUser.employee">Employee</input>
-      <button class="submit" v-on:click="userEdit">Submit</button>
-      <button class="back" v-on:click="editUser = false; viewUser= true">Back</button>
     </div>
     <div class="userList" v-else>
       <h1>USERS</h1>
@@ -154,35 +154,69 @@ export default {
 </script>
 
 <style scoped lang='less'>
-@base-font:'Pathway Gothic One', sans-serif;
-.main {
-  background: none;
-  border: none;
-  box-shadow: none;
-  margin-top: 80px;
-  margin-left: 20%;
-  color: #fff;
-}
+  @base-font:'Pathway Gothic One', sans-serif;
 
-h1 {
-  grid-column: 2;
-  font-family: @base-font;
-  font-weight: lighter;
-  font-size: 2em;
-  color: #fff;
-  text-shadow: 2px 2px 3px black;
-  text-align: center;
-  line-height: 2em;
-  text-decoration: underline;
-}
+  .main {
+    width: 100%;
+    height: 100%;
+    background: none;
+    border: none;
+    box-shadow: none;
+    margin-top: 0;
+    color: #fff;
+  }
 
-button {
-  font-family: @base-font;
-  height: 40px;
-  background-color: transparent;
-  color: #fff;
-  box-shadow: 2px 2px 4px #000;
-  margin-top: 25px;
-  font-size: 2em;
-}
+  .userList {
+    margin: 0;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    width: 100%;
+    display: grid;
+    grid-template-columns: .4fr 1fr .4fr;
+    grid-template-rows: repeat(10, 50px);
+  }
+
+  h1 {
+    grid-column: 2;
+    font-family: @base-font;
+    font-weight: lighter;
+    width: 120%;
+    font-size: 2em;
+    color: #fff;
+    text-shadow: 2px 2px 3px black;
+    text-align: center;
+    line-height: 2em;
+    text-decoration: underline;
+    margin:auto;
+  }
+
+  .users {
+    grid-column: 2;
+    text-align: center;
+    margin: auto;
+    padding-left: 20px;
+  }
+
+  h5 {
+    font-family: @base-font;
+    font-weight: lighter;
+    font-size: 1.4em;
+    color: #fff;
+    text-shadow: 2px 2px 3px black;
+    text-align: left;
+    line-height: 1.2em;
+    margin: 0;
+  }
+
+  button {
+    grid-column: 2;
+    font-family: @base-font;
+    height: 40px;
+    width: 120%;
+    background-color: transparent;
+    color: #fff;
+    box-shadow: 2px 2px 4px #000;
+    margin-top: 12px;
+    font-size: 1.4em;
+  }
 </style>

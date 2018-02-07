@@ -13,7 +13,10 @@
         <li>(480)-526-2634</li>
         <li>(602)-558-1817</li>
       </ul>
-      <h3 class="blurb">We understand that your time is important. So we'll do our best to respond as quickly as possible!</h3>
+      <h3 class="blurb">
+        We understand that your time is important. So we'll do
+        our best to respond quickly!
+      </h3>
     </div>
   </div>
 </template>
@@ -99,9 +102,11 @@ export default {
 </script>
 
 <style scoped lang='less'>
-@base-font:'Pathway Gothic One', sans-serif;
+  @base-font:'Pathway Gothic One', sans-serif;
 
   .main {
+    margin-left: 5px;
+    margin-right: 5px;
     margin-top: 145px;
     width: 99%;
     height: 80%;
@@ -115,17 +120,18 @@ export default {
   h2 {
     font-family: @base-font;
     font-weight: lighter;
-    font-size: 2em;
+    font-size: 1.4em;
     color: #fff;
     text-shadow: 2px 2px 3px black;
     text-align: center;
     line-height: 50px;
+    margin: 4px;
   }
 
   h3 {
     font-family: @base-font;
     font-weight: lighter;
-    font-size: 2.5em;
+    font-size: 1.2em;
     color: #fff;
     text-shadow: 2px 2px 3px black;
     text-align: center;
@@ -135,11 +141,16 @@ export default {
     margin-right: 20px;
   }
 
+  ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
   li {
-    width: 90%;
+    width: 100%;
     font-family: @base-font;
     font-weight: lighter;
-    font-size: 2em;
+    font-size: 1.2em;
     color: #fff;
     text-shadow: 2px 2px 3px black;
     list-style: none;
@@ -196,8 +207,8 @@ export default {
 
   .name {
     width: 90%;
-  margin-bottom: 5px;
-  font-size: 1.3em;
+    margin-bottom: 5px;
+    font-size: 1.3em;
 }
 
 .email {
@@ -211,7 +222,6 @@ export default {
   width: 90%;
   margin-bottom: 5px;
   font-size: 1.3em;
-
 }
 
 .message {
@@ -230,6 +240,8 @@ export default {
   border: solid 1px #fff;
   font-family: @base-font;
   font-size: 1.5em;
+  margin-left: 5%;
+  margin-top: 4px;
 }
 .send:hover {
   color: #000;

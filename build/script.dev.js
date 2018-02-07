@@ -4,6 +4,7 @@ require('colors')
 
 var
   path = require('path'),
+  compression = require('compression'),
   express = require('express'),
   webpack = require('webpack'),
   env = require('./env-utils'),
@@ -14,6 +15,8 @@ var
   app = express(),
   port = process.env.PORT || config.dev.port,
   uri = 'http://localhost:' + port
+
+app.use(compression())
 
 console.log(' Starting dev server with "' + (process.argv[2] || env.platform.theme).bold + '" theme...')
 console.log(' Will listen at ' + uri.bold)

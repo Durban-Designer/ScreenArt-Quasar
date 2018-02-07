@@ -35,7 +35,6 @@ export default new VueRouter({
     { path: '/Leads', component: load('Leads') },
     { path: '/Customeraccount', component: load('Customer') },
     { path: '/Inbox', component: load('Inbox') },
-    { path: '/Hammurabi', component: load('Hammurabi') },
     // Always leave this last one
     { path: '*', component: load('Error404') } // Not found
   ]

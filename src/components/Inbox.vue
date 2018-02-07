@@ -68,18 +68,6 @@ export default {
     clearMessages () {
       this.messages = [{}]
     },
-    deleteMessage () {
-      let vue = this
-      axios.delete('http://13.57.57.81:81/messages/' + vue.activeMessage.id, {headers: { 'Authorization': 'JWT ' + vue.user.token }})
-        .then(function () {
-          vue.messageItem = false
-          vue.clearMessages()
-          vue.populateMessages()
-        })
-        .catch(function (error) {
-          console.log(error)
-        })
-    },
     search () {
       let vue = this
       if (vue.searchBox === '') {
@@ -123,7 +111,7 @@ export default {
   margin-left: 5px;
   margin-top: 145px;
   width: 99%;
-  height: 70%;
+  height: 68%;
   z-index: 10;
   position: fixed;
   background:rgba(0,0,0,0.6);

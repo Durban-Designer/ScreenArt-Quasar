@@ -58,27 +58,31 @@ export default {
   @base-font:'Pathway Gothic One', sans-serif;
 
   .main {
+    margin-left: 5px;
+    margin-right: 5px;
     margin-top: 145px;
-    width: 100%;
-    height: 74%;
+    width: 96%;
+    height: 68%;
     z-index: 10;
     position: fixed;
     background:rgba(0,0,0,0.6);
     border-radius: 12px;
     box-shadow: 2px 2px 4px #000;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: .4fr 1fr .4fr;
   }
 
   h1 {
     font-family: @base-font;
     font-weight: lighter;
     width: 100%;
-    font-size: 1.6em;
+    font-size: 1.4em;
     color: #fff;
     text-shadow: 2px 2px 3px black;
     text-align: center;
     line-height: 1.6em;
+    margin-bottom: 0;
+    margin-top: 6px;
   }
 
   .passModal {
@@ -99,11 +103,12 @@ export default {
   button {
     font-family: @base-font;
     width: 100%;
-    height: 60px;
+    height: 50px;
+    line-height: 50px;
     background-color: transparent;
     color: #fff;
     box-shadow: 2px 2px 4px #000;
-    margin-top: 25px;
+    margin-top: 12px;
     font-size: 1.5em;
   }
 
