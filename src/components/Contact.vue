@@ -104,7 +104,7 @@ export default {
   .main {
     margin-top: 145px;
     width: 99%;
-    height: 70%;
+    height: 80%;
     z-index: 4;
     position: fixed;
     background:rgba(0,0,0,0.6);
@@ -230,7 +230,6 @@ export default {
   border: solid 1px #fff;
   font-family: @base-font;
   font-size: 1.5em;
-  margin-left: 5%;
 }
 .send:hover {
   color: #000;
@@ -362,7 +361,7 @@ textarea:hover {
     margin-left: 5px;
     margin-top: 145px;
     width: 99%;
-    height: 70%;
+    height: 74.3%;
     z-index: 4;
     position: fixed;
     background:rgba(0,0,0,0.6);

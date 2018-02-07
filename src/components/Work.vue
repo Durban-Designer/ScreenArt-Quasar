@@ -64,7 +64,7 @@ export default {
   .workPage {
     margin-top: 145px;
     width: 100%;
-    height: 70%;
+    height: 74.3%;
     position: fixed;
     background:rgba(0,0,0,0.6);
     border-radius: 12px;

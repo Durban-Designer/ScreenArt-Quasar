@@ -290,8 +290,7 @@ textarea:hover {
 
 @media only screen and (min-width:750px) {
 .main {
-  margin-top: 13%;
-}
 
+}
 }
 </style>

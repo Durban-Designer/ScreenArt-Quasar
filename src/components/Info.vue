@@ -125,7 +125,7 @@ export default {
       margin-left: 5px;
       margin-top: 145px;
       width: 99%;
-      height: 70%;
+      height: 74.3%;
       z-index: 10;
       position: fixed;
       background:rgba(0,0,0,0.6);
