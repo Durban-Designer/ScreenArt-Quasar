@@ -24,8 +24,8 @@
       </p>
       <button class="back" v-on:click="modal=''">Back</button>
     </div>
-    <div class="carpetGuysModal modal" v-else-if="modal==='cg'">
-      <h1>Carpet Guys</h1>
+    <div class="timeCrunchModal modal" v-else-if="modal==='tc'">
+      <h1>Time Crunch</h1>
       <p>
         Carpet Guys is a Mobile CRM Hybrid Web Application we developed that enables the employees to clock in, view jobs, check their schedule, navigate to jobs on a map, message customers and employees, upload photos,
         track leads, and run marketing campaigns. As well as having a customer facing side that allows customers to track job progress, upload photos, and has social media links.
@@ -45,7 +45,7 @@
       <div class="work"><h1>Work</h1></div>
       <div class="totalResponse clickMe" v-on:click="modal='tr'"></div>
       <div class="quickVenom clickMe" v-on:click="modal='qc'"></div>
-      <div class="carpetGuys clickMe" v-on:click="modal='cg'"></div>
+      <div class="timeCrunch clickMe" v-on:click="modal='tc'"></div>
       <div class="hammurabiGame clickMe" v-on:click="modal='hm'"></div>
     </div>
   </div>
@@ -69,7 +69,7 @@ export default {
     margin-left: 5px;
     margin-right: 5px;
     margin-top: 145px;
-    width: 96%;
+    width: 99%;
     height: 68%;
     z-index: 4;
     position: fixed;
@@ -79,7 +79,9 @@ export default {
   }
 
   .work {
-    margin-bottom: 20px;
+    grid-row: 1;
+    grid-column-start: 1;
+    grid-column-end: 3;
   }
 
   h1 {
@@ -133,10 +135,10 @@ export default {
   }
 
   .tiles {
-    width: 90%;
+    width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 300px 200px;
+    grid-template-rows: repeat(4, 200px);
     text-align: center;
     margin-top: 20px;
   }
@@ -155,7 +157,10 @@ export default {
     height: auto;
     z-index: 10;
     grid-column: 1;
-    grid-row: 1;
+    grid-row: 2;
+    background-color:rgba(0,0,0,0.4);
+    border-radius: 12px;
+    box-shadow: 2px 2px 4px #000;
   }
 
   .quickVenom {
@@ -166,17 +171,25 @@ export default {
     height: auto;
     z-index: 10;
     background-size: contain;
+    grid-row: 2;
     grid-column: 2;
-    grid-row: 1;
+    background-color:rgba(0,0,0,0.4);
+    border-radius: 12px;
+    box-shadow: 2px 2px 4px #000;
   }
 
-  .carpetGuys {
+  .timeCrunch {
     background-position: center;
-    background-image: url('../assets/carpetGuys.svg');
+    background-image: url('../assets/TClogo.svg');
     background-repeat:no-repeat;
     background-size: contain;
     width: 100%;
     height: auto;
+    grid-row: 3;
+    grid-column: 1;
+    background-color:rgba(0,0,0,0.4);
+    border-radius: 12px;
+    box-shadow: 2px 2px 4px #000;
   }
 
   .hammurabiGame {
@@ -186,59 +199,48 @@ export default {
     background-size:contain;
     width: 100%;
     height: 100%;
+    grid-row: 3;
     grid-column: 2;
-    grid-row: 2;
-    margin-left: 160px;
+    background-color:rgba(0,0,0,0.4);
+    border-radius: 12px;
+    box-shadow: 2px 2px 4px #000;
   }
 
   @media only screen and (max-width:750px) {
 
     .tiles {
-      display: grid;
       text-align: center;
-      grid-template-columns: .1fr 1fr .1fr;
-      grid-template-rows: 80px repeat(4, 60px);
-      grid-row-gap: 10px;
-      margin-top: 0;
-      margin-left: 6%;
+      width: 100%;
+      display: grid;
+      grid-template-rows: repeat(5, 60px);
     }
 
     .work {
-      grid-column: 2;
       grid-row: 1;
-      margin-bottom: 20px;
+      margin-top: -30px;
     }
 
     .totalResponse {
-      grid-column: 2;
       grid-row: 2;
-      background-size: contain;
     }
 
     .quickVenom {
-      grid-column: 2;
       grid-row: 3;
-      margin-top: 0;
     }
 
-    .carpetGuys {
-      grid-column: 2;
+    .timeCrunch {
       grid-row: 4;
     }
 
     .hammurabiGame {
-      grid-column: 2;
       grid-row: 5;
-      margin-left: 0;
     }
 
     .clickMe {
-      background-color: #d1d1d1;
-      border-radius: 12px;
+      background-color:rgba(0,0,0,0.4);
+      border-radius: 6px;
       box-shadow: 2px 2px 4px #000;
       color: #fff;
-      -webkit-filter: drop-shadow(1px 2px 2px #000);
-      filter: drop-shadow(1px 2px 1px #000);
     }
   }
 </style>

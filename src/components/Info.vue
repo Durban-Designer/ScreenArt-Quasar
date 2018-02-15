@@ -2,38 +2,41 @@
   <div class="main">
     <div class="modal">
       <div class="services">
-        <h1>services</h1>
+        <h1>Our Specialties</h1>
         <ul>
           <li>Web Development</li>
           <li>App Development</li>
           <li>Graphic Design</li>
           <li>Consulting</li>
+          <li>Marketing</li>
         </ul>
+        <p class="blurb">At Screen Art Studios we to bring your ideas and our creative and technical power together to create something unique.<br/>
+          Whether you have an idea for a new mobile application or if you need a complete rebranding of your company's media, Screen Art does it all.</p>
       </div>
       <div class="bon">
         <div class="bonImage"></div>
-        <p>
+        <p class="bio">
           Bonham Goodman is the Lead Developer and a Co-Founder of Screen Art Studios. A Full Stack Web Developer
           specializing in the Quick Venom Stack as well as an expert in backend API servers.
         </p>
       </div>
       <div class="avery">
         <div class="averyImage"></div>
-        <p>
+        <p class="bio">
           Avery Angel is a Developer and a Co-Founder of Screen Art Studios. A Full Stack Web Developer
           specializing in the Quick Venom Stack as well as a Graphic Designer, and Photographer.
         </p>
       </div>
       <div class="royce">
         <div class="royceImage"></div>
-        <p>
+        <p class="bio">
           Royce Birnbaum is the President and Co-Founder of Screen Art Studios. A Full Stack Web Developer
           specializing in the Quick Venom Stack as well as an Author, Graphic Designer, and Photographer.
         </p>
       </div>
       <div class="kris">
         <div class="krisImage"></div>
-        <p>
+        <p class="bio">
           Kristoffer St. John is the Vice President and Co-Founder of Screen Art Studios.
           A Full Stack Web Developer specializing in the Quick Venom Stack as well
           as an Artist, Graphic Designer, and Photographer.
@@ -60,8 +63,7 @@
   @base-font:'Pathway Gothic One', sans-serif;
 
   .main {
-    margin-left: 5px;
-    margin-right: 5px;
+    margin-left: 2%;
     margin-top: 145px;
     width: 96%;
     height: 68%;
@@ -72,104 +74,96 @@
     box-shadow: 2px 2px 4px #000;
     color: #fff;
     overflow: hidden;
+    font-family: @base-font;
+  }
+  h1 {
+    text-align: center;
+    grid-row: 1;
   }
 
   .modal {
     overflow-y: scroll;
     height: 100%;
     display: grid;
-    grid-template-columns: .1fr 2fr .1fr;
-    grid-template-rows: 20px repeat(5, 400px) 40px;
+    grid-template-rows: repeat(11, 200px);
   }
 
   .royce {
-    grid-column: 2;
-    grid-row: 2;
-    display: grid;
-    grid-template-columns: .1fr 1fr .1fr;
-    grid-template-rows: 200px 200px;
+    grid-row: 4;
+    margin-left: 5%;
   }
 
   .royceImage {
     background-image: url('../assets/RoyceHeadshot.png');
     background-repeat: no-repeat;
-    grid-row: 1;
-    grid-column: 2;
     width: 100%;
     height: 100%;
   }
 
   .kris {
-    grid-column: 2;
-    grid-row: 3;
-    display: grid;
-    grid-template-columns: .1fr 1fr .1fr;
-    grid-template-rows: 200px 200px;
+    margin-left: 5%;
+    grid-row: 6;
   }
 
   .krisImage {
     background-image: url('../assets/KrisHeadshot.png');
     background-repeat: no-repeat;
-    grid-row: 1;
-    grid-column: 2;
     width: 100%;
     height: 100%;
   }
 
   .bon {
-    grid-column: 2;
-    grid-row: 4;
-    display: grid;
-    grid-template-columns: .1fr 1fr .1fr;
-    grid-template-rows: 200px 200px;
+    grid-row: 8;
+    margin-left: 5%;
   }
 
   .bonImage {
     background-image: url('../assets/BonHeadshot.png');
     background-repeat: no-repeat;
-    grid-row: 1;
-    grid-column: 2;
     width: 100%;
     height: 100%;
   }
 
   .avery {
-    grid-column: 2;
-    grid-row: 5;
-    display: grid;
-    grid-template-columns: .1fr 1fr .1fr;
-    grid-template-rows: 200px 200px;
+    grid-row: 10;
+    margin-left: 5%;
   }
 
   .averyImage {
     background-image: url('../assets/AveryHeadshot.png');
     background-repeat: no-repeat;
-    grid-row: 1;
-    grid-column: 2;
     width: 100%;
     height: 100%;
   }
 
   .services {
-    padding-top: 80px;
-    grid-column: 2;
-    grid-row: 6;
+    grid-row: 1;
   }
 
-  p {
-    grid-row: 2;
-    grid-column: 2;
-    font-size: 1em;
-    line-height: 1.2em;
-    padding-top: 24px;
+  .blurb {
+    text-align: center;
+    font-size: 1.5em;
+    background-color: #c22227;
+    padding: 5px;
+    border-radius: 10px;
   }
-
   @media only screen and (min-width:700px) {
     .main {
 
     }
 
-    h1 {
+    p {
+      font-size: 2em;
+    }
+    .blurb {
+      font-size: 2.5em;
+      line-height: 35px;
+    }
+
+    li {
+      font-size: 1.5em;
+    }
+    .royce {
 
     }
   }
