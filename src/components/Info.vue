@@ -2,13 +2,12 @@
   <div class="main">
     <div class="modal">
       <div class="services">
-        <h1>Our Specialties</h1>
+        <h1>Services</h1>
         <ul>
-          <li>Web Development</li>
-          <li>App Development</li>
-          <li>Graphic Design</li>
-          <li>Consulting</li>
-          <li>Marketing</li>
+          <li>Web Development - Responsive Websites up to the current standards of web design.</li>
+          <li>App Development - Hybrid Web Apps, custom CRMs for businesses or project implementation.</li>
+          <li>Graphic Design - Rebranding, Logo Design, and ANY Media Development you need.</li>
+          <li>Marketing - Social Media marketing and Ad campaigns for your businesses growth.</li>
         </ul>
         <p class="blurb">At Screen Art Studios we to bring your ideas and our creative and technical power together to create something unique.<br/>
           Whether you have an idea for a new mobile application or if you need a complete rebranding of your company's media, Screen Art does it all.</p>
@@ -161,7 +160,7 @@
     }
 
     li {
-      font-size: 1.5em;
+      font-size: 1.4em;
     }
     .royce {
 
