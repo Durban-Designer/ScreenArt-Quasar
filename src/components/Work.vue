@@ -69,9 +69,10 @@ export default {
     margin-left: 5px;
     margin-right: 5px;
     margin-top: 145px;
-    width: 99%;
+    width: 96%;
     height: 68%;
     z-index: 4;
+    color: #fff;
     position: fixed;
     background:rgba(0,0,0,0.6);
     border-radius: 12px;
@@ -119,7 +120,7 @@ export default {
     grid-row-start: 2;
     grid-column: 2;
     font-family: @base-font;
-    color: black;
+    color: white;
     line-height: 1.1em;
     font-size: 1.1em;
     width: 100%;
@@ -180,7 +181,7 @@ export default {
 
   .timeCrunch {
     background-position: center;
-    background-image: url('../assets/TClogo.svg');
+    background-image: url('../assets/TClogoWhite.svg');
     background-repeat:no-repeat;
     background-size: contain;
     width: 100%;

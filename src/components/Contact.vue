@@ -508,19 +508,21 @@ textarea:hover {
   }
 
   .send {
-  margin-top: 90px;
-  grid-column-start: 1;
-  grid-column-end: 3;
-  grid-row-start: 5;
-  grid-row-end: 7;
-  text-align: center;
-  background-color: transparent;
-  height: 30px;
-  color: #fff;
-  border: solid 1px #fff;
-  font-family: @base-font;
-  font-size: 1.5em;
-  line-height: 30px;
+    margin: 0;
+    padding: 0;
+    margin-top: 90px;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 5;
+    grid-row-end: 7;
+    text-align: center;
+    background-color: transparent;
+    height: 30px;
+    color: #fff;
+    border: solid 1px #fff;
+    font-family: @base-font;
+    font-size: 1.5em;
+    line-height: 30px;
   }
   .send:hover {
   color: #000;
