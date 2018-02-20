@@ -457,7 +457,7 @@ export default {
       }
 
       .slide3 {
-        background-image: url("../../assets/mountains.jpg");
+        background-image: url("../../assets/plane.jpg");
         height: auto;
         width: 100%;
         bottom: 0;

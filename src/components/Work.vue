@@ -66,10 +66,9 @@ export default {
   @base-font:'Pathway Gothic One', sans-serif;
 
   .main {
-    margin-left: 5px;
-    margin-right: 5px;
+    margin-left: 3%;
     margin-top: 145px;
-    width: 96%;
+    width: 95%;
     height: 68%;
     z-index: 4;
     color: #fff;

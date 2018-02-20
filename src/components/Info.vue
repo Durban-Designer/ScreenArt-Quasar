@@ -63,7 +63,8 @@
 
   .main {
     margin-top: 145px;
-    width: 96%;
+    margin-left: 3%;
+    width: 95%;
     height: 68%;
     z-index: 10;
     position: fixed;
