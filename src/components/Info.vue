@@ -62,7 +62,6 @@
   @base-font:'Pathway Gothic One', sans-serif;
 
   .main {
-    margin-left: 2%;
     margin-top: 145px;
     width: 96%;
     height: 68%;
