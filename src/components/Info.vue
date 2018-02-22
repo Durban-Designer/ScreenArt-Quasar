@@ -12,6 +12,7 @@
         <p class="blurb">At Screen Art Studios we to bring your ideas and our creative and technical power together to create something unique.<br/>
           Whether you have an idea for a new mobile application or if you need a complete rebranding of your company's media, Screen Art does it all.</p>
       </div>
+      <h2>The Founders</h2>
       <div class="bon">
         <div class="bonImage"></div>
         <p class="bio">
@@ -79,7 +80,11 @@
     text-align: center;
     grid-row: 1;
   }
-
+  h2 {
+    text-align: center;
+    width: 100%;
+    margin-top: 250px;
+  }
   .modal {
     overflow-y: scroll;
     height: 100%;
@@ -97,6 +102,7 @@
     background-repeat: no-repeat;
     width: 100%;
     height: 100%;
+    margin-left: 10%;
   }
 
   .kris {
@@ -109,6 +115,7 @@
     background-repeat: no-repeat;
     width: 100%;
     height: 100%;
+    margin-left: 10%;
   }
 
   .bon {
@@ -121,6 +128,7 @@
     background-repeat: no-repeat;
     width: 100%;
     height: 100%;
+    margin-left: 10%;
   }
 
   .avery {
@@ -133,12 +141,16 @@
     background-repeat: no-repeat;
     width: 100%;
     height: 100%;
+    margin-left: 10%;
   }
 
   .services {
     grid-row: 1;
   }
-
+  .bio {
+    width: 70%;
+    margin-left: 15%;
+  }
   .blurb {
     text-align: center;
     font-size: 1.5em;
@@ -146,10 +158,21 @@
     padding: 5px;
     border-radius: 10px;
   }
-  @media only screen and (min-width:700px) {
-    .main {
-
+  @media only screen and (min-width:400px) {
+    .royceImage {
+      margin-left: 20%;
     }
+    .krisImage {
+      margin-left: 20%;
+    }
+    .bonImage {
+      margin-left: 20%;
+    }
+    .averyImage {
+      margin-left: 20%;
+    }
+  }
+  @media only screen and (min-width:700px) {
 
     p {
       font-size: 2em;
@@ -161,9 +184,53 @@
 
     li {
       font-size: 1.4em;
+      margin-left: 5%;
     }
-    .royce {
-
+    .royceImage {
+      margin-left: 33%;
+    }
+    .krisImage {
+      margin-left: 33%;
+    }
+    .bonImage {
+      margin-left: 33%;
+    }
+    .averyImage {
+      margin-left: 33%;
     }
   }
+    @media only screen and (min-width: 1000px) {
+      .royceImage {
+        margin-left: 36%;
+      }
+      .krisImage {
+        margin-left: 36%;
+      }
+      .bonImage {
+        margin-left: 36%;
+      }
+      .averyImage {
+        margin-left: 36%;
+      }
+      li {
+        margin-left: 15%;
+      }
+    }
+    @media only screen and (min-width: 1400px) {
+      li {
+        margin-left: 25%;
+      }
+      .royceImage {
+        margin-left: 40%;
+      }
+      .krisImage {
+        margin-left: 40%;
+      }
+      .bonImage {
+        margin-left: 40%;
+      }
+      .averyImage {
+        margin-left: 40%;
+      }
+    }
 </style>

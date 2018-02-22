@@ -27,8 +27,8 @@
     <div class="timeCrunchModal modal" v-else-if="modal==='tc'">
       <h1>Time Crunch</h1>
       <p>
-        Carpet Guys is a Mobile CRM Hybrid Web Application we developed that enables the employees to clock in, view jobs, check their schedule, navigate to jobs on a map, message customers and employees, upload photos,
-        track leads, and run marketing campaigns. As well as having a customer facing side that allows customers to track job progress, upload photos, and has social media links.
+        TimeCrunch is a mobile app service for companies that want a simple and economic system for Clocking employee time and mileage tracking. Functional and helpful for administators and
+        easy to use for employees, TimeCrunch is an asset for any companies toolkit.
       </p>
       <button class="back" v-on:click="modal=''">Back</button>
     </div>
@@ -100,12 +100,12 @@ export default {
     color: #fff;
     border-color: #fff;
     font-size: 1.5em;
-    margin-left: 10px;
+    margin-left: 5%;
+    width: 90%;
   }
 
   .modal {
     display: grid;
-    grid-template-columns: .5fr 1fr;
     grid-template-rows: 90px repeat(4, 80px);
   }
 
@@ -138,7 +138,7 @@ export default {
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: repeat(4, 200px);
+    grid-template-rows: repeat(4, 100px);
     text-align: center;
     margin-top: 20px;
   }
@@ -206,13 +206,13 @@ export default {
     box-shadow: 2px 2px 4px #000;
   }
 
-  @media only screen and (max-width:750px) {
+  @media only screen and (min-width:700px) {
 
     .tiles {
       text-align: center;
       width: 100%;
       display: grid;
-      grid-template-rows: repeat(5, 60px);
+      grid-template-rows: repeat(5, 80px);
     }
 
     .work {
@@ -241,6 +241,9 @@ export default {
       border-radius: 6px;
       box-shadow: 2px 2px 4px #000;
       color: #fff;
+    }
+    .clickMe:hover {
+      background-color: #999;
     }
   }
 </style>
