@@ -25,8 +25,6 @@ export default {
     color: white;
     text-align: center;
     background:rgba(0,0,0,0.6);
-    border-top-right-radius: 12px;
-    border-top-left-radius: 12px;
     box-shadow: 2px 2px 4px #000;
   }
 
