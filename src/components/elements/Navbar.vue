@@ -1,4 +1,4 @@
-<template>
+ <template>
   <div class="main">
     <div class="navbar">
       <div v-bind:class="saLogic" v-on:click="navToggle"></div>
@@ -298,6 +298,8 @@ export default {
 
   .slide1 {
     background-image: url("../../assets/SeasonsMobile.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
     position: absolute;
     width: 100%;
     height: 140px;
@@ -310,6 +312,8 @@ export default {
   .slide2 {
     background-image: url("../../assets/birdsMobile.jpg");
     position: absolute;
+    background-size: cover;
+    background-repeat: no-repeat;
     width: 100%;
     height: 140px;
     margin: 0;
@@ -321,6 +325,8 @@ export default {
   .slide3 {
     background-image: url("../../assets/mountainsMobile.jpg");
     position: absolute;
+    background-size: cover;
+    background-repeat: no-repeat;
     width: 100%;
     height: 140px;
     margin: 0;
@@ -331,6 +337,8 @@ export default {
   .slide4 {
     background-image: url("../../assets/grateMobile.jpg");
     position: absolute;
+    background-size: cover;
+    background-repeat: no-repeat;
     width: 100%;
     height: 140px;
     margin: 0;
@@ -342,6 +350,8 @@ export default {
   .slide5 {
     background-image: url("../../assets/humansMobile.jpg");
     position: absolute;
+    background-size: cover;
+    background-repeat: no-repeat;
     width: 100%;
     height: 140px;
     margin: 0;
@@ -352,6 +362,8 @@ export default {
   .slide6 {
     background-image: url("../../assets/windowMobile.jpg");
     position: absolute;
+    background-size: cover;
+    background-repeat: no-repeat;
     width: 100%;
     height: 140px;
     margin: 0;
