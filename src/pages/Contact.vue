@@ -50,7 +50,7 @@ export default {
     },
     submitLead () {
       let vue = this
-      axios.post('http://13.57.57.81:81/leads', {
+      axios.post('https://api.screenartstudios.com/leads', {
         name: vue.name.toLowerCase(),
         phone: vue.phone,
         email: vue.email,
@@ -70,7 +70,7 @@ export default {
     },
     submitMessage () {
       let vue = this
-      axios.post('http://13.57.57.81:81/messages', {
+      axios.post('https://api.screenartstudios.com/messages', {
         name: vue.name.toLowerCase(),
         phone: vue.phone,
         email: vue.email,

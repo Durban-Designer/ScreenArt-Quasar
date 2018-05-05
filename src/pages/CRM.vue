@@ -34,7 +34,7 @@ export default {
   methods: {
     confirmChange () {
       let vue = this
-      axios.put('http://13.57.57.81:81/users/' + vue.user.id, {
+      axios.put('https://api.screenartstudios.com/users/' + vue.user.id, {
         password: vue.password
       }, {headers: { 'Authorization': 'JWT ' + vue.user.token }})
         .then(function () {

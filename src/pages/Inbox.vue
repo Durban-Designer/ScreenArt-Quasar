@@ -57,7 +57,7 @@ export default {
   methods: {
     populateMessages () {
       let vue = this
-      axios.get('http://13.57.57.81:81/messages', {headers: { 'Authorization': 'JWT ' + vue.user.token }})
+      axios.get('https://api.screenartstudios.com/messages', {headers: { 'Authorization': 'JWT ' + vue.user.token }})
         .then(function (response) {
           vue.messages = response.data
         })
@@ -74,7 +74,7 @@ export default {
         vue.clearMessages()
         vue.populateMessages()
       } else {
-        axios.get('http://13.57.57.81:81/messages/name/' + vue.searchBox, {headers: { 'Authorization': 'JWT ' + vue.user.token }})
+        axios.get('https://api.screenartstudios.com/messages/name/' + vue.searchBox, {headers: { 'Authorization': 'JWT ' + vue.user.token }})
           .then(function (response) {
             vue.clearMessages()
             vue.messages = response.data
@@ -98,7 +98,7 @@ export default {
     },
     deleteMessage () {
       let vue = this
-      axios.delete('http://13.57.57.81:81/messages/' + vue.activeMessage.id, {headers: { 'Authorization': 'JWT ' + vue.user.token }})
+      axios.delete('https://api.screenartstudios.com/messages/' + vue.activeMessage.id, {headers: { 'Authorization': 'JWT ' + vue.user.token }})
         .then(function () {
           vue.messageItem = false
           vue.clearMessages()

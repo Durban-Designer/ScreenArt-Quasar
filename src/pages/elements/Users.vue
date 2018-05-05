@@ -71,7 +71,7 @@ export default {
   methods: {
     populateUsers () {
       let vue = this
-      axios.get('http://13.57.57.81:81/users/all/' + vue.user.id, {headers: { 'Authorization': 'JWT ' + vue.user.token }})
+      axios.get('https://api.screenartstudios.com/users/all/' + vue.user.id, {headers: { 'Authorization': 'JWT ' + vue.user.token }})
         .then(function (response) {
           vue.users = response.data
         })
@@ -81,7 +81,7 @@ export default {
     },
     deleteUser () {
       let vue = this
-      axios.delete('http://13.57.57.81:81/users/' + vue.activeUser.id, {headers: { 'Authorization': 'JWT ' + vue.user.token }})
+      axios.delete('https://api.screenartstudios.com/users/' + vue.activeUser.id, {headers: { 'Authorization': 'JWT ' + vue.user.token }})
         .then(function (response) {
           vue.deleteUserModal = false
           vue.viewUser = false
@@ -93,7 +93,7 @@ export default {
     },
     userSubmit () {
       let vue = this
-      axios.post('http://13.57.57.81:81/users', {
+      axios.post('https://api.screenartstudios.com/users', {
         email: vue.activeUser.email,
         password: vue.activeUser.password,
         name: vue.activeUser.name,
@@ -131,7 +131,7 @@ export default {
     },
     userEdit () {
       let vue = this
-      axios.put('http://13.57.57.81:81/users/' + vue.activeUser.id, {
+      axios.put('https://api.screenartstudios.com/users/' + vue.activeUser.id, {
         email: vue.activeUser.email,
         name: vue.activeUser.name,
         employee: vue.activeUser.employee.toString(),

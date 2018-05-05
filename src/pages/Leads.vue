@@ -81,7 +81,7 @@ export default {
       this.populateLeads()
     }
     if (vue.leadId !== '') {
-      axios.get('http://13.57.57.81:81/leads/id/' + vue.leadId, {headers: { 'Authorization': 'JWT ' + vue.user.token }})
+      axios.get('https://api.screenartstudios.com/leads/id/' + vue.leadId, {headers: { 'Authorization': 'JWT ' + vue.user.token }})
         .then(function (response) {
           vue.activeLead.name = response.data[0].name
           vue.activeLead.phone = response.data[0].phone
@@ -132,7 +132,7 @@ export default {
   methods: {
     populateLeads () {
       let vue = this
-      axios.get('http://13.57.57.81:81/leads/' + vue.page, {headers: { 'Authorization': 'JWT ' + vue.user.token }})
+      axios.get('https://api.screenartstudios.com/leads/' + vue.page, {headers: { 'Authorization': 'JWT ' + vue.user.token }})
         .then(function (response) {
           vue.leads = response.data
           if (vue.leads.length === 8) {
@@ -186,7 +186,7 @@ export default {
     },
     submitLead () {
       let vue = this
-      axios.post('http://13.57.57.81:81/leads', {
+      axios.post('https://api.screenartstudios.com/leads', {
         name: vue.activeLead.name.toLowerCase(),
         phone: vue.activeLead.phone,
         email: vue.activeLead.email,
@@ -211,7 +211,7 @@ export default {
     },
     submitEdit () {
       let vue = this
-      axios.put('http://13.57.57.81:81/leads/' + vue.activeLead.id, {
+      axios.put('https://api.screenartstudios.com/leads/' + vue.activeLead.id, {
         name: vue.activeLead.name.toLowerCase(),
         phone: vue.activeLead.phone,
         email: vue.activeLead.email,
@@ -235,7 +235,7 @@ export default {
     },
     deleteLead () {
       let vue = this
-      axios.delete('http://13.57.57.81:81/leads/' + vue.activeLead.id, {headers: { 'Authorization': 'JWT ' + vue.user.token }})
+      axios.delete('https://api.screenartstudios.com/leads/' + vue.activeLead.id, {headers: { 'Authorization': 'JWT ' + vue.user.token }})
         .then(function () {
           vue.edit = false
           vue.leadbox = true
@@ -279,7 +279,7 @@ export default {
         vue.clearActiveLeads()
         vue.populateLeads()
       } else {
-        axios.get('http://13.57.57.81:81/leads/name/' + vue.searchBox + '/' + vue.page, {headers: { 'Authorization': 'JWT ' + vue.user.token }})
+        axios.get('https://api.screenartstudios.com/leads/name/' + vue.searchBox + '/' + vue.page, {headers: { 'Authorization': 'JWT ' + vue.user.token }})
           .then(function (response) {
             vue.clearLeads()
             vue.clearActiveLeads()

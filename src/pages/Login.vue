@@ -38,7 +38,7 @@ export default {
   methods: {
     login () {
       let vue = this
-      axios.post('http://13.57.57.81:81/users/login', {
+      axios.post('https://api.screenartstudios.com/users/login', {
         email: vue.email.toLowerCase(),
         password: vue.password
       })
