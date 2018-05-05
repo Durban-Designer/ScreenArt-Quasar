@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import Navbar from './components/elements/Navbar'
-import Foot from './components/elements/Foot'
+import Navbar from './pages/elements/Navbar'
+import Foot from './pages/elements/Foot'
 export default {
   name: 'app',
   components: {
@@ -50,8 +50,7 @@ export default {
       vue.loggedIn = true
       if (vue.user.employee === true) {
         vue.$router.push('/crm')
-      }
-      else {
+      } else {
         vue.$router.push('/customeraccount')
       }
     },
