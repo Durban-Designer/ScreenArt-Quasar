@@ -29,29 +29,54 @@ export default {
 h1 {
   font-family: @base-font;
   font-size: 2em;
-  text-align: center;
+  text-align: right;
   color: #c22227;
   letter-spacing: 1px;
   font-weight: 200;
+  margin-top: -20vh;
+  padding-right: 2vw;
 }
 .launch {
   background-image: url('../assets/launch.svg');
-  background-position: center;
+  background-position: left;
   background-repeat: no-repeat;
   background-size: contain;
-  -webkit-filter: drop-shadow(0px 2px 2px #000);
-  filter: drop-shadow(0px 2px 2px #000);
+  margin-top: 10vh;
+  height: 50vh;
+  width: 100vw;
 }
 
 @media (min-width: 1000px) {
   .main {
     margin-top: 25vh;
     width: 100%;
-    height: 600px;
+    height: 100vh;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(6, 6em);
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 100vh;
     position: fixed;
+  }
+  h1 {
+    font-family: @base-font;
+    font-size: 2em;
+    text-align: center;
+    color: #c22227;
+    letter-spacing: 1px;
+    font-weight: 200;
+    grid-column: 2;
+    margin-top: 20vh;
+    padding-right: 0vw;
+  }
+  .launch {
+    background-image: url('../assets/launch.svg');
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 80vh;
+    width: 50vw;
+    margin-top: 0;
+    grid-column: 1;
+    grid-row: 1;
   }
 }
 </style>
