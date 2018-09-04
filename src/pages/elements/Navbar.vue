@@ -95,7 +95,7 @@ export default {
   methods: {
     navToggle: function () {
       // Nav button functionality
-      if (window.innerWidth < 720) {
+      if (window.innerWidth < 1000) {
         if (x === false) {
           x = true
           this.isToggled = true
@@ -382,7 +382,7 @@ export default {
       grid-template-rows: repeat(10,2vh);
     }
     .navbar {
-      grid-template-columns: 22vw 25vw 25vw 25vw;
+      grid-template-columns: 220px 25vw 25vw 25vw;
       grid-template-rows: 100px;
       margin: 2vw;
     }

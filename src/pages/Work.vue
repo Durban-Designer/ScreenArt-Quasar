@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <h1>We've Done Work For:</h1>
+    <h1>We've provided solutions for:</h1>
     <h2><a href="https://weighlabel.com/">weighlabel</a></h2>
     <h3><a href="https://thumbnailconsulting.com/">Thumbnail Consulting</a></h3>
     <div class="mystic"><a href="https://www.mystic-crm.com/"></a></div>
@@ -39,7 +39,7 @@ export default {
     color: grey;
     font-family: @base-font;
     font-weight: 300;
-    font-size: 1.5em;
+    font-size: 1em;
     text-align: center;
     letter-spacing: 1px;
     grid-column: 2;

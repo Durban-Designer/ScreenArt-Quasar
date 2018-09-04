@@ -9,7 +9,10 @@
         <div class="naut"></div>
         <h1 class="c">Deployment and Support</h1>
         <p class="cc">We won't leave you stranded. From Conception to Launch and Beyond, we are right by your side, Providing quality assurance and top notch support every step of the way.</p>
-    </div>
+        <div class="wide"></div>
+        <h1 class="d">No Project Too Niche</h1>
+        <p class="dd">We have a champion team of Developers and a wide range of Specialists on our team. Which means that no project is impossible.</p>
+      </div>
 </template>
 
 <script>
@@ -30,16 +33,17 @@ export default {
 
   .imain {
     overflow-y: scroll;
-    height: 100vh;
+    height: 150vh;
     display: grid;
     width: 100vw;
     z-index: 15;
+    padding-bottom: 100vh;
     grid-column-start: 1;
     grid-column-end: 20;
     grid-row-start: 6;
     grid-row-end: 40;
     grid-template-columns: 6vw 88vw 6vw;
-    grid-template-rows: repeat(20, 10vh);
+    grid-template-rows: repeat(25, 10vh);
 
   }
   h1 {
@@ -94,6 +98,20 @@ export default {
     grid-column: 2;
     grid-row: 15;
   }
+  .wide {
+    background-image: url('../assets/wide.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width:100%;
+    height: 17vh;
+    grid-column: 2;
+    grid-row: 19;
+  }
+  .d {
+    grid-column: 2;
+    grid-row: 21;
+  }
   p {
     grid-column: 2;
     color: #777;
@@ -109,6 +127,9 @@ export default {
   }
   .cc {
     grid-row: 16;
+  }
+  .dd {
+    grid-row: 22;
   }
     @media only screen and (min-width: 1000px) {
       .imain {
