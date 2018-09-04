@@ -3,22 +3,13 @@
     <div class="navbar">
       <div v-bind:class="saLogic" v-on:click="navToggle"></div>
       <div v-bind:class="navpaneLogic">
-        <button v-bind:class="HomeLogic" v-on:click="navToggle(); $router.push('/')">HOME</button>
-        <button v-bind:class="WorkLogic" v-on:click="navToggle(); $router.push('/work')">WORK</button>
-        <button v-bind:class="ContactLogic" v-on:click="navToggle(); $router.push('/contact')">CONTACT</button>
-        <button v-bind:class="InfoLogic" v-on:click="navToggle(); $router.push('/info')">INFO</button>
-        <button v-bind:class="LoginLogic" v-on:click="navToggle(); $router.push('/login')" v-if="!loggedIn">LOGIN</button>
+        <button v-bind:class="HomeLogic" v-on:click="navToggle(); $router.push('/')">Home</button>
+        <button v-bind:class="InfoLogic" v-on:click="navToggle(); $router.push('/info')">Services</button>
+        <button v-bind:class="WorkLogic" v-on:click="navToggle(); $router.push('/work')">Clients</button>
+        <button v-bind:class="ContactLogic" v-on:click="navToggle(); $router.push('/contact')">Contact</button>
         <button v-bind:class="LoginLogic" v-on:click="navToggle(); $router.push('/crm')" v-if="loggedIn && user.employee">CRM</button>
         <button v-bind:class="LoginLogic" v-on:click="navToggle(); $router.push('/customeraccount')" v-if="loggedIn && !user.employee">ACCOUNT</button>
       </div>
-    </div>
-    <div class="slidebox">
-      <transition name="slide"><div class="slide1" v-if="show === 0"></div></transition>
-      <transition name="slide"><div class="slide2" v-if="show === 1"></div></transition>
-      <transition name="slide"><div class="slide3" v-if="show === 2"></div></transition>
-      <transition name="slide"><div class="slide4" v-if="show === 3"></div></transition>
-      <transition name="slide"><div class="slide5" v-if="show === 4"></div></transition>
-      <transition name="slide"><div class="slide6" v-if="show === 5"></div></transition>
     </div>
   </div>
 </template>
@@ -122,7 +113,7 @@ export default {
 </script>
 
 <style scoped lang='less'>
-  @base-font:'Pathway Gothic One', sans-serif;
+  @base-font:'Barlow', sans-serif;
 
   .navpane {
     display: none;
@@ -130,36 +121,40 @@ export default {
   }
 
   .sa {
-    margin-top: 20px;
+    margin-top: 5vh;
     width: 100%;
     height: 100%;
     grid-column: 3;
     z-index: 8;
     background-repeat: no-repeat;
     background-image: url("../../assets/logoAnimation.svg");
-    -webkit-filter: drop-shadow(1px 2px 2px #000);
-    filter: drop-shadow(1px 2px 2px #000);
+    -webkit-filter: drop-shadow(0px 2px 2px #000);
+    filter: drop-shadow(0px 2px 2px #000);
     align-items: center;
   }
 
   .navbar {
     width: 100%;
     height: 135px;
-    background:rgba(0,0,0,0.5);
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    z-index: 11;
     text-align: center;
     line-height: 70px;
     font-family: @base-font;
-    font-weight: lighter;
+    font-weight: 300;
     display: grid;
     grid-template-columns: repeat(2, 1fr) 220px repeat(2,1fr);
     grid-template-rows: 100px;
-
-    box-shadow: 2px 2px 4px #000;
+  }
+  p {
+    background: transparent;
+    z-index: 12;
+    position: fixed;
+    padding: 20px;
+    height: 3vh;
+    color: #c22227;
   }
 
   @keyframes navButtonAnimation {
@@ -178,8 +173,7 @@ export default {
 
   @keyframes navpaneAnimationReverse {
     0% { opacity: 1; }
-    99% { opacity: 0; }
-    100% { opacity: 0;}
+    100% { opacity: 0; }
   }
 
   .navButtonAnimation {
@@ -195,33 +189,35 @@ export default {
   }
 
   .navpaneAnimation {
-    animation: navpaneAnimation .4s steps(9);
+    animation: navpaneAnimation .5s steps(9);
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
+    animation-timing-function: ease-in;
     grid-column-start: 2;
     grid-column-end: 5;
-    z-index: 10;
+    z-index: 16;
     width: 100%;
-    height: 380px;
-    margin-top: 40px;
-    background:rgba(0,0,0,0.8);
-    border-radius: 12px;
-    box-shadow: 2px 2px 4px #000;
+    margin-top: 10vh;
+    background: #dce6f2;
+    border: 1px solid #999;
+    border-radius: 5px;
     color: #fff;
   }
 
   .navpaneAnimationExit {
     animation: navpaneAnimationReverse .5s steps(9);
     animation-iteration-count: 1;
+    animation-timing-function: ease-in;
     animation-fill-mode: forwards;
-    grid-column: 3;
+    grid-column-start: 2;
+    grid-column-end: 5;
     z-index: 10;
     width: 100%;
-    height: 0px;
-    margin-top: 40px;
-    background:rgba(0,0,0,0.6);
-    border-radius: 12px;
-    box-shadow: 2px 2px 4px #000;
+    height: 40vh;
+    margin-top: 10vh;
+    background: #dce6f2;
+    border: 1px solid #999;
+    border-radius: 5px;
     color: #fff;
   }
 
@@ -230,52 +226,39 @@ export default {
     grid-column: 1;
     background-color: transparent;
     border: none;
-    color: #fff;
+    color: grey;
     font-family: @base-font;
-    font-size: 2.5em;
+    font-size: 2.2em;
     width: 100%;
-    text-shadow: 2px 2px 3px black;
     grid-column: 1;
     width: 100%;
   }
   .Work {
     background-color: transparent;
     width: 100%;
-    text-shadow: 2px 2px 3px black;
     background-color: transparent;
     border: none;
-    color: #fff;
-    font-size: 2.5em;
+    color: grey;
+    font-size: 2.2em;
+    letter-spacing: 0px;
   }
 
   .Contact {
     background-color: transparent;
     width: 100%;
-    text-shadow: 2px 2px 3px black;
     background-color: transparent;
     border: none;
-    color: #fff;
-    font-size: 2.5em;
+    color: grey;
+    font-size: 2.2em;
   }
 
   .Info {
     background-color: transparent;
     width: 100%;
-    text-shadow: 2px 2px 3px black;
     background-color: transparent;
     border: none;
-    color: #fff;
-    font-size: 2.5em;
-  }
-
-  .Login {
-    background-color: transparent;
-    width: 100%;
-    text-shadow: 2px 2px 3px black;
-    background-color: transparent;
-    border: none;
-    color: #fff;
-    font-size: 2.5em;
+    color: grey;
+    font-size: 2.2em;
   }
 
   .slidebox {
@@ -379,10 +362,10 @@ export default {
     opacity: 0;
   }
   /*lANDSCAPE*/
-  @media (min-width: 700px) {
+  @media (min-width: 1000px) {
     .navpane {
-      width: 100%;
-      height: 120px;
+      width: 100vw;
+      height: 20vh;
       position: fixed;
       top: 0;
       left: 0;
@@ -393,147 +376,64 @@ export default {
       font-family: @base-font;
       font-weight: lighter;
       display: grid;
-      grid-template-columns: repeat(2, 1fr) 220px repeat(2,1fr);
+      grid-column-start: 1;
+      grid-column-end: 6;
+      grid-template-columns: repeat(25,4vw);
+      grid-template-rows: repeat(10,2vh);
+    }
+    .navbar {
+      grid-template-columns: 22vw 25vw 25vw 25vw;
       grid-template-rows: 100px;
+      margin: 2vw;
     }
 
     button {
-      letter-spacing: 1.3px;
-      -webkit-animation-duration: .25s;
-      animation-duration: .25s;
-      -webkit-animation-fill-mode: both;
-      animation-fill-mode: both;
-      -webkit-animation-timing-function: ease-in-out;
-      animation-timing-function: ease-in-out;
-      animation-iteration-count: 1;
-      -webkit-animation-iteration-count: 1;
+      letter-spacing: 1px;
+      text-align: center;
     }
-
-    button:hover {
-      animation-name: bounce;
-      -moz-animation-name: bounce;
-    }
-
-    @keyframes bounce {
-      0%, 100% {
-          -webkit-transform: translateY(0);
-          -ms-transform:     translateY(0);
-          transform:         translateY(0)
-        }
-
-        100% {
-          -webkit-transform: translateY(-10px);
-          -ms-transform:     translateY(-10px);
-          transform:         translateY(-10px)
-        }
-      }
-
       .Home {
         display: none;
       }
-
-      .slidebox {
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        overflow: hidden;
-        z-index: -1;
-        height: 100%;
-      }
-
-      .slide1 {
-        background-image: url("../../assets/Seasons.jpg");
-        height: auto;
+      .Contact {
+        grid-column-start: 20;
+        grid-column-end:23;
+        grid-row-start: 3;
+        grid-row-end: 5;
+        background-color: transparent;
+        border: none;
+        color: grey;
+        font-family: @base-font;
+        font-size: 1.5em;
         width: 100%;
-        bottom: 0;
-        left: 0;
-        right: 0;
-      }
-
-      .slide2 {
-        background-image: url("../../assets/birds.jpg");
-        height: auto;
-        width: 100%;
-        bottom: 0;
-        left: 0;
-        right: 0;
-      }
-
-      .slide3 {
-        background-image: url("../../assets/plane.jpg");
-        height: auto;
-        width: 100%;
-        bottom: 0;
-        left: 0;
-        right: 0;
-      }
-      .slide4 {
-        background-image: url("../../assets/grate.jpg");
-        height: auto;
-        width: 100%;
-        bottom: 0;
-        left: 0;
-        right: 0;
-      }
-
-      .slide5 {
-        background-image: url("../../assets/humans.jpg");
-        height: auto;
-        width: 100%;
-        bottom: 0;
-        left: 0;
-        right: 0;
-      }
-      .slide6 {
-        background-image: url("../../assets/window.jpg");
-        height: auto;
-        width: 100%;
-        bottom: 0;
-        left: 0;
-        right: 0;
+        line-height: 0;
       }
 
       .Work {
-        box-shadow: none;
-        grid-column: 1;
+        grid-column-start: 16;
+        grid-column-end:19;
+        grid-row-start: 3;
+        grid-row-end: 5;
         background-color: transparent;
         border: none;
-        color: #fff;
+        color: grey;
         font-family: @base-font;
-        font-size: 2.5em;
-        width: 25%;
-        text-shadow: 2px 2px 3px black;
-        grid-column: 1;
+        font-size: 1.5em;
         width: 100%;
-      }
-
-      .Contact {
-        box-shadow: none;
-        grid-column: 2;
-        background-color: transparent;
-        border: none;
-        color: #fff;
-        font-family: @base-font;
-        font-size: 2.5em;
-        width: 25%;
-        text-shadow: 2px 2px 3px black;
-        grid-column: 2;
-        width: 100%;
+        line-height: 0;
       }
 
       .Info {
-        box-shadow: none;
-        grid-column: 4;
+        grid-column-start: 12;
+        grid-column-end:15;
+        grid-row-start: 3;
+        grid-row-end: 5;
         background-color: transparent;
         border: none;
-        color: #fff;
+        color: grey;
         font-family: @base-font;
-        font-size: 2.5em;
-        width: 25%;
-        text-shadow: 2px 2px 3px black;
+        font-size: 1.5em;
         width: 100%;
+        line-height: 0;
       }
 
       .Login {
@@ -543,10 +443,14 @@ export default {
         border: none;
         color: #fff;
         font-family: @base-font;
-        font-size: 2.5em;
+        font-size: 1.5em;
         width: 25%;
         text-shadow: 2px 2px 3px black;
         width: 100%;
+      }
+      .sa {
+        margin: 0;
+        grid-column: 1;
       }
     }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <!-- Don't drop "q-app" class -->
-  <div id="q-app">
+  <div id="q-app" class="appmain">
     <navbar :loggedIn="loggedIn" :user="user"></navbar>
     <transition name="fade">
       <router-view v-on:login="login" v-on:logOut="logOut" v-on:gotoLead="goToLead" :user="user" :loggedIn="loggedIn" :leadId="leadId"/>
@@ -11,12 +11,10 @@
 
 <script>
 import Navbar from './pages/elements/Navbar'
-import Foot from './pages/elements/Foot'
 export default {
   name: 'app',
   components: {
-    'navbar': Navbar,
-    'foot': Foot
+    'navbar': Navbar
   },
   created () {
     let vue = this
@@ -75,7 +73,14 @@ export default {
 </script>
 
 <style scoped lang="less">
-
+.appmain {
+  position: fixed;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+  grid-template-rows: repeat(50, 5vh);
+  background-color: #dce6f2;
+}
 .fade-enter-active, .fade-leave-active {
   transition: all .25s ease;
   transition: all .25s cubic-bezier(1.0, 0.5, 0.8, 1.0);

@@ -1,6 +1,5 @@
 <template>
   <div class="Footer">
-    <h1>ScreenArt Studios Copyright&#169;</h1>
   </div>
 </template>
 

@@ -1,0 +1,15 @@
+<svg width="23.999999999999996" height="23.999999999999996" xmlns="http://www.w3.org/2000/svg">
+ <title/>
+
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="402" width="582" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <path fill="none" stroke="#c22227" stroke-linecap="round" stroke-linejoin="round" id="_Path_" d="m2.49,13.91a4.39,4.39 0 0 1 -1.85,-1.91c-1,-2.48 3.3,-4.48 9.58,-4.48s12.16,2 13.14,4.48c0.47,1.18 -0.26,2.25 -1.82,3.05"/>
+  <path fill="none" stroke="#c22227" stroke-linecap="round" stroke-linejoin="round" id="_Path_2" d="m9.52,20.81a5.09,5.09 0 0 1 -3.2,1c-2.65,-0.39 -2.25,-5.09 0.89,-10.5s7.79,-9.49 10.47,-9.1c1.43,0.21 2,1.67 1.68,3.81"/>
+  <path fill="none" stroke="#c22227" stroke-linecap="round" stroke-linejoin="round" id="_Path_3" d="m16.21,10.51c2.22,4.74 2.9,9.48 1.47,11.28c-1.66,2.09 -5.55,-0.6 -8.69,-6s-4.33,-11.5 -2.67,-13.58c0.9,-1.13 2.44,-0.86 4.16,0.47"/>
+  <circle fill="none" stroke="#c22227" stroke-linecap="round" stroke-linejoin="round" r="1.5" id="_Path_4" cy="12" cx="12"/>
+ </g>
+</svg>

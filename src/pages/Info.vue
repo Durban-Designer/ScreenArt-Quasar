@@ -1,49 +1,15 @@
 <template>
-  <div class="main">
-    <div class="modal">
-      <div class="services">
-        <h1>Services</h1>
-        <ul>
-          <li>Web Development - Responsive Websites up to the current standards of web design.</li>
-          <li>App Development - Hybrid Web Apps, custom CRMs for businesses or project implementation.</li>
-          <li>Graphic Design - Rebranding, Logo Design, and ANY Media Development you need.</li>
-          <li>Marketing - Social Media marketing and Ad campaigns for your businesses growth.</li>
-        </ul>
-        <p class="blurb">At Screen Art Studios we to bring your ideas and our creative and technical power together to create something unique.<br/>
-          Whether you have an idea for a new mobile application or if you need a complete rebranding of your company's media, Screen Art does it all.</p>
-      </div>
-      <h2>The Founders</h2>
-      <div class="bon">
-        <div class="bonImage"></div>
-        <p class="bio">
-          Bonham Goodman is the Lead Developer and a Co-Founder of Screen Art Studios. A Full Stack Web Developer
-          specializing in the Quick Venom Stack as well as an expert in backend API servers.
-        </p>
-      </div>
-      <div class="avery">
-        <div class="averyImage"></div>
-        <p class="bio">
-          Avery Angel is a Developer and a Co-Founder of Screen Art Studios. A Full Stack Web Developer
-          specializing in the Quick Venom Stack as well as a Graphic Designer, and Photographer.
-        </p>
-      </div>
-      <div class="royce">
-        <div class="royceImage"></div>
-        <p class="bio">
-          Royce Birnbaum is the President and Co-Founder of Screen Art Studios. A Full Stack Web Developer
-          specializing in the Quick Venom Stack as well as an Author, Graphic Designer, and Photographer.
-        </p>
-      </div>
-      <div class="kris">
-        <div class="krisImage"></div>
-        <p class="bio">
-          Kristoffer St. John is the Vice President and Co-Founder of Screen Art Studios.
-          A Full Stack Web Developer specializing in the Quick Venom Stack as well
-          as an Artist, Graphic Designer, and Photographer.
-        </p>
-      </div>
+  <div class="imain">
+    <div class="laptop"></div>
+        <h1 class="a">Complex Software Solutions</h1>
+        <p class="aa">It's time for a software upgrade. We provide nothing less than the most reliable, efficient and user-friendly software on the market, custom made to the complex problems your company may be facing.</p>
+        <div class="brain"></div>
+        <h1 class="b">Thinktank Approach</h1>
+        <p class="bb">Every company is unique in its needs. That's why our highly skilled Software Engineers work together with your developers to architect and build lasting, scalable and complex solutions. Bringing your visions to reality. </p>
+        <div class="naut"></div>
+        <h1 class="c">Deployment and Support</h1>
+        <p class="cc">We won't leave you stranded. From Conception to Launch and Beyond, we are right by your side, Providing quality assurance and top notch support every step of the way.</p>
     </div>
-  </div>
 </template>
 
 <script>
@@ -60,177 +26,112 @@ export default {
 </script>
 
 <style scoped lang='less'>
-  @base-font:'Pathway Gothic One', sans-serif;
+  @base-font:'Barlow', sans-serif;
 
-  .main {
-    margin-top: 145px;
-    margin-left: 3%;
-    width: 95%;
-    height: 68%;
-    z-index: 10;
-    position: fixed;
-    background:rgba(0,0,0,0.6);
-    border-radius: 12px;
-    box-shadow: 2px 2px 4px #000;
-    color: #fff;
-    overflow: hidden;
-    font-family: @base-font;
+  .imain {
+    overflow-y: scroll;
+    height: 100vh;
+    display: grid;
+    width: 100vw;
+    z-index: 15;
+    grid-column-start: 1;
+    grid-column-end: 20;
+    grid-row-start: 6;
+    grid-row-end: 40;
+    grid-template-columns: 6vw 88vw 6vw;
+    grid-template-rows: repeat(20, 10vh);
+
   }
   h1 {
     text-align: center;
+    color: #c22227;
+    font-family: @base-font;
+    font-weight: 300;
+    font-size: 1.3em;
+    text-align: center;
+    letter-spacing: 1px;
+    border-bottom: 2px solid #c22227;
+  }
+  .laptop {
+    background-image: url('../assets/laptop.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width:100%;
+    height: 20vh;
+    grid-column: 2;
     grid-row: 1;
   }
-  h2 {
-    text-align: center;
+  .a {
+    grid-row: 3;
+    grid-column: 2;
+  }
+  .brain {
+    background-image: url('../assets/brain.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
     width: 100%;
-    margin-top: 250px;
+    height: 15vh;
+    grid-column: 2;
+    grid-row: 7;
   }
-  .modal {
-    overflow-y: scroll;
-    height: 100%;
-    display: grid;
-    grid-template-rows: repeat(11, 200px);
+  .b {
+    grid-column: 2;
+    grid-row: 9;
   }
-
-  .royce {
+  .naut {
+    background-image: url('../assets/naut.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width:100%;
+    height: 20vh;
+    grid-column: 2;
+    grid-row: 13;
+  }
+  .c {
+    grid-column: 2;
+    grid-row: 15;
+  }
+  p {
+    grid-column: 2;
+    color: #777;
+    font-size: 1.1em;
+    letter-spacing: 1px;
+    font-family: @base-font;
+  }
+  .aa {
     grid-row: 4;
-    margin-left: 5%;
   }
-
-  .royceImage {
-    background-image: url('../assets/RoyceHeadshot.png');
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 100%;
-    margin-left: 10%;
-  }
-
-  .kris {
-    margin-left: 5%;
-    grid-row: 6;
-  }
-
-  .krisImage {
-    background-image: url('../assets/KrisHeadshot.png');
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 100%;
-    margin-left: 10%;
-  }
-
-  .bon {
-    grid-row: 8;
-    margin-left: 5%;
-  }
-
-  .bonImage {
-    background-image: url('../assets/BonHeadshot.png');
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 100%;
-    margin-left: 10%;
-  }
-
-  .avery {
+  .bb {
     grid-row: 10;
-    margin-left: 5%;
   }
-
-  .averyImage {
-    background-image: url('../assets/AveryHeadshot.png');
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 100%;
-    margin-left: 10%;
-  }
-
-  .services {
-    grid-row: 1;
-  }
-  .bio {
-    width: 70%;
-    margin-left: 15%;
-  }
-  .blurb {
-    text-align: center;
-    font-size: 1.5em;
-    background-color: #c22227;
-    padding: 5px;
-    border-radius: 10px;
-  }
-  @media only screen and (min-width:400px) {
-    .royceImage {
-      margin-left: 20%;
-    }
-    .krisImage {
-      margin-left: 20%;
-    }
-    .bonImage {
-      margin-left: 20%;
-    }
-    .averyImage {
-      margin-left: 20%;
-    }
-  }
-  @media only screen and (min-width:700px) {
-
-    p {
-      font-size: 2em;
-    }
-    .blurb {
-      font-size: 2.5em;
-      line-height: 35px;
-    }
-
-    li {
-      font-size: 1.4em;
-      margin-left: 5%;
-    }
-    .royceImage {
-      margin-left: 33%;
-    }
-    .krisImage {
-      margin-left: 33%;
-    }
-    .bonImage {
-      margin-left: 33%;
-    }
-    .averyImage {
-      margin-left: 33%;
-    }
+  .cc {
+    grid-row: 16;
   }
     @media only screen and (min-width: 1000px) {
-      .royceImage {
-        margin-left: 36%;
+      .imain {
+        overflow-y: scroll;
+        height: 100vh;
+        display: grid;
+        width: 100vw;
+        z-index: 15;
+        grid-column-start: 1;
+        grid-column-end: 20;
+        grid-row-start: 6;
+        grid-row-end: 40;
+        grid-template-columns: 15vw 70vw 15vw;
+        grid-template-rows: repeat(20, 10vh);
       }
-      .krisImage {
-        margin-left: 36%;
+      p {
+        font-size: 1.4em;
       }
-      .bonImage {
-        margin-left: 36%;
-      }
-      .averyImage {
-        margin-left: 36%;
-      }
-      li {
-        margin-left: 15%;
+      h1 {
+        font-size: 2em;
+        line-height: 0;
       }
     }
     @media only screen and (min-width: 1400px) {
-      li {
-        margin-left: 25%;
-      }
-      .royceImage {
-        margin-left: 40%;
-      }
-      .krisImage {
-        margin-left: 40%;
-      }
-      .bonImage {
-        margin-left: 40%;
-      }
-      .averyImage {
-        margin-left: 40%;
-      }
     }
 </style>
