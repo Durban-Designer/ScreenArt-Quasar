@@ -397,8 +397,8 @@ export default {
       .Contact {
         grid-column-start: 20;
         grid-column-end:23;
-        grid-row-start: 3;
-        grid-row-end: 5;
+        grid-row-start: 4;
+        grid-row-end: 6;
         background-color: transparent;
         border: none;
         color: grey;
@@ -411,8 +411,8 @@ export default {
       .Work {
         grid-column-start: 16;
         grid-column-end:19;
-        grid-row-start: 3;
-        grid-row-end: 5;
+        grid-row-start: 4;
+        grid-row-end: 6;
         background-color: transparent;
         border: none;
         color: grey;
@@ -425,8 +425,8 @@ export default {
       .Info {
         grid-column-start: 12;
         grid-column-end:15;
-        grid-row-start: 3;
-        grid-row-end: 5;
+        grid-row-start: 4;
+        grid-row-end: 6;
         background-color: transparent;
         border: none;
         color: grey;
@@ -451,6 +451,15 @@ export default {
       .sa {
         margin: 0;
         grid-column: 1;
+      }
+      button:hover {
+        animation: hoverup .2s steps(6);
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+        @keyframes hoverup {
+          0% {  color: grey; }
+          100% {  color: #c22227; font-size: 1.55em;}
+        }
       }
     }
 </style>
