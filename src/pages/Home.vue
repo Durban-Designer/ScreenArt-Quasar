@@ -20,26 +20,27 @@ export default {
 @base-font:'Barlow', sans-serif;
 
 .main {
-  margin-top: 20vh;
+  margin-top: 15vh;
   width: 100vw;
-  height: 140vh;
+  height: 100vh;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 100vh;
   overflow-y: scroll;
-  position: relative;
+  position: fixed;
 }
 p {
   display: none;
 }
 .splash {
-  background-image: url('../assets/splash.svg');
+  background-image: url('../assets/splash2.svg');
   background-position: left;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 60%;
+  height: 100vh;
   width: 100%;
   position: fixed;
+  overflow: hidden;
 }
 /* width */
 ::-webkit-scrollbar {

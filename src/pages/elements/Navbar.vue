@@ -282,6 +282,9 @@ export default {
       grid-column-start: 1;
       grid-column-end: 3;
     }
+    .logo:hover {
+      filter: grayscale(.5);
+    }
     .navpane {
       width: 100vw;
       height: 20vh;
