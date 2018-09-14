@@ -2,8 +2,8 @@
   <div class="imain">
     <div class="laptop"></div>
         <h1 class="a">Optimize Everything.</h1>
-        <p class="aa">Loooking to get the most out of your data? We provide the most reliable, efficient and cutting edge software on the market.
-         Personal Assistants, Big Data Analytics, Product Valuation Prediction, Image Content Analysis, and OCR (Optical Character Recognition) are among the many ML solutions we offer. </p>
+        <p class="aa"> We provide the most reliable, efficient and cutting edge software on the market.
+         AI Assistants, Big Data Analytics, Product Value Prediction, Image Content Analysis, and OCR (Optical Character Recognition) are among the many ML solutions we offer. </p>
         <div class="brain"></div>
         <h1 class="b">Thinktank Approach</h1>
         <p class="bb">We believe co-operation is the key to sucess. That's why our highly skilled 'Neuronauts' work together with you to architect and build lasting, scalable and custom deep learning solutions.</p>
@@ -99,11 +99,11 @@ export default {
     width: 100%;
     height: 15vh;
     grid-column: 2;
-    grid-row: 7;
+    grid-row: 8;
   }
   .b {
     grid-column: 2;
-    grid-row: 9;
+    grid-row: 10;
   }
   .naut {
     background-image: url('../assets/naut.svg');
@@ -113,11 +113,11 @@ export default {
     width:100%;
     height: 20vh;
     grid-column: 2;
-    grid-row: 13;
+    grid-row: 14;
   }
   .c {
     grid-column: 2;
-    grid-row: 15;
+    grid-row: 16;
   }
   .wide {
     background-image: url('../assets/wide.svg');
@@ -144,10 +144,10 @@ export default {
     grid-row: 4;
   }
   .bb {
-    grid-row: 10;
+    grid-row: 11;
   }
   .cc {
-    grid-row: 16;
+    grid-row: 17;
   }
   .dd {
     grid-row: 23;
