@@ -1,17 +1,15 @@
 <template>
   <div class="imain">
     <div class="laptop"></div>
-        <h1 class="a">Complex Software Solutions</h1>
-        <p class="aa">It's time for a software upgrade. We provide nothing less than the most reliable, efficient and user-friendly software on the market, custom made to the complex problems your company may be facing.</p>
+        <h1 class="a">Optimize Everything.</h1>
+        <p class="aa">Loooking to get the most out of your data? We provide the most reliable, efficient and cutting edge software on the market.
+         Personal Assistants, Large Data Analytics, Value Prediction, Image Content Analysis, OCR are among the many ML solutions we offer. </p>
         <div class="brain"></div>
         <h1 class="b">Thinktank Approach</h1>
-        <p class="bb">Every company is unique in its needs. That's why our highly skilled Software Engineers work together with your developers to architect and build lasting, scalable and complex solutions. Bringing your visions to reality. </p>
+        <p class="bb">We believe co-operation is the key to sucess. That's why our highly skilled 'Neuronauts' work together with you to architect and build lasting, scalable and custom deep learning solutions.</p>
         <div class="naut"></div>
         <h1 class="c">Deployment and Support</h1>
         <p class="cc">We won't leave you stranded. From Conception to Launch and Beyond, we are right by your side, Providing quality assurance and top notch support every step of the way.</p>
-        <div class="wide"></div>
-        <h1 class="d">No Project Too Niche</h1>
-        <p class="dd">We have a champion team of Developers and a wide range of Specialists on our team. Which means that no project is impossible.</p>
       </div>
 </template>
 
@@ -30,6 +28,29 @@ export default {
 
 <style scoped lang='less'>
   @base-font:'Barlow', sans-serif;
+  /* width */
+  ::-webkit-scrollbar {
+      width: 5px;
+      height:5px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 5px transparent;
+      border-radius: 15px;
+      border: none;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+      background: #888;
+      border-radius: 15px;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+      background: #555;
+  }
 
   .imain {
     overflow-y: scroll;
@@ -37,10 +58,9 @@ export default {
     display: grid;
     width: 100vw;
     z-index: 15;
-    padding-bottom: 100vh;
     grid-column-start: 1;
     grid-column-end: 20;
-    grid-row-start: 6;
+    grid-row-start: 4;
     grid-row-end: 40;
     grid-template-columns: 6vw 88vw 6vw;
     grid-template-rows: repeat(25, 10vh);
@@ -48,13 +68,14 @@ export default {
   }
   h1 {
     text-align: center;
-    color: #c22227;
+    color: #008cc4;
     font-family: @base-font;
     font-weight: 300;
     font-size: 1.3em;
     text-align: center;
     letter-spacing: 1px;
-    border-bottom: 2px solid #c22227;
+    border-bottom: 2px solid #008cc4;
+    grid-column: 2;
   }
   .laptop {
     background-image: url('../assets/laptop.svg');
@@ -104,17 +125,17 @@ export default {
     background-repeat: no-repeat;
     background-size: contain;
     width:100%;
-    height: 17vh;
+    height: 20vh;
     grid-column: 2;
     grid-row: 19;
   }
   .d {
     grid-column: 2;
-    grid-row: 21;
+    grid-row: 22;
   }
   p {
     grid-column: 2;
-    color: #777;
+    color: #555;
     font-size: 1.1em;
     letter-spacing: 1px;
     font-family: @base-font;
@@ -129,7 +150,7 @@ export default {
     grid-row: 16;
   }
   .dd {
-    grid-row: 22;
+    grid-row: 23;
   }
     @media only screen and (min-width: 1000px) {
       .imain {

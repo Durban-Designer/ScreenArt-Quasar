@@ -100,7 +100,7 @@ export default {
   .main {
     margin-left: 5px;
     margin-right: 5px;
-    margin-top: 145px;
+    margin-top: 100px;
     width: 96%;
     height: 68%;
     z-index: 4;
@@ -112,7 +112,7 @@ export default {
     font-family: @base-font;
     font-weight: 300;
     font-size: 1.5em;
-    color: #c22227;
+    color: #008cc4;
     text-align: center;
     line-height: 50px;
     margin: 4px;
@@ -140,7 +140,7 @@ export default {
     font-family: @base-font;
     font-weight: lighter;
     font-size: 1.5em;
-    color: #c22227;
+    color: #008cc4;
     list-style: none;
 
   }
@@ -223,15 +223,16 @@ export default {
   text-align: center;
   background-color: transparent;
   height: 35px;
-  color: #c22227;
-  border: solid 1px #c22227;
+  color: #008cc4;
+  border: solid 1px #008cc4;
   font-family: @base-font;
   font-size: 1.5em;
   margin-left: 5%;
   margin-top: 4px;
 }
 .send:hover {
-  background-color: #fff;
+  background-color: #008cc4;
+  color: white;
 }
 
 #form {
@@ -247,6 +248,7 @@ input {
   outline: none;
   color: grey;
   border: solid 1px grey;
+  height: 4vh;
   transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;

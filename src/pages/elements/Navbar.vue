@@ -1,6 +1,7 @@
  <template>
   <div class="main">
     <div class="navbar">
+      <div class="logo" v-on:click="$router.push('/')"></div>
       <div v-bind:class="saLogic" v-on:click="navToggle"></div>
       <div v-bind:class="navpaneLogic">
         <button v-bind:class="HomeLogic" v-on:click="navToggle(); $router.push('/')">Home</button>
@@ -120,17 +121,29 @@ export default {
     overflow: hidden;
   }
 
-  .sa {
-    margin-top: 5vh;
+  .logo {
     width: 100%;
     height: 100%;
-    grid-column: 3;
+    grid-column-start: 2;
+    grid-column-end: 4;
     z-index: 8;
     background-repeat: no-repeat;
-    background-image: url("../../assets/logoAnimation.svg");
-    -webkit-filter: drop-shadow(0px 2px 2px #000);
-    filter: drop-shadow(0px 2px 2px #000);
+    background-position: center;
+    background-size: contain;
+    background-image: url("../../assets/Neuronaut2.svg");
     align-items: center;
+  }
+  .sa {
+    width: 80px;
+    height: 80px;
+    overflow: hidden;
+    z-index: 10;
+    margin: 2vw;
+    grid-column: 4;
+    background-repeat: no-repeat;
+    background-image: url("../../assets/navbuttonAnimationColor.svg");
+    background-size: cover;
+    transform: scale(.5);
   }
 
   .navbar {
@@ -145,7 +158,7 @@ export default {
     font-family: @base-font;
     font-weight: 300;
     display: grid;
-    grid-template-columns: repeat(2, 1fr) 220px repeat(2,1fr);
+    grid-template-columns: 25vw 25vw 25vw 25vw;
     grid-template-rows: 100px;
   }
   p {
@@ -158,11 +171,11 @@ export default {
   }
 
   @keyframes navButtonAnimation {
-    100% {background-position: -1980px;}
+    100% {background-position: -1440px;}
   }
 
   @keyframes navButtonAnimationReverse {
-    0% {background-position: -1980px;}
+    0% {background-position: -1440px;}
     100% {background-position: 0px;}
   }
 
@@ -177,13 +190,13 @@ export default {
   }
 
   .navButtonAnimation {
-    animation: navButtonAnimation .4s steps(9);
+    animation: navButtonAnimation .3s steps(18);
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
   }
 
   .navButtonAnimationExit {
-    animation: navButtonAnimationReverse .5s steps(9);
+    animation: navButtonAnimationReverse .3s steps(18);
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
   }
@@ -193,13 +206,13 @@ export default {
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
     animation-timing-function: ease-in;
-    grid-column-start: 2;
+    grid-column-start: 1;
     grid-column-end: 5;
     z-index: 16;
-    width: 100%;
-    margin-top: 10vh;
+    width: 90vw;
+    margin-left: 5vw;
     background: #dce6f2;
-    border: 1px solid #999;
+    border: 2px solid #008cc4;
     border-radius: 5px;
     color: #fff;
   }
@@ -209,14 +222,14 @@ export default {
     animation-iteration-count: 1;
     animation-timing-function: ease-in;
     animation-fill-mode: forwards;
-    grid-column-start: 2;
+    grid-column-start: 1;
     grid-column-end: 5;
     z-index: 10;
-    width: 100%;
+    width: 90vw;
     height: 40vh;
-    margin-top: 10vh;
+    margin-left: 5vw;
     background: #dce6f2;
-    border: 1px solid #999;
+    border: 1px solid #008cc4;
     border-radius: 5px;
     color: #fff;
   }
@@ -226,7 +239,7 @@ export default {
     grid-column: 1;
     background-color: transparent;
     border: none;
-    color: grey;
+    color: #008cc4;
     font-family: @base-font;
     font-size: 2.2em;
     width: 100%;
@@ -238,9 +251,10 @@ export default {
     width: 100%;
     background-color: transparent;
     border: none;
-    color: grey;
+    color: #008cc4;
     font-size: 2.2em;
     letter-spacing: 0px;
+    font-family: @base-font;
   }
 
   .Contact {
@@ -248,8 +262,9 @@ export default {
     width: 100%;
     background-color: transparent;
     border: none;
-    color: grey;
+    color: #008cc4;
     font-size: 2.2em;
+    font-family: @base-font;
   }
 
   .Info {
@@ -257,112 +272,16 @@ export default {
     width: 100%;
     background-color: transparent;
     border: none;
-    color: grey;
+    color: #008cc4;
     font-size: 2.2em;
-  }
-
-  .slidebox {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    overflow: hidden;
-    z-index: -1;
-    height: 135px;
-  }
-
-  .slide1 {
-    background-image: url("../../assets/SeasonsMobile.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    position: absolute;
-    width: 100%;
-    height: 140px;
-    margin: 0;
-    padding: 0;
-    top: 0;
-    z-index: -6;
-  }
-
-  .slide2 {
-    background-image: url("../../assets/birdsMobile.jpg");
-    position: absolute;
-    background-size: cover;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 140px;
-    margin: 0;
-    padding: 0;
-    top: 0;
-    z-index: -5;
-  }
-
-  .slide3 {
-    background-image: url("../../assets/mountainsMobile.jpg");
-    position: absolute;
-    background-size: cover;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 140px;
-    margin: 0;
-    padding: 0;
-    top: 0;
-    z-index: -4;
-  }
-  .slide4 {
-    background-image: url("../../assets/grateMobile.jpg");
-    position: absolute;
-    background-size: cover;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 140px;
-    margin: 0;
-    padding: 0;
-    top: 0;
-    z-index: -3;
-  }
-
-  .slide5 {
-    background-image: url("../../assets/humansMobile.jpg");
-    position: absolute;
-    background-size: cover;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 140px;
-    margin: 0;
-    padding: 0;
-    top: 0;
-    z-index: -2;
-  }
-  .slide6 {
-    background-image: url("../../assets/windowMobile.jpg");
-    position: absolute;
-    background-size: cover;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 140px;
-    margin: 0;
-    padding: 0;
-    top: 0;
-    z-index: -1;
-  }
-
-  .slide-enter-active, .slide-leave-active {
-    transition: all .50s ease;
-  }
-
-  .slide-enter {
-    transform: translateX(2000px);
-    opacity: 0;
-  }
-
-  .slide-leave-to {
-    transform: translateX(-2000px);
-    opacity: 0;
+    font-family: @base-font;
   }
   /*lANDSCAPE*/
   @media (min-width: 1000px) {
+    .logo {
+      grid-column-start: 1;
+      grid-column-end: 3;
+    }
     .navpane {
       width: 100vw;
       height: 20vh;
@@ -401,7 +320,7 @@ export default {
         grid-row-end: 6;
         background-color: transparent;
         border: none;
-        color: grey;
+        color: #008cc4;
         font-family: @base-font;
         font-size: 1.5em;
         width: 100%;
@@ -415,7 +334,7 @@ export default {
         grid-row-end: 6;
         background-color: transparent;
         border: none;
-        color: grey;
+        color: #008cc4;
         font-family: @base-font;
         font-size: 1.5em;
         width: 100%;
@@ -429,7 +348,7 @@ export default {
         grid-row-end: 6;
         background-color: transparent;
         border: none;
-        color: grey;
+        color: #008cc4;
         font-family: @base-font;
         font-size: 1.5em;
         width: 100%;
@@ -449,16 +368,15 @@ export default {
         width: 100%;
       }
       .sa {
-        margin: 0;
-        grid-column: 1;
+        display: none;
       }
       button:hover {
         animation: hoverup .2s steps(6);
         animation-iteration-count: 1;
         animation-fill-mode: forwards;
         @keyframes hoverup {
-          0% {  color: grey; }
-          100% {  color: #c22227; font-size: 1.55em;}
+          0% {  color: #008cc4; }
+          100% {  color: #1FB6E5; font-size: 1.7em;}
         }
       }
     }

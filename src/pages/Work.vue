@@ -29,7 +29,7 @@ export default {
     z-index: 15;
     grid-column-start: 1;
     grid-column-end: 20;
-    grid-row-start: 6;
+    grid-row-start: 5;
     grid-row-end: 40;
     grid-template-columns: 6vw 88vw 6vw;
     grid-template-rows: repeat(10, 10vh);

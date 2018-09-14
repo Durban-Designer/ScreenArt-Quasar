@@ -1,7 +1,8 @@
 <template>
   <div class="main">
-    <div class="launch"></div>
-    <h1>It's time to launch your company into the future.</h1>
+    <div class="splash"></div>
+    <h1>Neuronaut Solutions</h1>
+    <p>is an AI software developoment company, dedicated to producing inventive, custom and complex deep learning solutions for businesses of all shapes and sizes.</p>
   </div>
 </template>
 
@@ -21,62 +22,73 @@ export default {
 .main {
   margin-top: 20vh;
   width: 100vw;
-  height: 100vh;
+  height: 140vh;
   display: grid;
-  position: fixed;
+  grid-template-rows: 100vh 20vh 20vh;
   overflow-y: scroll;
+  position: relative;
 }
 h1 {
-  font-family: @base-font;
-  font-size: 2em;
-  text-align: right;
-  color: #c22227;
-  letter-spacing: 1px;
-  font-weight: 200;
-  margin-top: -20vh;
-  padding-right: 2vw;
+  grid-row: 2;
+  color: #008cc4;
 }
-.launch {
-  background-image: url('../assets/launch.svg');
+p {
+  grid-row: 3;
+}
+.splash {
+  background-image: url('../assets/splash.svg');
   background-position: left;
   background-repeat: no-repeat;
-  background-size: contain;
-  margin-top: 10vh;
-  height: 50vh;
-  width: 100vw;
+  background-size: cover;
+  height: 60%;
+  width: 100%;
+  position: fixed;
+}
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+    height:5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px transparent;
+    border-radius: 15px;
+    border: none;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 15px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
 
 @media (min-width: 1000px) {
   .main {
-    margin-top: 25vh;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 100vh;
+    grid-template-rows: 105vh;
+    overflow-y: scroll;
+    padding-bottom: 20vh;
     position: fixed;
   }
-  h1 {
-    font-family: @base-font;
-    font-size: 2em;
-    text-align: center;
-    color: #c22227;
-    letter-spacing: 1px;
-    font-weight: 200;
-    grid-column: 2;
-    margin-top: 20vh;
-    padding-right: 0vw;
-  }
-  .launch {
-    background-image: url('../assets/launch.svg');
-    background-position: left;
+  .splash {
+    background-image: url('../assets/splash.svg');
+    background-position: center;
     background-repeat: no-repeat;
-    background-size: contain;
-    height: 80vh;
-    width: 50vw;
-    margin-top: 0;
-    grid-column: 1;
-    grid-row: 1;
+    background-size: cover;
+    height: 100vh;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    width: 100%;
+    position: relative;
   }
 }
 </style>

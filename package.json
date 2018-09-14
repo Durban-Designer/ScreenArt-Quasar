@@ -1,8 +1,8 @@
 {
   "name": "screenartwebsite",
   "version": "1.0.0",
-  "description": "The Screen Art Studios homepage",
-  "productName": "Screen Art Website",
+  "description": "Neuronaut Site",
+  "productName": "Neuronaut Solutions",
   "cordovaId": "com.screenart.website",
   "author": "Durban-Designer <royce.birnbaum@gmail.com>",
   "private": true,
