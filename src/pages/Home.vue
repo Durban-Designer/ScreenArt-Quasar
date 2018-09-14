@@ -1,8 +1,8 @@
 <template>
   <div class="main">
     <div class="splash"></div>
-    <h1>Neuronaut Solutions</h1>
-    <p>is an AI software developoment company, dedicated to producing inventive, custom and complex deep learning solutions for businesses of all shapes and sizes.</p>
+    <p>Neuronaut Solutions is an AI software development company, dedicated to producing <span>inventive, custom and complex</span> deep learning solutions for businesses of all shapes and sizes.
+    We believe the future of business lies in <span>Artificial Intelligence and Machine Learning.</span></p>
   </div>
 </template>
 
@@ -24,16 +24,13 @@ export default {
   width: 100vw;
   height: 140vh;
   display: grid;
-  grid-template-rows: 100vh 20vh 20vh;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 100vh;
   overflow-y: scroll;
   position: relative;
 }
-h1 {
-  grid-row: 2;
-  color: #008cc4;
-}
 p {
-  grid-row: 3;
+  display: none;
 }
 .splash {
   background-image: url('../assets/splash.svg');
@@ -73,8 +70,8 @@ p {
     width: 100%;
     height: 100%;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 105vh;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: 105vh 50vh;
     overflow-y: scroll;
     padding-bottom: 20vh;
     position: fixed;
@@ -89,6 +86,21 @@ p {
     grid-column-end: 3;
     width: 100%;
     position: relative;
+  }
+  p {
+    grid-row: 2;
+    grid-column: 1;
+    font-size: 2.5em;
+    height: 50vh;
+    align-self: center;
+    color: grey;
+    font-weight: 300;
+    padding-left: 3vw;
+    display: inline;
+  }
+  span {
+    font-style: italic;
+    color: #008cc4;
   }
 }
 </style>
