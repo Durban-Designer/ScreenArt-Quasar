@@ -38,57 +38,19 @@ export default {
   methods: {
     send () {
       let vue = this
-      vue.timeUpdate()
-      vue.submitLead()
-    },
-    submitLead () {
-      let vue = this
-      axios.post('https://api.screenartstudios.com/leads', {
+      axios.post('https://api.neuronautsolutions.com/deep/contact', {
         name: vue.name.toLowerCase(),
         phone: vue.phone,
         email: vue.email,
-        status: 'noreply'
+        message: vue.message
       })
         .then(function (lead) {
-          vue.leadId = lead.data._id
           vue.success = true
-          console.log(lead)
-          console.log(vue.leadId)
-          vue.submitMessage()
         })
         .catch(function (error) {
           console.log(error)
           vue.error = true
         })
-    },
-    submitMessage () {
-      let vue = this
-      axios.post('https://api.screenartstudios.com/messages', {
-        name: vue.name.toLowerCase(),
-        phone: vue.phone,
-        email: vue.email,
-        message: vue.message,
-        time: vue.time,
-        leadId: vue.leadId
-      })
-        .then(function (message) {
-          vue.success = true
-          console.log(message)
-          console.log(vue.leadId)
-        })
-        .catch(function (error) {
-          console.log(error)
-          vue.error = true
-        })
-    },
-    timeUpdate () {
-      let vue = this
-      let time = new Date()
-      vue.time.hour = time.getHours()
-      vue.time.minute = time.getMinutes()
-      vue.time.day = time.getDate()
-      vue.time.month = time.getMonth()
-      vue.clockTime = vue.time.hours + ':' + vue.time.minute + '  ' + vue.time.day + '/' + vue.time.month
     }
   }
 }

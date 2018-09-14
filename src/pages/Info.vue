@@ -3,7 +3,7 @@
     <div class="laptop"></div>
         <h1 class="a">Optimize Everything.</h1>
         <p class="aa">Loooking to get the most out of your data? We provide the most reliable, efficient and cutting edge software on the market.
-         Personal Assistants, Large Data Analytics, Value Prediction, Image Content Analysis, OCR are among the many ML solutions we offer. </p>
+         Personal Assistants, Big Data Analytics, Product Valuation Prediction, Image Content Analysis, and OCR (Optical Character Recognition) are among the many ML solutions we offer. </p>
         <div class="brain"></div>
         <h1 class="b">Thinktank Approach</h1>
         <p class="bb">We believe co-operation is the key to sucess. That's why our highly skilled 'Neuronauts' work together with you to architect and build lasting, scalable and custom deep learning solutions.</p>

@@ -5,7 +5,6 @@
     <transition name="fade">
       <router-view v-on:login="login" v-on:logOut="logOut" v-on:gotoLead="goToLead" :user="user" :loggedIn="loggedIn" :leadId="leadId"/>
     </transition>
-    <foot></foot>
   </div>
 </template>
 
